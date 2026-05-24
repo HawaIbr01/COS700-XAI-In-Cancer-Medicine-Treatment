@@ -1,0 +1,110 @@
+\documentclass[a4paper,10pt]{article} 
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{mdframed}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{xcolor}
+
+\geometry{margin=1in}
+
+\newcommand{\BlackBox}{\rule{1.5ex}{1.5ex}}
+
+\definecolor{blue}{rgb}{0,0,0.8}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset
+{
+   basicstyle=\ttfamily\footnotesize,
+   language=C++,
+   numbers=right,
+   numberstyle=\color{gray},
+   showtabs=true,
+   breaklines=true,
+   breakatwhitespace=true,
+   captionpos=bottom,
+   keywordstyle=\color{blue},
+   commentstyle=\color{dkgreen},
+   stringstyle=\color{mauve},
+   frame=single
+}
+
+\mdfsetup
+{
+   skipabove=\topskip,
+   skipbelow=\topskip,
+   leftmargin=2em,
+   rightmargin=2em
+}
+
+
+\title
+{
+   \includegraphics[width=12cm]{up_logo.png} \\
+   \vspace{2cm}
+   \textbf{COS700 Research Proposal} \\ 
+   \vspace{0.5cm}
+   \textbf{Diagnosing and Repairing XAI Fragility: SAM-Optimised Rules for Cancer Drug Response} \\ 
+   \vspace{0.5cm}
+    Angelique Breedt u23542838 \\
+    Bahiya Hoosen u22598546 \\
+    Hawa Ibrahim u20418494 \\
+    Melisa Ledwaba u19296950 \\
+    Sakhile Manzi u26838002 \\
+    \vspace{0.5cm}
+   \textbf{Supervisors}: \\ Prof. Nelishia Pillay \\ Dr. Nyathi Thambo  
+}
+
+\author{}
+\date{}
+\begin{document}
+
+\maketitle
+
+\newpage
+\linespread{1.25}
+
+\section*{Abstract}
+\input{sections/abstract}
+
+\section*{Keywords}
+Explainable AI (XAI), Red XAI, Cancer, Precision Oncology, Genomics of Drug Sensitivity in Cancer, GDSC, Sharpness-Aware Minimisation (SAM), Generalisation Gap, Evolutionary Algorithms
+
+\newpage
+
+\section{Introduction}
+\input{sections/introduction}
+
+\section{Problem Statement}
+\input{sections/problem_statement}
+
+\section{Literature Study}
+\input{sections/literature}
+
+\section{Methodology}
+\input{sections/methodology}
+
+\section{Planning}
+\input{sections/timeline}
+
+\bibliographystyle{plain}
+% \bibliography{alpha} - was giving weird labelling instead of numbers - switching to plain
+\bibliography{references}
+
+\end{document}

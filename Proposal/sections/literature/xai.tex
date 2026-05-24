@@ -1,0 +1,53 @@
+% -------------------------------------------------------
+% ASSIGNED TO: \textcolor{green}{Person 2}
+% -------------------------------------------------------
+% INSTRUCTION: Keep existing 3.1 content (ante-hoc/post-hoc, Blue/Red XAI).
+% ADD the new subsection 3.1.2 below (marked in red) — this is the
+% primary gap identified by the supervisor.
+% Convert first-person to third person throughout.
+% -------------------------------------------------------
+
+Explainable Artificial Intelligence encompasses a suite of techniques designed to make the
+decision-making processes and predictions of complex AI models transparent and comprehensible
+to human users (\textcolor{red}{verify citation}) \cite{}. Interpretability and explainability are distinct concepts in AI
+\cite{Arrieta2020}: interpretability (or transparency) describes the extent to which a model's
+internals naturally make sense to a human observer, while explainability is a process where a
+model provides specific details to clarify its functioning and decision-making. Based on this
+distinction, AI models can be classified into ante-hoc models (interpretable by design, e.g.\
+decision trees, linear regression) and post-hoc techniques (applied to already-trained black-box
+models to extract information) \cite{Arrieta2020}.
+
+\subsubsection{Blue XAI vs Red XAI}
+
+\cite{Biecek2024} categorise XAI based on the goals of the explanations into two cultures: Blue
+XAI, which focuses on justifying decisions to build trust with end users, and Red XAI, which is
+oriented toward developers who use explanations as active diagnostic tools to explore, validate,
+and debug models. Table~\ref{tab:bluered} summarises the differences.
+
+\begin{table}[H]
+\centering
+\caption{Comparison between Blue XAI and Red XAI, adapted from \cite{Biecek2024}.}
+\label{tab:bluered}
+\begin{tabular}{p{2.5cm}p{5cm}p{5cm}}
+\toprule
+\textbf{Feature} & \textbf{Blue XAI} & \textbf{Red XAI} \\
+\midrule
+Core Goal & Responsible, legal, trust, and ethical issues & Research on data, exploring models, and debugging \\
+Target Audience & Lay users, customers, or patients & Power users, AI developers, and researchers \\
+Explanation Type & Prioritises simplicity and comprehensibility & Prioritises faithfulness to the model and data \\
+Primary Intent & Justify why a specific decision was made & Question the model, spot bugs, and extract knowledge \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This project is rooted in the Red XAI culture, using evolutionary algorithms as a diagnostic and
+research tool rather than a mere justification mechanism \cite{Biecek2024, Yedjour2024}.
+
+% -------------------------------------------------------
+% NEW CONTENT REQUIRED — PRIMARY SUPERVISOR FEEDBACK GAP
+% (NICOG Slide 4: "State of the art approaches for problem")
+% -------------------------------------------------------
+
+\subsubsection{State-of-the-Art Post-Hoc XAI Methods}
+
+\input{sections/literature/sota}

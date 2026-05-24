@@ -1,0 +1,56 @@
+% -------------------------------------------------------
+% ASSIGNED TO: \textcolor{green}{Person 1}
+% -------------------------------------------------------
+% INSTRUCTION: Keep existing content. Add scope and limitations
+% paragraph at the end (marked in red below).
+% Convert first-person to third person throughout.
+% -------------------------------------------------------
+
+Currently, there is no standardised diagnostic framework that uses a model's generalisation gap
+as a predictor of explanation quality. While regularisation is known to improve accuracy, research
+exploring how optimisers like Sharpness-Aware Minimisation (SAM) can be used to smooth the
+explanation landscape to produce rules that are faithful and comprehensible is limited
+\cite{Dombrowski2022, Springer2024}. Without a ``Red XAI'' audit linking model health to rule quality,
+clinicians risk relying on explanations that may be mathematically convenient but biologically
+fraudulent \cite{Longo2024}.
+
+The primary research question is as follows: to what extent can the generalisation gap serve as a
+diagnostic indicator of explanation fragility, and can SAM be used to improve the fidelity and
+comprehensibility of rules extracted using evolutionary algorithms?
+
+This breaks down into four sub-research questions:
+
+\begin{enumerate}
+    \item \textbf{Correlation}: Is there a statistically significant correlation between a model's generalisation gap and the rule explosion (complexity versus fidelity) observed in extracted symbolic rules?
+    \item \textbf{Regularisation Impact}: How does the transition from standard Adam to SAM-based optimisation affect the stability and sharpness of the model's error landscape, and the stability of its explanations?
+    \item \textbf{Multi-Criteria Validation}: To what degree do SAM-optimised rules outrank baseline rules when evaluated through the PROMETHEE II multi-criteria framework?
+    \item \textbf{Biological Alignment}: Do the rules extracted from a regularised model show higher enrichment in KEGG/Enrichr pathways compared to rules from an overfitted baseline?
+\end{enumerate}
+
+The hypothesis is that applying SAM regularisation to a neural network trained on GDSC genomic
+data will reduce the generalisation gap by converging on flatter minima, resulting in symbolic rules
+that are statistically simpler, more accurately aligned to the black-box logic of the model (higher
+fidelity), and more consistently aligned with known biological pathways (higher biological validity)
+than those produced by an unregularised baseline \cite{Foret2021, Li2018, Springer2024, Yedjour2024}.
+
+% -------------------------------------------------------
+% NEW CONTENT REQUIRED (COS700 Slide 21)
+% -------------------------------------------------------
+
+\subsection*{Scope and Limitations}
+
+\textcolor{red}{
+% ADD: Scope and limitations paragraph as required by proposal guidelines.
+% Suggested text (edit as needed):
+This study is scoped to the following boundaries. The neural network architecture is fixed to
+DeepCCDS \cite{Wu2025} and is not subject to architectural optimisation. The primary dataset is
+GDSC with LN IC\textsubscript{50} as the drug response metric; the study does not extend to
+clinical patient data or real-time deployment contexts. The rule extraction pipeline operates on
+discretised tabular genomic features and does not address image-based or multi-modal data
+modalities. The regularisation intervention is limited to SAM as a replacement for the Adam
+optimiser; other regularisation strategies such as dropout or L2 weight decay are not evaluated as
+primary interventions. Statistical comparisons are conducted between the baseline and
+SAM-regularised conditions only; the study does not benchmark against all possible optimisers.
+Biological verification is limited to KEGG and Enrichr pathway databases as accessed through
+GSEApy; wet-lab experimental validation is outside the scope of this project.
+}

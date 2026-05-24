@@ -1,0 +1,42 @@
+% -------------------------------------------------------
+% ASSIGNED TO: \textcolor{green}{Person 5}
+% -------------------------------------------------------
+% INSTRUCTION: Paste existing Sections 4.5 through 4.5.3 here.
+% ADD the new SOTA baseline comparison subsection (marked in red below).
+% Convert first-person to third person throughout.
+% -------------------------------------------------------
+
+% [Paste Section 4.5 Evaluation Strategy here]
+% [Paste Section 4.5.1 Multi-Criteria Ranking via PROMETHEE II here]
+% [Paste Section 4.5.2 Statistical Significance (Wilcoxon Signed-Rank Test) here]
+% [Paste Section 4.5.3 Automated Biological Verification (GSEApy) here]
+
+% -------------------------------------------------------
+% NEW CONTENT REQUIRED — SOTA BASELINE COMPARISON
+% (Supervisor feedback: compare our method to SOTA approaches)
+% -------------------------------------------------------
+
+\subsubsection{SOTA Baseline Comparison: Decision Tree Rule Extraction}
+
+\textcolor{red}{
+% ADD: Decision tree as a SOTA rule extraction baseline.
+% This is the cleanest way to satisfy the supervisor's request to compare to SOTA
+% without adding entirely new algorithm implementations.
+% Suggested text:
+To contextualise the quality of rules produced by the GA and NSGA-II pipelines, a CART
+decision tree \cite{Breiman1984} is included as a deterministic rule extraction baseline,
+representing the most widely adopted alternative to evolutionary rule extraction in the XAI
+literature \cite{Arrieta2020}. The decision tree is fitted to the predictions of both the baseline
+and SAM-regularised DeepCCDS models using scikit-learn, with maximum depth constrained to
+prevent rule explosion. Rules are extracted from the fitted tree and evaluated under the identical
+PROMETHEE II framework described in Section 4.5.1, using the same fidelity, comprehensibility,
+and stability criteria. This enables a direct comparison between deterministic surrogate-based
+rule extraction and the proposed evolutionary approach across both model conditions. The Wilcoxon
+signed-rank test described in Section 4.5.2 is applied to the PROMETHEE outranking flow
+distributions of the decision tree rules and the GA/NSGA-II rules to determine whether the
+improvement from evolutionary extraction is statistically significant, and whether this advantage
+is maintained after SAM regularisation.
+% NOTE: Breiman et al. (1984) "Classification and Regression Trees" is the standard CART citation.
+% Add to references.bib: Breiman, L., Friedman, J., Stone, C.J., Olshen, R.A. (1984).
+% Classification and Regression Trees. CRC Press.
+}

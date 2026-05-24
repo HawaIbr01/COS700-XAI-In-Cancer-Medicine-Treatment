@@ -1,0 +1,34 @@
+% -------------------------------------------------------
+% ASSIGNED TO: \textcolor{green}{Person 5}
+% -------------------------------------------------------
+% INSTRUCTION: Paste existing Section 4.6 Experiments here.
+% ADD the CCLE robustness validation paragraph (marked in red below).
+% Convert first-person to third person throughout.
+% -------------------------------------------------------
+
+% [Paste Section 4.6 Experiments here]
+
+% -------------------------------------------------------
+% NEW CONTENT — SECOND DATASET FOR ROBUSTNESS (supervisor suggestion)
+% -------------------------------------------------------
+
+\textcolor{red}{
+% ADD: CCLE as a planned robustness validation dataset.
+% The supervisor suggested this if time permits. Frame it as a stretch objective.
+% Suggested text:
+\paragraph{Robustness Validation: Cancer Cell Line Encyclopedia (CCLE)}
+As a stretch objective, subject to timeline constraints, the complete RED XAI pipeline will be
+applied to a second pharmacogenomic dataset: the Cancer Cell Line Encyclopedia (CCLE)
+\cite{Barretina2012}. The CCLE provides gene expression profiles and drug response data for
+cancer cell lines using a structurally compatible format to GDSC, and has been used alongside
+GDSC in several of the studies cited in this proposal \cite{Partin2023, Baptista2021}. Applying
+the pipeline to CCLE data, with LN IC\textsubscript{50} as the response target, would enable
+assessment of whether the observed advantage of SAM regularisation over the Adam baseline
+in terms of rule fidelity, comprehensibility, and biological validity generalises beyond the GDSC
+dataset. Consistent results across both datasets would substantially strengthen the robustness
+of the study's conclusions. No new statistical machinery is required; the same Wilcoxon
+signed-rank test and PROMETHEE II framework are applied, and results are reported
+comparatively.
+% NOTE: Barretina et al. (2012) "The Cancer Cell Line Encyclopedia enables predictive modelling
+% of anticancer drug sensitivity." Nature, 483, 603-607. Add to references.bib.
+}

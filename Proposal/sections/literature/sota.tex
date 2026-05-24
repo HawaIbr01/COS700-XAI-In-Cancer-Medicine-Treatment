@@ -1,0 +1,76 @@
+\textcolor{red}{
+% ADD: This entire subsection is new and addresses the supervisor's feedback
+% that SOTA XAI methods are not surveyed or compared.
+% Research starting points for each method are noted in comments.
+% Write approximately one paragraph per method, then include the comparison table.
+\\
+\paragraph{SHAP (SHapley Additive exPlanations)}
+% Research: Lundberg \& Lee, NeurIPS 2017. Also: Slack et al. (2020) "Fooling LIME and SHAP";
+% Alvarez-Melis \& Jaakkola (2018) on instability. Focus on: game-theoretic foundation,
+% Shapley value axioms, TreeSHAP/DeepSHAP variants, instance-level attribution output,
+% inability to detect Clever Hans, inheriting model fragility.
+[WRITE: SHAP paragraph here]
+\\
+\paragraph{LIME (Local Interpretable Model-Agnostic Explanations)}
+% Research: Ribeiro et al., KDD 2016. Also: Alvarez-Melis \& Jaakkola (2018);
+% Slack et al. (2020). Focus on: local linear surrogate, neighbourhood sampling instability
+% in high-dimensional genomic data, Blue XAI by nature, continuous attributions not
+% directly pathway-verifiable.
+[WRITE: LIME paragraph here]
+\\
+\paragraph{Layer-wise Relevance Propagation (LRP)}
+% Research: Bach et al., PLOS ONE 2015; Samek et al. (2017) already cited.
+% Also: Pahde et al. (2023) — already in your paper — explicitly shows LRP on overfitted
+% models produces heatmaps attributing relevance to biologically incoherent features.
+% Focus on: back-propagation of relevance signal, applied in genomic settings,
+% continuous heatmap output, Clever Hans problem demonstrated by your own citation.
+[WRITE: LRP paragraph here]
+\\
+\paragraph{Integrated Gradients}
+% Research: Sundararajan et al., ICML 2017 "Axiomatic Attribution for Deep Networks".
+% Focus on: accumulates gradients along path from baseline to input, satisfies completeness
+% and sensitivity axioms, sensitive to choice of baseline, quality contingent on smoothness
+% of decision boundary — exactly the sharp landscape problem SAM corrects.
+[WRITE: Integrated Gradients paragraph here]
+\\
+\paragraph{Anchors}
+% Research: Ribeiro et al., AAAI 2018 "Anchors: High-Precision Model-Agnostic Explanations".
+% Focus on: produces rule-like outputs with precision guarantee, closest SOTA to our approach,
+% BUT inherently local (one rule per instance not global), no explicit fidelity/comprehensibility
+% optimisation targets, cannot produce Pareto front, precision guarantee does not generalise
+% across GDSC cancer subtypes, does not support PROMETHEE II multi-criteria ranking.
+[WRITE: Anchors paragraph here]
+\\
+The limitations of these SOTA methods motivate the use of evolutionary rule extraction in this
+project. Unlike SHAP, LIME, LRP, and Integrated Gradients, which produce continuous
+feature-attribution scores that cannot be directly verified against biological pathways in a discrete,
+auditable form, evolutionary algorithms extract global symbolic if-then rules that can be explicitly
+evaluated for fidelity, comprehensibility, and biological validity \cite{Yedjour2024}. Unlike Anchors,
+the GA and NSGA-II pipelines optimise rule quality as explicit objectives across the full GDSC
+dataset rather than locally per instance, and their outputs are directly compatible with the
+PROMETHEE II multi-criteria ranking framework \cite{Yedjour2024}. Furthermore, and most
+critically, none of the SOTA methods described above can detect Clever Hans behaviour:
+\cite{Adebayo2018} demonstrated that popular attribution methods including SHAP-style approaches
+produce visually plausible explanations even for models that have memorised noise, because their
+outputs are largely independent of model parameters. This project's Red XAI pipeline addresses
+this directly by auditing model health before any explanation is extracted \cite{Biecek2024}.
+Table~\ref{tab:sota_comparison} provides a structured comparison.
+}
+
+\begin{table}[H]
+\centering
+\caption{Comparison of SOTA post-hoc XAI methods against the proposed EA rule extraction approach.}
+\label{tab:sota_comparison}
+\begin{tabular}{lllllll}
+\toprule
+\textbf{Method} & \textbf{Output} & \textbf{Scope} & \textbf{Auditable Rules} & \textbf{Fidelity Opt.} & \textbf{Bio. Verifiable} & \textbf{Red XAI} \\
+\midrule
+SHAP & Continuous scores & Local & No & No & Indirect & No \\
+LIME & Continuous scores & Local & No & No & Indirect & No \\
+LRP  & Heatmap & Local & No & No & Indirect & No \\
+Integrated Gradients & Continuous scores & Local & No & No & Indirect & No \\
+Anchors & Rule (local) & Local & Partial & No & Indirect & Partial \\
+\textbf{GA + NSGA-II (Ours)} & \textbf{Symbolic rules} & \textbf{Global} & \textbf{Yes} & \textbf{Yes} & \textbf{Direct (GSEA)} & \textbf{Yes} \\
+\bottomrule
+\end{tabular}
+\end{table}

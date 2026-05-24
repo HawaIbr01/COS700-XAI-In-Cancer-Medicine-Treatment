@@ -1,0 +1,75 @@
+Artificial Neural Networks (ANNs), and specifically feedforward Multi-Layer Perceptrons (MLPs), 
+have served as a standard baseline architecture for regression tasks on tabular biomedical data, 
+trained via backpropagation to minimise a defined loss function such as Mean Squared Error for 
+continuous targets like drug sensitivity IC$_{50}$ (Goodfellow et al., 2016; Arrieta et al., 2020).
+Despite their widespread application, standard MLPs present a well-documented limitation when 
+applied to high-dimensional genomic data: they are inherently prone to overfitting, particularly 
+when the number of input features vastly outnumbers the number of biological response samples 
+(Partin et al., 2023). The GDSC dataset, after preprocessing via the approach established by 
+Alipour (2024), retains thousands of gene expression features across cancer cell lines and drug 
+combinations. When an MLP is trained without adequate regularisation, it tends to memorise 
+training-specific noise rather than capture the true underlying biological relationships between 
+gene expression profiles and drug response. This manifests as a high generalisation gap, a large 
+difference between training accuracy and validation accuracy (Ye \& Farnia, 2025), and constitutes 
+precisely the "Clever Hans" phenomenon that motivates this research project (Samek et al., 2017; Anders et al., 2022). 
+Pahde et al. (2023) demonstrate through their Reveal to Revise (R2R) framework that state-of-the-art 
+deep neural networks frequently learn spurious correlations embedded in training data, including 
+medically irrelevant artefacts, and that post-hoc XAI methods applied to such overfitted models 
+produce explanations that are visually plausible but functionally unreliable. Although R2R was 
+developed in an image classification context, the underlying mechanism, a model achieving high 
+training performance by exploiting dataset-specific shortcuts rather than genuine signal, applies 
+equally to tabular genomic settings, as documented by Partin et al. (2023) in the drug response 
+prediction domain. For the purposes of this project, an intentionally overfitted baseline model 
+serves as a diagnostic tool,  its wide generalisation gap becomes evidence of fragile explanations, 
+which the SAM regularisation intervention in Stage 2 is designed to correct.
+
+\subsubsection{Deep Learning for Cancer Drug Sensitivity Prediction}
+Beyond the standard MLP baseline, recent work has demonstrated that domain-informed deep learning architectures 
+significantly outperform generic feedforward networks on drug sensitivity prediction tasks using GDSC data 
+(Partin et al., 2023; Wu et al., 2025). The key limitation of a plain MLP is that it treats all gene expression 
+features as equally independent, ignoring the rich biological structure known to govern cancer drug response – 
+specifically, the organisation of genes into signalling pathways that collectively regulate cancer cell 
+development, proliferation, and resistance mechanisms.
+\\
+DeepCCDS (Wu et al., 2025) is a deep learning framework designed to predict cancer cell drug sensitivity by 
+characterising cancer driver signals.
+\\
+To overcome the limitations of standard neural networks, it replaces high-dimensional gene expression data with 
+a prior knowledge network consisting of 38 biologically meaningful signalling pathways (Wu et al., 2025) . 
+Alongside these pathway features, the architecture utilises self-supervised autoencoders to compress gene 
+mutations and drug structures into low-dimensional embeddings . As demonstrated via t-SNE visualisations, 
+these refined representations effectively separate drug-sensitive from drug-insensitive cell populations, 
+confirming the model captures true biological structure rather than statistical noise (Wu et al., 2025). 
+DeepCCDS was trained on 319,543 drug–cell line pairs from the GDSC database, demonstrating superior predictive 
+performance over state-of-the-art methods (Wu et al., 2025). Crucially, its clinical applicability was 
+validated on solid tumour patient samples from the TCGA cohort, where predicted LN IC$_{50}$ values successfully 
+distinguished between responsive and non-responsive patient–drug combinations (Wu et al., 2025).
+The interpretability properties of DeepCCDS are directly relevant to the goals of this project. By integrating 
+prior knowledge about cancer driver signals, DeepCCDS exhibits powerful feature representation capabilities and 
+built-in interpretability.The pathway-level structure of the architecture makes it possible to trace which 
+biological mechanisms the model weights most heavily when predicting drug response. This is critically 
+important in our RED XAI framework: when evolutionary algorithms extract symbolic rules from the model, 
+genes appearing in those rules can be cross-referenced against the same biological pathways that structured 
+the model's internal representations, providing a direct route to biological verification via GSEA pathway 
+enrichment analysis (Section 3.6.4).
+
+\subsubsection{The Tendency of Deep Models to Overfit Genomic Data and the Clever Hans Problem}
+As introduced in Section 1 and contextualised for genomic data in Section 3.2.1, the Clever Hans problem 
+represents a direct threat to explanation quality in overfitted models. In the genomic setting specifically, 
+Partin et al. (2023) document that the curse of dimensionality, thousands of gene expression features measured 
+across a comparatively limited number of cell line–drug combinations, creates conditions under which unregularised 
+models routinely converge on sharp loss landscape minima and memorise training-specific noise rather than genuine 
+biological signal (Li et al., 2018).
+\\
+The methodological precedent most relevant to this project is the Reveal to Revise (R2R) framework of Pahde et 
+al. (2023), which proposes an iterative cycle of bias identification, artefact localisation, model correction, 
+and re-evaluation. R2R demonstrates that when XAI methods such as LRP are applied to overfitted models, the 
+resulting explanations attribute high relevance to artefactual features, producing outputs that are mathematically 
+consistent with the model's behaviour but medically invalid (Pahde et al., 2023; Klauschen et al., 2024). 
+This audit-and-fix philosophy directly anticipates the RED XAI diagnostic pipeline this project operationalises 
+through SAM regularisation and evolutionary rule extraction, with the key distinction that this project applies a 
+regularisation intervention at the optimisation stage rather than correcting artefacts post hoc.
+In this project, the baseline configuration of DeepCCDS (Wu et al., 2025), trained without regularisation to 
+intentionally exhibit overfitting, serves as the Fragility Baseline against which the SAM-regularised model is 
+compared in Stage 2. The generalisation gap at this stage is the primary diagnostic indicator of explanation fragility, 
+as formalised in Section 2.

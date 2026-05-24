@@ -1,0 +1,15 @@
+% -------------------------------------------------------
+% ASSIGNED TO: \textcolor{green}{Person 3}
+% -------------------------------------------------------
+% INSTRUCTION: Paste existing Section 3.5.2 NSGA-II content here.
+% Convert first-person to third person throughout.
+% -------------------------------------------------------
+While  standard Genetic Algorithms usually combine multiple goals into a single scalar fitness function,the Non-Dominated Sorting Genetic Algorithm II(NSGA II) is explicitly designed for multi-objective optimisation tasks where objectives are fundamentally in conflict. In our context of rule extraction ,achieving high fidelity ,achieving high fidelity to the underlying Artificial Neural Network often comes at the expense of comprehensibility.
+
+NSGA II addresses  this trade-off by evolving a population 	of solutions toward a Pareto front which is a set of optimal solutions where no single objective can be improved  without reducing the other.The  algorithm operates on two core mechanisms :
+
+1)Fast Non-Dominated Sorting:  The population is ranked into hierarchical fronts  based on pareto dominance .An individual rule set is considered “non-dominated” if no other rule set in the population is superior across all objectives.
+
+2)Crowding Distance: To maintain diversity within the population and prevent premature convergence on a local optimum,NSGA II calculates a crowding distance for each individual.This metric estimates the  density of solutions surrounding a particular rule set in the objective space ,prioritising individuals residing in less crowded regions during the selection phase
+
+By utilising elitism ,which means carrying the best solutions from the combined parents and offspring populations into the next generation ,NSGA II ensures that high quality rule sets are not lost during evolution. For this RED XAI framework ,NSGA  II is highly advantageous as it naturally outputs a diverse spectrum of rule sets ,allowing the PROMETHEE II multi criteria  framework to later rank and select the optimal balance between mitigating “Rule Explosion” and maintaining statistical fidelity.

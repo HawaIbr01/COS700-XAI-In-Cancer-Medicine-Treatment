@@ -1,0 +1,52 @@
+% -------------------------------------------------------
+% ASSIGNED TO: \textcolor{green}{Person 1}
+% -------------------------------------------------------
+% INSTRUCTION: Keep existing content. Add the following:
+% (1) A formal objectives list at the end of this section (see below).
+% (2) Convert all first-person constructions to third person throughout.
+% -------------------------------------------------------
+
+Deep Neural Networks (DNNs) have achieved state-of-the-art predictive accuracy in cancer
+genomics, particularly in tasks of predicting drug sensitivity using high-dimensional datasets such
+as the Genomics of Drug Sensitivity in Cancer (GDSC) database \cite{Yang2013,Baptista2021}.
+Despite this predictive power, DNNs operate as black-box models whose internal logic is opaque
+to clinicians that utilise their predictive outputs to make life-determining decisions \cite{Arrieta2020}.
+Consequently, their adoption in high-stakes clinical environments is hindered \cite{Arrieta2020, Klauschen2024}
+by what this study defines as the \textit{Interpretability-Regularisation Gap}: the tension where highly
+accurate, complex black-box models rely on sharp, irregular loss landscapes that produce fragile,
+easily manipulated explanations, whereas intrinsically interpretable models lack the flexibility
+needed to capture highly non-linear biological relationships.
+
+Explainable Artificial Intelligence (XAI) addresses this by extracting understandable symbolic
+rules from trained models \cite{Yedjour2024}, but the quality of these explanations is inseparable
+from the health of the underlying model. When a DNN overfits its training data, learning spurious
+correlations and dataset artefacts rather than genuine biological signal, a phenomenon known as
+the ``Clever Hans'' effect takes hold \cite{Anders2022, Pahde2023, Samek2017}. The dominant
+``Blue XAI'' paradigm compounds these challenges by prioritising user-facing justifications over
+rigorous model auditing \cite{Biecek2024}. This project is instead grounded in ``Red XAI'', which
+fosters a culture of model interrogation and debugging \cite{Biecek2024}, introducing a diagnostic
+pipeline that uses a model's generalisation gap as a measurable indicator of explanation fragility.
+
+The remainder of this proposal is structured as follows. Section 2 formally states the research
+questions and hypothesis. Section 3 provides the theoretical foundation. Section 4 details the
+experimental methodology. Section 5 presents the project timeline.
+
+% -------------------------------------------------------
+% NEW CONTENT REQUIRED (NICOG Slide 5 / COS700 Slide 21)
+% Add the following objectives list:
+% -------------------------------------------------------
+
+\subsection*{Objectives}
+
+\textcolor{red}{
+% ADD: Formal objectives list using measurable verbs as required by the NICOG workshop guidelines.
+% Suggested text (edit as needed):
+The objectives of this study are:
+\begin{enumerate}
+    \item To establish a measurable overfitting baseline using the DeepCCDS architecture trained without regularisation on the GDSC dataset and to quantify the resulting generalisation gap.
+    \item To evaluate whether Sharpness-Aware Minimisation (SAM) regularisation reduces the generalisation gap and produces a flatter loss landscape relative to the Adam-optimised baseline.
+    \item To compare the fidelity, comprehensibility, and stability of symbolic if-then rules extracted by a Genetic Algorithm and NSGA-II from both the baseline and SAM-regularised models.
+    \item To determine whether rules extracted from the SAM-regularised model show statistically significant improvement in PROMETHEE II outranking scores over baseline rules using Wilcoxon signed-rank tests.
+    \item To assess whether SAM-optimised rules show greater enrichment in established KEGG oncogenic pathways than baseline rules, as verified through GSEA pathway enrichment analysis.
+\end{enumerate}
+}
