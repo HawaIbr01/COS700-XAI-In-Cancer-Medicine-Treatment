@@ -65,19 +65,39 @@
 \citation{Li2018}
 \citation{Adebayo2018}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.7.1}Contributions}{13}{subsubsection.3.7.1}\protected@file@percent }
-\citation{Breiman1984}
-\citation{Arrieta2020}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Methodology}{14}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Research Approach}{14}{subsection.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Technical Specifications}{14}{subsubsection.4.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}ANN: Baseline Training and Overfitting Diagnosis}{14}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Genetic Algorithms for Rule Extraction}{14}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}NSGA-II for Rule Extraction}{14}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}SAM Regularisation}{14}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Evaluation Strategy}{14}{subsection.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}SOTA Baseline Comparison: Decision Tree Rule Extraction}{14}{subsubsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Pipeline Overview}{14}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}ANN: Baseline Training and Overfitting Diagnosis}{14}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Model Selection: DeepCCDS as the Shared Platform}{15}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Dataset and Preprocessing Interface}{15}{subsubsection.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Stage 1: Training the Overfitting Baseline}{15}{subsubsection.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.5}Confirming the Clever Hans Baseline}{15}{subsubsection.4.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Genetic Algorithms for Rule Extraction}{16}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Preparation for Rule Extraction}{16}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Pre-processing Data for Rule Extraction}{16}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Implementation of GA via DEAP}{16}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.4}Rule Pruning and Population Diversity}{16}{subsubsection.4.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.5}Validation and Execution}{16}{subsubsection.4.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}NSGA-II for Rule Extraction}{17}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}SAM Regularisation}{17}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}Intervention Objective}{17}{subsubsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.2}SAM Optimisation Mechanism}{17}{subsubsection.4.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.3}Expected Effect on Generalisation}{17}{subsubsection.4.6.3}\protected@file@percent }
+\citation{Breiman1984}
+\citation{Arrieta2020}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Evaluation Strategy}{18}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.1}Multi-Criteria Ranking via PROMETHEE II}{18}{subsubsection.4.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.2}Statistical Significance (Wilcoxon Signed-Rank Test)}{18}{subsubsection.4.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.3}Automated Biological Verification (GSEApy)}{18}{subsubsection.4.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.4}SOTA Baseline Comparison: Decision Tree Rule Extraction}{18}{subsubsection.4.7.4}\protected@file@percent }
 \citation{Barretina2012}
 \citation{Partin2023,Baptista2021}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Experiments}{19}{subsection.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Robustness Validation: Cancer Cell Line Encyclopedia (CCLE)}{19}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}Expected Results}{19}{subsection.4.9}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{references}
 \bibcite{Adebayo2018}{1}
@@ -89,10 +109,6 @@
 \bibcite{Breiman1984}{7}
 \bibcite{Dombrowski2022}{8}
 \bibcite{Foret2021}{9}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Experiments}{15}{subsection.4.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Robustness Validation: Cancer Cell Line Encyclopedia (CCLE)}{15}{section*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Expected Results}{15}{subsection.4.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Planning}{15}{section.5}\protected@file@percent }
 \bibcite{Klauschen2024}{10}
 \bibcite{Li2018}{11}
 \bibcite{Longo2024}{12}
@@ -102,6 +118,7 @@
 \bibcite{Springer2024}{16}
 \bibcite{Wu2025}{17}
 \bibcite{Yang2013}{18}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Planning}{20}{section.5}\protected@file@percent }
 \bibcite{Ye2024}{19}
 \bibcite{Yedjour2024}{20}
-\gdef \@abspage@last{16}
+\gdef \@abspage@last{21}

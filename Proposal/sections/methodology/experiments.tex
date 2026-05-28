@@ -7,6 +7,17 @@
 % -------------------------------------------------------
 
 % [Paste Section 4.6 Experiments here]
+The research follows a two-stage experimental design to isolate the impact of model sharpness on explanation quality.
+In Stage 1, the Overfitting Baseline is established as the RED XAI diagnostic starting point. DeepCCDS is trained using the Adam 
+optimiser until a stable generalisation gap has emerged using the early stopping criterion defined in Section 4.1.4, confirming the 
+Clever Hans baseline. Rules are then extracted from this overfitted model by both the GA and NSGA-II pipelines. The resulting rule sets 
+are audited using PROMETHEE II ranking and GSEA pathway enrichment analysis to document the Fragility Baseline scorecard.
+In Stage 2, the Regularisation Intervention is applied. The same DeepCCDS architecture is retrained using the SAM optimiser to smooth the 
+loss landscape and reduce the generalisation gap, as described in Section 4.4. Rules are re-extracted using identical GA and NSGA-II 
+parameters to ensure comparability. The same PROMETHEE II and GSEA audit is performed to generate a second evaluation scorecard. 
+Wilcoxon signed-rank tests are then applied to the distributions of PROMETHEE outranking flows from both stages to determine whether 
+the improvement in rule quality is statistically significant.
+
 
 % -------------------------------------------------------
 % NEW CONTENT — SECOND DATASET FOR ROBUSTNESS (supervisor suggestion)

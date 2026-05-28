@@ -6,3 +6,18 @@
 % -------------------------------------------------------
 
 % [Paste Section 4.7 Expected Results here]
+Four primary outcomes are anticipated from this methodology.
+First, an inverse correlation is expected between the generalisation gap and rule comprehensibility: the SAM-regularised model should 
+produce rules with fewer conditions than the baseline while maintaining comparable fidelity, consistent with the hypothesis that flatter 
+minima yield more balanced feature representations (Springer et al., 2024).
+\\\\
+Second, the rules extracted from the SAM-regularised model are expected to show higher stability scores across different cancer subtypes 
+in the GDSC dataset, reflecting the capture of genuine biological signal rather than training-specific noise.
+\\\\
+Third, the genes appearing in SAM-optimised rules are expected to show statistically significant enrichment in established KEGG pathways 
+(p < 0.05) compared to baseline rules, providing biological grounding for the claim that regularisation improves not only statistical but 
+clinical rule quality.
+\\\\
+Fourth, and contingent on the preceding outcomes, the study aims to demonstrate that the generalisation gap serves as a reliable 
+diagnostic indicator of explanation fragility, and that SAM regularisation constitutes an effective intervention for improving the 
+fidelity, comprehensibility, and biological validity of symbolically extracted rules in cancer pharmacogenomics.

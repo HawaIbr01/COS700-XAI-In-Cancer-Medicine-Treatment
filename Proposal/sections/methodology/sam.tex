@@ -9,3 +9,26 @@
 % [Paste Section 4.4.1 Intervention Objective here]
 % [Paste Section 4.4.2 SAM Optimisation Mechanism here]
 % [Paste Section 4.4.3 Expected Effect on Generalisation here]
+The second stage of the experimental pipeline retrains the DeepCCDS architecture using the Sharpness-Aware Minimisation (SAM) 
+optimiser to reduce the generalisation gap and improve loss landscape smoothness.
+
+\subsubsection{Intervention Objective}
+SAM is applied to the same DeepCCDS architecture, dataset splits, preprocessing pipeline, and training configuration used in the baseline 
+model, ensuring that the optimisation strategy is the sole variable distinguishing the two models. This controlled substitution 
+isolates the effect of loss landscape geometry on three downstream outcomes: the generalisation gap, the smoothness of the loss 
+landscape as measured through visualisation, and the quality of rules extracted by the evolutionary algorithms in Sections 4.2 and 4.3.
+
+\subsubsection{SAM Optimisation Mechanism}
+SAM modifies the standard training objective by introducing a neighbourhood-based perturbation step. Rather than minimising the loss 
+at the current parameters $\theta$ alone, the optimiser evaluates the worst-case loss within a local $\epsilon$-ball around the current weights, 
+effectively minimising the loss at perturbed parameters $\theta + \epsilon$. This forces the model to favour solutions that remain stable under 
+small parameter perturbations, penalising sharp curvature in the loss surface and encouraging convergence toward flat minima 
+(Foret et al., 2021; Li et al., 2018).
+
+\subsubsection{Expected Effect on Generalisation}
+The baseline model is characterised by high training accuracy, lower validation performance, and a large generalisation gap, indicating 
+that the model has memorised training-specific noise rather than learning stable biological patterns. By converging on flatter minima, 
+the SAM-regularised model is expected to reduce the training-validation discrepancy, producing more balanced performance across both 
+sets. Following Springer et al. (2024), this improvement in generalisation is expected to produce more balanced feature representations, 
+which in turn should yield extracted rules with fewer spurious conditions and higher biological coherence than those produced by the 
+baseline model.

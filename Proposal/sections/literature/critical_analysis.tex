@@ -16,7 +16,7 @@ reorients XAI as an active interrogation tool, one that questions whether a mode
 all before any explanation is surfaced. The RED XAI philosophy is well-articulated in theory; what remains is a 
 complete pipeline that implements this philosophy from overfitting diagnosis through to measurable improvement 
 in symbolic explanation quality. This project fills that gap.
-\\
+\\\\
 The GDSC dataset, while invaluable as a pharmacogenomic resource, exhibits the P >> N structure that reliably 
 induces overfitting in unregularised deep models (Partin et al., 2023). Models must process tens of thousands 
 of gene expression features measured across a comparatively small number of unique cancer cell lines, even 
@@ -28,7 +28,7 @@ systematically addressed the question of whether those models are ready to be ex
 (Wicker et al., 2022; Ye \& Farnia, 2025). The distinction matters clinically: a biologically incoherent rule 
 extracted from an overfitted model may appear statistically valid while pointing clinicians toward irrelevant 
 or even harmful treatment decisions (Pahde et al., 2023; Klauschen et al., 2024).
-\\
+\\\\
 Section 3.3 reviewed the theoretical relationship between loss landscape geometry and generalisation, 
 establishing that models converging to sharp minima exhibit brittle, poorly generalising representations 
 (Li et al., 2018; Keskar et al., 2016). SAM was reviewed as an intervention that explicitly seeks flat minima 
@@ -37,7 +37,7 @@ geometric improvement that SAM produces in the loss landscape translates into me
 quality of symbolic rules extracted from the model. The connection between landscape geometry and explanation 
 quality has been theorised but not empirically demonstrated in the pharmacogenomic context. This project 
 provides that empirical test.
-\\
+\\\\
 Section 3.4 reviewed the ANN literature relevant to this project, covering the DeepCCDS architecture and the 
 Clever Hans problem as documented by Pahde et al. (2023). The R2R framework represents the closest 
 methodological precedent: it uses XAI to identify model artefacts, localises them, and corrects model behaviour 
@@ -47,7 +47,7 @@ does not use symbolic rule extraction as its explanation modality, and does not 
 regularisation applied at the optimisation stage can prevent the Clever Hans problem from arising rather than 
 repairing it after the fact. This project is therefore differentiated from R2R in domain, explanation type, 
 intervention mechanism, and causal direction.
-\\
+\\\\
 Section 3.5 reviewed the evolutionary algorithm literature, specifically GAs and NSGA-II as applied to rule 
 extraction. The GPRO\_RX system demonstrated that multi-objective genetic algorithms guided by PROMETHEE-assisted 
 ranking can produce rule sets that outperform single-objective extraction methods on the combined criteria of 
@@ -58,7 +58,7 @@ model's level of overfitting mediates rule quality. The comparative value of GA 
 extraction from models at different points on the generalisation spectrum remains unexplored. This project 
 introduces that control by extracting rules from both a deliberately overfitted baseline and a SAM-regularised 
 model, isolating the contribution of model health to rule quality independently of the extraction algorithm used.
-\\
+\\\\
 Section 3.6 reviewed the quality framework for symbolic explanations, fidelity, comprehensibility, and 
 stability as defined by Arrieta et al. (2020) and operationalised through PROMETHEE II ranking by 
 Yedjour et al. (2024). Adebayo et al. (2018) showed through sanity checks that popular XAI methods can 
@@ -69,7 +69,7 @@ reliable predictor of higher fidelity and lower rule complexity, the core hypoth
 has not been tested. Section 3.6.4 further noted that even statistically valid rules require biological 
 verification through pathway enrichment analysis to confirm clinical relevance, introducing a layer of 
 grounding that purely metric-based XAI evaluation cannot provide.
-\\
+\\\\
 Taken together, the literature has established four things independently: that overfitting produces unreliable 
 explanations (Pahde et al., 2023; Adebayo et al., 2018); that loss landscape geometry is a measurable indicator 
 of generalisation quality (Li et al., 2018); that SAM can improve landscape geometry (Foret et al., 2021); and 

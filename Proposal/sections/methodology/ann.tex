@@ -12,7 +12,71 @@
 % [Paste Section 4.1.1 ANN: Baseline Training and Overfitting Diagnosis here]
 % [Paste Section 4.1.2 Model Selection: DeepCCDS here]
 % [Paste Section 4.1.3 Dataset and Preprocessing Interface here]
+
+\subsection{Pipeline Overview}
+\subsubsection{ANN: Baseline Training and Overfitting Diagnosis}
+Person 1 is responsible for training the baseline neural network on the preprocessed GDSC dataset and establishing the "Overfitting 
+Baseline" – the starting point of the RED XAI diagnostic pipeline. This section details the model selection rationale, training 
+configuration, and the specific criteria used to confirm that the baseline model exhibits the high Generalisation Gap required for 
+Stage 1 of the experimental design.
+
+\subsubsection{Model Selection: DeepCCDS as the Shared Platform}
+DeepCCDS (Wu et al., 2025) is adopted as the shared neural network platform for the reasons detailed in Section 3.4.1. Critically for 
+the experimental design, the same architecture can be trained under two distinct optimisation regimes – standard Adam without 
+regularisation (Stage 1 Baseline) and SAM (Stage 2 Intervention) – allowing for a controlled comparison that isolates the effect of 
+loss landscape geometry on explanation quality. The group's contribution is not the construction of a novel architecture from scratch. 
+Rather, it is everything built around the network: the evolutionary rule extraction algorithms (Persons 2 and 3), the SAM regularisation
+intervention (Person 4), and the multi-criteria evaluation framework (Person 5). Person 1's role is to establish the controlled baseline 
+and ensure a standardised model checkpoint is shared with all team members. 
+
+\subsubsection{Dataset and Preprocessing Interface}
+The GDSC dataset, as preprocessed following the Alipour (2024) pipeline, provides the training data. The preprocessing steps – merging of 
+the three GDSC sub-datasets (cell line features, drug information, and drug response measurements), removal of duplicates, handling of 
+missing values, and encoding of categorical features – produce a structured tabular dataset where each row represents a cell line–drug 
+combination characterised by gene expression features and a continuous drug sensitivity target (LN IC$_{50}$).
+Prior to model training, the following additional preprocessing steps are applied to ensure compatibility with DeepCCDS and the 
+downstream rule extraction pipeline:
+The continuous gene expression features are Z-score normalised across all samples, such that each gene's expression is expressed 
+relative to the population mean and standard deviation. This is consistent with the biological discretisation described in 
+Section 4.1, which categorises features into High Expression (Z > 1), Low Expression (Z < -1), and Intermediate Expression for the 
+symbolic rule extraction stage. The train/validation/test split is fixed at 80\%/10\%/10\% and determined prior to any model training. 
+This split is documented as a shared interface specification and used by all team members (Persons 1, 2, 3, and 5) without modification, 
+ensuring that rule quality metrics are computed on identical held-out data throughout both stages of the experiment.
 % [Paste Section 4.1.4 Stage 1: Training the Overfitting Baseline here]
 %   -- FILL: patience parameter placeholder
 %   -- FILL: domain-specific threshold placeholder
+\subsubsection{Stage 1: Training the Overfitting Baseline}
+The baseline model is trained using the Adam optimiser with a learning rate of 0.001 and no explicit regularisation (no weight decay, 
+no dropout). To allow clear overfitting to emerge, training continues until the validation loss has not improved for a fixed number of 
+consecutive epochs, a standard early stopping criterion applied in reverse, where the patience parameter is used to confirm that the 
+generalisation gap has stabilised rather than to halt training prematurely (Goodfellow et al., 2016). The stopping point is defined as 
+the epoch at which training loss continues to decrease while validation loss has plateaued or begun to increase for at least \textcolor{red}{[PLACEHOLDER  
+confirm patience parameter ]} consecutive epochs, producing a measurable and stable generalisation gap.
+The Generalisation Gap is formally defined as:
+\\
+Generalisation Gap = Training Accuracy - Validation Accuracy
+\\
+or equivalently in terms of loss:
+\\
+Generalisation Gap = Validation Loss - Training Loss
+\\
+The magnitude of the gap is recorded in terms of both R² and RMSE on the regression target (LN IC$_{50}$) and constitutes the confirmed 
+Fragility Baseline. This mirrors the diagnostic framing established by Pahde et al. (2023), where a model achieving high training 
+performance through spurious correlations serves as the starting condition for the bias identification and correction cycle. 
+\textcolor{red}{[PLACEHOLDER  if a domain-specific threshold can be identified from Partin et al. (2023) or Wu et al. (2025), 
+insert here as a reference benchmark]}
+The trained baseline model weights are saved as a checkpoint and shared with Persons 2, 3, and 5. Persons 2 and 3 load this 
+checkpoint and do not retrain, ensuring that their evolutionary rule extraction algorithms operate on exactly the same model in 
+both Stage 1 and Stage 2.
+
 % [Paste Section 4.1.5 Confirming the Clever Hans Baseline here]
+
+\subsubsection{Confirming the Clever Hans Baseline}
+In addition to the generalisation gap metric, a qualitative sanity check is applied, inspired by the approach of Pahde et al. 
+(2023): feature attribution maps are generated for a sample of training and validation predictions using a basic post-hoc attribution 
+method such as input gradients or a lightweight LRP implementation. If the baseline model is genuinely overfitting to training noise, 
+attribution maps for correctly predicted training samples will exhibit diffuse or biologically incoherent relevance patterns, assigning 
+high importance to genes with no established role in the relevant oncogenic pathway, while validation attribution patterns will be 
+inconsistent across samples. This qualitative check documents the fragility of the baseline model's explanations and motivates the 
+subsequent SAM intervention. The generalisation gap measurement and attribution patterns together constitute the quantitative and 
+qualitative inputs to the Stage 1 audit, formally establishing the Fragility Baseline scorecard against which Stage 2 results are compared.

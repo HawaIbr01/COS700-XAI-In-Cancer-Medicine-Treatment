@@ -6,3 +6,20 @@
 % -------------------------------------------------------
 
 % [Paste Section 4.3 NSGA-II here]
+NSGA-II is implemented as a comparative multi-objective rule extraction technique alongside the GA, providing the evaluative structure 
+needed to determine which evolutionary algorithm produces more resilient rules under conditions of model fragility. The implementation 
+uses the same DEAP framework and operates on the identical discretised GDSC dataset and saved model checkpoints used in the GA pipeline, 
+ensuring experimental consistency across both extraction methods.
+\\\\
+Unlike the GA, which combines competing criteria into a composite fitness function, NSGA-II strictly separates the objectives and 
+evaluates them simultaneously. The algorithm maximises fidelity and accuracy, measured by the F1 score of the extracted rules against the 
+predictions of the underlying DeepCCDS model, while minimising rule length, measured by the total number of conditions or premises per 
+rule, to enforce comprehensibility and prevent rule explosion (Yedjour et al., 2024).
+\\\\
+Selection uses a binary tournament operator based on the crowded comparison approach: when comparing two rule sets, the algorithm prefers 
+the one with the lower non-domination rank, and where both belong to the same front, selects the rule set with the larger crowding 
+distance to maintain genetic diversity. Two-point crossover and random mutation are applied identically to the GA configuration to 
+ensure comparability across both extraction methods (Yedjour et al., 2024).
+\\\\
+The NSGA-II loop runs for the same number of generations and population size as the GA. Unlike the GA, the final output is not a single 
+best rule set but a Pareto front of non-dominated rule sets, which is passed directly to the PROMETHEE II ranking framework in Section 4.5.1 for both Stage 1 and Stage 2 evaluation. 

@@ -1,11 +1,9 @@
-# COS700 — Diagnosing and Repairing XAI Fragility
-### SAM-Optimised Rules for Cancer Drug Response
+# COS700: Diagnosing and Repairing XAI Fragility - SAM-Optimised Rules for Cancer Drug Response
 
 Diagnosing XAI fragility in cancer drug response prediction: a RED XAI pipeline using SAM regularisation and evolutionary rule extraction on genomic data.
 
 This project implements a controlled RED XAI diagnostic pipeline that uses the generalisation gap as an indicator of explanation fragility. DeepCCDS is trained on GDSC data under Adam (baseline) and SAM (intervention), symbolic if-then rules are extracted via GA and NSGA-II, and rule quality is evaluated across fidelity, comprehensibility, and biological validity using PROMETHEE II and GSEA pathway enrichment.
 
----
 ## Team
 
 | Name & Surname | Student Number | LinkedIn | Personal Website |
@@ -16,7 +14,7 @@ This project implements a controlled RED XAI diagnostic pipeline that uses the g
 | Melisa Ledwaba | u19296950 | [LinkedIn](#) | [Website](#) |
 | Sakhile Manzi | u26838002 | [LinkedIn](#) | [Website](#) |
 
----
+
 
 ## Supervisors
 - Prof. Nelishia Pillay
@@ -24,7 +22,6 @@ This project implements a controlled RED XAI diagnostic pipeline that uses the g
 
 **University of Pretoria — COS700 Research Project 2026**
 
----
 
 ## Table of Contents
 
@@ -33,7 +30,6 @@ This project implements a controlled RED XAI diagnostic pipeline that uses the g
 - [Team](#team)
 - [Supervisors](#supervisors)
 
----
 
 ## Repository Structure
 
@@ -47,8 +43,6 @@ This project implements a controlled RED XAI diagnostic pipeline that uses the g
 ├── notebooks/          # Exploratory analysis and visualisations
 └── tests/
 ```
-
----
 
 ## Branching Convention
 
