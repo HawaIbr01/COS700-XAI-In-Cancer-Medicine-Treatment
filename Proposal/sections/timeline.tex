@@ -1,19 +1,7 @@
 % -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 1} (or whoever has the Gantt chart)
+% Gantt chart — pgfgantt, labels left, bars right
+% Add \usepackage{pgfgantt} to main.tex preamble
 % -------------------------------------------------------
-% INSTRUCTION: Replace the placeholder below with a proper Gantt chart.
-% Use the pgfgantt package (already compatible with the preamble style).
-% The existing chart image in the PDF can be recreated in LaTeX or
-% inserted as a figure if exported from another tool.
-% -------------------------------------------------------
-
-\textcolor{red}{
-% URGENT: Replace this placeholder with the actual Gantt chart before submission.
-% The current proposal has a red-text placeholder visible in the document.
-% Suggested approach: use the pgfgantt LaTeX package, or export from Excel/GanttProject
-% and include as \includegraphics.
-}
-
 The project is structured across six months from June to November 2026. All five team members
 begin with shared boilerplate and pilot testing in June to establish a common codebase and verify
 the pipeline end-to-end. Data preparation and baseline model training are completed in July.
@@ -23,4 +11,109 @@ validation, and biological verification on a rolling basis from August through O
 sets are produced. Final evaluation, comparative analysis, and report writing are completed
 across October and November by all team members.
 
-% [INSERT GANTT CHART FIGURE HERE]
+\vspace{1em}
+
+\begin{figure}[H]
+\centering
+\caption{Project Timeline --- June to November 2026}
+\label{fig:gantt}
+\resizebox{\textwidth}{!}
+{%
+    \begin{ganttchart}[
+        hgrid,
+        vgrid={*1{dotted}},
+        time slot format=isodate-yearmonth,
+        time slot unit=month,
+        x unit=2.2cm,
+        y unit title=0.7cm,
+        y unit chart=0.75cm,
+        title height=1,
+        title label font=\bfseries\footnotesize,
+        bar label font=\small,
+        bar label node/.append style={align=right, text width=5.5cm, xshift=-0.5cm},
+        group label font=\bfseries\small,
+        group label node/.append style={align=right, text width=5.5cm, xshift=-0.5cm},
+        bar height=0.5,
+        bar top shift=0.25,
+        bar/.append style={draw=gray!80, rounded corners=2pt},
+        group/.append style={draw=black, fill=black!75},
+        group height=0.35,
+        group top shift=0.33,
+        group peaks height=0.2,
+        group peaks width=0.2,
+        milestone/.append style={fill=black, draw=black},
+        link/.style={-latex, thick, black!50},
+        link bulge=0.5
+    ]{2026-06}{2026-11}
+
+    \gantttitlecalendar{year, month=shortname} \\
+
+    % ---- GROUP 1 ----
+    \ganttgroup{Setup \& Boilerplate}{2026-06}{2026-06} \\
+    \ganttbar[bar/.append style={fill=blue!35}]
+        {Boilerplate \& pilot testing (All)}{2026-06}{2026-06} \\[grid]
+
+    % ---- GROUP 2 ----
+    \ganttgroup{Data \& Baseline Model}{2026-06}{2026-07} \\
+    \ganttbar[bar/.append style={fill=blue!35}]
+        {Data preprocessing (P5 \& P1)}{2026-06}{2026-07} \\
+    \ganttbar[bar/.append style={fill=blue!35}]
+        {Baseline model --- Adam (P1)}{2026-07}{2026-07} \\[grid]
+
+    % ---- GROUP 3 ----
+    \ganttgroup{Rule Extraction \& SAM}{2026-08}{2026-09} \\
+    \ganttbar[bar/.append style={fill=orange!50}]
+        {GA rule extraction (P2)}{2026-08}{2026-09} \\
+    \ganttbar[bar/.append style={fill=orange!50}]
+        {NSGA-II rule extraction (P3)}{2026-08}{2026-09} \\
+    \ganttbar[bar/.append style={fill=orange!50}]
+        {SAM intervention (P4)}{2026-08}{2026-09} \\[grid]
+
+    % ---- GROUP 4 ----
+    \ganttgroup{Evaluation \& Verification}{2026-08}{2026-10} \\
+    \ganttbar[bar/.append style={fill=red!35}]
+        {PROMETHEE II ranking \& stats (P5)}{2026-08}{2026-10} \\
+    \ganttbar[bar/.append style={fill=red!35}]
+        {GSEA biological verification (P5)}{2026-09}{2026-10} \\[grid]
+
+    % ---- GROUP 5 ----
+    \ganttgroup{Analysis \& Report Writing}{2026-10}{2026-11} \\
+    \ganttbar[bar/.append style={fill=green!40}]
+        {Final evaluation \& analysis (All)}{2026-10}{2026-10} \\
+    \ganttbar[bar/.append style={fill=green!40}]
+        {Report writing (All)}{2026-10}{2026-11}
+
+    % ---- LINKS ----
+    \ganttlink{elem2}{elem4}
+    \ganttlink{elem5}{elem7}
+    \ganttlink{elem5}{elem8}
+    \ganttlink{elem5}{elem9}
+    \ganttlink{elem7}{elem11}
+    \ganttlink{elem8}{elem11}
+    \ganttlink{elem11}{elem13}
+
+    \end{ganttchart}
+    % end resizebox
+}
+% ---- LEGEND ----
+\vspace{0.8em}
+\begin{center}
+\begin{tikzpicture}
+    \node[fill=blue!35, draw=gray!80, minimum width=0.8cm, 
+        minimum height=0.4cm, rounded corners=2pt] at (0,0) {};
+    \node[anchor=west] at (0.5,0) {\small Setup \& Data};
+
+    \node[fill=orange!50, draw=gray!80, minimum width=0.8cm, 
+        minimum height=0.4cm, rounded corners=2pt] at (3.5,0) {};
+    \node[anchor=west] at (4,0) {\small Rule Extraction \& SAM};
+
+    \node[fill=red!35, draw=gray!80, minimum width=0.8cm, 
+        minimum height=0.4cm, rounded corners=2pt] at (8.5,0) {};
+    \node[anchor=west] at (9,0) {\small Evaluation \& Verification};
+
+    \node[fill=green!40, draw=gray!80, minimum width=0.8cm, 
+        minimum height=0.4cm, rounded corners=2pt] at (13.5,0) {};
+    \node[anchor=west] at (14,0) {\small Analysis \& Writing};
+\end{tikzpicture}
+\end{center}
+\end{figure}

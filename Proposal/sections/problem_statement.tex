@@ -13,11 +13,11 @@ explanation landscape to produce rules that are faithful and comprehensible is l
 \cite{Dombrowski2022, Springer2024}. Without a ``Red XAI'' audit linking model health to rule quality,
 clinicians risk relying on explanations that may be mathematically convenient but biologically
 fraudulent \cite{Longo2024}.
-
+\\
 The primary research question is as follows: to what extent can the generalisation gap serve as a
 diagnostic indicator of explanation fragility, and can SAM be used to improve the fidelity and
 comprehensibility of rules extracted using evolutionary algorithms?
-
+\\
 This breaks down into four sub-research questions:
 
 \begin{enumerate}
@@ -26,7 +26,7 @@ This breaks down into four sub-research questions:
     \item \textbf{Multi-Criteria Validation}: To what degree do SAM-optimised rules outrank baseline rules when evaluated through the PROMETHEE II multi-criteria framework?
     \item \textbf{Biological Alignment}: Do the rules extracted from a regularised model show higher enrichment in KEGG/Enrichr pathways compared to rules from an overfitted baseline?
 \end{enumerate}
-
+\noindent
 The hypothesis is that applying SAM regularisation to a neural network trained on GDSC genomic
 data will reduce the generalisation gap by converging on flatter minima, resulting in symbolic rules
 that are statistically simpler, more accurately aligned to the black-box logic of the model (higher
