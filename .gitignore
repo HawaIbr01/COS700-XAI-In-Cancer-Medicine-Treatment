@@ -216,3 +216,66 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# -------------------------------------------------------
+# LaTeX auxiliary files — do not commit these
+# -------------------------------------------------------
+
+# Core auxiliary
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+*.ist
+
+# Synctex (editor sync)
+*.synctex.gz
+*.synctex(busy)
+
+# pgfgantt / tikz externalize cache
+*.dpth
+*.md5
+*.figlist
+*.makefile
+
+# Compiled output — only commit the final PDF intentionally
+*.pdf
+
+# latexmk
+*.auxlock
+*.dvi
+*.xdv
+*.ps
+
+# Glossaries
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+
+# Nomenclature
+*.nlo
+*.nls
+
+# Beamer
+*.nav
+*.snm
+*.vrb
+
+# Misc editor files
+*.bak
+*~
+.DS_Store
+Thumbs.db
