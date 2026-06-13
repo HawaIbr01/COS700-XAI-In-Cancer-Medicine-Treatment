@@ -111,14 +111,14 @@ Adebayo et al.\ \cite{Adebayo2018} demonstrated through sanity checks that popul
 methods can produce convincing explanations for models that have memorised noise, but their
 study did not evaluate symbolic rule-based explanation methods or propose a regularisation
 intervention as a corrective mechanism, leaving the question of how to prevent rather than detect
-this behaviour unresolved.}
+this behaviour unresolved.
 \\\\
 A closely related body of work, and arguably the nearest methodological neighbour to this project,
 is explanation-guided training: methods that modify the training objective itself to improve the
 robustness or correctness of model explanations. This cluster includes Right for the Right Reasons
 \cite{Ross2017}, contextual-decomposition penalisation \cite{Rieger2020}, adversarial training on
-explanations, robust-explanation objectives such as R2ET and REGEX, and the Clever-Hans-specific
-pruning method EGEM \cite{Linhardt2024}. Two distinctions separate this project from that cluster.
+explanations \cite{Tang2022}, robust-explanation objectives such as R2ET \cite{Chen2022} and
+REGEX \cite{Li2023}, and the Clever-Hans-specific pruning method EGEM \cite{Linhardt2024}. Two distinctions separate this project from that cluster.
 First, what enters the loss: these methods place the explanation itself into the optimisation
 objective, in some cases requiring human-annotated ground-truth explanations \cite{Ross2017} or
 expensive second-order gradients, whereas SAM is explanation-agnostic and flattens only the loss
@@ -132,7 +132,7 @@ whether explanation-agnostic geometric regularisation improves the quality of gl
 in this domain.
 \\\\
 Competition benchmarks such as the BioXAI 2025 IEEE SSCI student competition on explainable AI in
-personalised cancer medicine evaluate explanation quality primarily through manual review of
+personalised cancer medicine \cite{BioXAI2025} evaluate explanation quality primarily through manual review of
 feature-attribution outputs, rewarding explanations that appear coherent to human reviewers without
 auditing whether the underlying model has learned genuine biological signal. This reflects the Blue
 XAI paradigm: such evaluation cannot detect Clever Hans behaviour, because a visually convincing
@@ -142,6 +142,7 @@ for the EGFR inhibitor erlotinib, a feature space structurally comparable to the
 data used in this project and differing mainly in response metric and single- versus multi-drug
 scope. This project's Red XAI pipeline directly addresses the gap that such Blue XAI evaluation
 leaves open.
+}
 
 \subsubsection{Contributions}
 

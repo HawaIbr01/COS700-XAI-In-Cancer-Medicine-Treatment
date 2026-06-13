@@ -11,16 +11,15 @@
 % Your supervisor asked explicitly what research approach you are using.
 % The answer in NICOG lab language is "proof by demonstration".
 % Suggested text:
-This study adopts a \textit{proof by demonstration} research methodology (NICOGSlides).
-The hypothesis is evaluated through a controlled experiment in which the optimisation strategy
-(Adam baseline versus SAM intervention) serves as the independent variable, and rule fidelity,
-comprehensibility, and stability serve as dependent variables. All other components of the
-pipeline — the DeepCCDS architecture, the GDSC dataset, the data splits, the EA configuration,
-and the evaluation framework — are held constant across both experimental conditions. This
-controlled substitution isolates the contribution of loss landscape geometry to explanation quality
-and ensures that observed differences in rule quality can be attributed specifically to the
-regularisation intervention rather than to confounding factors.
-}
+This study adopts a \textit{proof by demonstration} research methodology
+\textcolor{red}{\cite{Lachman1989}}. The hypothesis is evaluated through a controlled experiment in
+which the optimisation strategy (Adam baseline versus SAM intervention) serves as the independent
+variable, and rule fidelity, comprehensibility, and stability serve as dependent variables. All
+other components of the pipeline — the DeepCCDS architecture, the GDSC dataset, the data splits, the
+EA configuration, and the evaluation framework — are held constant across both experimental
+conditions. This controlled substitution isolates the contribution of loss landscape geometry to
+explanation quality and ensures that observed differences in rule quality can be attributed
+specifically to the regularisation intervention rather than to confounding factors.
 
 \subsubsection{Technical Specifications}
 
@@ -28,13 +27,13 @@ regularisation intervention rather than to confounding factors.
 % ADD: Technical specifications as required by NICOG Slide 6.
 % Fill in the actual values once confirmed by the team.
 % Suggested structure:
-Experiments are implemented in Python [VERSION] using PyTorch [VERSION] for model
-training, the Distributed Evolutionary Algorithms in Python (DEAP) framework [VERSION] for
-GA and NSGA-II rule extraction, pymcdm [VERSION] for PROMETHEE II ranking, and GSEApy
-[VERSION] for pathway enrichment analysis. Training is conducted on [HARDWARE: e.g.\ NVIDIA
-GPU model or CPU specification]. The SAM optimiser approximately doubles per-epoch training
-time relative to the Adam baseline due to its two-step update procedure; this is accounted for in
-the project timeline in Section 5. All experiments are run on the fixed 80/10/10
-train/validation/test split described in Section 4.1.3 to ensure reproducibility across all team
+The pipeline is implemented in Python, using PyTorch for model training, the Distributed
+Evolutionary Algorithms in Python (DEAP) framework for GA and NSGA-II rule extraction, pymcdm for
+PROMETHEE II ranking, and GSEApy for pathway enrichment analysis. Exact library versions and the
+training hardware will be fixed and reported at the implementation stage to ensure full
+reproducibility. The SAM optimiser approximately doubles per-epoch training time relative to the
+Adam baseline due to its two-step update procedure, which is accounted for in the project timeline
+in Section~5. All experiments use the fixed 80/10/10 train/validation/test split described in
+Section~4.1.3 so that rule-quality metrics are computed on identical held-out data across all team
 members.
 }
