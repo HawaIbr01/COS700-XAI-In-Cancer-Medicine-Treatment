@@ -49,22 +49,22 @@ ensuring that rule quality metrics are computed on identical held-out data throu
 The baseline model is trained using the Adam optimiser with a learning rate of 0.001 and no explicit regularisation (no weight decay, 
 no dropout). To allow clear overfitting to emerge, training continues until the validation loss has not improved for a fixed number of 
 consecutive epochs, a standard early stopping criterion applied in reverse, where the patience parameter is used to confirm that the 
-generalisation gap has stabilised rather than to halt training prematurely (Goodfellow et al., 2016). The stopping point is defined as 
-the epoch at which training loss continues to decrease while validation loss has plateaued or begun to increase for at least \textcolor{red}{[PLACEHOLDER  
-confirm patience parameter ]} consecutive epochs, producing a measurable and stable generalisation gap.
+generalisation gap has stabilised rather than to halt training prematurely (Goodfellow et al., 2016). The stopping point is defined as the epoch at which training loss continues to decrease while
+validation loss has plateaued or begun to increase for at least \textcolor{red}{10} consecutive
+epochs \textcolor{red}{(a provisional value, subject to confirmation during pilot testing)},
+producing a measurable and stable generalisation gap.
 The Generalisation Gap is formally defined as:
 \\
-Generalisation Gap = Training Accuracy - Validation Accuracy
-\\
-or equivalently in terms of loss:
-\\
-Generalisation Gap = Validation Loss - Training Loss
+$\text{Generalisation Gap} = \text{Validation Loss} - \text{Training Loss}$
 \\
 The magnitude of the gap is recorded in terms of both R² and RMSE on the regression target (LN IC$_{50}$) and constitutes the confirmed 
 Fragility Baseline. This mirrors the diagnostic framing established by Pahde et al. (2023), where a model achieving high training 
 performance through spurious correlations serves as the starting condition for the bias identification and correction cycle. 
-\textcolor{red}{[PLACEHOLDER  if a domain-specific threshold can be identified from Partin et al. (2023) or Wu et al. (2025), 
-insert here as a reference benchmark]}
+\textcolor{red}{As no single generalisation-gap threshold is established in the pharmacogenomic
+  literature, the baseline gap is interpreted relative to the held-out performance reported for the
+  regularised DeepCCDS model (Wu et al., 2025): the unregularised baseline is expected to achieve
+  strong training performance while underperforming this published reference on the test set,
+  thereby confirming overfitting.}
 The trained baseline model weights are saved as a checkpoint and shared with Persons 2, 3, and 5. Persons 2 and 3 load this 
 checkpoint and do not retrain, ensuring that their evolutionary rule extraction algorithms operate on exactly the same model in 
 both Stage 1 and Stage 2.

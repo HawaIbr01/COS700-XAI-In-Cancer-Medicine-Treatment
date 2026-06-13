@@ -25,12 +25,12 @@ neighborhood-based perturbation. Instead of simply minimizing the loss using the
 classically, SAM will also evaluate the worst case loss for all possible (perturbed) weights within a local $\epsilon$-ball around the 
 current weights $\theta$, achieving minimisation of loss at perturbed parameters of $\theta + \epsilon$. Thus, the SAM method penalises 
 high curvature in the loss surface in order to guide the model towards solutions that are stable even when the weights are perturbed 
-slightly, which also results in convergence toward flat minima (Foret et al., 2021; Li et al., 2018).
+slightly, which also results in convergence toward flat minima \cite{Foret2021,Li2018}.
 
 \subsubsection{Expected Effect on Generalisation}
-Our baseline model is characterised by high training accuracy, lower validation performance and a large generalisation gap, indicating 
+Our baseline model is characterised by high training performance, lower validation performance and a large generalisation gap, indicating 
 that the model has memorised training-specific noise rather than learned stable biological patterns. By converging onto flatter minima, 
 the SAM-regularised model is expected to reduce the training-validation discrepancy, producing more balanced performance across both 
-sets. As argued in Springer et al. (2024), this improvement in generalisation is expected to produce more balanced feature 
+sets. As argued in \cite{Springer2024}, this improvement in generalisation is expected to produce more balanced feature 
 representations, resulting in extracted rules with fewer spurious conditions and higher biological coherence than those of the baseline 
 model.
