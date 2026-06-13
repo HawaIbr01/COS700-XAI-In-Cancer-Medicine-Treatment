@@ -17,34 +17,43 @@
 Rule extraction from the trained baseline model is performed using a Genetic Algorithm implemented via the Distributed Evolutionary 
 Algorithms in Python (DEAP) framework. Following the RED XAI philosophy established in Section 3.1.1, the GA is used not merely to 
 produce interpretable if-then rules but as a diagnostic tool to expose the decision logic of the overfitted model and evaluate its 
-coherence. The extraction process balances fidelity and comprehensibility as competing objectives throughout (Yedjour et al., 2024).
+coherence. The extraction process balances fidelity and comprehensibility as competing objectives throughout \cite{Yedjour2024}.
 \subsubsection{Preparation for Rule Extraction}
 Prior to rule extraction, loss landscape visualisation is applied to the trained baseline model to characterise the sharpness of the 
 minima to which it has converged and to document the overfitting behaviour that motivates the SAM intervention in Stage 2. This 
 visualisation serves as a qualitative complement to the generalisation gap metric established in Section 4.1.4 and provides a 
-geometric baseline against which the SAM-regularised model's landscape is later compared (Li et al., 2018).
+geometric baseline against which the SAM-regularised model's landscape is later compared \cite{Li2018}.
 \subsubsection{Pre-processing Data for Rule Extraction}
 Rather than operating on continuous inputs, rule extraction requires discretisation of the gene expression features. Continuous input 
 ranges are divided into k partitions of equal length, producing discrete categories such as high expression, intermediate expression, 
 and low expression as described in Section 4.1.3. Rules are then extracted in the format: if X$_1$ is in partition A and X$_2$ is in 
 partition 
-B, then predicted response Y, where each condition corresponds to a discretised feature partition (Yedjour et al., 2024).
+B, then predicted response Y, where each condition corresponds to a discretised feature partition \cite{Yedjour2024}.
 \subsubsection{Implementation of GA via DEAP}
 An evolutionary loop is configured within the DEAP framework to discover optimal rule sets. Each individual chromosome in the population 
 represents a candidate rule set encoded as a vector, where each element corresponds to a discretised attribute partition or a special 
-value of , 1 to indicate that the attribute is not involved in the rule (Yedjour et al., 2024).
+value of -1 to indicate that the attribute is not involved in the rule \cite{Yedjour2024}.
 The fitness function adopts a multi-objective formulation, simultaneously optimising fidelity to the black-box model, predictive accuracy 
-on held-out data, and comprehensibility measured by rule length (Yedjour et al., 2024). Tournament selection is used to identify parent 
+on held-out data, and comprehensibility measured by rule length \cite{Yedjour2024}. Tournament selection is used to identify parent 
 individuals for reproduction. Two-point crossover combines rule segments from two parent chromosomes to produce offspring, and mutation 
 introduces random changes – such as adding or removing a condition – to maintain population diversity and prevent premature convergence 
-on local optima (Yedjour et al., 2024).
+on local optima \cite{Yedjour2024}.
 \subsubsection{Rule Pruning and Population Diversity}
 Following each generation, rule pruning is applied to remove conditions with low confidence and support, maintaining a concise rule set 
 and reducing rule explosion. Aging evolution is additionally applied as a diversity mechanism to prevent the population from converging 
 prematurely on local optima, ensuring that the evolutionary search continues to explore the rule space rather than stagnating on a 
-suboptimal solution (Yedjour et al., 2024).
+suboptimal solution \cite{Yedjour2024}.
 \subsubsection{Validation and Execution}
 The GA is executed for 50 generations with a population size of 35 to 45 individuals, following the configuration established by 
-Yedjour et al. (2024). The output of each run is a Pareto front representing a set of non-dominated rule sets that each reflect a 
+\cite{Yedjour2024}. The output of each run is a Pareto front representing a set of non-dominated rule sets that each reflect a 
 different trade-off between fidelity and comprehensibility. The final selected rule set is the one that achieves the best balance 
 across these objectives as determined by PROMETHEE II ranking in Section 4.5.1. 
+\\
+\textcolor{red}{To account for the stochastic nature of the genetic algorithm, rule extraction is
+repeated across 30 independent runs, each initialised with a different random seed. The non-dominated
+rule sets produced across all runs are aggregated into a single rule pool for the given model condition,
+which is then ranked using PROMETHEE II (Section 4.5.1). This ensures the final ranked rules reflect
+structure that is consistent across runs rather than the product of a single stochastic search. The
+choice of 30 runs follows standard practice for the statistical comparison of stochastic optimisation
+algorithms \cite{Derrac2011} and is provisional, subject to confirmation against the protocol of
+\cite{Yedjour2024} and the project timeline.}
