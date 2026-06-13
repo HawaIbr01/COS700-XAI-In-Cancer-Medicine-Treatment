@@ -15,8 +15,9 @@ are audited using PROMETHEE II ranking and GSEA pathway enrichment analysis to d
 In Stage 2, the Regularisation Intervention is applied. The same DeepCCDS architecture is retrained using the SAM optimiser to smooth the 
 loss landscape and reduce the generalisation gap, as described in Section 4.4. Rules are re-extracted using identical GA and NSGA-II 
 parameters to ensure comparability. The same PROMETHEE II and GSEA audit is performed to generate a second evaluation scorecard. 
-Wilcoxon signed-rank tests are then applied to the distributions of PROMETHEE outranking flows from both stages to determine whether 
-the improvement in rule quality is statistically significant.
+\textcolor{red}{Mann--Whitney U tests} are then applied to the PROMETHEE outranking flow
+distributions of the baseline and SAM-regularised rule sets \textcolor{red}{(two independent
+samples)} to determine whether the improvement in rule quality is statistically significant.
 
 
 % -------------------------------------------------------
@@ -37,9 +38,6 @@ the pipeline to CCLE data, with LN IC\textsubscript{50} as the response target, 
 assessment of whether the observed advantage of SAM regularisation over the Adam baseline
 in terms of rule fidelity, comprehensibility, and biological validity generalises beyond the GDSC
 dataset. Consistent results across both datasets would substantially strengthen the robustness
-of the study's conclusions. No new statistical machinery is required; the same Wilcoxon
-signed-rank test and PROMETHEE II framework are applied, and results are reported
-comparatively.
-% NOTE: Barretina et al. (2012) "The Cancer Cell Line Encyclopedia enables predictive modelling
-% of anticancer drug sensitivity." Nature, 483, 603-607. Add to references.bib.
+of the study's conclusions. No new statistical machinery is required; the same \textcolor{red}{Mann--Whitney U test} and
+PROMETHEE II framework are applied, and results are reported comparatively.
 }
