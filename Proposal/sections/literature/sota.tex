@@ -1,76 +1,86 @@
-\textcolor{red}{
-% ADD: This entire subsection is new and addresses the supervisor's feedback
-% that SOTA XAI methods are not surveyed or compared.
-% Research starting points for each method are noted in comments.
-% Write approximately one paragraph per method, then include the comparison table.
-\\
+% READING LIST MAPPING
+% SHAP — Lundberg & Lee (2017), Sections 2–3 (additive feature attribution + the Shapley properties). Then Slack et al. (2020) intro + attack setup, and Adebayo et al. (2018) for the parameter-randomisation sanity check.
+% LIME — Ribeiro et al. (2016), Section 3 (local surrogate fitting, the fidelity–interpretability trade-off). Alvarez-Melis & Jaakkola (2018), their robustness/instability analysis of LIME and SHAP.
+% LRP — Bach et al. (2015), the pixel-wise relevance decomposition formulation. Pahde et al. (2023), the section where LRP exposes artefactual relevance (you already cite it).
+% Integrated Gradients — Sundararajan et al. (2017), Sections 2–3 (sensitivity + implementation-invariance axioms; the path integral and baseline choice).
+% Anchors — Ribeiro et al. (2018), Sections 2–3 (the anchor definition, precision vs coverage, the search procedure).
+
+{\color{red}
+
 \paragraph{SHAP (SHapley Additive exPlanations)}
-% Research: Lundberg \& Lee, NeurIPS 2017. Also: Slack et al. (2020) "Fooling LIME and SHAP";
-% Alvarez-Melis \& Jaakkola (2018) on instability. Focus on: game-theoretic foundation,
-% Shapley value axioms, TreeSHAP/DeepSHAP variants, instance-level attribution output,
-% inability to detect Clever Hans, inheriting model fragility.
-[WRITE: SHAP paragraph here]
-\\
+SHAP unifies several additive feature-attribution methods under a single game-theoretic
+framework, assigning each input feature a Shapley value that quantifies its marginal contribution
+to an individual prediction \cite{Lundberg2017}. It satisfies desirable properties such as local
+accuracy and consistency, and has efficient model-specific variants such as TreeSHAP and DeepSHAP.
+However, SHAP produces continuous, instance-level attributions: it reports which genes mattered for
+a single prediction, not a generalisable decision rule that can be audited globally or expressed as
+a discrete gene set for cross-referencing against KEGG pathways. Most critically for this project,
+attribution-based methods of this kind have been shown to produce visually plausible explanations
+even for models with randomised weights \cite{Adebayo2018}, so a SHAP explanation of an overfitted
+model can look indistinguishable from that of a well-generalised one; SHAP therefore cannot detect
+the Clever Hans behaviour this pipeline targets. Adversarial work has further shown that SHAP can be
+deliberately manipulated to conceal biased model behaviour \cite{Slack2020}. SHAP is predominantly
+deployed in Blue-XAI practice, prioritising end-user justification over model interrogation.
+
 \paragraph{LIME (Local Interpretable Model-Agnostic Explanations)}
-% Research: Ribeiro et al., KDD 2016. Also: Alvarez-Melis \& Jaakkola (2018);
-% Slack et al. (2020). Focus on: local linear surrogate, neighbourhood sampling instability
-% in high-dimensional genomic data, Blue XAI by nature, continuous attributions not
-% directly pathway-verifiable.
-[WRITE: LIME paragraph here]
-\\
+LIME explains an individual prediction by sampling perturbed instances around it and fitting a
+sparse, proximity-weighted linear surrogate, yielding local feature importances \cite{Ribeiro2016}.
+Because the explanation is a local linear approximation, it is inherently per-instance rather than
+global, and its faithfulness degrades where the underlying decision surface is highly non-linear.
+The method is also unstable: small changes to the perturbation neighbourhood can produce
+qualitatively different explanations \cite{AlvarezMelis2018}, and in high-dimensional genomic
+feature spaces meaningful local neighbourhoods become sparse, undermining the sampling strategy.
+Like SHAP, LIME is vulnerable to adversarial manipulation that hides discriminatory behaviour
+\cite{Slack2020}, and its continuous attributions are not directly verifiable against discrete
+biological pathways. LIME is thus predominantly a Blue-XAI tool for per-prediction justification.
+
 \paragraph{Layer-wise Relevance Propagation (LRP)}
-% Research: Bach et al., PLOS ONE 2015; Samek et al. (2017) already cited.
-% Also: Pahde et al. (2023) — already in your paper — explicitly shows LRP on overfitted
-% models produces heatmaps attributing relevance to biologically incoherent features.
-% Focus on: back-propagation of relevance signal, applied in genomic settings,
-% continuous heatmap output, Clever Hans problem demonstrated by your own citation.
-[WRITE: LRP paragraph here]
-\\
+LRP explains a prediction by back-propagating the model output and redistributing a relevance signal
+onto the input features, producing a heatmap of feature importance \cite{Bach2015,Samek2017}. While
+effective for visualising salient inputs, it yields continuous relevance maps rather than auditable
+symbolic rules and remains local to individual predictions. Most importantly for this project, LRP
+is the very instrument through which the Clever Hans problem has been demonstrated: Pahde et al.
+apply LRP to overfitted models and show it attributes high relevance to biologically incoherent or
+artefactual features the model has latched onto \cite{Pahde2023}. LRP therefore functions here as a
+witness to the fragility being diagnosed rather than as a competing rule-extraction method.
+
 \paragraph{Integrated Gradients}
-% Research: Sundararajan et al., ICML 2017 "Axiomatic Attribution for Deep Networks".
-% Focus on: accumulates gradients along path from baseline to input, satisfies completeness
-% and sensitivity axioms, sensitive to choice of baseline, quality contingent on smoothness
-% of decision boundary — exactly the sharp landscape problem SAM corrects.
-[WRITE: Integrated Gradients paragraph here]
-\\
+Integrated Gradients attributes a prediction to its input features by accumulating gradients along a
+straight-line path from a baseline input to the actual input, satisfying the completeness and
+sensitivity axioms that naive gradient saliency violates \cite{Sundararajan2017}. Although
+axiomatically stronger than vanilla gradient methods, it shares their core limitations: the output
+is a continuous, instance-level attribution rather than a global rule, the result depends on the
+often-arbitrary choice of baseline, and the path integral is sensitive to the smoothness of the
+model's decision boundary. This last property is precisely the sharp-loss-landscape pathology that
+the SAM intervention in this project is designed to correct, meaning Integrated Gradients is most
+fragile exactly where model health is poorest.
+
 \paragraph{Anchors}
-% Research: Ribeiro et al., AAAI 2018 "Anchors: High-Precision Model-Agnostic Explanations".
-% Focus on: produces rule-like outputs with precision guarantee, closest SOTA to our approach,
-% BUT inherently local (one rule per instance not global), no explicit fidelity/comprehensibility
-% optimisation targets, cannot produce Pareto front, precision guarantee does not generalise
-% across GDSC cancer subtypes, does not support PROMETHEE II multi-criteria ranking.
-[WRITE: Anchors paragraph here]
-\\
+Anchors is the closest state-of-the-art method to the approach taken here: rather than continuous
+attributions, it produces high-precision if-then rules, where an ``anchor'' is a set of feature
+conditions that locally guarantees the prediction to a user-specified precision \cite{Ribeiro2018}.
+This rule-like, human-readable output is more aligned with clinical auditability than attribution
+heatmaps. However, anchors are inherently local: one rule is generated per instance, with no global
+rule set describing the model's overall logic, and the precision guarantee holds only in the
+neighbourhood of each instance, so it need not generalise across the heterogeneous cancer subtypes
+in GDSC. Anchors also optimises only for precision and coverage; it does not expose fidelity and
+comprehensibility as explicit competing objectives, cannot produce a Pareto front of trade-off
+solutions, and therefore cannot feed the PROMETHEE II multi-criteria ranking that structures this
+project's evaluation.
+
 The limitations of these SOTA methods motivate the use of evolutionary rule extraction in this
 project. Unlike SHAP, LIME, LRP, and Integrated Gradients, which produce continuous
-feature-attribution scores that cannot be directly verified against biological pathways in a discrete,
-auditable form, evolutionary algorithms extract global symbolic if-then rules that can be explicitly
-evaluated for fidelity, comprehensibility, and biological validity \cite{Yedjour2024}. Unlike Anchors,
-the GA and NSGA-II pipelines optimise rule quality as explicit objectives across the full GDSC
-dataset rather than locally per instance, and their outputs are directly compatible with the
-PROMETHEE II multi-criteria ranking framework \cite{Yedjour2024}. Furthermore, and most
+feature-attribution scores that cannot be directly verified against biological pathways in a
+discrete, auditable form, evolutionary algorithms extract global symbolic if-then rules that can be
+explicitly evaluated for fidelity, comprehensibility, and biological validity \cite{Yedjour2024}.
+Unlike Anchors, the GA and NSGA-II pipelines optimise rule quality as explicit objectives across the
+full GDSC dataset rather than locally per instance, and their outputs are directly compatible with
+the PROMETHEE II multi-criteria ranking framework \cite{Yedjour2024}. Furthermore, and most
 critically, none of the SOTA methods described above can detect Clever Hans behaviour:
 \cite{Adebayo2018} demonstrated that popular attribution methods including SHAP-style approaches
 produce visually plausible explanations even for models that have memorised noise, because their
-outputs are largely independent of model parameters. This project's Red XAI pipeline addresses
-this directly by auditing model health before any explanation is extracted \cite{Biecek2024}.
+outputs are largely independent of model parameters. This project's Red XAI pipeline addresses this
+directly by auditing model health before any explanation is extracted \cite{Biecek2024}.
 Table~\ref{tab:sota_comparison} provides a structured comparison.
-}
 
-\begin{table}[H]
-\centering
-\caption{Comparison of SOTA post-hoc XAI methods against the proposed EA rule extraction approach.}
-\label{tab:sota_comparison}
-\begin{tabular}{lllllll}
-\toprule
-\textbf{Method} & \textbf{Output} & \textbf{Scope} & \textbf{Auditable Rules} & \textbf{Fidelity Opt.} & \textbf{Bio. Verifiable} & \textbf{Red XAI} \\
-\midrule
-SHAP & Continuous scores & Local & No & No & Indirect & No \\
-LIME & Continuous scores & Local & No & No & Indirect & No \\
-LRP  & Heatmap & Local & No & No & Indirect & No \\
-Integrated Gradients & Continuous scores & Local & No & No & Indirect & No \\
-Anchors & Rule (local) & Local & Partial & No & Indirect & Partial \\
-\textbf{GA + NSGA-II (Ours)} & \textbf{Symbolic rules} & \textbf{Global} & \textbf{Yes} & \textbf{Yes} & \textbf{Direct (GSEA)} & \textbf{Yes} \\
-\bottomrule
-\end{tabular}
-\end{table}
+}
