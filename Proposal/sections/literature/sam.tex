@@ -1,20 +1,20 @@
 A well-documented limitation of deep learning models applied to high-dimensional biomedical 
 data is their tendency to converge to sharp minima in the loss landscape, which is associated 
-with poor generalisation and unstable learned representations. Li et al. (2018) demonstrate 
+with poor generalisation and unstable learned representations. \cite{Li2018} demonstrate 
 that neural networks can converge to either sharp or flat minima within the loss surface. 
 Sharp minima are characterised by high sensitivity to parameter perturbations, meaning that 
 small changes in weights can lead to large increases in loss. In contrast, flat minima exhibit 
-smoother regions where the loss remains stable under perturbation. Li et al. show that flat 
+smoother regions where the loss remains stable under perturbation. \cite{Li2018} show that flat 
 minima are strongly associated with improved generalisation performance, while sharp minima 
 are linked to overfitting and poor transferability to unseen data. This phenomenon is directly 
 reflected in the generalisation gap, where a large discrepancy between training and test 
 performance indicates that the model is memorising noise rather than learning meaningful 
-biological structure (Keskar et al., 2016).
+biological structure \cite{Keskar2016}.
 \\\\
 The relationship between loss landscape geometry and explanation quality is less established. 
-Dombrowski et al. (2022) demonstrate that explanation methods are sensitive to the geometry 
+\cite{Dombrowski2022} demonstrate that explanation methods are sensitive to the geometry 
 of the model's decision boundary, and that smoother boundaries produce more stable 
-attributions. Springer et al. (2024) further show that optimisers targeting flat minima 
+attributions. \cite{Springer2024} further show that optimisers targeting flat minima 
 improve the quality and balance of learned feature representations. However, whether this 
 geometric improvement translates into measurable gains in the quality of symbolic rules 
 extracted from a model, particularly in the pharmacogenomic domain, has not been empirically 
@@ -28,12 +28,21 @@ SAM has been proposed as a mechanism for improving model generalisation by expli
 optimisation toward flat minima. Unlike standard gradient descent, which may converge to sharp 
 and unstable regions of the loss landscape, SAM introduces a local adversarial perturbation 
 step that evaluates model performance within a neighbourhood of the current parameters, 
-optimising for solutions that remain robust under small perturbations (Foret et al., 2021). 
+optimising for solutions that remain robust under small perturbations \cite{Foret2021}. 
 This encourages convergence toward flatter minima, which have been strongly associated with 
-improved generalisation and stability in deep neural networks (Li et al., 2018; Keskar et al., 2016). Critically, Springer et al. (2024) demonstrate that this geometric effect produces more balanced feature representations than conventional regularisers such as L2 weight decay or dropout, which reduce overfitting through penalty or stochastic noise but do not explicitly target loss landscape geometry or the distribution of feature importance across the model. This property is particularly relevant for downstream rule extraction, where rules derived from a model with balanced feature weights are expected to be shorter and more generalisable than those from a model that has concentrated weight on spurious correlates. As a result, SAM improves both predictive robustness and the consistency of explanations produced by downstream XAI methods.
+improved generalisation and stability in deep neural networks \cite{Li2018,Keskar2016}. 
+Critically, \cite{Springer2024} demonstrate that this geometric effect produces more 
+balanced feature representations than conventional regularisers such as L2 weight decay or 
+dropout, which reduce overfitting through penalty or stochastic noise but do not explicitly 
+target loss landscape geometry or the distribution of feature importance across the model. 
+This property is particularly relevant for downstream rule extraction, where rules derived 
+from a model with balanced feature weights are expected to be shorter and more generalisable 
+than those from a model that has concentrated weight on spurious correlates. As a result, 
+SAM improves both predictive robustness and the consistency of explanations produced by 
+downstream XAI methods.
 \\
 The use of SAM is particularly important for the XAI pipeline defined in this project. As 
-highlighted by Guidotti et al. (2020), the reliability of local explanation methods is 
+highlighted by \cite{Guidotti2021}, the reliability of local explanation methods is 
 highly dependent on the stability of the underlying model. If a model is trained in a sharp 
 region of the loss landscape, even minor perturbations in input or parameters can produce 
 substantially different explanations, reducing trust in rule-based outputs. By enforcing 
