@@ -9,8 +9,8 @@
 % [Paste Section 4.4.1 Intervention Objective here]
 % [Paste Section 4.4.2 SAM Optimisation Mechanism here]
 % [Paste Section 4.4.3 Expected Effect on Generalisation here]
-The second stage of our experiment uses the Sharpness-Aware Minimisation optimiser or SAM to retrain the DeepCCDS model. 
-This helps reduce the gap between training and validation performance and makes the model's loss landscape smoother.
+The second stage of our experiment uses the Sharpness-Aware Minimisation optimiser or SAM to retrain the DeepCCDS model.
+This helps reduce the gap between training and validation performance and makes the models loss landscape smoother.
 
 \subsubsection{Intervention Objective}
 The only difference between SAM and the baseline model is the optimisation strategy, with both models being experimented on with the 
@@ -20,7 +20,7 @@ measures, generalisation gap, smoothness of the loss landscape (as determined by
 evolutionary algorithms (Phi algorithms) in Sections 4.2 and 4.3.
 
 \subsubsection{SAM Optimisation Mechanism}
-SAM (Sharpness-Aware Minimisation) adds an additional step to training by incorporating a 
+The method presented in this work, called SAM (Sharpness-Aware Minimisation), adds an additional step to training by incorporating a 
 neighborhood-based perturbation. Instead of simply minimizing the loss using the current parameters ($\theta$) as has been done 
 classically, SAM will also evaluate the worst case loss for all possible (perturbed) weights within a local $\epsilon$-ball around the 
 current weights $\theta$, achieving minimisation of loss at perturbed parameters of $\theta + \epsilon$. Thus, the SAM method penalises 
@@ -28,7 +28,7 @@ high curvature in the loss surface in order to guide the model towards solutions
 slightly, which also results in convergence toward flat minima \cite{Foret2021,Li2018}.
 
 \subsubsection{Expected Effect on Generalisation}
-Our baseline model is characterised by high training performance, lower validation performance and a large generalisation gap, indicating 
+Our baseline model is characterised by high training accuracy, lower validation performance and a large generalisation gap, indicating 
 that the model has memorised training-specific noise rather than learned stable biological patterns. By converging onto flatter minima, 
 the SAM-regularised model is expected to reduce the training-validation discrepancy, producing more balanced performance across both 
 sets. As argued in \cite{Springer2024}, this improvement in generalisation is expected to produce more balanced feature 
