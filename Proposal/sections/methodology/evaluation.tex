@@ -25,15 +25,26 @@ Comprehensibility: Measured by the Length of the Rule (i.e.,number of conditions
 (Yedjour et al., 2024).
 \\
 Stability: Calculated by the variance in rule performance across different cancer types in the GDSC dataset (Ye and Farnia, 2025).
-
-\subsubsection{Statistical Significance (Wilcoxon Signed-Rank Test)}
-To confirm that improvements in rule quality between the baseline and SAM-regularised models are statistically significant rather than 
-coincidental, a Wilcoxon signed-rank test is applied to the distribution of net outranking flows produced by PROMETHEE II for the top 10 
-rules of each model. A non-parametric test is required because the distribution of rule quality metrics such as outranking flows cannot 
-be assumed to follow a normal distribution. The Wilcoxon signed-rank test is adopted following the precedent of Yedjour et al. (2024), 
-who apply it to compare PROMETHEE-scored rule sets across extraction conditions, with a p-value threshold of 0.05 used to determine 
-statistical significance. A result below this threshold is interpreted as evidence that the difference in rule quality between the 
-baseline and SAM conditions is unlikely to be due to random chance.
+\\
+\textcolor{red}{For any comparison between two rule sets (for example, baseline versus SAM-regularised,
+or evolutionary versus decision-tree extraction), all rules entering that comparison are ranked within a
+single combined PROMETHEE II run. This ensures each rule's net outranking flow is computed against a
+common reference set, so that the resulting $\phi$ values are directly comparable before the
+Mann--Whitney U test is applied. Ranking each rule set in a separate run would render the flows
+incommensurable, as PROMETHEE net flows are defined only relative to the alternatives present in a given
+run.}
+\subsubsection{Statistical Significance \textcolor{red}{(Mann--Whitney U Test)}}
+\textcolor{red}{To confirm that differences in rule quality between the baseline and SAM-regularised
+models are statistically significant rather than coincidental, a Mann--Whitney U test (equivalently,
+the Wilcoxon rank-sum test) is applied to the net outranking flows of the top 10 baseline rules and the
+top 10 SAM rules, drawn from the common PROMETHEE II run described above. The Mann--Whitney U test is appropriate because the baseline and
+SAM-regularised rule sets comprise distinct rules with no natural one-to-one correspondence; they
+therefore constitute two independent samples rather than matched pairs, for which a paired test such
+as the Wilcoxon signed-rank test would be inappropriate. A non-parametric test is required because the
+distribution of net outranking flows is bounded, derived from a small sample, and cannot be assumed to
+follow a normal distribution. A $p$-value threshold of 0.05 is used to determine statistical
+significance; a result below this threshold is interpreted as evidence that the difference in rule
+quality between the baseline and SAM conditions is unlikely to be due to random chance.}
 
 \subsubsection{Automated Biological Verification (GSEApy)}
 The genes identified in the top-ranked rules from both the baseline and SAM-regularised models are submitted to over-representation 
@@ -66,11 +77,10 @@ and SAM-regularised DeepCCDS models using scikit-learn, with maximum depth const
 prevent rule explosion. Rules are extracted from the fitted tree and evaluated under the identical
 PROMETHEE II framework described in Section 4.5.1, using the same fidelity, comprehensibility,
 and stability criteria. This enables a direct comparison between deterministic surrogate-based
-rule extraction and the proposed evolutionary approach across both model conditions. The Wilcoxon
-signed-rank test described in Section 4.5.2 is applied to the PROMETHEE outranking flow
-distributions of the decision tree rules and the GA/NSGA-II rules to determine whether the
-improvement from evolutionary extraction is statistically significant, and whether this advantage
-is maintained after SAM regularisation.
+rule extraction and the proposed evolutionary approach across both model conditions. \textcolor{red}{The Mann--Whitney U test described in Section~\ref{subsec:statsig} is applied to the
+PROMETHEE outranking flow distributions of the decision tree rules and the GA/NSGA-II rules to
+determine whether the improvement from evolutionary extraction is statistically significant, and
+whether this advantage is maintained after SAM regularisation.}
 % NOTE: Breiman et al. (1984) "Classification and Regression Trees" is the standard CART citation.
 % Add to references.bib: Breiman, L., Friedman, J., Stone, C.J., Olshen, R.A. (1984).
 % Classification and Regression Trees. CRC Press.
