@@ -1,11 +1,8 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 2}
-% -------------------------------------------------------
-% INSTRUCTION: Keep existing gap analysis content from Section 3.7.
-% ADD the red-marked critique paragraphs below — the supervisor
-% requires genuine critique of cited papers, not only gap identification.
-% Convert first-person to third person throughout.
-% -------------------------------------------------------
+% READING LIST
+% Linhardt et al. (2024), EGEM — abstract + the method section. The line you most need is their framing that user acceptance of an explanation does not guarantee robustness (Clever Hans can remain hidden) — that's what makes them a sharp neighbour and why your geometry-only angle is distinct.
+% Ross et al. (2017), RRR — Sections 2–3, specifically how they add an explanation-penalty term to the loss and that it needs annotations of where the model should not look. This is your "explanation-in-the-loss, needs human annotation" contrast.
+% Rieger et al. (2020), CDEP — the loss formulation section, where the explanation-error term is added. Reinforces the same "explanation enters the objective" point.
+% For the BioXAI paragraph, no new reading — it's your supervisor's pointer and your foundation doc §3.6 already has the facts.
 
 The literature reviewed in Section 3 reveals the existence of a diagnostic gap at the intersection
 of model robustness and explanation quality.
@@ -62,7 +59,7 @@ model, isolating the contribution of model health to rule quality independently 
 Section 3.6 reviewed the quality framework for symbolic explanations, fidelity, comprehensibility, and 
 stability as defined by Arrieta et al. (2020) and operationalised through PROMETHEE II ranking by 
 Yedjour et al. (2024). Adebayo et al. (2018) showed through sanity checks that popular XAI methods can 
-produce visually convincing explanations even for models that have memorised noise. To the best of our 
+produce visually convincing explanations even for models that have memorised noise. To the best of current 
 knowledge, the literature does not establish a quantitative relationship between the size of the generalisation 
 gap and the degradation of rule quality metrics. Whether a smaller generalisation gap is a statistically 
 reliable predictor of higher fidelity and lower rule complexity, the core hypothesis of this project, 
@@ -114,23 +111,53 @@ Adebayo et al.\ \cite{Adebayo2018} demonstrated through sanity checks that popul
 methods can produce convincing explanations for models that have memorised noise, but their
 study did not evaluate symbolic rule-based explanation methods or propose a regularisation
 intervention as a corrective mechanism, leaving the question of how to prevent rather than detect
-this behaviour unresolved.
-}
+this behaviour unresolved.}
+\\\\
+A closely related body of work, and arguably the nearest methodological neighbour to this project,
+is explanation-guided training: methods that modify the training objective itself to improve the
+robustness or correctness of model explanations. This cluster includes Right for the Right Reasons
+\cite{Ross2017}, contextual-decomposition penalisation \cite{Rieger2020}, adversarial training on
+explanations, robust-explanation objectives such as R2ET and REGEX, and the Clever-Hans-specific
+pruning method EGEM \cite{Linhardt2024}. Two distinctions separate this project from that cluster.
+First, what enters the loss: these methods place the explanation itself into the optimisation
+objective, in some cases requiring human-annotated ground-truth explanations \cite{Ross2017} or
+expensive second-order gradients, whereas SAM is explanation-agnostic and flattens only the loss
+landscape, so any gain in rule quality is an emergent byproduct of model health rather than a
+directly optimised target. This yields a cleaner scientific question, namely whether geometric
+regularisation alone, with no explanation in the training loop, improves explanations. Second, the
+explanation medium and domain: the explanation-guided cluster operates on continuous saliency or
+attribution maps in image and text classification, whereas this project produces global symbolic
+rules in pharmacogenomics with biological verification through GSEA. No prior work is known to test
+whether explanation-agnostic geometric regularisation improves the quality of global symbolic rules
+in this domain.
+\\\\
+Competition benchmarks such as the BioXAI 2025 IEEE SSCI student competition on explainable AI in
+personalised cancer medicine evaluate explanation quality primarily through manual review of
+feature-attribution outputs, rewarding explanations that appear coherent to human reviewers without
+auditing whether the underlying model has learned genuine biological signal. This reflects the Blue
+XAI paradigm: such evaluation cannot detect Clever Hans behaviour, because a visually convincing
+SHAP explanation of an overfitted model is indistinguishable from that of a well-generalised one.
+Notably, the competition uses GDSC-derived gene expression data with AAC as the drug-response metric
+for the EGFR inhibitor erlotinib, a feature space structurally comparable to the GDSC LN~IC$_{50}$
+data used in this project and differing mainly in response metric and single- versus multi-drug
+scope. This project's Red XAI pipeline directly addresses the gap that such Blue XAI evaluation
+leaves open.
 
 \subsubsection{Contributions}
 
 This project makes the following concrete contributions to the literature.
 The first is methodological. It introduces and evaluates a RED XAI pipeline that uses the generalisation gap as 
 a diagnostic gatekeeper for symbolic explanation quality in cancer pharmacogenomics – a combination of domain, 
-explanation type, and diagnostic mechanism that, to the best of our knowledge, has not been previously 
+explanation type, and diagnostic mechanism that, to the best of current knowledge, has not been previously 
 investigated. 
 \\\\
 The second is empirical. It provides a controlled experimental test of whether SAM regularisation, by smoothing 
 the loss landscape, produces a statistically significant improvement in the fidelity and comprehensibility of 
-evolutionary rule extraction on GDSC drug sensitivity data. Statistical rigour is ensured through Wilcoxon 
-signed-rank testing across multiple experimental runs, following the precedent established by Yedjour et al. 
-(2024), with the number of runs to be confirmed against the requirements of the adopted methodology in 
-Section 4. \textcolor{red}{[PLACEHOLDER – confirm run count- justificatio needed]} 
+evolutionary rule extraction on GDSC drug sensitivity data. Statistical rigour is ensured through \textcolor{red}{Mann--Whitney U testing of the PROMETHEE II net
+outranking flows of the baseline and SAM-regularised rule sets, which constitute two independent
+samples (Section~4). To account for the stochasticity of evolutionary rule extraction, extraction is
+repeated across 30 independent runs and the resulting non-dominated rules are aggregated before
+ranking.}
 \\\\
 The third is evaluative. It provides a comparative assessment of two evolutionary rule extraction approaches – 
 single-objective GA and multi-objective NSGA-II – applied to both a baseline overfitted model and a 
