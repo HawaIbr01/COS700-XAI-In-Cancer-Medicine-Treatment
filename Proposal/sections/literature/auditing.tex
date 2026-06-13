@@ -10,56 +10,56 @@ When extracting "If-Then" rules from complex black box models, the quality of th
 across three conflicting dimensions:
 \\\\
 Fidelity - This metric measures the degree to which an explanation accurately mimics the behaviour of 
-the black-box model (Guidotti, 2021). High fidelity translates as the extracted rules being highly faithful 
+the black-box model \cite{Guidotti2021}. High fidelity translates as the extracted rules being highly faithful 
 to the model’s actual decision-making and not falling into the disagreement problem (different explainability 
-methods produce varying explanations for the same AI model)or just being an approximation (Miró-Nicolau et al., 2025).
+methods produce varying explanations for the same AI model)or just being an approximation \cite{Miro2025}.
 \\\\
 Comprehensibility - Is defined by the sparsity of the model or the length or number of the generated 
-rules for explanation (Arrieta et al.,2020; Yedjour et al., 2024). It relates to the cognitive load required 
+rules for explanation \cite{Arrieta2020,Yedjour2024}. It relates to the cognitive load required 
 for humans to understand and interpret the explanation. Literature suggests that as the number of conditions 
 in a rule increases, human understanding decays, a phenomenon often referred to as Rule Explosion 
-(Arrieta et al.,2020; Yedjour et al., 2024).
+\cite{Arrieta2020,Yedjour2024}.
 \\\\
 Stability refers to the consistency of an explanation when subjected to different subsets of 
 training data or the inherent stochasticity of the training process \cite{Ye2024}. Although 
-stability has been studied primarily in image classification settings, Ye and Farnia (2025) establish that 
+stability has been studied primarily in image classification settings, \cite{Ye2024} establish that 
 the underlying mechanism, explanation variance induced by model sensitivity to small perturbations, is a 
 property of the model's loss landscape geometry rather than the data modality, and therefore generalises to 
 tabular settings. In cancer genomics specifically, where batch effects and sample preparation variation 
-introduce systematic noise into the feature space (Partin et al., 2023), an explanation that changes drastically 
+introduce systematic noise into the feature space \cite{Partin2023}, an explanation that changes drastically 
 due to negligible perturbations is considered fragile and clinically unreliable. This fragility not only erodes user 
-trust (Wicker et al., 2022) but also hinders the clinician's ability to discover genuine, generalisable biological 
-relationships, restricting explainability to debugging misclassifications rather than generating medical insight (Ye \& Farnia, 2025). 
+trust \cite{Wicker2022} but also hinders the clinician's ability to discover genuine, generalisable biological 
+relationships, restricting explainability to debugging misclassifications rather than generating medical insight \cite{Ye2024}. 
 
 \subsubsection{Explanation Fragility and the Generalisation Gap}
 As established in Section 3.4.2, the Clever Hans effect represents a core threat to explanation reliability in 
 overfitted models. The critical question for this project is how to detect and quantify this fragility before 
-explanations are extracted. The Generalisation Gap, the difference between training and test accuracy 
-(Keskar et al., 2016; Springer et al., 2024), serves as this primary diagnostic indicator, as models with a 
+explanations are extracted. The Generalisation Gap, the difference between training and test performance 
+\cite{Keskar2016,Springer2024}, serves as this primary diagnostic indicator, as models with a 
 wide gap tend to overfit to training artefacts rather than learning genuine biological structure. The danger of 
-this overfitting is hidden by traditional interpretability; Adebayo et al. (2018), through sanity checks, showed 
+this overfitting is hidden by traditional interpretability; \cite{Adebayo2018}, through sanity checks, showed 
 that popular XAI methods are independent of the model’s parameters. This means that they can produce explanations 
 that visually look convincing even for models that have actually just memorised noise. Consequently, this highlights 
-the necessity of shifting toward a 'RED XAI' approach (Biecek \& Samek, 2024), using XAI as an active diagnostic tool to 
+the necessity of shifting toward a 'RED XAI' approach \cite{Biecek2024}, using XAI as an active diagnostic tool to 
 interrogate the model and ensure it is learning grounded biological truths rather than mathematical coincidences resulting 
-from reality drift (Longo et al., 2024).
+from reality drift \cite{Longo2024}.
 
 \subsubsection{Multi-Criteria Decision Analysis: PROMETHEE II}
 Given that fidelity, comprehensibility, and stability often exist in a state of trade-off (e.g., a highly 
 faithful rule may be too complex to understand), a structured method for ranking rule quality is required 
-(Yedjour et al., 2024; Ye \& Farnia, 2025; Brans \& Vincke, 1985).
+\cite{Yedjour2024,Ye2024,Brans1985}.
 \\\\
 PROMETHEE II (Preference Ranking Organisation Method for Enrichment Evaluations) is a Multi-Criteria Decision 
 Analysis (MCDA) technique designed to rank alternatives based on multiple conflicting criteria 
-(Yedjour et al., 2024; Matejová \& Paralič, 2025). Unlike simple averaging, PROMETHEE II uses pairwise comparisons 
+\cite{Yedjour2024,Matejova2025}. Unlike simple averaging, PROMETHEE II uses pairwise comparisons 
 to establish an outranking relationship between different explanations, producing a complete ranking of all 
 alternatives rather than only identifying a subset of optimal solutions as methods such as TOPSIS or VIKOR do 
-(Yedjour et al., 2024; Matejová \& Paralič, 2025). This complete ranking property is particularly important in 
+\cite{Yedjour2024,Matejova2025}. This complete ranking property is particularly important in 
 the rule extraction context, where the goal is not merely to identify a single best rule set but to compare the 
 full distribution of rule quality across the baseline and SAM-regularised models. Recent applications in rule 
 extraction through the GPRO\_RX system have demonstrated that PROMETHEE-assisted ranking can successfully 
 identify optimal rules that maintain high data coverage while significantly reducing complexity 
-(Yedjour et al., 2024). Following this precedent, and given that GPRO\_RX represents the closest methodological 
+\cite{Yedjour2024}. Following this precedent, and given that GPRO\_RX represents the closest methodological 
 antecedent to the evolutionary rule extraction pipeline used in this project, PROMETHEE II is adopted as the 
 ranking framework here.  
 
@@ -67,7 +67,7 @@ ranking framework here.
 Finally, in the domain of cancer genomics, statistical fidelity is insufficient without biological verification. 
 Gene Set Enrichment Analysis (GSEA) is a method used to determine whether a set of genes (such as those 
 identified in an extracted rule) shows statistically significant, concordant differences between two biological 
-states (e.g., cancer vs. healthy) (Subramanian et al., 2005). By cross-referencing extracted rules with 
+states (e.g., cancer vs. healthy) \cite{Subramanian2005}. By cross-referencing extracted rules with 
 established databases like KEGG or Enrichr, researchers can verify if the AI’s "logic" aligns with known 
 molecular pathways (e.g., Apoptosis or DNA repair), thereby providing the ultimate "sanity check" for clinical 
 relevance.

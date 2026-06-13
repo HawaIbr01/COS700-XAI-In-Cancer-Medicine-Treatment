@@ -1,70 +1,62 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 3}
-% -------------------------------------------------------
-% INSTRUCTION: Paste existing Section 3.2 and 3.2.1 content here.
-% Convert first-person to third person throughout. No new content required.
-% -------------------------------------------------------
-
-% [Paste Section 3.2 Cancer Medicine and the Shift to Precision Pathology here]
 Cancer is a mixed group of diseases that can be hematologically (blood) related or 
-tumour related (National Cancer Institute, n.d.). 
+tumour related \cite{NCI}. 
 They are all characterised by their uncontrolled cellular growth that is triggered by 
 genetic mutations and epigenetic changes (environmental factors) alterations 
-(National Cancer Institute, n.d.). Traditionally, treatment of cancer relied on 
+\cite{NCI}. Traditionally, treatment of cancer relied on 
 generalised treatment protocols that were based on the anatomical site of the cancer. 
 Modern protocols have shifted to what can be termed as precision medicine, which is 
 aimed at providing customised individual patient care. Precision pathology in particular, 
 aims to tailor treatment to patients based on the individual molecular profile of the 
-patient’s cancer. (Klauschen et al., 2024). Achieving this requires the integration of 
+patient’s cancer. \cite{Klauschen2024}. Achieving this requires the integration of 
 high-dimensional genomic data, such as gene expression profiles (transcriptomics), 
-to predict how a specific cancer will respond to targeted therapies (Klauschen et al., 2024).
+to predict how a specific cancer will respond to targeted therapies \cite{Klauschen2024}.
 \\\\
 Precision pathology has evolved from manual microscopic inspection methods to AI-driven 
 diagnostics. Machine learning models are now capable of analysing complex biological 
-datasets to predict patient survival outcomes and drug sensitivities (Kovalev et al., 2021). 
+datasets to predict patient survival outcomes and drug sensitivities \cite{Kovalev2021}. 
 A particular case is that of machine learning survival models. Machine learning survival 
 models are predictive models designed to estimate the time-to-event outcomes, for example 
-how long a patient is likely to live after diagnosis and or treatment (Kovalev et al., 2021). 
+how long a patient is likely to live after diagnosis and or treatment \cite{Kovalev2021}. 
 This is useful in determining the potency of a treatment plan based on the patient's characteristics 
-(Kovalev et al., 2021). 
+\cite{Kovalev2021}. 
 
 % [Paste Section 3.2.1 Genomics and the Interpretability Gap here]
 \subsubsection{Genomics and the Interpretability Gap}
 The precision of machine learning models in precision medicine is driven by massive datasets 
 such as the Genomics of Drug Sensitivity in Cancer (GDSC). In genomic-based cancer research, 
-datasets like (GDSC) provide thousands of gene expression variables. (Baptista et al., 2021; Yang et al., 2013). 
+datasets like (GDSC) provide thousands of gene expression variables \cite{Baptista2021,Yang2013}. 
 The GDSC dataset is a large publicly available database that is designed to help researchers 
 discover therapeutic biomarkers (e.g. the expression levels of the EGFR gene) and predict 
-how specific tumours will respond to various cancer treatments(revisit intro of paper) 
-(Yang et al., 2013). It is practically, as well as financially, infeasible to test every 
+how specific tumours will respond to various cancer treatments \textcolor{red}{(revisit intro of paper)}
+\cite{Yang2013}. It is practically, as well as financially, infeasible to test every 
 candidate drug directly on human patients. Therefore, cancer cell lines are used as a proxy 
-for real tumours (Yang et al., 2013). Cancer cell lines are cells that have been extracted 
+for real tumours \cite{Yang2013}. Cancer cell lines are cells that have been extracted 
 and grown in a laboratory and still retain the genetic and molecular characteristics of the 
-cancers they originate from (Yang et al., 2013). Drug response is measured in the form of IC50 
-values (Sakellaropoulos et al., 2019).
+cancers they originate from \cite{Yang2013}. Drug response is measured in the form of IC50 
+values \cite{Yang2013}.
 \\\\
 While DNNs excel at finding patterns in high-dimensional datasets such as GDSC, they largely 
-operate as black boxes (Partin et al., 2023; Klauschen et al., 2024). To elaborate, current research 
+operate as black boxes \cite{Partin2023,Klauschen2024}. To elaborate, current research 
 has successfully used AI to identify biomarkers that correlate with treatment resistance or treatment 
-efficacy (Partin et al., 2023; Klauschen et al., 2024; Baptista et al., 2020). Despite this success in 
+efficacy \cite{Partin2023,Klauschen2024,Baptista2021}. Despite this success in 
 predictive accuracy, a significant trust gap exists, which is that clinicians are not able to easily 
 verify whether a model’s prediction is based on genuine oncogenic pathways or statistical noise 
-(Klaushen et al., 2024). Klauschen et al. (2024) argue that for AI to be integrated into clinical 
+\cite{Klauschen2024}. \cite{Klauschen2024} argue that for AI to be integrated into clinical 
 workflows, it must provide "explainable" outputs that align with established medical knowledge.
 \\\\
-In XAI, unreliability of explanations is related to data corruption or noise (Klauschen et al., 2024). 
+In XAI, unreliability of explanations is related to data corruption or noise \cite{Klauschen2024}. 
 In cancer genomics, small variations in the sample preparation can lead to batch effects which AI models 
-learn as shortcuts to high accuracy or Clever Hans (Partin et al., 2023; Klauschen et al., 2024). Batch 
-effects are non-biological, technical variations that are introduced into the data (Yu et al., 2024; Goh et al., 2022). 
+learn as shortcuts to high accuracy or Clever Hans \cite{Partin2023,Klauschen2024}. Batch 
+effects are non-biological, technical variations that are introduced into the data \cite{Yu2024, Goh2022}. 
 Batch effects are not related to the variables of interest in the study and come about due to data being 
 collected from different labs or machines, different assessment pipelines or differing experimental 
-conditions over time (Yu et al., 2024). 
+conditions over time \cite{Yu2024}. 
 \\\\
 Survival analysis research machine learning models shows that black box models can produce highly 
 accurate predictions scores while hiding the underlying counterfactuals - specific changes in a patient's 
-genetic expression can alter the clinical outcome or decision (Kovalev et al., 2023). Furthermore, if an 
+genetic expression can alter the clinical outcome or decision \cite{Kovalev2021}. Furthermore, if an 
 XAI method identifies a "rule" for a cancer diagnosis that is mathematically sound but biologically 
-incoherent (e.g., incorrectly linking a housekeeping gene to tumor suppression), it can lead to dangerous 
-medical misinterpretations (Partin et al., 2023; Klauschen et al., 2024). This underscores the need for the 
+incoherent (e.g., incorrectly linking a housekeeping gene to tumour suppression), it can lead to dangerous 
+medical misinterpretations \cite{Partin2023,Klauschen2024}. This underscores the need for the 
 rigorous "Audit and Verify" proposed in this research project to ensure that interpretability serves as a 
 safeguard for clinical truth rather than just a justification for model output. 
