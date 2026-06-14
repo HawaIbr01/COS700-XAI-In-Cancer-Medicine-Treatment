@@ -1,43 +1,44 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 5}
-% -------------------------------------------------------
-% INSTRUCTION: Paste existing Section 4.6 Experiments here.
-% ADD the CCLE robustness validation paragraph (marked in red below).
-% Convert first-person to third person throughout.
-% -------------------------------------------------------
+\subsubsection{Experimental Protocol and Workflow Stages}
+\label{ssub:method_experimental_protocol}
+The research implements a controlled two-stage experimental design to isolate the 
+causal impact of loss landscape geometry on post-hoc explanation quality. In Stage 1, 
+the unregularised overfitting baseline is established as the diagnostic Red XAI 
+starting checkpoint. The DeepCCDS model is trained using the standard Adam optimiser 
+until a wide, stable generalisation gap emerges using the early stopping indicators 
+stipulated in Section \ref{ssub:method_training}, mathematically confirming the 
+presence of Clever Hans shortcut strategies. 
 
-% [Paste Section 4.6 Experiments here]
-The research follows a two-stage experimental design to isolate the impact of model sharpness on explanation quality.
-In Stage 1, the Overfitting Baseline is established as the RED XAI diagnostic starting point. DeepCCDS is trained using the Adam 
-optimiser until a stable generalisation gap has emerged using the early stopping criterion defined in Section 4.1.4, confirming the 
-Clever Hans baseline. Rules are then extracted from this overfitted model by both the GA and NSGA-II pipelines. The resulting rule sets 
-are audited using PROMETHEE II ranking and GSEA pathway enrichment analysis to document the Fragility Baseline scorecard.
-In Stage 2, the Regularisation Intervention is applied. The same DeepCCDS architecture is retrained using the SAM optimiser to smooth the 
-loss landscape and reduce the generalisation gap, as described in Section 4.4. Rules are re-extracted using identical GA and NSGA-II 
-parameters to ensure comparability. The same PROMETHEE II and GSEA audit is performed to generate a second evaluation scorecard. 
-\textcolor{red}{Mann--Whitney U tests} are then applied to the PROMETHEE outranking flow
-distributions of the baseline and SAM-regularised rule sets \textcolor{red}{(two independent
-samples)} to determine whether the improvement in rule quality is statistically significant.
+Symbolic if-then rules are subsequently extracted from this unregularised checkpoint 
+using both the single-objective GA and the multi-objective NSGA-II computational loops. 
+The resulting rule cohorts are audited via PROMETHEE II multi-criteria ranking and 
+GSEA over-representation analysis to construct the baseline performance scorecard.
 
+In Stage 2, the geometric regularisation intervention is applied. The identical 
+DeepCCDS network architecture is retrained from scratch using the SAM optimiser to 
+smooth the error landscape and collapse the generalisation gap. Symbolic rules are then 
+re-extracted using operational evolutionary parameters identical to Stage 1 to preserve 
+strict experimental control. 
 
-% -------------------------------------------------------
-% NEW CONTENT — SECOND DATASET FOR ROBUSTNESS (supervisor suggestion)
-% -------------------------------------------------------
+The identical PROMETHEE II matrix execution and GSEA biological audit are performed on 
+these regularised rules to compile the second scorecard. Finally, non-parametric 
+Mann--Whitney U tests are applied to compare the baseline and SAM-driven outranking flow 
+distributions as two independent samples, determining whether the regularisation 
+intervention delivers a statistically significant advantage.
 
-\textcolor{red}{
-% ADD: CCLE as a planned robustness validation dataset.
-% The supervisor suggested this if time permits. Frame it as a stretch objective.
-% Suggested text:
 \paragraph{Robustness Validation: Cancer Cell Line Encyclopedia (CCLE)}
-As a stretch objective, subject to timeline constraints, the complete RED XAI pipeline will be
-applied to a second pharmacogenomic dataset: the Cancer Cell Line Encyclopedia (CCLE)
-\cite{Barretina2012}. The CCLE provides gene expression profiles and drug response data for
-cancer cell lines using a structurally compatible format to GDSC, and has been used alongside
-GDSC in several of the studies cited in this proposal \cite{Partin2023, Baptista2021}. Applying
-the pipeline to CCLE data, with LN IC\textsubscript{50} as the response target, would enable
-assessment of whether the observed advantage of SAM regularisation over the Adam baseline
-in terms of rule fidelity, comprehensibility, and biological validity generalises beyond the GDSC
-dataset. Consistent results across both datasets would substantially strengthen the robustness
-of the study's conclusions. No new statistical machinery is required; the same \textcolor{red}{Mann--Whitney U test} and
-PROMETHEE II framework are applied, and results are reported comparatively.
-}
+\label{para:robustness_ccle}
+As a planned stretch objective, subject to execution timeline boundaries, the complete 
+Red XAI diagnostic and evaluation pipeline will be deployed on a second independent 
+pharmacogenomic data collection: the Cancer Cell Line Encyclopedia (CCLE) 
+\cite{Barretina2012}. The CCLE contains deep gene expression matrices and multi-drug 
+screening response targets for diverse human cancer cell lines, using a data structure 
+entirely compatible with the primary GDSC platform \cite{Baptista2021, Partin2023}. 
+
+Deploying the pipeline on CCLE profiles with $\text{LN } IC_{50}$ as the continuous target 
+evaluates whether the structural advantages of SAM regularisation over the baseline 
+in terms of rule fidelity, clarity, and pathway enrichment generalize beyond a single 
+database context. Replicating the outranking flow changes and biological signatures 
+consistently across both distinct collections would confirm the operational robustness 
+of the study's framework. This verification requires no supplementary statistical 
+mechanisms; the identical comparative PROMETHEE II workflows and non-parametric 
+Mann--Whitney U test distributions are applied and reported comparatively.
