@@ -1,21 +1,26 @@
-Evolutionary algorithms (EAs) are a class of stochastic search and metaheuristic optimisation techniques 
-inspired by the biological processes of natural evolution and selection. Unlike traditional algorithms that 
-iterate on a single solution, EAs maintain a population of individuals, where each individual represents a 
-potential solution to a problem \cite{Yedjour2024}. The population evolves over generations using three 
-primary operators: selection, crossover, and mutation.  
-\\\\
-Rule extraction is a post-hoc explainability technique used to identify the underlying decision-making logic of 
-opaque black-box models such as ANNs \cite{Yedjour2024,Ghasemi2024}. It is fundamentally a 
-multi-objective optimisation problem requiring a simultaneous balance between fidelity to the black-box model, 
-predictive accuracy on unseen data, and rule comprehensibility \cite{Yedjour2024}. Deterministic rule 
-extraction methods such as decision trees impose fixed inductive biases on the search, for example, 
-axis-aligned splits that limit depth and greedy coverage strategies, which constrain their ability to navigate 
-the combinatorial complexity of high-dimensional genomic feature spaces or to optimise competing objectives 
-simultaneously \cite{Arrieta2020, Yedjour2024}. EAs are well suited to this problem precisely 
-because they maintain a diverse population of candidate rule sets, can be configured with flexible 
-multi-objective fitness functions that reflect fidelity, accuracy, and comprehensibility simultaneously, and 
-are capable of escaping local optima through mutation and crossover operators \cite{Yedjour2024}. Among EA 
-variants, Genetic Algorithms and NSGA-II are selected for this project: GAs provide a single-objective baseline 
-for rule extraction quality, while NSGA-II explicitly evolves a Pareto front of non-dominated rule sets, 
-enabling a structured trade-off analysis between fidelity and comprehensibility that single-objective methods 
-cannot produce \cite{Yedjour2024}. 
+\label{ssub:ea}
+
+Evolutionary algorithms (EAs) are a class of stochastic search and metaheuristic optimisation
+techniques inspired by the biological processes of natural evolution and selection. Unlike traditional
+algorithms that iterate on a single solution, EAs maintain a population of individuals, where each
+individual represents a potential solution to a problem \cite{Yedjour2024}. The population evolves over
+generations using three primary operators: selection, crossover, and mutation.
+\\
+Rule extraction is a post-hoc explainability technique used to identify the underlying decision-making
+logic of opaque black-box models such as ANNs \cite{Yedjour2024,Ghasemi2024}. It is fundamentally a
+multi-objective optimisation problem requiring a simultaneous balance between fidelity to the
+black-box model, predictive accuracy on unseen data, and rule comprehensibility \cite{Yedjour2024}.
+Deterministic rule extraction methods such as the CART decision tree \cite{Breiman1984} impose fixed
+inductive biases on the search, for example, axis-aligned splits that limit depth and greedy coverage
+strategies, which
+constrain their ability to navigate the combinatorial complexity of high-dimensional genomic feature
+spaces or to optimise competing objectives simultaneously \cite{Arrieta2020,Yedjour2024}. EAs are
+well suited to this problem precisely because they maintain a diverse population of candidate rule
+sets, can be configured with flexible multi-objective fitness functions that reflect fidelity,
+accuracy, and comprehensibility simultaneously, and are capable of escaping local optima through
+mutation and crossover operators \cite{Yedjour2024}. Among EA variants, Genetic Algorithms and NSGA-II
+are selected for this project: GAs provide a single-objective baseline for rule extraction quality,
+while NSGA-II explicitly evolves a Pareto front of non-dominated rule sets (those for which no
+objective can be improved without worsening another), enabling a structured
+trade-off analysis between fidelity and comprehensibility that single-objective methods cannot produce
+\cite{Yedjour2024}.

@@ -1,172 +1,160 @@
-% READING LIST
-% Linhardt et al. (2024), EGEM — abstract + the method section. The line you most need is their framing that user acceptance of an explanation does not guarantee robustness (Clever Hans can remain hidden) — that's what makes them a sharp neighbour and why your geometry-only angle is distinct.
-% Ross et al. (2017), RRR — Sections 2–3, specifically how they add an explanation-penalty term to the loss and that it needs annotations of where the model should not look. This is your "explanation-in-the-loss, needs human annotation" contrast.
-% Rieger et al. (2020), CDEP — the loss formulation section, where the explanation-error term is added. Reinforces the same "explanation enters the objective" point.
-% For the BioXAI paragraph, no new reading — it's your supervisor's pointer and your foundation doc §3.6 already has the facts.
+\label{ssub:critical-analysis}
 
-The literature reviewed in Section 3 reveals the existence of a diagnostic gap at the intersection
-of model robustness and explanation quality.
-
-Section 3.1 established that XAI exists in two cultures. Blue XAI has dominated the field in terms of adoption, 
-producing methods that justify model outputs to end users. Red XAI, as formalised by Biecek and Samek (2024), 
-reorients XAI as an active interrogation tool, one that questions whether a model deserves to be explained at 
-all before any explanation is surfaced. The RED XAI philosophy is well-articulated in theory; what remains is a 
-complete pipeline that implements this philosophy from overfitting diagnosis through to measurable improvement 
-in symbolic explanation quality. This project fills that gap.
-\\\\
-The GDSC dataset, while invaluable as a pharmacogenomic resource, exhibits the P >> N structure that reliably 
-induces overfitting in unregularised deep models (Partin et al., 2023). Models must process tens of thousands 
-of gene expression features measured across a comparatively small number of unique cancer cell lines, even 
-though these are tested against hundreds of drugs to form a large dataset of combinations (Wu et al., 2025). 
-Klauschen et al. (2024) and Partin et al. (2023) demonstrate that clinicians cannot verify whether a model's 
-predictions are grounded in genuine oncogenic biology or learned shortcuts without an explicit auditing 
-mechanism. The literature in cancer AI has produced increasingly powerful predictive models but has not 
-systematically addressed the question of whether those models are ready to be explained 
-(Wicker et al., 2022; Ye \& Farnia, 2025). The distinction matters clinically: a biologically incoherent rule 
-extracted from an overfitted model may appear statistically valid while pointing clinicians toward irrelevant 
-or even harmful treatment decisions (Pahde et al., 2023; Klauschen et al., 2024).
-\\\\
-Section 3.3 reviewed the theoretical relationship between loss landscape geometry and generalisation, 
-establishing that models converging to sharp minima exhibit brittle, poorly generalising representations 
-(Li et al., 2018; Keskar et al., 2016). SAM was reviewed as an intervention that explicitly seeks flat minima 
-during training (Springer et al., 2024). What the literature has not established, however, is whether the 
-geometric improvement that SAM produces in the loss landscape translates into measurable improvement in the 
-quality of symbolic rules extracted from the model. The connection between landscape geometry and explanation 
-quality has been theorised but not empirically demonstrated in the pharmacogenomic context. This project 
-provides that empirical test.
-\\\\
-Section 3.4 reviewed the ANN literature relevant to this project, covering the DeepCCDS architecture and the 
-Clever Hans problem as documented by Pahde et al. (2023). The R2R framework represents the closest 
-methodological precedent: it uses XAI to identify model artefacts, localises them, and corrects model behaviour 
-iteratively. However, R2R operates on image data, uses LRP-based attribution heatmaps as its explanation medium, 
-and corrects models through fine-tuning with artefact masks. It does not address the tabular genomic domain, 
-does not use symbolic rule extraction as its explanation modality, and does not investigate whether 
-regularisation applied at the optimisation stage can prevent the Clever Hans problem from arising rather than 
-repairing it after the fact. This project is therefore differentiated from R2R in domain, explanation type, 
-intervention mechanism, and causal direction.
-\\\\
-Section 3.5 reviewed the evolutionary algorithm literature, specifically GAs and NSGA-II as applied to rule 
-extraction. The GPRO\_RX system demonstrated that multi-objective genetic algorithms guided by PROMETHEE-assisted 
-ranking can produce rule sets that outperform single-objective extraction methods on the combined criteria of 
-fidelity and comprehensibility (Yedjour et al., 2024). However, GPRO\_RX and the broader EA rule extraction 
-literature evaluate their methods on models with no deliberate control over the model's generalisation state, 
-rule extraction is applied to whatever model happens to have been trained, without investigating whether the 
-model's level of overfitting mediates rule quality. The comparative value of GA versus NSGA-II for rule 
-extraction from models at different points on the generalisation spectrum remains unexplored. This project 
-introduces that control by extracting rules from both a deliberately overfitted baseline and a SAM-regularised 
-model, isolating the contribution of model health to rule quality independently of the extraction algorithm used.
-\\\\
-Section 3.6 reviewed the quality framework for symbolic explanations, fidelity, comprehensibility, and 
-stability as defined by Arrieta et al. (2020) and operationalised through PROMETHEE II ranking by 
-Yedjour et al. (2024). Adebayo et al. (2018) showed through sanity checks that popular XAI methods can 
-produce visually convincing explanations even for models that have memorised noise. To the best of current 
-knowledge, the literature does not establish a quantitative relationship between the size of the generalisation 
-gap and the degradation of rule quality metrics. Whether a smaller generalisation gap is a statistically 
-reliable predictor of higher fidelity and lower rule complexity, the core hypothesis of this project, 
-has not been tested. Section 3.6.4 further noted that even statistically valid rules require biological 
-verification through pathway enrichment analysis to confirm clinical relevance, introducing a layer of 
+The literature reviewed in Section~\ref{sec:literature} reveals the existence of a diagnostic gap at
+the intersection of model robustness and explanation quality.
+\\
+Section~\ref{ssub:xai} established that XAI exists in two cultures. Blue XAI has dominated the field in
+terms of adoption, producing methods that justify model outputs to end users. Red XAI, as formalised
+by Biecek and Samek~\cite{Biecek2024}, reorients XAI as an active interrogation tool, one that
+questions whether a model deserves to be explained at all before any explanation is surfaced. The Red
+XAI philosophy is well-articulated in theory; what remains is a complete pipeline that implements this
+philosophy from overfitting diagnosis through to measurable improvement in symbolic explanation
+quality. This project fills that gap.
+\\
+The GDSC dataset, while invaluable as a pharmacogenomic resource, exhibits the $P \gg N$ structure
+that reliably induces overfitting in unregularised deep models \cite{Partin2023}. Models must process
+tens of thousands of gene expression features measured across a comparatively small number of unique
+cancer cell lines, even though these are tested against hundreds of drugs to form a large dataset of
+combinations \cite{Wu2025}. Klauschen et al.~\cite{Klauschen2024} and Partin et al.~\cite{Partin2023}
+demonstrate that clinicians cannot verify whether a model's predictions are grounded in genuine
+oncogenic biology or learned shortcuts without an explicit auditing mechanism. The literature in
+cancer AI has produced increasingly powerful predictive models but has not systematically addressed
+the question of whether those models are ready to be explained, that is, whether a model has
+generalised well enough that an explanation will reflect genuine biological signal rather than
+memorised noise, as distinct from merely attaching a post-hoc explainability method to a model whose
+internal logic has never been audited \cite{Wicker2023,Ye2024}. The
+distinction matters clinically: a biologically incoherent rule extracted from an overfitted model may
+appear statistically valid while pointing clinicians toward irrelevant or even harmful treatment
+decisions \cite{Pahde2023,Klauschen2024}.
+\\
+Section~\ref{ssub:sam} reviewed the theoretical relationship between loss landscape geometry and
+generalisation, establishing that models converging to sharp minima exhibit brittle, poorly
+generalising representations \cite{Li2018,Keskar2016}. SAM was reviewed as an intervention that
+explicitly seeks flat minima during training \cite{Springer2024}. What the literature has not
+established, however, is whether the geometric improvement that SAM produces in the loss landscape
+translates into measurable improvement in the quality of symbolic rules extracted from the model. The
+connection between landscape geometry and explanation quality has been theorised but not empirically
+demonstrated in the pharmacogenomic context. This project provides that empirical test.
+\\
+Section~\ref{ssub:ann} reviewed the ANN literature relevant to this project, covering the DeepCCDS
+architecture and the Clever Hans problem as documented by Pahde et al.~\cite{Pahde2023}. The R2R
+framework represents the closest methodological precedent: it uses XAI to identify model artefacts,
+localises them, and corrects model behaviour iteratively. However, R2R operates on image data, uses
+LRP-based attribution heatmaps as its explanation medium, and corrects models through fine-tuning with
+artefact masks. It does not address the tabular genomic domain, does not use symbolic rule extraction
+as its explanation modality, and does not investigate whether regularisation applied at the
+optimisation stage can prevent the Clever Hans problem from arising rather than repairing it after the
+fact. This project is therefore differentiated from R2R in domain, explanation type, intervention
+mechanism, and causal direction.
+\\
+Section~\ref{ssub:ea} reviewed the evolutionary algorithm literature, specifically GAs and NSGA-II as
+applied to rule extraction. The GPRO\_RX system demonstrated that multi-objective genetic algorithms
+guided by PROMETHEE-assisted ranking can produce rule sets that outperform single-objective extraction
+methods on the combined criteria of fidelity and comprehensibility \cite{Yedjour2024}. However,
+GPRO\_RX and the broader EA rule extraction literature evaluate their methods on models with no
+deliberate control over the model's generalisation state; rule extraction is applied to whatever model
+happens to have been trained, without investigating whether the model's level of overfitting mediates
+rule quality. The comparative value of GA versus NSGA-II for rule extraction from models at different
+points on the generalisation spectrum remains unexplored. This project introduces that control by
+extracting rules from both a deliberately overfitted baseline and a SAM-regularised model, isolating
+the contribution of model health to rule quality independently of the extraction algorithm used.
+\\
+Section~\ref{ssub:auditing} reviewed the quality framework for symbolic explanations, fidelity,
+comprehensibility, and stability as defined by Arrieta et al.~\cite{Arrieta2020} and operationalised
+through PROMETHEE II ranking by Yedjour et al.~\cite{Yedjour2024}. Adebayo et al.~\cite{Adebayo2018}
+showed through sanity checks that popular XAI methods can produce visually convincing explanations
+even for models that have memorised noise. To the best of current knowledge, the literature does not
+establish a quantitative relationship between the size of the generalisation gap and the degradation
+of rule quality metrics. Whether a smaller generalisation gap is a statistically reliable predictor of
+higher fidelity and lower rule complexity, the core hypothesis of this project, has not been tested.
+Section~\ref{ssub:gsea} further noted that even statistically valid rules require biological
+verification through pathway enrichment analysis to confirm clinical relevance, introducing a layer of
 grounding that purely metric-based XAI evaluation cannot provide.
-\\\\
-Taken together, the literature has established four things independently: that overfitting produces unreliable 
-explanations (Pahde et al., 2023; Adebayo et al., 2018); that loss landscape geometry is a measurable indicator 
-of generalisation quality (Li et al., 2018); that SAM can improve landscape geometry (Foret et al., 2021); and 
-that evolutionary algorithms can extract high-quality symbolic rules from neural networks when properly 
-configured (Yedjour et al., 2024). The contribution of this project is not any single component, the 
-ANN baseline, the SAM optimiser, the GA, the NSGA-II, and the PROMETHEE ranking are all individually 
-established. The contribution is the controlled pipeline that connects them, the experimental structure that 
-isolates model health as the independent variable, and the empirical evidence it generates about the 
-relationship between generalisation and explainability in the pharmacogenomic domain.
-\\\\
-% -------------------------------------------------------
-% NEW CONTENT REQUIRED (NICOG Slide 4: "Critical analysis of previous work used")
-% -------------------------------------------------------
-\textcolor{red}{
-% ADD: One sentence of genuine critique per key paper.
-% The existing Section 3.7 identifies gaps (what has not been done).
-% The supervisor requires critique of what the cited papers themselves do poorly.
-% Suggested additions — integrate these into the relevant paragraphs above:
-While Yedjour et al.\ \cite{Yedjour2024} demonstrated that PROMETHEE-assisted multi-objective
-genetic algorithm rule extraction outperforms single-objective methods, their evaluation was
-conducted exclusively on the UCI benchmark datasets and was not tested on high-dimensional
-genomic data, where the curse of dimensionality and the presence of batch effects present
-substantially different challenges to rule search spaces.
-\\\\
-Springer et al.\ \cite{Springer2024} established that SAM produces more balanced feature
-representations than conventional regularisers, but their analysis was limited to image
-classification benchmarks and does not provide evidence of this effect on tabular pharmacogenomic
-data or on the downstream quality of symbolic rule extraction.
-\\\\
-Pahde et al.\ \cite{Pahde2023}, while providing a compelling audit-and-fix framework through
-Reveal to Revise, operate exclusively in the image classification domain using LRP-based
-attribution heatmaps. Their correction mechanism is applied post hoc through fine-tuning with
-artefact masks, whereas this project intervenes at the optimisation stage to prevent Clever Hans
-behaviour from arising rather than correcting it after the fact.
-\\\\
-Li et al.\ \cite{Li2018} provide strong theoretical and empirical evidence connecting flat minima to
+\\
+Taken together, the literature has established four things independently: that overfitting produces
+unreliable explanations \cite{Pahde2023,Adebayo2018}; that loss landscape geometry is a measurable
+indicator of generalisation quality \cite{Li2018}; that SAM can improve landscape geometry
+\cite{Foret2021}; and that evolutionary algorithms can extract high-quality symbolic rules from neural
+networks when properly configured \cite{Yedjour2024}. The contribution of this project is not any
+single component: the ANN baseline, the SAM optimiser, the GA, the NSGA-II, and the PROMETHEE ranking
+are all individually established. The contribution is the controlled pipeline that connects them, the
+experimental structure that isolates model health as the independent variable, and the empirical
+evidence it generates about the relationship between generalisation and explainability in the
+pharmacogenomic domain.
+\\
+While Yedjour et al.~\cite{Yedjour2024} demonstrated that PROMETHEE-assisted multi-objective genetic
+algorithm rule extraction outperforms single-objective methods, their evaluation was conducted
+exclusively on the UCI benchmark datasets and was not tested on high-dimensional genomic data, where
+the curse of dimensionality and the presence of batch effects present substantially different
+challenges to rule search spaces.
+\\
+Springer et al.~\cite{Springer2024} established that SAM produces more balanced feature representations
+than conventional regularisers, but their analysis was limited to image classification benchmarks and
+does not provide evidence of this effect on tabular pharmacogenomic data or on the downstream quality
+of symbolic rule extraction.
+\\
+Pahde et al.~\cite{Pahde2023}, while providing a compelling audit-and-fix framework through Reveal to
+Revise, operate exclusively in the image classification domain using LRP-based attribution heatmaps.
+Their correction mechanism is applied post hoc through fine-tuning with artefact masks, whereas this
+project intervenes at the optimisation stage to prevent Clever Hans behaviour from arising rather than
+correcting it after the fact.
+\\
+Li et al.~\cite{Li2018} provide strong theoretical and empirical evidence connecting flat minima to
 improved generalisation, but do not investigate how loss landscape geometry affects the quality of
-downstream symbolic explanations, leaving the connection between landscape smoothness and
-explanation fidelity as an empirically untested claim that this project is designed to address.
-\\\\
-Adebayo et al.\ \cite{Adebayo2018} demonstrated through sanity checks that popular attribution
-methods can produce convincing explanations for models that have memorised noise, but their
-study did not evaluate symbolic rule-based explanation methods or propose a regularisation
-intervention as a corrective mechanism, leaving the question of how to prevent rather than detect
-this behaviour unresolved.
-\\\\
-A closely related body of work, and arguably the nearest methodological neighbour to this project,
-is explanation-guided training: methods that modify the training objective itself to improve the
+downstream symbolic explanations, leaving the connection between landscape smoothness and explanation
+fidelity as an empirically untested claim that this project is designed to address.
+\\
+Adebayo et al.~\cite{Adebayo2018} demonstrated through sanity checks that popular attribution methods
+can produce convincing explanations for models that have memorised noise, but their study did not
+evaluate symbolic rule-based explanation methods or propose a regularisation intervention as a
+corrective mechanism, leaving the question of how to prevent rather than detect this behaviour
+unresolved.
+\\
+A closely related body of work, and arguably the nearest methodological neighbour to this project, is
+explanation-guided training: methods that modify the training objective itself to improve the
 robustness or correctness of model explanations. This cluster includes Right for the Right Reasons
 \cite{Ross2017}, contextual-decomposition penalisation \cite{Rieger2020}, adversarial training on
-explanations \cite{Tang2022}, robust-explanation objectives such as R2ET \cite{Chen2022} and
-REGEX \cite{Li2023}, and the Clever-Hans-specific pruning method EGEM \cite{Linhardt2024}. Two distinctions separate this project from that cluster.
-First, what enters the loss: these methods place the explanation itself into the optimisation
-objective, in some cases requiring human-annotated ground-truth explanations \cite{Ross2017} or
-expensive second-order gradients, whereas SAM is explanation-agnostic and flattens only the loss
-landscape, so any gain in rule quality is an emergent byproduct of model health rather than a
-directly optimised target. This yields a cleaner scientific question, namely whether geometric
-regularisation alone, with no explanation in the training loop, improves explanations. Second, the
-explanation medium and domain: the explanation-guided cluster operates on continuous saliency or
-attribution maps in image and text classification, whereas this project produces global symbolic
-rules in pharmacogenomics with biological verification through GSEA. No prior work is known to test
-whether explanation-agnostic geometric regularisation improves the quality of global symbolic rules
-in this domain.
-\\\\
-Competition benchmarks such as the BioXAI 2025 IEEE SSCI student competition on explainable AI in
-personalised cancer medicine \cite{BioXAI2025} evaluate explanation quality primarily through manual review of
-feature-attribution outputs, rewarding explanations that appear coherent to human reviewers without
-auditing whether the underlying model has learned genuine biological signal. This reflects the Blue
-XAI paradigm: such evaluation cannot detect Clever Hans behaviour, because a visually convincing
-SHAP explanation of an overfitted model is indistinguishable from that of a well-generalised one.
-Notably, the competition uses GDSC-derived gene expression data with AAC as the drug-response metric
-for the EGFR inhibitor erlotinib, a feature space structurally comparable to the GDSC LN~IC$_{50}$
-data used in this project and differing mainly in response metric and single- versus multi-drug
-scope. This project's Red XAI pipeline directly addresses the gap that such Blue XAI evaluation
-leaves open.
-}
+explanations \cite{Tang2022}, robust-explanation objectives such as R2ET \cite{Chen2022} and REGEX
+\cite{Li2023}, and the Clever-Hans-specific pruning method EGEM \cite{Linhardt2024}. Two distinctions
+separate this project from that cluster. First, what enters the loss: these methods place the
+explanation itself into the optimisation objective, in some cases requiring human-annotated
+ground-truth explanations \cite{Ross2017} or expensive second-order gradients, whereas SAM is
+explanation-agnostic and flattens only the loss landscape, so any gain in rule quality is an emergent
+byproduct of model health rather than a directly optimised target. This yields a cleaner scientific
+question, namely whether geometric regularisation alone, with no explanation in the training loop,
+improves explanations. Second, the explanation medium and domain: the explanation-guided cluster
+operates on continuous saliency or attribution maps in image and text classification, whereas this
+project produces global symbolic rules in pharmacogenomics with biological verification through GSEA.
+No prior work is known to test whether explanation-agnostic geometric regularisation improves the
+quality of global symbolic rules in this domain.
 
 \subsubsection{Contributions}
+\label{ssub:contributions}
 
-This project makes the following concrete contributions to the literature.
-The first is methodological. It introduces and evaluates a RED XAI pipeline that uses the generalisation gap as 
-a diagnostic gatekeeper for symbolic explanation quality in cancer pharmacogenomics – a combination of domain, 
-explanation type, and diagnostic mechanism that, to the best of current knowledge, has not been previously 
-investigated. 
-\\\\
-The second is empirical. It provides a controlled experimental test of whether SAM regularisation, by smoothing 
-the loss landscape, produces a statistically significant improvement in the fidelity and comprehensibility of 
-evolutionary rule extraction on GDSC drug sensitivity data. Statistical rigour is ensured through \textcolor{red}{Mann--Whitney U testing of the PROMETHEE II net
-outranking flows of the baseline and SAM-regularised rule sets, which constitute two independent
-samples (Section~4). To account for the stochasticity of evolutionary rule extraction, extraction is
-repeated across 30 independent runs and the resulting non-dominated rules are aggregated before
-ranking.}
-\\\\
-The third is evaluative. It provides a comparative assessment of two evolutionary rule extraction approaches – 
-single-objective GA and multi-objective NSGA-II – applied to both a baseline overfitted model and a 
-SAM-regularised model, across a consistent evaluation framework informed by Arrieta et al. (2020) and ranked 
-through PROMETHEE II. This comparative structure generates evidence about which extraction method is more 
-resilient to model fragility, a question that has not been addressed in the existing EA-XAI literature.
-The fourth is diagnostic. The loss landscape visualisation produced for both the baseline and SAM-regularised 
-model constitutes a novel proposed indicator of explainability readiness – a geometric measure of whether a 
-model is positioned to yield reliable explanations before any extraction is attempted. This moves the XAI 
-quality question upstream, from the explanation evaluation stage to the model training stage, consistent with 
-the RED XAI philosophy of interrogating the model rather than justifying it.
+This project makes the following concrete contributions to the literature. The first is
+methodological. It introduces and evaluates a Red XAI pipeline that uses the generalisation gap as a
+diagnostic gatekeeper for symbolic explanation quality in cancer pharmacogenomics, a combination of
+domain, explanation type, and diagnostic mechanism that, to the best of current knowledge, has not
+been previously investigated.
+\\
+The second is empirical. It provides a controlled experimental test of whether SAM regularisation, by
+smoothing the loss landscape, produces a statistically significant improvement in the fidelity and
+comprehensibility of evolutionary rule extraction on GDSC drug sensitivity data. Statistical rigour is
+ensured through Mann--Whitney U testing of the PROMETHEE II net outranking flows of the baseline and
+SAM-regularised rule sets, which constitute two independent samples (Section~\ref{sec:methodology}).
+To account for the stochasticity of evolutionary rule extraction, extraction is repeated across 30
+independent runs and the resulting non-dominated rules are aggregated before ranking.
+\\
+The third is evaluative. It provides a comparative assessment of two evolutionary rule extraction
+approaches (single-objective GA and multi-objective NSGA-II) applied to both a baseline overfitted
+model and a SAM-regularised model, across a consistent evaluation framework informed by Arrieta et
+al.~\cite{Arrieta2020} and ranked through PROMETHEE II. This comparative structure generates evidence
+about which extraction method is more resilient to model fragility, a question that has not been
+addressed in the existing EA-XAI literature.
+\\
+The fourth is diagnostic. The loss landscape visualisation produced for both the baseline and
+SAM-regularised model constitutes a novel proposed indicator of explainability readiness, a geometric
+measure of whether a model is positioned to yield reliable explanations before any extraction is
+attempted. This moves the XAI quality question upstream, from the explanation evaluation stage to the
+model training stage, consistent with the Red XAI philosophy of interrogating the model rather than
+justifying it.

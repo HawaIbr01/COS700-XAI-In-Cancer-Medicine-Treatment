@@ -1,11 +1,3 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 1}
-% -------------------------------------------------------
-% INSTRUCTION: Keep existing content. Add scope and limitations
-% paragraph at the end (DONE - activated below).
-% Convert first-person to third person (DONE - none present).
-% -------------------------------------------------------
-
 \label{sec:problem}
 
 No standardised diagnostic framework currently exists that uses a model's generalisation gap to
@@ -19,7 +11,7 @@ biologically fraudulent \cite{Longo2024}.
 The primary research question is as follows: to what extent can the generalisation gap serve as a
 diagnostic indicator of explanation fragility, and can SAM be used to improve the fidelity and
 comprehensibility of rules extracted using evolutionary algorithms?
-\\
+
 This breaks down into four sub-research questions:
 
 \begin{enumerate}
@@ -40,7 +32,7 @@ than those produced by an unregularised baseline \cite{Foret2021, Li2018, Spring
 
 This study is scoped to the following boundaries. The neural network architecture is fixed to
 DeepCCDS \cite{Wu2025} and is not subject to architectural optimisation. The primary dataset is
-GDSC with LN IC\textsubscript{50} as the drug response metric; the study does not extend to
+GDSC with LN IC$_{50}$ as the drug response metric; the study does not extend to
 clinical patient data or real-time deployment contexts. The rule extraction pipeline operates on
 discretised tabular genomic features and does not address image-based or multi-modal data
 modalities. The regularisation intervention is limited to SAM as a replacement for the Adam
