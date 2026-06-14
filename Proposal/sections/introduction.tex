@@ -2,9 +2,11 @@
 % ASSIGNED TO: \textcolor{green}{Person 1}
 % -------------------------------------------------------
 % INSTRUCTION: Keep existing content. Add the following:
-% (1) A formal objectives list at the end of this section (see below).
-% (2) Convert all first-person constructions to third person throughout.
+% (1) A formal objectives list at the end of this section (DONE).
+% (2) Convert all first-person constructions to third person (DONE - none present).
 % -------------------------------------------------------
+
+\label{sec:introduction}
 
 Deep Neural Networks (DNNs) have achieved state-of-the-art predictive accuracy in cancer
 genomics, particularly in tasks of predicting drug sensitivity using high-dimensional datasets such
@@ -16,7 +18,7 @@ by what this study defines as the \textit{Interpretability-Regularisation Gap}: 
 accurate, complex black-box models rely on sharp, irregular loss landscapes that produce fragile,
 easily manipulated explanations, whereas intrinsically interpretable models lack the flexibility
 needed to capture highly non-linear biological relationships.
-
+\noindent
 Explainable Artificial Intelligence (XAI) addresses this by extracting understandable symbolic
 rules from trained models \cite{Yedjour2024}, but the quality of these explanations is inseparable
 from the health of the underlying model. When a DNN overfits its training data, learning spurious
@@ -26,20 +28,14 @@ the ``Clever Hans'' effect takes hold \cite{Anders2022, Pahde2023, Samek2017}. T
 rigorous model auditing \cite{Biecek2024}. This project is instead grounded in ``Red XAI'', which
 fosters a culture of model interrogation and debugging \cite{Biecek2024}, introducing a diagnostic
 pipeline that uses a model's generalisation gap as a measurable indicator of explanation fragility.
-
-The remainder of this proposal is structured as follows. Section 2 formally states the research
-questions and hypothesis. Section 3 provides the theoretical foundation. Section 4 details the
-experimental methodology. Section 5 presents the project timeline.
-
-% -------------------------------------------------------
-% NEW CONTENT REQUIRED (NICOG Slide 5 / COS700 Slide 21)
-% Add the following objectives list:
-% -------------------------------------------------------
+\noindent
+The remainder of this proposal is structured as follows. Section~\ref{sec:problem} formally states
+the research questions and hypothesis. Section~\ref{sec:literature} provides the theoretical
+foundation. Section~\ref{sec:methodology} details the experimental methodology.
+Section~\ref{sec:planning} presents the project timeline.
 
 \subsection*{Objectives}
 
-% ADD: Formal objectives list using measurable verbs as required by the NICOG workshop guidelines.
-% Suggested text (edit as needed):
 The objectives of this study are:
 \begin{enumerate}
     \item To establish a measurable overfitting baseline using the DeepCCDS architecture trained without regularisation on the GDSC dataset and to quantify the resulting generalisation gap.
