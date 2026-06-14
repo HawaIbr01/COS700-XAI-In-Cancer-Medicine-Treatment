@@ -1,59 +1,80 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 2}
-% -------------------------------------------------------
-% INSTRUCTION: Paste existing Sections 4.2 through 4.2.5 here.
-% Fill the run count placeholder (Section 4.2.5 / 4.3).
-% Convert first-person to third person throughout.
-% -------------------------------------------------------
+\label{sub:method_ga}
+Rule extraction from the trained baseline model is performed using a Genetic 
+Algorithm (GA) implemented via the Distributed Evolutionary Algorithms in Python 
+(DEAP) framework \cite{Yedjour2024}. Following the Red XAI philosophy established in 
+Section \ref{ssub:blue-red}, the GA is deployed not merely to produce 
+interpretable if-then structures but as an active diagnostic tool to expose the 
+decision logic of the overfitted model and evaluate its biological coherence 
+\cite{Biecek2024}. The extraction process balances fidelity and comprehensibility 
+as competing objectives throughout the evolutionary search space \cite{Yedjour2024}.
 
-% [Paste Section 4.2 Genetic Algorithms for Rule Extraction here]
-% [Paste Section 4.2.1 Preparation for Rule Extraction here]
-% [Paste Section 4.2.2 Pre-processing Data for Rule Extraction here]
-% [Paste Section 4.2.3 Implementation of GA via DEAP here]
-% [Paste Section 4.2.4 Rule Pruning and Population Diversity here]
-% [Paste Section 4.2.5 Validation and Execution here]
-%   -- FILL: run count placeholder
-
-Rule extraction from the trained baseline model is performed using a Genetic Algorithm implemented via the Distributed Evolutionary 
-Algorithms in Python (DEAP) framework. Following the RED XAI philosophy established in Section 3.1.1, the GA is used not merely to 
-produce interpretable if-then rules but as a diagnostic tool to expose the decision logic of the overfitted model and evaluate its 
-coherence. The extraction process balances fidelity and comprehensibility as competing objectives throughout \cite{Yedjour2024}.
 \subsubsection{Preparation for Rule Extraction}
-Prior to rule extraction, loss landscape visualisation is applied to the trained baseline model to characterise the sharpness of the 
-minima to which it has converged and to document the overfitting behaviour that motivates the SAM intervention in Stage 2. This 
-visualisation serves as a qualitative complement to the generalisation gap metric established in Section 4.1.4 and provides a 
-geometric baseline against which the SAM-regularised model's landscape is later compared \cite{Li2018}.
+\label{ssub:method_ga_rule_extraction}
+Prior to rule extraction, loss landscape visualisation is applied to the trained 
+baseline model to characterise the sharpness of the local minima to which it has 
+converged \cite{Li2018}. This step documents the overfitting behavior that 
+motivates the SAM intervention in Stage 2. This visualisation serves as a 
+qualitative complement to the generalisation gap metric established in Section 
+\ref{ssub:fragility-gap}, providing a geometric baseline against which the 
+SAM-regularised model's landscape is subsequently contrasted \cite{Li2018}.
+
 \subsubsection{Pre-processing Data for Rule Extraction}
-Rather than operating on continuous inputs, rule extraction requires discretisation of the gene expression features. Continuous input 
-ranges are divided into k partitions of equal length, producing discrete categories such as high expression, intermediate expression, 
-and low expression as described in Section 4.1.3. Rules are then extracted in the format: if X$_1$ is in partition A and X$_2$ is in 
-partition 
-B, then predicted response Y, where each condition corresponds to a discretised feature partition \cite{Yedjour2024}.
+\label{ssub:method_ga_processing}
+Rather than operating on continuous numerical ranges, rule extraction requires 
+discretisation of the gene expression features to form rule conditions. 
+Continuous input distributions are divided into $k$ partitions of equal length, 
+producing discrete categories capturing high expression, intermediate expression, 
+and low expression profiles as described in Section \ref{ssub:method_dataset}. 
+Rules are then extracted in a standard logical formatting, where if feature $X_1$ 
+resides in partition $A$ and feature $X_2$ resides in partition $B$, then the 
+model outputs predicted response $Y$, where each separate condition maps to a 
+discretised genomic feature partition \cite{Yedjour2024}.
+
 \subsubsection{Implementation of GA via DEAP}
-An evolutionary loop is configured within the DEAP framework to discover optimal rule sets. Each individual chromosome in the population 
-represents a candidate rule set encoded as a vector, where each element corresponds to a discretised attribute partition or a special 
-value of -1 to indicate that the attribute is not involved in the rule \cite{Yedjour2024}.
-The fitness function adopts a multi-objective formulation, simultaneously optimising fidelity to the black-box model, predictive accuracy 
-on held-out data, and comprehensibility measured by rule length \cite{Yedjour2024}. Tournament selection is used to identify parent 
-individuals for reproduction. Two-point crossover combines rule segments from two parent chromosomes to produce offspring, and mutation 
-introduces random changes – such as adding or removing a condition – to maintain population diversity and prevent premature convergence 
-on local optima \cite{Yedjour2024}.
-\subsubsection{Rule Pruning and Population Diversity}
-Following each generation, rule pruning is applied to remove conditions with low confidence and support, maintaining a concise rule set 
-and reducing rule explosion. Aging evolution is additionally applied as a diversity mechanism to prevent the population from converging 
-prematurely on local optima, ensuring that the evolutionary search continues to explore the rule space rather than stagnating on a 
-suboptimal solution \cite{Yedjour2024}.
-\subsubsection{Validation and Execution}
-The GA is executed for 50 generations with a population size of 35 to 45 individuals, following the configuration established by 
-\cite{Yedjour2024}. The output of each run is a Pareto front representing a set of non-dominated rule sets that each reflect a 
-different trade-off between fidelity and comprehensibility. The final selected rule set is the one that achieves the best balance 
-across these objectives as determined by PROMETHEE II ranking in Section 4.5.1. 
+\label{ssub:method_ga_deap}
+An evolutionary loop is configured within the open-source DEAP framework to 
+discover optimal rule sets. Each individual chromosome in the population 
+represents a candidate rule set encoded as a discrete vector, where each element 
+corresponds to a specific attribute partition or a special padding value of $-1$ 
+to indicate that the given attribute is excluded from the rule string 
+\cite{Yedjour2024}. 
 \\
-\textcolor{red}{To account for the stochastic nature of the genetic algorithm, rule extraction is
-repeated across 30 independent runs, each initialised with a different random seed. The non-dominated
-rule sets produced across all runs are aggregated into a single rule pool for the given model condition,
-which is then ranked using PROMETHEE II (Section 4.5.1). This ensures the final ranked rules reflect
-structure that is consistent across runs rather than the product of a single stochastic search. The
-choice of 30 runs follows standard practice for the statistical comparison of stochastic optimisation
-algorithms \cite{Derrac2011} and is provisional, subject to confirmation against the protocol of
-\cite{Yedjour2024} and the project timeline.}
+The fitness function adopts a multi-objective formulation, simultaneously 
+optimising fidelity to the black-box model, predictive accuracy on identical 
+held-out data, and comprehensibility penalised by rule length \cite{Yedjour2024}. 
+Tournament selection identifies parent individuals for reproduction. Two-point 
+crossover combines rule segments from two parent chromosomes to produce 
+offspring, and mutation introduces random structural variations, such as adding 
+or dropping an antecedent condition, to maintain population diversity and escape 
+suboptimal local minima \cite{Yedjour2024}.
+
+\subsubsection{Rule Pruning and Population Diversity}
+\label{ssub:method_ga_pruning}
+Following each generation, rule pruning automatically removes conditions exhibiting 
+low confidence or low data support, maintaining a concise rule set and reducing 
+rule explosion \cite{Yedjour2024}. Aging evolution is applied as an alternative 
+diversity preservation mechanism to prevent the population from premature 
+convergence on local optima, ensuring that the evolutionary search continues to 
+explore the rule space rather than stagnating on a suboptimal solution 
+\cite{Yedjour2024}.
+
+\subsubsection{Validation and Execution}
+\label{ssub:method_ga_validation}
+The GA executes for exactly 50 generations with a population size bounded between 
+35 and 45 individuals, matching the baseline configuration validated by Yedjour 
+et al. \cite{Yedjour2024}. The output of each run is a Pareto front representing 
+a set of non-dominated rule sets that each reflect a different trade-off between 
+surrogate fidelity and comprehensibility. The final selected rule set is the one 
+that achieves the optimal operational balance across these objectives as 
+determined by the downstream PROMETHEE II multi-criteria ranking engine detailed 
+in Section \ref{ssub:method_promethee}. 
+\\
+To account for the stochastic nature of evolutionary metaheuristics, rule 
+extraction is repeated across 30 independent runs, each initialised with a 
+distinct random seed. The non-dominated rule sets produced across all runs are 
+aggregated into a single rule pool for the given model condition, which is then 
+ranked using PROMETHEE II. This ensures the final ranked rules reflect structural 
+dependencies that are consistent across runs rather than the artifact of a 
+single stochastic search. The choice of 30 runs follows standard non-parametric 
+experimental protocols for the evaluation of stochastic optimisation algorithms 
+\cite{Derrac2011}.

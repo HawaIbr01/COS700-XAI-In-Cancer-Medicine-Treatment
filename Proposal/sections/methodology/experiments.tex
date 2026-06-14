@@ -7,24 +7,24 @@ starting checkpoint. The DeepCCDS model is trained using the standard Adam optim
 until a wide, stable generalisation gap emerges using the early stopping indicators 
 stipulated in Section \ref{ssub:method_training}, mathematically confirming the 
 presence of Clever Hans shortcut strategies. 
-
+\\
 Symbolic if-then rules are subsequently extracted from this unregularised checkpoint 
 using both the single-objective GA and the multi-objective NSGA-II computational loops. 
 The resulting rule cohorts are audited via PROMETHEE II multi-criteria ranking and 
 GSEA over-representation analysis to construct the baseline performance scorecard.
-
+\\
 In Stage 2, the geometric regularisation intervention is applied. The identical 
 DeepCCDS network architecture is retrained from scratch using the SAM optimiser to 
 smooth the error landscape and collapse the generalisation gap. Symbolic rules are then 
 re-extracted using operational evolutionary parameters identical to Stage 1 to preserve 
 strict experimental control. 
-
+\\
 The identical PROMETHEE II matrix execution and GSEA biological audit are performed on 
 these regularised rules to compile the second scorecard. Finally, non-parametric 
 Mann--Whitney U tests are applied to compare the baseline and SAM-driven outranking flow 
 distributions as two independent samples, determining whether the regularisation 
 intervention delivers a statistically significant advantage.
-
+\\
 \paragraph{Robustness Validation: Cancer Cell Line Encyclopedia (CCLE)}
 \label{para:robustness_ccle}
 As a planned stretch objective, subject to execution timeline boundaries, the complete 
@@ -33,7 +33,7 @@ pharmacogenomic data collection: the Cancer Cell Line Encyclopedia (CCLE)
 \cite{Barretina2012}. The CCLE contains deep gene expression matrices and multi-drug 
 screening response targets for diverse human cancer cell lines, using a data structure 
 entirely compatible with the primary GDSC platform \cite{Baptista2021, Partin2023}. 
-
+\\
 Deploying the pipeline on CCLE profiles with $\text{LN } IC_{50}$ as the continuous target 
 evaluates whether the structural advantages of SAM regularisation over the baseline 
 in terms of rule fidelity, clarity, and pathway enrichment generalize beyond a single 
