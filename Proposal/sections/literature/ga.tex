@@ -1,29 +1,31 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 2}
-% -------------------------------------------------------
-% INSTRUCTION: Paste existing Section 3.5.1 Genetic Algorithms content here.
-% Convert first-person to third person throughout.
-% -------------------------------------------------------
-Genetic Algorithms were first introduced by John Holland in the 1970s \cite{Holland1975} and represent a well-
-established metaheuristic optimisation technique inspired by natural evolution and selection 
-\cite{Yedjour2024}. They are designed to solve complex problems where traditional methods struggle due to 
-high dimensionality or non-linearity of the search space \cite{Yedjour2024}.
+\label{ssub:ga}
+
+Genetic Algorithms were first introduced by John Holland in the 1970s \cite{Holland1975} and represent
+a well-established metaheuristic optimisation technique inspired by natural evolution and selection
+\cite{Yedjour2024}. They are designed to solve complex problems where traditional methods struggle due
+to high dimensionality or non-linearity of the search space \cite{Yedjour2024}.
 \\
-A genetic algorithm operates through an iterative process to evolve a population of potential solutions toward 
-an optimal result. Each individual in the population represents a candidate rule set encoded as a chromosome, 
-and is assessed using a fitness function that determines how well it solves the target problem 
-\cite{Yedjour2024}. The best-performing individuals are selected as parents for the next generation, 
-commonly through tournament selection or roulette wheel selection \cite{Yedjour2024}. New offspring are 
-produced through two biological operators: crossover, which combines genetic information from two parent 
-chromosomes to create new individuals, and mutation, which introduces random changes to maintain population 
-diversity and prevent convergence on local rather than global optima \cite{Yedjour2024}.
+A genetic algorithm operates through an iterative process to evolve a population of potential solutions
+toward an optimal result. Each individual in the population represents a candidate rule set encoded as a
+chromosome, and is assessed using a fitness function that determines how well it solves the target
+problem \cite{Yedjour2024}. The best-performing individuals are selected as parents for the next
+generation, commonly through tournament selection or roulette wheel selection (two of several
+established selection schemes) \cite{Yedjour2024}. New offspring are produced through two biological
+operators: crossover, which combines genetic information from two parent chromosomes to create new
+individuals, and mutation, which introduces random changes to maintain population diversity and prevent
+convergence on local rather than global optima \cite{Yedjour2024}. Crossover, mutation, and selection
+each admit several operator variants; the canonical choices are summarised here, and the specific
+operators adopted in this project, together with the rationale for selecting them, are detailed in the
+methodology (Section~\ref{sec:methodology}).
 
 \subsubsection{Application in Rule Extraction and XAI}
+\label{ssub:ga-rule-extraction}
 
-Genetic algorithms serve as a powerful tool for rule extraction from black-box models like Artificial Neural 
-Networks. This process involves identifying the decision-making logic of a complex network and converting its 
-non-linear relationships into a set of interpretable "if-then" rules \cite{Yedjour2024}.When used for this 
-purpose, the GA evaluates "successful" rule sets based on three primary criteria such as fidelity, accuracy, 
-and comprehensibility. Fidelity covers how closely the extracted rules mimic the decision-making process of the 
-original ANN. Accuracy is how well the rules perform when classifying new, unseen data and lastly Comprehensibility 
-is whether the rule set is simple and manageable enough to be easily understood by human experts \cite{Yedjour2024}.
+Genetic algorithms serve as a powerful tool for rule extraction from black-box models like Artificial
+Neural Networks. This process involves identifying the decision-making logic of a complex network and
+converting its non-linear relationships into a set of interpretable ``if-then'' rules \cite{Yedjour2024}.
+When used for this purpose, the GA evaluates ``successful'' rule sets based on three primary criteria:
+fidelity, accuracy, and comprehensibility. Fidelity covers how closely the extracted rules mimic the
+decision-making process of the original ANN. Accuracy is how well the rules perform when classifying
+new, unseen data, and comprehensibility is whether the rule set is simple and manageable enough to be
+easily understood by human experts \cite{Yedjour2024}.

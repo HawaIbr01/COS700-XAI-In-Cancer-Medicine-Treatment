@@ -1,31 +1,22 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 3}
-% -------------------------------------------------------
-% INSTRUCTION: Paste existing Section 3.5.2 NSGA-II content here.
-% Convert first-person to third person throughout.
-% -------------------------------------------------------
+\label{ssub:nsga}
+
 While standard Genetic Algorithms usually combine multiple goals into a single scalar fitness function,
 the Non-Dominated Sorting Genetic Algorithm II (NSGA-II) is explicitly designed for multi-objective
-optimisation tasks where objectives are fundamentally in conflict \cite{Deb2002}. In the context
-of rule extraction, achieving high fidelity to the underlying Artificial Neural Network often comes
-at the expense of comprehensibility \cite{Yedjour2024}.
-\\\\
-NSGA-II addresses this trade-off by evolving a population of solutions toward a Pareto front, which
-is a set of optimal solutions where no single objective can be improved without degrading the other
+optimisation tasks where objectives are fundamentally in conflict \cite{Deb2002}. In the context of
+rule extraction, achieving high fidelity to the underlying Artificial Neural Network often comes at the
+expense of comprehensibility \cite{Yedjour2024}.
+\\
+NSGA-II addresses this trade-off by evolving a population of solutions toward a Pareto front, which is a
+set of optimal solutions where no single objective can be improved without degrading another
 \cite{Deb2002}. The algorithm operates on two core mechanisms \cite{Deb2002}:
-\\
-1. Fast Non-Dominated Sorting: The population is ranked into hierarchical fronts based on
-Pareto dominance. An individual rule set is considered ``non-dominated'' if no other rule set in the
-population is superior across all objectives \cite{Deb2002}.
-\\
-2. Crowding Distance: To maintain diversity within the population and prevent premature
-convergence on a local optimum, NSGA-II calculates a crowding distance for each individual. This
-metric estimates the density of solutions surrounding a particular rule set in the objective space,
-prioritising individuals residing in less crowded regions during the selection phase \cite{Deb2002}.
-\\\\
-By utilising elitism -- carrying the best solutions from the combined parent and offspring populations
-into the next generation -- NSGA-II ensures that high-quality rule sets are not discarded during
-evolution \cite{Deb2002, Yedjour2024}. For this RED XAI framework, NSGA-II is highly advantageous
-as it naturally outputs a diverse spectrum of rule sets across the fidelity--comprehensibility trade-off,
+\begin{enumerate}
+    \item \textbf{Fast Non-Dominated Sorting}: the population is ranked into hierarchical fronts based on Pareto dominance. An individual rule set is considered ``non-dominated'' if no other rule set in the population is superior across all objectives \cite{Deb2002}.
+    \item \textbf{Crowding Distance}: to maintain diversity within the population and prevent premature convergence on a local optimum, NSGA-II calculates a crowding distance for each individual. This metric estimates the density of solutions surrounding a particular rule set in the objective space, prioritising individuals residing in less crowded regions during the selection phase \cite{Deb2002}.
+\end{enumerate}
+
+By utilising elitism (carrying the best solutions from the combined parent and offspring populations
+into the next generation), NSGA-II ensures that high-quality rule sets are not discarded during
+evolution \cite{Deb2002, Yedjour2024}. For this Red XAI framework, NSGA-II is highly advantageous as it
+naturally outputs a diverse spectrum of rule sets across the fidelity--comprehensibility trade-off,
 allowing the PROMETHEE~II multi-criteria framework to later rank and select the optimal balance between
 mitigating ``Rule Explosion'' and maintaining statistical fidelity \cite{Yedjour2024, Brans1985}.
