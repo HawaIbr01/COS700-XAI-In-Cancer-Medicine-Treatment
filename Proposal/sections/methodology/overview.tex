@@ -1,7 +1,7 @@
 \label{sub:method_overview}
 This study adopts a proof by demonstration research methodology to evaluate the 
 proposed core hypotheses \cite{Lachman1989}. The operational framework is evaluated 
-through a highly controlled experiment in which the baseline neural optimization strategy, 
+through a highly controlled experiment in which the baseline neural optimisation strategy, 
 moving from the unregularised Adam baseline to the SAM regularisation intervention, serves 
 as the sole independent variable. 
 \\
@@ -15,11 +15,89 @@ controlled substitution isolates the explicit contribution of loss landscape geo
 to downstream explanation quality, ensuring observed rule validation changes stem 
 directly from the regularisation intervention rather than from hidden confounding variables.
 
+\subsubsection{Red XAI Audit and Verification Workflow Loop}
+\label{ssub:method_audit_workflow}
+A visual sequential representation of the audit loop is displayed in
+Figure~\ref{fig:audit_pipeline_loop}. It shows the execution steps connecting model training,
+auditing, rule extraction, and validation.
+
+\begin{figure}[H]
+\centering
+% The positioning library ensures distances are calculated from node borders
+\begin{tikzpicture}[
+    node distance=1.2cm and 1.8cm,
+    auto,
+    block/.style={
+        rectangle, 
+        draw=black, 
+        thick, 
+        fill=white,
+        text width=4.2cm, 
+        align=center, 
+        minimum height=1.6cm,
+        rounded corners=4pt,
+        font=\small
+    },
+    line/.style={
+        draw, 
+        -latex, 
+        thick
+    }
+]
+    % Nodes setup using explicit positioning parameters to avoid collisions
+    \node [block] (data) {
+        \textbf{GDSC Dataset Preprocessing}\\
+        \vspace{0.1cm}\scriptsize Z-score normalisation and biological discretisation
+    };
+    
+    \node [block, right=of data] (train) {
+        \textbf{DeepCCDS Model Training}\\
+        \vspace{0.1cm}\scriptsize Stage 1: Adam Baseline\\Stage 2: SAM Intervention
+    };
+    
+    \node [block, below=of train] (audit) {
+        \textbf{Red XAI Model Audit}\\
+        \vspace{0.1cm}\scriptsize Generalisation Gap Scorecard \& Loss Landscape Visualisation
+    };
+    
+    \node [block, left=of audit] (extract) {
+        \textbf{Evolutionary Rule Extraction}\\
+        \vspace{0.1cm}\scriptsize Post-hoc execution via DEAP loops (GA and NSGA-II Engines)
+    };
+    
+    \node [block, below=of extract] (mcda) {
+        \textbf{MCDA Rule Filtering}\\
+        \vspace{0.1cm}\scriptsize Unified PROMETHEE II ranking across fidelity, clarity, stability
+    };
+    
+    \node [block, right=of mcda] (verify) {
+        \textbf{Clinical Truth Validation}\\
+        \vspace{0.1cm}\scriptsize Programmatic GSEApy lookup to cross-reference KEGG pathways
+    };
+
+    % Paths execution with clear directional routing
+    \path [line] (data) -- (train);
+    \path [line] (train) -- (audit);
+    \path [line] (audit) -- (extract);
+    \path [line] (extract) -- (mcda);
+    \path [line] (mcda) -- (verify);
+    
+    % Feedback check connection routed safely around the outer edge
+    \path [line] (verify.east) -- ++(0.8cm,0) |- node [pos=0.25, right, font=\scriptsize] {
+        Audit Feedback Loop
+    } (train.east);
+\end{tikzpicture}
+\caption{Schematic diagram illustrating the proposed closed-loop Red XAI pipeline, charting the 
+progression from input data partition interfaces through geometric landscape auditing to multi-criteria 
+symbolic selection and programmatic biological verification.}
+\label{fig:audit_pipeline_loop}
+\end{figure}
+
 \subsubsection{Technical Specifications}
 \label{ssub:method_tech_specification}
-The end-to-end diagnostic and explanation pipeline is implemented natively in Python. 
+The end-to-end diagnostic and explanation pipeline is implemented in Python. 
 Neural network training routines are driven via PyTorch, while the implementation of 
-the single-objective GA and multi-objective NSGA-II rule extraction loops utilizes 
+the single-objective GA and multi-objective NSGA-II rule extraction loops utilises 
 the Distributed Evolutionary Algorithms in Python (DEAP) framework. Multi-criteria outranking 
 models are executed through the \texttt{pymcdm} library, and automated over-representation 
 pathway validation maps are driven via the \texttt{GSEApy} package \cite{Fang2023}. 

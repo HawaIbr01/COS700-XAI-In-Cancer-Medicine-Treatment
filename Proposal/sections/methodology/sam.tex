@@ -1,36 +1,48 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 4}
-% -------------------------------------------------------
-% INSTRUCTION: Paste existing Sections 4.4 through 4.4.3 here.
-% Convert first-person to third person throughout.
-% -------------------------------------------------------
-
-% [Paste Section 4.4 SAM Regularisation here]
-% [Paste Section 4.4.1 Intervention Objective here]
-% [Paste Section 4.4.2 SAM Optimisation Mechanism here]
-% [Paste Section 4.4.3 Expected Effect on Generalisation here]
-The second stage of our experiment uses the Sharpness-Aware Minimisation optimiser or SAM to retrain the DeepCCDS model.
-This helps reduce the gap between training and validation performance and makes the models loss landscape smoother.
+\label{sub:method_sam}
+The second stage of the experimental framework introduces a targeted regularisation 
+intervention by retraining the DeepCCDS model using the Sharpness-Aware Minimisation 
+(SAM) optimiser. This intervention aims to collapse the generalisation gap observed 
+between training and validation data performance profiles while smoothing the 
+underlying parameter error landscape.
 
 \subsubsection{Intervention Objective}
-The only difference between SAM and the baseline model is the optimisation strategy, with both models being experimented on with the 
-exact same specifications such as architecture, dataset splits, preprocessing pipeline and training configuration that's been used for 
-the baseline model. Thus, these controlled replacements help isolate the influence of loss landscape geometry on three outcome 
-measures, generalisation gap, smoothness of the loss landscape (as determined by visualisation), and quality of rules extracted from 
-evolutionary algorithms (Phi algorithms) in Sections 4.2 and 4.3.
+\label{ssub:method_sam_objective}
+To maintain strict experimental control, the choice of parameter optimiser represents 
+the sole structural distinction between the Stage 1 baseline and the Stage 2 intervention 
+configurations. Both training processes enforce identical network parameter architectures, 
+Z-score normalisation properties, fixed data splits, and downstream search settings. 
+Consequently, this isolated architectural substitution establishes an exact empirical 
+boundary to isolate the causal influence of loss landscape geometry across three primary 
+dependent metric dimensions: the magnitude of the generalisation gap, the visual 
+smoothness of the loss manifold, and the multi-criteria outranking scores ($\phi$) of 
+the symbolic rules extracted by the evolutionary pipelines detailed in 
+Sections \ref{sub:method_ga} and \ref{sub:method_nsga}.
 
 \subsubsection{SAM Optimisation Mechanism}
-The method presented in this work, called SAM (Sharpness-Aware Minimisation), adds an additional step to training by incorporating a 
-neighborhood-based perturbation. Instead of simply minimizing the loss using the current parameters ($\theta$) as has been done 
-classically, SAM will also evaluate the worst case loss for all possible (perturbed) weights within a local $\epsilon$-ball around the 
-current weights $\theta$, achieving minimisation of loss at perturbed parameters of $\theta + \epsilon$. Thus, the SAM method penalises 
-high curvature in the loss surface in order to guide the model towards solutions that are stable even when the weights are perturbed 
-slightly, which also results in convergence toward flat minima \cite{Foret2021,Li2018}.
+\label{ssub:method_sam_mechanism}
+The SAM optimisation protocol introduces an explicit neighbourhood-based adversarial 
+perturbation stage into the traditional gradient calculation cycle \cite{Foret2021}. 
+Rather than updating weights solely to minimise the immediate loss value computed at 
+the active parameter coordinate ($\theta$), SAM evaluates the maximum worst-case loss 
+expansion for all possible weight variations situated within a local Euclidean 
+$\epsilon$-ball surrounding $\theta$. This yields an optimisation objective that 
+minimises the loss at a perturbed parameter point defined by $\theta + \epsilon$. 
+\\
+By explicitly penalising regions characterised by high local curvature on the objective 
+surface, SAM avoids sharp coordinate transitions and guides the parameter updates toward 
+spatially stable, flatter loss landscape minima \cite{Foret2021, Li2018}.
 
 \subsubsection{Expected Effect on Generalisation}
-Our baseline model is characterised by high training accuracy, lower validation performance and a large generalisation gap, indicating 
-that the model has memorised training-specific noise rather than learned stable biological patterns. By converging onto flatter minima, 
-the SAM-regularised model is expected to reduce the training-validation discrepancy, producing more balanced performance across both 
-sets. As argued in \cite{Springer2024}, this improvement in generalisation is expected to produce more balanced feature 
-representations, resulting in extracted rules with fewer spurious conditions and higher biological coherence than those of the baseline 
-model.
+\label{ssub:method_sam_generalisation}
+The unregularised baseline network characteristically produces exceptional training 
+accuracy alongside a high validation error rate. This broad discrepancy demonstrates 
+that the black box has memorised transient technical noise and dataset-specific batch 
+effects instead of capturing stable biological signals. By driving parameter convergence 
+toward flatter loss landscape basins, SAM regularisation is expected to reduce this 
+training-validation divergence to balance performance across both data partitions. 
+\\
+As established by Springer et al. \cite{Springer2024}, flattening the parameter space 
+enforces balanced weight distributions across active feature representations. For downstream 
+rule extraction, this regularised weight profile is expected to discourage the metaheuristics from selecting 
+spurious shortcuts, and to produce shorter rule strings that possess high global fidelity 
+and direct alignment with authentic oncogenic pathways.

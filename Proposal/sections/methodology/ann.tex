@@ -43,11 +43,18 @@ samples, ensuring that individual gene expression values are expressed relative 
 population mean and standard deviation. For the downstream symbolic rule extraction 
 stage, these continuous inputs are discretised into biological categories: High 
 Expression ($Z > 1$), Low Expression ($Z < -1$), and Intermediate Expression 
-($-1 \le Z \le 1$). The dataset is partitioned into a fixed 80\% training, 10\% 
-validation, and 10\% testing split prior to any model optimization. This split 
-functions as a locked interface specification across the entire pipeline, ensuring 
-that all rule-quality metrics are computed on identical, uncorrupted held-out data 
-throughout the study.
+($-1 \le Z \le 1$). The DeepCCDS network is trained as a regressor on the continuous
+$\text{LN } IC_{50}$ target, and the magnitude of overfitting is therefore measured with the
+regression metrics $R^2$ and RMSE (Section~\ref{ssub:method_training}). For the symbolic rule
+extraction stage, however, the extracted if-then rules predict a categorical drug-response outcome:
+the continuous $\text{LN } IC_{50}$ values, and the network's continuous predictions, are accordingly
+discretised into discrete response classes (sensitive versus resistant) by thresholding
+$\text{LN } IC_{50}$, with the exact threshold fixed at the implementation stage. This allows rule
+fidelity to be measured as a classification-agreement score (Section~\ref{ssub:method_promethee})
+between each rule's predicted class and the network's predicted class. The dataset is partitioned into
+a fixed 80\% training, 10\% validation, and 10\% testing split prior to any model optimisation. This
+split functions as a locked interface specification across the entire pipeline, ensuring that all
+rule-quality metrics are computed on identical, uncorrupted held-out data throughout the study.
 
 \subsubsection{Stage 1: Training the Overfitting Baseline}
 \label{ssub:method_training}
@@ -83,7 +90,7 @@ A qualitative sanity check audits the baseline model for Clever Hans behaviour,
 following the framework outlined by Pahde et al. \cite{Pahde2023}. This check 
 generates local feature-attribution maps for a representative sample of training and 
 validation predictions. These maps are built using a lightweight Layer-wise Relevance 
-Propagation (LRP) implementation alongside vanilla input gradients—a technique that 
+Propagation (LRP) implementation alongside vanilla input gradients, a technique that 
 uses backpropagation to calculate the partial derivatives of the model's output with 
 respect to the input features, measuring how sensitive a prediction is to small changes 
 in each gene's expression.
@@ -91,8 +98,9 @@ in each gene's expression.
 When the unregularised baseline model exploits non-biological statistical noise, the 
 resulting training attribution maps display diffuse, scattered, or biologically 
 incoherent relevance signatures. Specifically, the model assigns high marginal 
-importance to housekeeping genes or technical artefacts that possess no documented 
-functional roles in established oncogenic pathways. Concurrently, validation 
+importance to housekeeping genes (genes expressed at stable levels across most cell types and with no
+specific role in cancer) or technical artefacts that possess no documented functional roles in
+established oncogenic pathways. Concurrently, validation 
 attribution patterns exhibit high sample-to-sample inconsistency. This qualitative 
 assessment exposes the explicit structural fragility of the unregularised model's 
 internal logic, providing the scorecards that establish the Fragility Baseline.

@@ -2,20 +2,22 @@
 % Gantt chart — pgfgantt, labels left, bars right
 % Add \usepackage{pgfgantt} to main.tex preamble
 % -------------------------------------------------------
-The project is structured across six months from June to November 2026. All five team members
-begin with shared boilerplate and pilot testing in June to establish a common codebase and verify
-the pipeline end-to-end. Data preparation and baseline model training are completed in July.
+\label{sec:planning}
+
+The project is structured across four months from July to October 2026. All five team members
+begin with shared boilerplate and pilot testing in July to establish a common codebase and verify
+the pipeline end-to-end. Data preparation and baseline model training are completed in July as well.
 Rule extraction by Persons 2 and 3, alongside the SAM intervention by Person 4, run in
 parallel across August and September. Person 5 conducts PROMETHEE II ranking, statistical
 validation, and biological verification on a rolling basis from August through October as rule
 sets are produced. Final evaluation, comparative analysis, and report writing are completed
-across October and November by all team members.
+collaboratively by all team members, wrapping up with final submissions in October.
 
 \vspace{1em}
 
 \begin{figure}[H]
 \centering
-\caption{Project Timeline --- June to November 2026}
+\caption{Project Timeline: July to October 2026}
 \label{fig:gantt}
 \resizebox{\textwidth}{!}
 {%
@@ -24,7 +26,7 @@ across October and November by all team members.
         vgrid={*1{dotted}},
         time slot format=isodate-yearmonth,
         time slot unit=month,
-        x unit=2.2cm,
+        x unit=2.5cm,
         y unit title=0.7cm,
         y unit chart=0.75cm,
         title height=1,
@@ -44,21 +46,21 @@ across October and November by all team members.
         milestone/.append style={fill=black, draw=black},
         link/.style={-latex, thick, black!50},
         link bulge=0.5
-    ]{2026-06}{2026-11}
+    ]{2026-07}{2026-10}
 
     \gantttitlecalendar{year, month=shortname} \\
 
     % ---- GROUP 1 ----
-    \ganttgroup{Setup \& Boilerplate}{2026-06}{2026-06} \\
+    \ganttgroup{Setup \& Boilerplate}{2026-07}{2026-07} \\
     \ganttbar[bar/.append style={fill=blue!35}]
-        {Boilerplate \& pilot testing (All)}{2026-06}{2026-06} \\[grid]
+        {Boilerplate \& pilot testing (All)}{2026-07}{2026-07} \\[grid]
 
     % ---- GROUP 2 ----
-    \ganttgroup{Data \& Baseline Model}{2026-06}{2026-07} \\
+    \ganttgroup{Data \& Baseline Model}{2026-07}{2026-07} \\
     \ganttbar[bar/.append style={fill=blue!35}]
-        {Data preprocessing (P5 \& P1)}{2026-06}{2026-07} \\
+        {Data preprocessing (P5 \& P1)}{2026-07}{2026-07} \\
     \ganttbar[bar/.append style={fill=blue!35}]
-        {Baseline model --- Adam (P1)}{2026-07}{2026-07} \\[grid]
+        {Baseline model: Adam (P1)}{2026-07}{2026-07} \\[grid]
 
     % ---- GROUP 3 ----
     \ganttgroup{Rule Extraction \& SAM}{2026-08}{2026-09} \\
@@ -77,11 +79,11 @@ across October and November by all team members.
         {GSEA biological verification (P5)}{2026-09}{2026-10} \\[grid]
 
     % ---- GROUP 5 ----
-    \ganttgroup{Analysis \& Report Writing}{2026-10}{2026-11} \\
+    \ganttgroup{Analysis \& Report Writing}{2026-09}{2026-10} \\
     \ganttbar[bar/.append style={fill=green!40}]
         {Final evaluation \& analysis (All)}{2026-10}{2026-10} \\
     \ganttbar[bar/.append style={fill=green!40}]
-        {Report writing (All)}{2026-10}{2026-11}
+        {Report writing (All)}{2026-09}{2026-10}
 
     % ---- LINKS ----
     \ganttlink{elem2}{elem4}

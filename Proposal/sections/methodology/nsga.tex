@@ -25,6 +25,8 @@ preserve genetic diversity across the objective space.
 Two-point crossover and random mutation operators are applied identically to the GA 
 sub-module to maintain rigorous comparative boundaries \cite{Yedjour2024}. The 
 NSGA-II loop runs for a matching duration of 50 generations with an identical population 
-size. Unlike the GA, the final output maps a complete Pareto front of non-dominated 
+size. As with the GA, extraction is repeated across 30 independent runs and the resulting
+non-dominated rules are aggregated before ranking (Section~\ref{sub:method_ga}). Unlike the GA, the
+final output maps a complete Pareto front of non-dominated
 rule strings, which is passed directly to the PROMETHEE II framework in Section 
 \ref{ssub:method_promethee} for Stage 1 and Stage 2 comparative evaluation.

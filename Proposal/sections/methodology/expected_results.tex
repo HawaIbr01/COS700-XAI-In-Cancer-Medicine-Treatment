@@ -1,26 +1,33 @@
 \subsubsection{Expected Results and Deliverables}
 \label{ssub:method_expected_results}
-Four primary outcomes are anticipated from this methodology. First, an inverse 
-correlation exists between the generalisation gap and symbolic rule comprehensibility. 
-The SAM-regularised model yields rule sets with significantly fewer antecedent 
-conditions than the overfitted baseline while maintaining comparable statistical 
-fidelity, validating the hypothesis that flatter loss landscape minima produce more 
-balanced feature representations \cite{Springer2024}. 
+Five primary outcomes are anticipated from this methodology. First, an inverse correlation is
+expected between the generalisation gap and symbolic rule comprehensibility. The SAM-regularised
+DeepCCDS model is expected to yield rule sets with significantly fewer antecedent conditions than the
+overfitted baseline while maintaining comparable statistical fidelity, which would support the
+hypothesis that flatter loss landscape minima produce more balanced feature representations
+\cite{Springer2024}.
 \\
-Second, the symbolic rules extracted from the SAM-regularised model demonstrate 
-higher stability scores across the heterogeneous cancer subtypes in the GDSC 
-collection, confirming that landscape-aware regularisation isolates genuine 
-oncogenic signals rather than training-specific shortcuts. 
+Second, the symbolic rules extracted from the SAM-regularised model are expected to demonstrate higher
+stability scores across the heterogeneous cancer subtypes in the GDSC collection, which would indicate
+that landscape-aware regularisation isolates genuine oncogenic signals rather than training-specific
+shortcuts.
 \\
-Third, the genes embedded within the SAM-optimised rule sets exhibit statistically 
-significant over-representation enrichment within verified KEGG pathways ($p < 0.05$) 
-relative to the baseline rules. This outcome provides a clear biological grounding 
-for the claim that geometric optimization improves not only the statistical profile 
-but also the clinical validity of post-hoc explanations. 
+Third, the genes embedded within the SAM-optimised rule sets are expected to exhibit statistically
+significant over-representation enrichment within verified KEGG pathways ($p < 0.05$) relative to the
+baseline rules. This outcome would provide biological grounding for the claim that geometric
+optimisation improves not only the statistical profile but also the clinical validity of post-hoc
+explanations.
 \\
-Fourth, and contingent on the preceding milestones, this study demonstrates that 
-the generalisation gap functions as a reliable upstream diagnostic indicator of 
-explanation fragility. Consequently, the pipeline establishes SAM regularisation as 
-an effective, explanation-agnostic intervention for directly improving the fidelity, 
-comprehensibility, and biological alignment of symbolically extracted rule sets in 
-cancer pharmacogenomics.
+Fourth, against the deterministic CART decision-tree baseline (Section~\ref{ssub:method_sota_dt}), the
+evolutionary GA and NSGA-II pipelines are expected to produce rules with a superior balance of
+fidelity and comprehensibility under PROMETHEE II ranking, and this advantage is expected to persist
+after SAM regularisation, isolating the benefit of evolutionary extraction from that of improved model
+health.
+\\
+Fifth, and contingent on the preceding milestones, this study aims to demonstrate that the
+generalisation gap functions as a reliable upstream diagnostic indicator of explanation fragility, and
+that SAM regularisation constitutes an effective, explanation-agnostic intervention for improving the
+fidelity, comprehensibility, and biological alignment of symbolically extracted rule sets in cancer
+pharmacogenomics. As a stretch objective, replicating these outcomes on the independent CCLE dataset
+(Section~\ref{para:robustness_ccle}) would further strengthen the robustness of these conclusions
+beyond the GDSC platform.

@@ -12,7 +12,7 @@ as competing objectives throughout the evolutionary search space \cite{Yedjour20
 \label{ssub:method_ga_rule_extraction}
 Prior to rule extraction, loss landscape visualisation is applied to the trained 
 baseline model to characterise the sharpness of the local minima to which it has 
-converged \cite{Li2018}. This step documents the overfitting behavior that 
+converged \cite{Li2018}. This step documents the overfitting behaviour that 
 motivates the SAM intervention in Stage 2. This visualisation serves as a 
 qualitative complement to the generalisation gap metric established in Section 
 \ref{ssub:fragility-gap}, providing a geometric baseline against which the 
@@ -69,12 +69,13 @@ that achieves the optimal operational balance across these objectives as
 determined by the downstream PROMETHEE II multi-criteria ranking engine detailed 
 in Section \ref{ssub:method_promethee}. 
 \\
-To account for the stochastic nature of evolutionary metaheuristics, rule 
-extraction is repeated across 30 independent runs, each initialised with a 
+To account for the stochastic nature of evolutionary metaheuristics, rule
+extraction (applied identically to both the GA and the NSGA-II pipeline of
+Section~\ref{sub:method_nsga}) is repeated across 30 independent runs, each initialised with a
 distinct random seed. The non-dominated rule sets produced across all runs are 
 aggregated into a single rule pool for the given model condition, which is then 
 ranked using PROMETHEE II. This ensures the final ranked rules reflect structural 
-dependencies that are consistent across runs rather than the artifact of a 
+dependencies that are consistent across runs rather than the artefact of a 
 single stochastic search. The choice of 30 runs follows standard non-parametric 
 experimental protocols for the evaluation of stochastic optimisation algorithms 
 \cite{Derrac2011}.

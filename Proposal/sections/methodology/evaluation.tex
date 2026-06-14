@@ -1,4 +1,3 @@
-\subsubsection{Evaluation Strategy}
 \label{ssub:method_evaluation_strategy}
 The evaluation framework leverages a Multi-Criteria Decision Analysis (MCDA) strategy 
 to objectively rank and filter the extracted symbolic rule sets, avoiding the 
@@ -8,13 +7,16 @@ limitations of single-metric, accuracy-driven evaluation paradigms \cite{Matejov
 \label{ssub:method_promethee}
 To isolate the top 10 most robust rule sets from the thousands of candidate strings 
 generated during the evolutionary search, the PROMETHEE II method is implemented via 
-the \texttt{pymcdm} library \cite{Yedjour2024}. Each rule set is modeled as a distinct 
+the \texttt{pymcdm} library \cite{Yedjour2024}. Each rule set is modelled as a distinct 
 decision alternative and evaluated across three fundamentally conflicting operational 
 criteria:
 \begin{itemize}
-    \item \textbf{Fidelity}: Quantified using the macro F1-score of the extracted rule 
+    \item \textbf{Fidelity}: Quantified using the macro F1-score (the harmonic mean of precision and
+    recall, averaged evenly across response classes) of the extracted rule
     predictions evaluated directly against the black-box predictions of the underlying 
-    DeepCCDS model, ensuring the rule operates as a faithful surrogate \cite{Guidotti2021}.
+    DeepCCDS model, with both mapped to the discrete response classes defined in
+    Section~\ref{ssub:method_dataset}, ensuring the rule operates as a faithful surrogate
+    \cite{Guidotti2021}.
     \item \textbf{Comprehensibility}: Quantified by the structural complexity of the 
     rule set, measured as the average rule length (the total number of antecedent 
     conditions or premises per rule), where shorter rule sets are penalised less to 
@@ -28,7 +30,8 @@ To preserve exact standardisation during comparison, any comparative evaluation 
 two distinct model configurations (such as the unregularised Adam baseline versus the 
 SAM-regularised model, or the evolutionary pipelines versus the decision tree benchmark) 
 compiles all candidate rules into a single, unified PROMETHEE II evaluation execution. 
-This step ensures that the net outranking flow ($\phi$) for every individual rule 
+This step ensures that the net outranking flow ($\phi$), the balance between how strongly a rule
+outranks all other rules and how strongly it is outranked by them, for every individual rule
 alternative is derived against a completely uniform reference set, rendering the net 
 outranking scores directly comparable prior to statistical testing. 
 \\

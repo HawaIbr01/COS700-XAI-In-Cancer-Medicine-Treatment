@@ -1,27 +1,16 @@
-% -------------------------------------------------------
-% ASSIGNED TO: \textcolor{green}{Person 1}
-% -------------------------------------------------------
-% INSTRUCTION: Cut current abstract to 100-200 words.
-% Keep: background sentence, the core problem (one sentence),
-% the method (one sentence), and the expected contribution (one sentence).
-% Remove all detailed methodology description.
-% -------------------------------------------------------
-
-Deep Neural Networks have achieved strong predictive performance in cancer pharmacogenomics,
+Deep Neural Networks achieve state-of-the-art predictive performance in cancer pharmacogenomics,
 particularly for drug sensitivity prediction using high-dimensional genomic data. However, their
-black-box nature limits clinical adoption, as clinicians cannot verify whether model predictions are
-grounded in genuine oncogenic biology or learned statistical shortcuts, a phenomenon known as
-the Clever Hans effect. This study proposes and evaluates a RED XAI diagnostic pipeline that
-repositions explainability as an active model interrogation tool rather than a post-hoc justification
-mechanism. Using the Genomics of Drug Sensitivity in Cancer (GDSC) dataset and the
-biologically-informed DeepCCDS architecture, the pipeline applies Sharpness-Aware Minimisation
-(SAM) as a targeted intervention to steer the model toward flatter loss landscape minima. Symbolic
-if-then rules are extracted using a Genetic Algorithm and NSGA-II and evaluated across fidelity,
-comprehensibility, and stability via PROMETHEE II multi-criteria analysis, \textcolor{red}{Mann--Whitney U tests}, and Gene Set
-Enrichment Analysis. The study hypothesises that SAM regularisation will
-produce rules that are statistically simpler, more faithful, and more strongly enriched in known
-oncogenic pathways than those extracted from an overfitted baseline.
-
-% -------------------------------------------------------
-% NOTE: Word count above is approximately 160 words — within the 100-200 guideline.
-% -------------------------------------------------------
+opaque black-box nature limits clinical adoption: clinicians cannot easily verify whether predictions
+are grounded in genuine oncogenic biology or merely exploit learned statistical shortcuts, a
+vulnerability known as the Clever Hans effect. This study proposes a Red Explainable Artificial
+Intelligence (XAI) diagnostic pipeline that treats post-hoc explainability as an active model
+interrogation tool rather than a justification mechanism. Using the Genomics of Drug Sensitivity in
+Cancer (GDSC) dataset and the biologically informed DeepCCDS architecture, the pipeline applies
+Sharpness-Aware Minimisation (SAM) to steer the model toward flatter loss landscape minima. Symbolic
+if-then rules are extracted using a single-objective Genetic Algorithm and a multi-objective
+Non-Dominated Sorting Genetic Algorithm II (NSGA-II), and evaluated for fidelity, comprehensibility,
+and stability through a unified PROMETHEE II analysis, non-parametric Mann--Whitney U testing, and Gene
+Set Enrichment Analysis (GSEA). The study hypothesises that landscape-aware regularisation will reduce
+the generalisation gap and yield rules that are statistically simpler, more faithful to the model's
+decision logic, and more strongly enriched in known oncogenic pathways than those from an unregularised
+baseline.
