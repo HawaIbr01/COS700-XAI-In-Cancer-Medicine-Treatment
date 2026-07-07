@@ -74,3 +74,17 @@ feat/nsga2-rule-extraction   # Sakhile
 feat/evaluation-pipeline     # Hawa
 chore/project-setup
 ```
+
+## Git Commit Message Convention
+
+```
+docs: <what you changed>
+```
+
+Examples:
+```
+docs: add SOTA XAI comparison table to literature section
+docs: activate scope and limitations paragraph
+docs: cut abstract to 180 words
+docs: paste existing Section 3.2 content into cancer.tex
+```

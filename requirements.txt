@@ -1,0 +1,25 @@
+# --- core ---
+numpy
+pandas
+pyarrow          # parquet I/O
+pyyaml
+scipy
+scikit-learn
+
+# --- deep learning ---
+torch
+
+# --- evolutionary algorithms ---
+deap
+
+# --- multi-criteria decision analysis ---
+pymcdm
+
+# --- biological pathway enrichment ---
+gseapy
+
+# --- plotting ---
+matplotlib
+
+# --- dev / testing ---
+pytest

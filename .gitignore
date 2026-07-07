@@ -279,3 +279,10 @@ __marimo__/
 *~
 .DS_Store
 Thumbs.db
+
+artifacts/*
+!artifacts/.gitkeep
+__pycache__/
+*.pt
+*.parquet
+.venv/
