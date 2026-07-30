@@ -1,0 +1,8 @@
+{
+  "threshold": "median",
+  "classes": [
+    "sensitive",
+    "resistant"
+  ],
+  "per_row_class": {}
+}

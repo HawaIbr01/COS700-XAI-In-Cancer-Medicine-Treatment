@@ -1,0 +1,8 @@
+{
+  "optimiser": "sam",
+  "arch": "DeepCCDS",
+  "epoch": 42,
+  "config_hash": "3c645c30e081",
+  "split_hash": "7295a9aad954",
+  "note": "synthetic placeholder checkpoint \u2014 no real weights"
+}
