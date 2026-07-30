@@ -1,0 +1,26 @@
+name: Evaluation
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+  workflow_dispatch:
+
+jobs:
+  evaluate:                          # renamed from "build" — this name is what
+                                      # you'll search for in branch protection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run evaluation
+        run: pytest                  # swap for whatever your actual check is
