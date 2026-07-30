@@ -6,34 +6,75 @@ synthetic tensors, so they can run in CI before the real dataset is wired up.
 
 import torch
 
-from src.model.deepccds import DeepCCDS
-from src.model.train_baseline import generalisation_gap, has_stabilised, r_squared, rmse
+from src.model.deepccds import DeepCCDS, N_PATHWAYS, Autoencoder
+from src.model.train_baseline import (
+    TemporaryPathwayProxy, compute_loss, generalisation_gap, has_stabilised,
+    r_squared, rmse,
+)
 
 
-def test_deepccds_forward_shape_no_extra_inputs():
-    model = DeepCCDS(n_genes=100)
-    x = torch.randn(16, 100)
-    out = model(x)
-    assert out.shape == (16, 1)
+def test_deepccds_forward_shape_pathway_only():
+    model = DeepCCDS(mutation_dim=0, drug_dim=0)
+    pathway_activity = torch.randn(16, N_PATHWAYS)
+    out = model(pathway_activity)
+    assert out["prediction"].shape == (16, 1)
+    assert "mutation_recon" not in out
+    assert "drug_recon" not in out
 
 
 def test_deepccds_forward_shape_with_mutation_and_drug():
-    model = DeepCCDS(n_genes=100, mutation_dim=50, drug_dim=30)
-    x = torch.randn(8, 100)
-    mut = torch.randn(8, 50)
-    drug = torch.randn(8, 30)
-    out = model(x, mutation=mut, drug=drug)
-    assert out.shape == (8, 1)
+    model = DeepCCDS(mutation_dim=50, drug_dim=30)
+    pathway_activity = torch.randn(8, N_PATHWAYS)
+    mut = torch.rand(8, 50)   # rand (0-1) since mutation/fingerprint inputs are binary-ish
+    drug = torch.rand(8, 30)
+    out = model(pathway_activity, mutation=mut, drug=drug)
+    assert out["prediction"].shape == (8, 1)
+    assert out["mutation_recon"].shape == mut.shape
+    assert out["drug_recon"].shape == drug.shape
 
 
 def test_deepccds_raises_if_mutation_missing():
-    model = DeepCCDS(n_genes=100, mutation_dim=50)
-    x = torch.randn(4, 100)
+    model = DeepCCDS(mutation_dim=50, drug_dim=0)
+    pathway_activity = torch.randn(4, N_PATHWAYS)
     try:
-        model(x)
+        model(pathway_activity)
         assert False, "expected ValueError when mutation tensor is missing"
     except ValueError:
         pass
+
+
+def test_autoencoder_roundtrip_shapes():
+    ae = Autoencoder(input_dim=100)
+    x = torch.rand(8, 100)
+    z, recon = ae(x)
+    assert z.shape == (8, 30)  # AE_BOTTLENECK_DIM
+    assert recon.shape == (8, 100)
+    assert (recon >= 0).all() and (recon <= 1).all()  # sigmoid output
+
+
+def test_temporary_pathway_proxy_shape():
+    proxy = TemporaryPathwayProxy(n_genes=200)
+    x = torch.randn(10, 200)
+    out = proxy(x)
+    assert out.shape == (10, N_PATHWAYS)
+
+
+def test_compute_loss_prediction_only():
+    out = {"prediction": torch.tensor([[1.0], [2.0]])}
+    y = torch.tensor([[1.0], [2.0]])
+    loss = compute_loss(out, y)
+    assert abs(loss.item() - 0.0) < 1e-6
+
+
+def test_compute_loss_includes_reconstruction_terms():
+    out = {
+        "prediction": torch.tensor([[1.0]]),
+        "mutation_recon": torch.tensor([[0.5, 0.5]]),
+        "mutation_input": torch.tensor([[1.0, 0.0]]),
+    }
+    y = torch.tensor([[1.0]])
+    loss = compute_loss(out, y)
+    assert loss.item() > 0.0  # reconstruction mismatch contributes to the loss
 
 
 def test_generalisation_gap():
@@ -42,11 +83,9 @@ def test_generalisation_gap():
 
 
 def test_has_stabilised_detects_plateau():
-    # strictly decreasing -> not stabilised
     decreasing = [5.0, 4.0, 3.0, 2.0, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4]
     assert not has_stabilised(decreasing, min_consecutive=10)
 
-    # flat/increasing tail -> stabilised
     plateaued = [5.0] + [1.0] * 11
     assert has_stabilised(plateaued, min_consecutive=10)
 
