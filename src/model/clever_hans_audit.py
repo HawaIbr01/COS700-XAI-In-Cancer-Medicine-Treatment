@@ -4,10 +4,15 @@ Clever Hans sanity check for the trained baseline (Section 4.2.4).
 Generates local feature-attribution maps (vanilla input gradients -- a lightweight
 stand-in for full LRP, per the proposal's "lightweight LRP implementation alongside
 vanilla input gradients") for a sample of training and validation predictions, then
-reports which genes the model relies on most. This is a qualitative diagnostic, not
-a statistical test: we're looking for whether high-importance genes are biologically
-plausible (in a known oncogenic pathway) or look like noise/housekeeping genes, and
-whether validation attributions are consistent from sample to sample.
+reports which genes the model relies on most, propagated back through the
+(currently temporary/proxy) pathway transform to the original gene-expression inputs.
+This is a qualitative diagnostic, not a statistical test.
+
+NOTE: attributions are computed w.r.t. the ORIGINAL gene expression input, gradient
+flows through TemporaryPathwayProxy -> DeepCCDS end-to-end, so this still works
+once the proxy is swapped for real ssGSEA-derived pathway activity (as long as that
+step stays differentiable, or is precomputed per-sample so gradients start there
+instead -- see the TODO at the bottom of this file).
 
 Usage:
     python -m src.model.clever_hans_audit
@@ -24,6 +29,7 @@ import torch
 
 from src.data.dataset import GDSCDataset
 from src.model.deepccds import DeepCCDS
+from src.model.train_baseline import TemporaryPathwayProxy
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -34,21 +40,28 @@ AUDIT_OUT_PATH = Path("checkpoints/clever_hans_audit.json")
 # Genes with no documented oncogenic role that DeepCCDS/the baseline should NOT be
 # relying heavily on. Placeholder list -- replace with the actual housekeeping-gene
 # reference set the team settles on (e.g. from Eisenberg & Levanon, 2013).
-HOUSEKEEPING_GENES = {"ACTB", "GAPDH", "TUBB", "B2M", "RPL13A"}
+HOUSEKEEPING_GENES = {"GENE_ACTB", "GENE_GAPDH", "GENE_TUBB", "GENE_B2M", "GENE_RPL13A"}
 
 
-def input_gradients(model: torch.nn.Module, X: torch.Tensor) -> torch.Tensor:
-    """Vanilla input-gradient saliency: d(output)/d(input) for each sample.
-    Serves as the lightweight attribution method referenced in Section 4.2.4."""
+def input_gradients(
+    model: torch.nn.Module,
+    pathway_proxy: torch.nn.Module,
+    X: torch.Tensor,
+) -> torch.Tensor:
+    """Vanilla input-gradient saliency: d(output)/d(gene_expression) for each sample,
+    computed end-to-end through the pathway proxy and the DeepCCDS head."""
     X = X.clone().requires_grad_(True)
     model.eval()
-    preds = model(X)
-    preds.sum().backward()
+    pathway_proxy.eval()
+    pathway_activity = pathway_proxy(X)
+    out = model(pathway_activity)
+    out["prediction"].sum().backward()
     return X.grad.detach()
 
 
 def attribution_summary(
     model: torch.nn.Module,
+    pathway_proxy: torch.nn.Module,
     dataset: GDSCDataset,
     n_samples: int = 50,
     seed: int = 42,
@@ -57,7 +70,7 @@ def attribution_summary(
     idx = rng.choice(len(dataset), size=min(n_samples, len(dataset)), replace=False)
     X = torch.stack([dataset[i][0] for i in idx])
 
-    grads = input_gradients(model, X)  # (n_samples, n_genes)
+    grads = input_gradients(model, pathway_proxy, X)  # (n_samples, n_genes)
     abs_grads = grads.abs()
 
     mean_importance = abs_grads.mean(dim=0)                # per-gene average |gradient|
@@ -82,15 +95,21 @@ def run_audit(checkpoint_path: Path = CHECKPOINT_PATH) -> dict:
     train_ds = GDSCDataset("train")
     val_ds = GDSCDataset("val")
 
-    model = DeepCCDS(n_genes=train_ds.n_features, dropout=0.0)
+    pathway_proxy = TemporaryPathwayProxy(n_genes=train_ds.n_features)
+    model = DeepCCDS(mutation_dim=0, drug_dim=0, dropout=0.0)
     model.load_state_dict(torch.load(checkpoint_path, map_location="cpu"))
 
-    train_summary = attribution_summary(model, train_ds)
-    val_summary = attribution_summary(model, val_ds)
+    train_summary = attribution_summary(model, pathway_proxy, train_ds)
+    val_summary = attribution_summary(model, pathway_proxy, val_ds)
 
     report = {
         "train_attribution": train_summary,
         "val_attribution": val_summary,
+        "WARNING": (
+            "Attributions flow through TemporaryPathwayProxy, not real ssGSEA "
+            "pathway activity -- re-run this audit once the real pathway step "
+            "(src/data/pathway_activity.py) is wired in before drawing conclusions."
+        ),
         "interpretation_notes": (
             "Compare top genes across train/val: a large non-overlap, or a high "
             "housekeeping-gene count, or high sample-to-sample instability on "
