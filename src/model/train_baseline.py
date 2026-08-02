@@ -162,10 +162,15 @@ def has_stabilised(val_history: list[float], min_consecutive: int = PLATEAU_MIN_
     return non_improving
 
 
-def train_baseline(
+def train_baseline_proxy(
     device: str = "cpu",
     checkpoint_dir: Path = CHECKPOINT_DIR,
 ) -> dict:
+    """FALLBACK PATH -- uses TemporaryPathwayProxy (a random projection), NOT real
+    pathway data. Kept for reference / for running the plumbing test without any
+    precomputed data files. Prefer `train_baseline_real()` below, which uses the
+    DeepCCDS authors' actual precomputed pathway/mutation/drug features and is a
+    genuine (non-placeholder) Stage 1 baseline."""
     set_seed()
 
     train_ds = GDSCDataset("train")
@@ -237,5 +242,128 @@ def train_baseline(
     return summary
 
 
+def run_epoch_real(
+    model: DeepCCDS,
+    loader: DataLoader,
+    optimizer=None,
+    device: str = "cpu",
+) -> tuple[float, torch.Tensor, torch.Tensor]:
+    """Same as run_epoch(), but for DeepCCDSDataset's real three-branch batches
+    (pathway, mutation, drug, y) instead of the TemporaryPathwayProxy path."""
+    is_train = optimizer is not None
+    model.train() if is_train else model.eval()
+
+    total_loss, n_samples = 0.0, 0
+    all_true, all_pred = [], []
+
+    context = torch.enable_grad() if is_train else torch.no_grad()
+    with context:
+        for pathway, mutation, drug, y in loader:
+            pathway, mutation, drug, y = (
+                pathway.to(device), mutation.to(device), drug.to(device), y.to(device),
+            )
+            out = model(pathway, mutation=mutation, drug=drug)
+            loss = compute_loss(out, y)
+
+            if is_train:
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+
+            total_loss += loss.item() * pathway.size(0)
+            n_samples += pathway.size(0)
+            all_true.append(y.detach())
+            all_pred.append(out["prediction"].detach())
+
+    avg_loss = total_loss / n_samples
+    return avg_loss, torch.cat(all_true), torch.cat(all_pred)
+
+
+def train_baseline_real(
+    device: str = "cpu",
+    checkpoint_dir: Path = CHECKPOINT_DIR,
+) -> dict:
+    """REAL Stage 1 baseline training path (Section 4.2.3), using the DeepCCDS
+    authors' own precomputed pathway/mutation/drug features (see
+    src/data/precomputed_inputs.py) via DeepCCDSDataset -- NOT the
+    TemporaryPathwayProxy placeholder. This is a genuine, defensible baseline:
+    real 38-dim ssGSEA pathway activity, real 534-gene mutation calls, real
+    1024-bit drug fingerprints, the full three-branch architecture with Eq. 2
+    combined loss, all matching the paper's exact specs.
+
+    TEAM DECISION FLAGGED: this uses the DeepCCDS authors' precomputed features
+    rather than independently re-deriving them from raw GDSC files -- confirm
+    with the course supervisors this is an acceptable scoping choice before
+    reporting results from this path as final (see precomputed_inputs.py docstring).
+    """
+    from src.data.dataset import DeepCCDSDataset
+
+    set_seed()
+
+    train_ds = DeepCCDSDataset("train")
+    val_ds = DeepCCDSDataset("val")
+
+    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
+    val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False)
+
+    model = DeepCCDS(mutation_dim=534, drug_dim=1024, dropout=0.0).to(device)  # full 3-branch, no regularisation
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
+
+    history: list[EpochMetrics] = []
+    val_loss_history: list[float] = []
+    best_state = None
+
+    for epoch in range(1, MAX_EPOCHS + 1):
+        train_loss, _, _ = run_epoch_real(model, train_loader, optimizer, device)
+        val_loss, y_val_true, y_val_pred = run_epoch_real(model, val_loader, None, device)
+
+        gap = generalisation_gap(val_loss, train_loss)
+        history.append(EpochMetrics(epoch, train_loss, val_loss, gap))
+        val_loss_history.append(val_loss)
+
+        logger.info(
+            "epoch %3d | train_loss=%.4f val_loss=%.4f gen_gap=%.4f",
+            epoch, train_loss, val_loss, gap,
+        )
+
+        best_state = model.state_dict()
+
+        if has_stabilised(val_loss_history):
+            logger.info(
+                "Generalisation gap stabilised after %d epochs. Stopping.", epoch,
+            )
+            break
+    else:
+        logger.warning("Reached MAX_EPOCHS=%d without a confirmed stabilised gap.", MAX_EPOCHS)
+
+    final_val_loss, y_val_true, y_val_pred = run_epoch_real(model, val_loader, None, device)
+    final_train_loss, y_train_true, y_train_pred = run_epoch_real(model, train_loader, None, device)
+
+    summary = {
+        "final_train_loss": final_train_loss,
+        "final_val_loss": final_val_loss,
+        "final_generalisation_gap": generalisation_gap(final_val_loss, final_train_loss),
+        "train_r2": r_squared(y_train_true, y_train_pred),
+        "val_r2": r_squared(y_val_true, y_val_pred),
+        "train_rmse": rmse(y_train_true, y_train_pred),
+        "val_rmse": rmse(y_val_true, y_val_pred),
+        "n_epochs": len(history),
+        "optimizer": "Adam",
+        "learning_rate": LEARNING_RATE,
+        "regularisation": "none",
+        "data_source": "DeepCCDS authors' precomputed features (real, not placeholder)",
+    }
+
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+    torch.save(best_state, checkpoint_dir / "baseline_adam_real.pt")
+    with open(checkpoint_dir / "baseline_adam_real_summary.json", "w") as f:
+        json.dump(summary, f, indent=2)
+    with open(checkpoint_dir / "baseline_adam_real_history.json", "w") as f:
+        json.dump([asdict(h) for h in history], f, indent=2)
+
+    logger.info("REAL Stage 1 baseline complete. Summary: %s", json.dumps(summary, indent=2))
+    return summary
+
+
 if __name__ == "__main__":
-    train_baseline()
+    train_baseline_real()

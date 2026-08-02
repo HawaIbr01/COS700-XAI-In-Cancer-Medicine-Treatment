@@ -88,8 +88,10 @@ RANDOM_SEED = 42  # locked across the whole pipeline -- do not change without te
 
 RAW_RESPONSE_GDSC1_PATH = Path("data/raw/GDSC1_fitted_dose_response_27Oct23.xlsx")
 RAW_RESPONSE_GDSC2_PATH = Path("data/raw/GDSC2_fitted_dose_response_27Oct23.xlsx")
-RAW_EXPRESSION_PATH = Path("data/raw/Cell_line_RMA_proc_basalExp.txt")
-RAW_CELL_LINE_DETAILS_PATH = Path("data/raw/Cell_Lines_Details.xlsx")
+RAW_EXPRESSION_PATH = Path("data/raw/rnaseq_summary.csv")     # exact filename TBC once downloaded -- update once known
+RAW_MODEL_LIST_PATH = Path("data/raw/model_list_20260724.csv")  # replaces the old Cell_Lines_Details.xlsx
+RAW_DRIVER_GENES_PATH = Path("data/raw/driver_genes_20241212.csv")  # Cell Model Passports' driver gene list (791 genes,
+# NOT an exact match to the paper's 534 COSMIC CGC genes -- see load_driver_genes() docstring)
 
 PROCESSED_DIR = Path("data/processed")
 
@@ -196,35 +198,76 @@ def load_expression(expression_path: Path = RAW_EXPRESSION_PATH) -> pd.DataFrame
     return expr
 
 
-def load_cell_line_mapping(details_path: Path = RAW_CELL_LINE_DETAILS_PATH) -> pd.DataFrame:
-    """Load Cell_Lines_Details.xlsx and return a (COSMIC_ID, SANGER_MODEL_ID) map.
+def load_cell_line_mapping(model_list_path: Path = RAW_MODEL_LIST_PATH) -> pd.DataFrame:
+    """Load model_list_20260724.csv (the current Cell Model Passports replacement
+    for the old Cell_Lines_Details.xlsx) and return a (COSMIC_ID, SANGER_MODEL_ID)
+    map -- checked directly against the real file.
 
-    Needed because the expression file is keyed by COSMIC_ID while the response
-    file is keyed by SANGER_MODEL_ID -- there's no direct shared key otherwise.
-    NOTE: exact column names in Cell_Lines_Details.xlsx have shifted across GDSC
-    releases (e.g. "COSMIC identifier" vs "COSMIC_ID", "Sample Name" vs
-    "SANGER_MODEL_ID"). If this raises a KeyError, open the file and tell me the
-    actual header row/column names and I'll fix the mapping.
+    GOOD NEWS confirmed against the real file: `model_id` in this file IS EXACTLY
+    `SANGER_MODEL_ID` used in the GDSC response files (verified: 969/969 GDSC2 cell
+    lines matched). So if the eventual RNA-seq expression file also keys by
+    model_id/SANGER_MODEL_ID directly (Cell Model Passports' primary key -- likely,
+    since model_id is their canonical ID), the COSMIC_ID join below may not even be
+    needed for the main merge -- check the actual expression file's key column once
+    downloaded and simplify `merge_sub_datasets()` accordingly if so. Kept here
+    regardless since COSMIC_ID is still useful for any external dataset (e.g. CCLE,
+    Section 4.7.1) that keys by COSMIC_ID instead.
+
+    Note: only 1124/2266 models in this file have a non-null COSMIC_ID (many newer
+    Cell Model Passports models were never given a legacy COSMIC identifier) --
+    that's expected, not a data quality issue.
     """
-    if not details_path.exists():
+    if not model_list_path.exists():
         raise FileNotFoundError(
-            f"Missing cell line details file at {details_path}. Download "
-            f"Cell_Lines_Details.xlsx from https://www.cancerrxgene.org/downloads/bulk_download."
+            f"Missing model list file at {model_list_path}. Download 'Model List' from "
+            f"https://cellmodelpassports.sanger.ac.uk/downloads."
         )
-    df = pd.read_excel(details_path)
-    cosmic_col = next((c for c in df.columns if "cosmic" in c.lower()), None)
-    model_col = next((c for c in df.columns if "sanger" in c.lower() and "model" in c.lower()), None)
-    if cosmic_col is None or model_col is None:
+    df = pd.read_csv(model_list_path)
+    if "model_id" not in df.columns or "COSMIC_ID" not in df.columns:
         raise ValueError(
-            f"Could not auto-detect COSMIC/SANGER_MODEL_ID columns in {details_path}. "
-            f"Available columns: {list(df.columns)}. Update load_cell_line_mapping() "
-            f"with the exact column names."
+            f"Expected 'model_id' and 'COSMIC_ID' columns in {model_list_path}. "
+            f"Got: {list(df.columns)[:10]}... Cell Model Passports may have "
+            f"renamed columns again -- update load_cell_line_mapping()."
         )
-    mapping = df[[cosmic_col, model_col]].dropna().drop_duplicates()
-    mapping.columns = ["COSMIC_ID", "SANGER_MODEL_ID"]
-    mapping["COSMIC_ID"] = mapping["COSMIC_ID"].astype(int).astype(str)
-    logger.info("Loaded cell line ID mapping: %d entries", len(mapping))
+    mapping = df[["model_id", "COSMIC_ID"]].dropna().drop_duplicates()
+    mapping.columns = ["SANGER_MODEL_ID", "COSMIC_ID"]
+    # A couple of rows have multiple semicolon-delimited COSMIC_IDs for one model
+    # (checked against the real file: 2/2266 rows, e.g. "1331031;1331030") --
+    # explode into one row per ID rather than silently crashing or dropping data.
+    mapping["COSMIC_ID"] = mapping["COSMIC_ID"].astype(str).str.split(";")
+    mapping = mapping.explode("COSMIC_ID")
+    mapping["COSMIC_ID"] = mapping["COSMIC_ID"].str.strip()
+    logger.info("Loaded cell line ID mapping: %d entries (of %d total models)", len(mapping), len(df))
     return mapping
+
+
+def load_driver_genes(driver_genes_path: Path = RAW_DRIVER_GENES_PATH) -> list[str]:
+    """Load Cell Model Passports' driver gene list -- a candidate source for the
+    mutation-matrix gene panel (still not the full mutation matrix itself, just the
+    gene list to filter it to).
+
+    IMPORTANT CAVEAT (checked against the real file): this list has 791 genes, NOT
+    an exact match to the paper's 534 COSMIC Cancer Gene Census (CGC) genes. Of
+    those, 576 have a non-null `cosmic_moa` column (suggesting direct COSMIC CGC
+    provenance) -- filtering to those is the closest approximation to the paper's
+    534-gene panel available from this file, but it's still not an exact match
+    (576 != 534). Treat this as "close enough to proceed," not "verified identical
+    to the paper" -- flag this approximation if it ends up mattering for your
+    final results.
+    """
+    if not driver_genes_path.exists():
+        raise FileNotFoundError(
+            f"Missing driver genes file at {driver_genes_path}. Download 'Cancer Driver "
+            f"Genes' from https://cellmodelpassports.sanger.ac.uk/downloads."
+        )
+    df = pd.read_csv(driver_genes_path)
+    cosmic_derived = df[df["cosmic_moa"].notna()]
+    logger.info(
+        "Loaded driver gene list: %d total, %d with COSMIC-derived annotation "
+        "(closest available approximation to the paper's 534 CGC genes)",
+        len(df), len(cosmic_derived),
+    )
+    return sorted(cosmic_derived["symbol"].unique().tolist())
 
 
 def merge_sub_datasets(
@@ -233,7 +276,13 @@ def merge_sub_datasets(
     cell_line_mapping: pd.DataFrame,
 ) -> pd.DataFrame:
     """Merge expression (via COSMIC_ID -> SANGER_MODEL_ID) with drug response into
-    a single cell-line x drug tabular dataset (one row per cell line-drug combination)."""
+    a single cell-line x drug tabular dataset (one row per cell line-drug combination).
+
+    TODO once the real RNA-seq file is in hand: if it turns out to key by model_id
+    (=SANGER_MODEL_ID) directly rather than COSMIC_ID, this function simplifies to
+    a single `response.merge(expression, on="SANGER_MODEL_ID")` -- no cell_line_mapping
+    join needed at all. Check the actual key column first.
+    """
     expr_with_model_id = expression.merge(cell_line_mapping, on="COSMIC_ID", how="inner")
     merged = response.merge(expr_with_model_id, on="SANGER_MODEL_ID", how="inner")
     logger.info("Merged dataset shape before cleaning: %s", merged.shape)
