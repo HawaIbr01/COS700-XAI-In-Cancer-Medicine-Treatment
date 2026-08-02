@@ -279,3 +279,7 @@ __marimo__/
 *~
 .DS_Store
 Thumbs.db
+
+# Project data and model checkpoints — not committed (large files, licence considerations)
+data/
+checkpoints/
