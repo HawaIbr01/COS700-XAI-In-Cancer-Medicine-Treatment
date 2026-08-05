@@ -128,6 +128,10 @@ def config_hash(path: str | Path = DEFAULT_CONFIG_PATH) -> str:
     """Convenience accessor — same hash as load_config(path).config_hash."""
     return load_config(path).config_hash
 
+def file_hash(path) -> str:
+    """Generic file hash, used for split_hash etc."""
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()[:12]
+
 
 if __name__ == "__main__":
     cfg = load_config()

@@ -1,5 +1,6 @@
 """
-Shared chromosome encoding/decoding for rule extraction.
+Shared chromosome encoding/decoding and genetic operators for rule
+extraction.
 
 OWNERS: Melisa + Sakhile, jointly (feat/ga-rule-extraction,
 feat/nsga2-rule-extraction)
@@ -16,95 +17,60 @@ CONTRACT (docs/CONTRACTS.md Arm 3 & Arm 4):
     a divergence here quietly breaks the GA-vs-NSGA-II comparison
     that the whole evaluation stage depends on.
 
-TODO (Melisa + Sakhile, together):
-    - Chromosome representation: vector of length = n_features, each
-      element is either a partition index (0=Low, 1=Intermediate,
-      2=High) or -1 meaning "feature excluded from this rule" (§4.3.3).
-    - decode_chromosome(): turn a chromosome vector into the
-      'conditions' list + 'genes' list used in the §0.4 rule schema
-      (genes resolved via artifacts/data/feature_map.json).
-    - predict_with_rule(): given a rule's conditions and a dataframe
-      of discretised features, return the predicted class per
-      covered row (used by src.common.metrics.fidelity_f1).
-    - Mutation / crossover operators, if shared (two-point crossover
-      is specified identically for both in §4.3.3 / §4.4).
+STATUS: this is Sakhile's real, working implementation (previously a
+TODO scaffold — superseded now that his NSGA-II arm has landed and
+actually calls these functions). Melisa: build your GA arm against
+THESE function names, not the earlier scaffold's `decode_chromosome` —
+that name was never implemented.
+
+KNOWN GAP: there is no shared `predict_with_rule()` here. The
+row-covered majority-vote prediction logic currently lives inline in
+nsga.py's `_score_genotype()`. If GA needs identical scoring logic for
+a fair GA-vs-NSGA-II comparison (§4.6), that inline logic needs
+extracting into a shared function here — flagged, not yet done.
+
+Chromosome = vector of feature-partition indices, one gene per
+discretised feature: -1 = feature excluded from the rule, 0/1/2 =
+Low/Intermediate/High.
 """
 
-from __future__ import annotations
+import random
 
-from dataclasses import dataclass
-
-PARTITION_LOW = 0
-PARTITION_INTERMEDIATE = 1
-PARTITION_HIGH = 2
-PARTITION_EXCLUDED = -1
-
-PARTITION_NAMES = {
-    PARTITION_LOW: "Low",
-    PARTITION_INTERMEDIATE: "Intermediate",
-    PARTITION_HIGH: "High",
-}
+PARTITION_CODES = [0, 1, 2]
+PARTITION_LABELS = {0: "Low", 1: "Intermediate", 2: "High"}
+N_PARTITIONS = len(PARTITION_CODES)
 
 
-@dataclass
-class Chromosome:
-    """A candidate rule, encoded as one partition choice per feature
-    (or PARTITION_EXCLUDED if the feature isn't part of the rule)."""
-    values: list[int]  # length == n_features
-    feature_names: list[str]  # same length, e.g. ["EGFR_expr", "TP53_expr", ...]
+def random_gene() -> int:
+    return random.randint(-1, N_PARTITIONS - 1)
 
 
-def decode_chromosome(chromosome: Chromosome, feature_map: dict) -> dict:
-    """
-    Decode a chromosome into the 'conditions' + 'genes' fields of the
-    §0.4 rule schema.
-
-    Args:
-        chromosome: the encoded candidate rule.
-        feature_map: artifacts/data/feature_map.json, i.e.
-            {feature_col: {"gene_symbol": str, "partition_edges": [...]}}.
-
-    Returns:
-        {"conditions": [{"feature": ..., "partition": ...}, ...],
-         "genes": [...]}
-    """
-    conditions = []
-    genes = []
-    for value, feature in zip(chromosome.values, chromosome.feature_names):
-        if value == PARTITION_EXCLUDED:
-            continue
-        conditions.append({"feature": feature, "partition": PARTITION_NAMES[value]})
-        gene = feature_map.get(feature, {}).get("gene_symbol")
-        if gene:
-            genes.append(gene)
-
-    if not conditions:
-        raise ValueError("decoded chromosome has zero active conditions — "
-                          "this should not be selected/kept as a candidate rule")
-
-    return {"conditions": conditions, "genes": sorted(set(genes))}
+def decode_individual(individual, feature_cols):
+    """Chromosome -> list of {"feature", "partition"} conditions (Branch
+    Contracts §0.4 rule-pool schema), skipping excluded (-1) genes."""
+    return [
+        {"feature": feature_cols[i], "partition": PARTITION_LABELS[val]}
+        for i, val in enumerate(individual)
+        if val != -1
+    ]
 
 
-def predict_with_rule(conditions: list[dict], discretised_df) -> list[str | None]:
-    """
-    Apply a rule's conditions to a dataframe of discretised features and
-    return the predicted class for each row the rule covers, or None
-    for rows it does not cover.
+def resolve_genes(conditions, feature_map):
+    return sorted({feature_map[c["feature"]]["gene_symbol"] for c in conditions})
 
-    Args:
-        conditions: the rule's 'conditions' list (feature + partition pairs).
-        discretised_df: a dataframe with one column per feature,
-            containing values in {"Low", "Intermediate", "High"}.
 
-    Returns:
-        list of predicted classes (or None), one per row in discretised_df,
-        for use with src.common.metrics.fidelity_f1 after filtering out
-        the None (uncovered) rows.
+def cxTwoPoint_partitions(ind1, ind2):
+    """Two-point crossover over the partition-index vector. Thin named
+    wrapper around DEAP's built-in so both extractors call one shared
+    function name even though the operator itself is a DEAP primitive."""
+    from deap import tools
+    return tools.cxTwoPoint(ind1, ind2)
 
-    TODO (Melisa + Sakhile): implement row-wise condition matching
-    (a row is "covered" if all conditions hold), and decide how
-    'predicted_class' is assigned to a covered row — this should match
-    whatever majority-vote / lookup logic populates 'predicted_class'
-    in the rule-pool schema.
-    """
-    raise NotImplementedError("predict_with_rule: see TODO above")
+
+def mutate_partition(individual, indpb=0.05):
+    """Per-gene resample: with probability indpb, replace a gene with a
+    fresh random value in {-1, 0, 1, 2}."""
+    for i in range(len(individual)):
+        if random.random() < indpb:
+            individual[i] = random_gene()
+    return (individual,)
