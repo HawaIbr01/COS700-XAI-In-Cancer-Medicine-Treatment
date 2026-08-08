@@ -1,0 +1,5 @@
+group,top_term,signal_family_rank,signal_family_p
+ga_baseline,SIGNAL_FAMILY,1,0.10972330083783174
+ga_sam,NOISE_FAMILY_3,2,0.5243784625697444
+nsga_baseline,NOISE_FAMILY_1,2,0.2483279652305397
+nsga_sam,NOISE_FAMILY_1,2,0.10972330083783174

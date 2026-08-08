@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    "fidelity_f1",
+    "length",
+    "stability"
+  ],
+  "weights": [
+    0.5,
+    0.2,
+    0.3
+  ],
+  "types": [
+    1,
+    -1,
+    -1
+  ],
+  "preference_function": "vshape",
+  "p": [
+    0.5862,
+    4.0,
+    0.1875
+  ],
+  "q": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "config_hash": "a2070aedcc19",
+  "status": "provisional -- not yet confirmed with team, see \u00a73 markdown"
+}

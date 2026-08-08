@@ -40,7 +40,13 @@ REQUIRED_RULE_KEYS = {
     "id", "conditions", "genes", "predicted_class",
     "length", "fidelity_f1", "coverage", "run_ids", "non_dominated",
 }
-VALID_EXTRACTORS = {"ga", "nsga"}
+VALID_EXTRACTORS = {"ga", "nsga", "cart"}
+# "cart" added 2026-08-08 (Hawa, notebook 06 / CART baseline arm). This is a breaking
+# change per CONTRACTS.md §6 (schema.py signature/constant change) -- announced in the
+# same PR as 06_cart_baseline.ipynb. CART is a benchmark extractor (CONTRACTS.md Arm 5,
+# "CART as global symbolic rule extractor benchmarked against ANN predictions, not a
+# competing predictor"), so it needs to pass through the same rule-pool schema as GA/NSGA
+# to be scored by the same metrics.py functions and ranked in the same unified PROMETHEE run.
 VALID_CONDITIONS = {"baseline", "sam"}
 VALID_PARTITIONS = {"Low", "Intermediate", "High"}
 
