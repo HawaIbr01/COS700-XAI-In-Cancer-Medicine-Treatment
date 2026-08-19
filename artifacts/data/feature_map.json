@@ -1,0 +1,107 @@
+{
+  "EGFR_expr": {
+    "gene_symbol": "EGFR",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "TP53_expr": {
+    "gene_symbol": "TP53",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "MYC_expr": {
+    "gene_symbol": "MYC",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "KRAS_expr": {
+    "gene_symbol": "KRAS",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "PIK3CA_expr": {
+    "gene_symbol": "PIK3CA",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "PTEN_expr": {
+    "gene_symbol": "PTEN",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "BRAF_expr": {
+    "gene_symbol": "BRAF",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "RB1_expr": {
+    "gene_symbol": "RB1",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "CDKN2A_expr": {
+    "gene_symbol": "CDKN2A",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "MDM2_expr": {
+    "gene_symbol": "MDM2",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "CCND1_expr": {
+    "gene_symbol": "CCND1",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "ERBB2_expr": {
+    "gene_symbol": "ERBB2",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "NRAS_expr": {
+    "gene_symbol": "NRAS",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "STK11_expr": {
+    "gene_symbol": "STK11",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  },
+  "SMAD4_expr": {
+    "gene_symbol": "SMAD4",
+    "partition_edges": {
+      "High": 1.0,
+      "Low": -1.0
+    }
+  }
+}
