@@ -290,3 +290,8 @@ __pycache__/
 *.pt
 *.parquet
 .venv/
+
+# Raw / precomputed GDSC data -- large, not ours to redistribute, every
+# teammate downloads their own local copy (see BASELINE_README.md §4).
+/data/
+*.npy

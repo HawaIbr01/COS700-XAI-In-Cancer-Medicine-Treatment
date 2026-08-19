@@ -1,21 +1,24 @@
 """
-Clever Hans sanity check for the trained baseline (Section 4.2.4).
+Clever Hans attribution sanity check (§4.2.4).
 
-Generates local feature-attribution maps (vanilla input gradients -- a lightweight
-stand-in for full LRP, per the proposal's "lightweight LRP implementation alongside
-vanilla input gradients") for a sample of training and validation predictions, then
-reports which genes the model relies on most, propagated back through the
-(currently temporary/proxy) pathway transform to the original gene-expression inputs.
-This is a qualitative diagnostic, not a statistical test.
+OWNER: Angelique (feat/baseline-model)
 
-NOTE: attributions are computed w.r.t. the ORIGINAL gene expression input, gradient
-flows through TemporaryPathwayProxy -> DeepCCDS end-to-end, so this still works
-once the proxy is swapped for real ssGSEA-derived pathway activity (as long as that
-step stays differentiable, or is precomputed per-sample so gradients start there
-instead -- see the TODO at the bottom of this file).
+Not a competing rule-extraction method — a lightweight, qualitative audit
+(input-gradient attribution, the simplest LRP-adjacent technique per §4.2.4:
+"a lightweight LRP implementation alongside vanilla input gradients") run on
+the trained baseline to sanity-check whether the unregularised model's
+reliance on the 38 pathway-activity features looks diffuse/inconsistent
+between train and validation samples — the qualitative signature of Clever
+Hans behaviour this project is diagnosing (§3.4.2, §4.2.4).
 
-Usage:
-    python -m src.model.clever_hans_audit
+This audits the PATHWAY branch only (the 38 ssGSEA activity features), since
+that is the branch with human-readable, per-feature names (pathway names) an
+audit reader can reason about. The mutation (534-dim) and drug (1024-dim)
+branches are not included in this particular check.
+
+Produces:
+    artifacts/reports/baseline_clever_hans_audit.json
+    artifacts/reports/baseline_clever_hans_attribution.png
 """
 
 from __future__ import annotations
@@ -27,105 +30,148 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from src.data.dataset import GDSCDataset
-from src.model.deepccds import DeepCCDS
-from src.model.train_baseline import TemporaryPathwayProxy
+from src.data.dataset import DeepCCDSDataset
+from src.data.precomputed_inputs import load_pathway_activity, DEFAULT_PRECOMPUTED_DIR
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-CHECKPOINT_PATH = Path("checkpoints/baseline_adam.pt")
-AUDIT_OUT_PATH = Path("checkpoints/clever_hans_audit.json")
+ARTIFACTS_DIR = Path(__file__).resolve().parents[2] / "artifacts"
+REPORTS_DIR = ARTIFACTS_DIR / "reports"
+DATA_DIR = ARTIFACTS_DIR / "data"
 
-# Genes with no documented oncogenic role that DeepCCDS/the baseline should NOT be
-# relying heavily on. Placeholder list -- replace with the actual housekeeping-gene
-# reference set the team settles on (e.g. from Eisenberg & Levanon, 2013).
-HOUSEKEEPING_GENES = {"GENE_ACTB", "GENE_GAPDH", "GENE_TUBB", "GENE_B2M", "GENE_RPL13A"}
+N_SAMPLE_ROWS = 256   # per split — enough for a stable mean/variance without being slow
 
 
-def input_gradients(
-    model: torch.nn.Module,
-    pathway_proxy: torch.nn.Module,
-    X: torch.Tensor,
-) -> torch.Tensor:
-    """Vanilla input-gradient saliency: d(output)/d(gene_expression) for each sample,
-    computed end-to-end through the pathway proxy and the DeepCCDS head."""
-    X = X.clone().requires_grad_(True)
+def _pathway_names() -> list[str]:
+    try:
+        _, _, names = load_pathway_activity(DEFAULT_PRECOMPUTED_DIR)
+        return names
+    except FileNotFoundError:
+        return [f"pathway_{i}" for i in range(38)]
+
+
+def _input_gradients(model, loader, device: str, n_samples: int) -> np.ndarray:
+    """Returns (n_used, 38) array of d(prediction)/d(pathway_activity), one
+    row per sampled cell-drug pair. Mutation/drug branches are held fixed
+    (gradients not required through them for this check)."""
     model.eval()
-    pathway_proxy.eval()
-    pathway_activity = pathway_proxy(X)
-    out = model(pathway_activity)
-    out["prediction"].sum().backward()
-    return X.grad.detach()
+    grads = []
+    seen = 0
+    for row_id, pathway, mutation, drug, y in loader:
+        pathway = pathway.to(device).clone().requires_grad_(True)
+        mutation = mutation.to(device)
+        drug = drug.to(device)
+
+        out = model(pathway, mutation=mutation, drug=drug)
+        prediction = out["prediction"].sum()
+        grad = torch.autograd.grad(prediction, pathway, retain_graph=False)[0]
+        grads.append(grad.detach().cpu().numpy())
+
+        seen += pathway.shape[0]
+        if seen >= n_samples:
+            break
+
+    return np.concatenate(grads, axis=0)[:n_samples]
 
 
-def attribution_summary(
-    model: torch.nn.Module,
-    pathway_proxy: torch.nn.Module,
-    dataset: GDSCDataset,
-    n_samples: int = 50,
-    seed: int = 42,
-) -> dict:
-    rng = np.random.default_rng(seed)
-    idx = rng.choice(len(dataset), size=min(n_samples, len(dataset)), replace=False)
-    X = torch.stack([dataset[i][0] for i in idx])
+def run_clever_hans_audit(model, device: str = "cpu") -> dict:
+    """Runs the audit against the already-trained model passed in from
+    baseline.py (avoids re-loading the checkpoint from disk). Can also be run
+    standalone (`python -m src.model.clever_hans_audit`) against the saved
+    checkpoint."""
+    from torch.utils.data import DataLoader
 
-    grads = input_gradients(model, pathway_proxy, X)  # (n_samples, n_genes)
-    abs_grads = grads.abs()
+    pathway_names = _pathway_names()
 
-    mean_importance = abs_grads.mean(dim=0)                # per-gene average |gradient|
-    sample_to_sample_std = abs_grads.std(dim=0)             # instability across samples
+    train_loader = DataLoader(DeepCCDSDataset("train"), batch_size=64, shuffle=True)
+    val_loader = DataLoader(DeepCCDSDataset("val"), batch_size=64, shuffle=True)
 
-    ranked = torch.argsort(mean_importance, descending=True)
-    top_k = ranked[:20].tolist()
+    train_grads = _input_gradients(model, train_loader, device, N_SAMPLE_ROWS)
+    val_grads = _input_gradients(model, val_loader, device, N_SAMPLE_ROWS)
 
-    top_genes = [dataset.feature_cols[i] for i in top_k]
-    housekeeping_hits = [g for g in top_genes if g in HOUSEKEEPING_GENES]
+    def summarise(grads: np.ndarray) -> dict:
+        mean_abs = np.abs(grads).mean(axis=0)          # per-pathway mean |gradient|
+        std_abs = np.abs(grads).std(axis=0)
+        # sample-to-sample inconsistency: coefficient of variation per pathway,
+        # then averaged — high values flag pathways whose importance swings
+        # wildly between individual predictions (§4.2.4's "high sample-to-sample
+        # inconsistency" signature of Clever Hans behaviour).
+        cv = std_abs / (mean_abs + 1e-8)
+        ranked = sorted(zip(pathway_names, mean_abs.tolist()), key=lambda t: -t[1])
+        return {
+            "top_10_pathways_by_mean_abs_gradient": ranked[:10],
+            "mean_coefficient_of_variation": float(cv.mean()),
+            "per_pathway_mean_abs_gradient": dict(zip(pathway_names, mean_abs.tolist())),
+        }
 
-    return {
-        "top_20_genes_by_mean_abs_gradient": top_genes,
-        "n_housekeeping_genes_in_top_20": len(housekeeping_hits),
-        "housekeeping_genes_flagged": housekeeping_hits,
-        "mean_sample_to_sample_std_top20": sample_to_sample_std[top_k].mean().item(),
-        "n_samples_used": len(idx),
+    train_summary = summarise(train_grads)
+    val_summary = summarise(val_grads)
+
+    audit = {
+        "n_samples_per_split": N_SAMPLE_ROWS,
+        "method": "vanilla input gradients (lightweight LRP-adjacent attribution, §4.2.4)",
+        "train": train_summary,
+        "val": val_summary,
+        "interpretation_note": (
+            "This is a QUALITATIVE sanity check, not a formal Clever Hans test. "
+            "Read it alongside the generalisation-gap scorecard in "
+            "baseline_gap_scorecard.json: a wide gap plus high "
+            "mean_coefficient_of_variation (attribution swings a lot between "
+            "individual val predictions) plus reliance on pathways with no "
+            "obvious oncogenic relevance is the pattern §3.4.2 describes as "
+            "evidence of shortcut learning. This does not by itself prove or "
+            "disprove Clever Hans behaviour -- report it descriptively."
+        ),
     }
 
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    with open(REPORTS_DIR / "baseline_clever_hans_audit.json", "w", encoding="utf-8") as f:
+        json.dump(audit, f, indent=2)
 
-def run_audit(checkpoint_path: Path = CHECKPOINT_PATH) -> dict:
-    train_ds = GDSCDataset("train")
-    val_ds = GDSCDataset("val")
+    try:
+        _plot_attribution(train_summary, val_summary, REPORTS_DIR / "baseline_clever_hans_attribution.png")
+    except Exception as exc:  # pragma: no cover
+        logger.warning("Could not save attribution figure: %s", exc)
 
-    pathway_proxy = TemporaryPathwayProxy(n_genes=train_ds.n_features)
-    model = DeepCCDS(mutation_dim=0, drug_dim=0, dropout=0.0)
-    model.load_state_dict(torch.load(checkpoint_path, map_location="cpu"))
+    logger.info(
+        "Clever Hans audit complete. train CV=%.3f val CV=%.3f (see baseline_clever_hans_audit.json)",
+        train_summary["mean_coefficient_of_variation"], val_summary["mean_coefficient_of_variation"],
+    )
+    return audit
 
-    train_summary = attribution_summary(model, pathway_proxy, train_ds)
-    val_summary = attribution_summary(model, pathway_proxy, val_ds)
 
-    report = {
-        "train_attribution": train_summary,
-        "val_attribution": val_summary,
-        "WARNING": (
-            "Attributions flow through TemporaryPathwayProxy, not real ssGSEA "
-            "pathway activity -- re-run this audit once the real pathway step "
-            "(src/data/pathway_activity.py) is wired in before drawing conclusions."
-        ),
-        "interpretation_notes": (
-            "Compare top genes across train/val: a large non-overlap, or a high "
-            "housekeeping-gene count, or high sample-to-sample instability on "
-            "validation, is qualitative evidence of Clever Hans behaviour "
-            "(Section 4.2.4). This is a sanity check, not a statistical claim -- "
-            "record it narratively in the baseline scorecard."
-        ),
-    }
+def _plot_attribution(train_summary: dict, val_summary: dict, out_path: Path) -> None:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
 
-    AUDIT_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(AUDIT_OUT_PATH, "w") as f:
-        json.dump(report, f, indent=2)
+    top = [name for name, _ in train_summary["top_10_pathways_by_mean_abs_gradient"]]
+    train_vals = [train_summary["per_pathway_mean_abs_gradient"][n] for n in top]
+    val_vals = [val_summary["per_pathway_mean_abs_gradient"][n] for n in top]
 
-    logger.info("Clever Hans audit report:\n%s", json.dumps(report, indent=2))
-    return report
+    y = np.arange(len(top))
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.barh(y - 0.2, train_vals, height=0.4, label="train", color="#1f77b4")
+    ax.barh(y + 0.2, val_vals, height=0.4, label="val", color="#d62728")
+    ax.set_yticks(y)
+    ax.set_yticklabels(top, fontsize=8)
+    ax.invert_yaxis()
+    ax.set_xlabel("mean |d(prediction)/d(pathway activity)|")
+    ax.set_title("Top-10 pathway attributions — baseline (Adam, no regularisation)")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=150)
+    plt.close(fig)
 
 
 if __name__ == "__main__":
-    run_audit()
+    from src.common.checkpoint import load_checkpoint
+    from src.model.deepccds import DeepCCDS
+
+    ckpt_dir = ARTIFACTS_DIR / "checkpoints" / "baseline"
+    meta = None
+    model = DeepCCDS(dropout=0.0)
+    meta = load_checkpoint(model, ckpt_dir)
+    logger.info("Loaded baseline checkpoint: %s", meta)
+    run_clever_hans_audit(model, device="cpu")
