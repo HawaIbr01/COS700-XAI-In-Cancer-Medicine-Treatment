@@ -1,0 +1,21 @@
+{
+  "final_train_loss": 0.6961169880913146,
+  "final_val_loss": 1.06395543415272,
+  "final_test_loss": 1.0522175140839312,
+  "generalisation_gap": 0.36783844606140537,
+  "train_r2": 0.9079184532165527,
+  "val_r2": 0.8574557304382324,
+  "test_r2": 0.8593710660934448,
+  "train_rmse": 0.8280240297317505,
+  "val_rmse": 1.026308298110962,
+  "test_rmse": 1.0206050872802734,
+  "n_epochs": 170,
+  "optimiser": "sam",
+  "learning_rate": 0.001,
+  "batch_size": 1024,
+  "regularisation": "sam",
+  "stopping_rule": "patience=30, min_consecutive=10, min_delta=0.0001",
+  "sam_rho": 0.05,
+  "sam_adaptive": false,
+  "data_source": "DeepCCDS authors' precomputed features (real, paper-verified \u2014 see precomputed_inputs.py)"
+}
