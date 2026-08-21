@@ -1,8 +1,22 @@
 {
   "optimiser": "sam",
-  "arch": "DeepCCDS",
-  "epoch": 42,
-  "config_hash": "3c645c30e081",
-  "split_hash": "f66f4b918f8b",
-  "note": "synthetic placeholder checkpoint \u2014 no real weights"
+  "config_hash": "a2070aedcc19",
+  "split_hash": "dc2241cf73c6",
+  "epoch": 170,
+  "generalisation_gap": 0.36783844606140537,
+  "r2": 0.8574557304382324,
+  "rmse": 1.026308298110962,
+  "arch_config": {
+    "mutation_dim": 534,
+    "drug_dim": 1024,
+    "n_pathways": 38,
+    "dropout": 0.0
+  },
+  "train_r2": 0.9079184532165527,
+  "test_r2": 0.8593710660934448,
+  "train_rmse": 0.8280240297317505,
+  "test_rmse": 1.0206050872802734,
+  "response_threshold": 2.901433,
+  "rho": 0.05,
+  "adaptive": false
 }
