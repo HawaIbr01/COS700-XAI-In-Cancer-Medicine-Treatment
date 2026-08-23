@@ -286,6 +286,9 @@ checkpoints/
 
 artifacts/*
 !artifacts/.gitkeep
+!artifacts/reports/
+!artifacts/reports/sam_gap_scorecard.json
+!artifacts/reports/sam_training_history.json
 __pycache__/
 *.pt
 *.parquet

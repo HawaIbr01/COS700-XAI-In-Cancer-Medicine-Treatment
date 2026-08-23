@@ -75,7 +75,7 @@ def _input_gradients(model, loader, device: str, n_samples: int) -> np.ndarray:
     return np.concatenate(grads, axis=0)[:n_samples]
 
 
-def run_clever_hans_audit(model, device: str = "cpu") -> dict:
+def run_clever_hans_audit(model, device: str = "cpu", condition: str = "baseline") -> dict:
     """Runs the audit against the already-trained model passed in from
     baseline.py (avoids re-loading the checkpoint from disk). Can also be run
     standalone (`python -m src.model.clever_hans_audit`) against the saved
@@ -126,22 +126,30 @@ def run_clever_hans_audit(model, device: str = "cpu") -> dict:
     }
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(REPORTS_DIR / "baseline_clever_hans_audit.json", "w", encoding="utf-8") as f:
+    prefix = f"{condition}_clever_hans"
+    with open(REPORTS_DIR / f"{prefix}_audit.json", "w", encoding="utf-8") as f:
         json.dump(audit, f, indent=2)
 
     try:
-        _plot_attribution(train_summary, val_summary, REPORTS_DIR / "baseline_clever_hans_attribution.png")
+        _plot_attribution(
+            train_summary,
+            val_summary,
+            REPORTS_DIR / f"{prefix}_attribution.png",
+            condition=condition,
+        )
     except Exception as exc:  # pragma: no cover
         logger.warning("Could not save attribution figure: %s", exc)
 
     logger.info(
-        "Clever Hans audit complete. train CV=%.3f val CV=%.3f (see baseline_clever_hans_audit.json)",
+        "Clever Hans audit complete for %s. train CV=%.3f val CV=%.3f (see %s)",
+        condition,
         train_summary["mean_coefficient_of_variation"], val_summary["mean_coefficient_of_variation"],
+        f"{prefix}_audit.json",
     )
     return audit
 
 
-def _plot_attribution(train_summary: dict, val_summary: dict, out_path: Path) -> None:
+def _plot_attribution(train_summary: dict, val_summary: dict, out_path: Path, condition: str = "baseline") -> None:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -158,7 +166,7 @@ def _plot_attribution(train_summary: dict, val_summary: dict, out_path: Path) ->
     ax.set_yticklabels(top, fontsize=8)
     ax.invert_yaxis()
     ax.set_xlabel("mean |d(prediction)/d(pathway activity)|")
-    ax.set_title("Top-10 pathway attributions — baseline (Adam, no regularisation)")
+    ax.set_title(f"Top-10 pathway attributions — {condition}")
     ax.legend()
     fig.tight_layout()
     fig.savefig(out_path, dpi=150)
