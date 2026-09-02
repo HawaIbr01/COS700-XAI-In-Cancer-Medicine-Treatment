@@ -164,6 +164,32 @@ Bold row = recommended config (best gap/val_R² trade-off). "conv=N" = hit MAX_E
 
 **Rho trend** (holding LR=0.001, WD=0 to isolate ρ effect): 0.9126 → 0.5584 → 0.1620 → 0.1776. Broadly monotonic; gap collapses at ρ≥1.0.
 
+**Non-converged configs and converged-only marginals.**
+Three of 16 configs hit MAX_EPOCHS=150 without triggering the stopping criterion. All three are in the ρ≥1.0 underfitting regime (train loss >3.0, val R²≈0.62), so they do not affect the ρ=0.5 recommendation regardless of whether they eventually converge. They have been re-run with MAX_EPOCHS=300 (`src/investigations/stage3_rerun_nonconverged.py`) to confirm convergence behaviour; results are appended when complete.
+
+Non-converged: rho=1.0/lr=0.0005/wd=0 (gap=0.2349), rho=2.0/lr=0.0005/wd=0 (gap=0.1755), rho=2.0/lr=0.0005/wd=0.001 (gap=0.1457).
+
+Converged-only marginals (13/16 configs; same conclusions):
+
+| Dimension | Value | Mean gap | n (converged/total) |
+|-----------|-------|----------|---------------------|
+| ρ | 0.20 | 0.8271 | 4/4 |
+| ρ | 0.50 | 0.4925 | 4/4 |
+| ρ | 1.00 | 0.1437 | 3/4 |
+| ρ | 2.00 | 0.1359 | 2/4 |
+| LR | 0.001 | 0.4116 | 8/8 |
+| LR | 0.0005 | 0.5377 | 5/8 |
+| WD | 0 | 0.5448 | 6/8 |
+| WD | 0.001 | 0.3875 | 7/8 |
+
+Notes on interpreting this table:
+- ρ ordering is unchanged; ρ=0.50 is still the actionable optimum.
+- WD effect *strengthens* from 22% (all-16) to 29% (converged-only): 0.5448→0.3875. This is a more conservative estimate because the excluded wd=0 configs include two underfitting runs that had small gaps (not because WD=0 generalised well, but because the model couldn't fit training data at all). The WD finding is robust.
+- LR=0.0005 converged-only mean rises from 0.406 to 0.538 because all three excluded runs happen to be LR=0.0005. This is a sampling artifact: the excluded configs were in the ρ≥1.0 underfitting regime where gaps are already small, not because LR=0.0005 performs worse in general. The LR conclusion ("negligible in the actionable ρ range") is unchanged.
+
+**Feature file verification.**
+The `.npy` feature matrices used in Stage 3 were regenerated locally from the DeepCCDS source CSVs. Verification against Angelique's committed `artifacts/data/` originals: all three matrices match exactly (max_diff=0.00e+00 for pathway_activity_matrix.npy [878×38], mutation_matrix.npy [878×534], drug_fingerprint_matrix.npy [413×1024]). Stage 3 ran on the same inputs as the main pipeline.
+
 ### Reference
 
 - Foret, Kleiner, Mobahi & Neyshabur, "Sharpness-Aware Minimization for Efficiently Improving Generalization" (ICLR 2021, arXiv:2010.01412) — LR reduction recommendation for SAM.
@@ -224,8 +250,36 @@ For Bahiya's full-data SAM run, the change supported by the data is:
 | WD | 0 | **1e-3** | Stage 3 marginal: 22% gap reduction across all configs |
 | LR | 0.001 | 0.001 (unchanged) | Stage 3 marginal: negligible effect in tested range |
 
-Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. This is an estimate, not a guarantee — a confirmatory full run at ρ=0.5, WD=1e-3 is the right next step before treating this as closed.
+Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. This is an estimate, not a guarantee — a confirmatory full run at ρ=0.5, WD=1e-3 is in progress (see Stage 4 below).
 
 ### Open question
 
 **BN under-perturbation (Stage 5 candidate).** Müller et al. (NeurIPS 2023) show that perturbing only BN affine parameters can match or beat full-network SAM in some architectures. DeepCCDS has 12 BN layers; this was provisionally ruled out in Stage 2 on parameter-count grounds, which the Stage 2 entry noted is insufficient on its own. If the recommended ρ=0.5/WD=1e-3 run does not fully resolve the gap, BN-only perturbation is the targeted Stage 5 experiment. It is not recommended speculatively — only if the above configuration change leaves an unexplained residual gap.
+
+---
+
+## Stage 4 — Confirmatory full-data run
+
+**Date:** 2026-09-02 (Thursday)
+
+### What
+
+Full-data SAM training run at the Stage 3 recommended configuration: ρ=0.50, WD=1e-3, LR=0.001. Same architecture as the baseline checkpoint (loaded from `artifacts/checkpoints/baseline/meta.json`). Results saved to `artifacts/sam_investigation/confirmatory/` — Bahiya's checkpoint at `artifacts/checkpoints/sam/` is not touched.
+
+Script: `src/investigations/stage4_confirmatory.py`
+
+Stopping criterion: PATIENCE=30, MIN_CONSECUTIVE=10, MAX_EPOCHS=500 — identical to the production baseline/SAM runs.
+
+Reference baseline (Stage 1, full-data, eval-mode): gap=0.3369, val R²=0.8565.
+
+### Why
+
+Stage 3's 10% subsample results establish relative ordering but absolute gap values are inflated and not directly comparable to full-data figures. This run confirms whether the subsample ordering holds at scale: specifically, whether ρ=0.5/WD=1e-3 reduces the full-data generalisation gap relative to both (a) the current SAM run at ρ=0.2/WD=0, and (b) the Adam baseline.
+
+### Result
+
+*(Pending — run initiated 2026-09-02; runtime estimate ~5h on CPU-only hardware. Journal will be updated on completion.)*
+
+### Interpretation
+
+*(To be filled in on completion.)*
