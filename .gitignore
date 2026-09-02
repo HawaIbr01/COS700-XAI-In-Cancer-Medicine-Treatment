@@ -289,6 +289,8 @@ artifacts/*
 !artifacts/reports/
 !artifacts/reports/sam_gap_scorecard.json
 !artifacts/reports/sam_training_history.json
+!artifacts/sam_investigation/
+!artifacts/sam_investigation/**
 __pycache__/
 *.pt
 *.parquet
