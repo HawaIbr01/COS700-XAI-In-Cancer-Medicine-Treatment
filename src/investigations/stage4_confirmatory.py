@@ -27,6 +27,7 @@ from src.model.sam import SAM, _disabled_running_stats
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
+    force=True,   # override any handler set by sam.py at import time
     handlers=[
         logging.StreamHandler(),
         logging.FileHandler(
