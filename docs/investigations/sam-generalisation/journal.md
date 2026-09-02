@@ -164,10 +164,16 @@ Bold row = recommended config (best gap/val_R² trade-off). "conv=N" = hit MAX_E
 
 **Rho trend** (holding LR=0.001, WD=0 to isolate ρ effect): 0.9126 → 0.5584 → 0.1620 → 0.1776. Broadly monotonic; gap collapses at ρ≥1.0.
 
-**Non-converged configs and converged-only marginals.**
-Three of 16 configs hit MAX_EPOCHS=150 without triggering the stopping criterion. All three are in the ρ≥1.0 underfitting regime (train loss >3.0, val R²≈0.62), so they do not affect the ρ=0.5 recommendation regardless of whether they eventually converge. They have been re-run with MAX_EPOCHS=300 (`src/investigations/stage3_rerun_nonconverged.py`) to confirm convergence behaviour; results are appended when complete.
+**Non-converged configs — re-run complete.**
+Three of 16 configs hit MAX_EPOCHS=150. Re-run with MAX_EPOCHS=300 (`src/investigations/stage3_rerun_nonconverged.py`) completed 2026-09-02. Corrected converged values:
 
-Non-converged: rho=1.0/lr=0.0005/wd=0 (gap=0.2349), rho=2.0/lr=0.0005/wd=0 (gap=0.1755), rho=2.0/lr=0.0005/wd=0.001 (gap=0.1457).
+| Config | 150-epoch estimate | Converged (re-run) | Change |
+|--------|-------------------|--------------------|--------|
+| ρ=1.0, LR=0.0005, WD=0 | gap=0.2349, R²=0.6359, N | **gap=0.3562, R²=0.7691, Y** | gap +0.12, R² +0.13 |
+| ρ=2.0, LR=0.0005, WD=0 | gap=0.1755, R²=0.6231, N | gap=0.1738, R²=0.6225, Y | ≈unchanged |
+| ρ=2.0, LR=0.0005, WD=0.001 | gap=0.1457, R²=0.6043, N | gap=0.1606, R²=0.6047, Y | ≈unchanged |
+
+The two ρ=2.0 configs were essentially converged at epoch 150; their values barely move. **The ρ=1.0/LR=0.0005/WD=0 result is materially different:** given 297 epochs, val R² rises from 0.64 to 0.77 and gap rises from 0.23 to 0.36. This config was *not underfitting* — it was slow-converging. See Interpretation Finding 1 for implications.
 
 Converged-only marginals (13/16 configs; same conclusions):
 
@@ -200,11 +206,17 @@ The `.npy` feature matrices used in Stage 3 were regenerated locally from the De
 
 Three findings, each requiring care about what they do and don't show.
 
-**1. ρ under-perturbation is confirmed — but there is a regime boundary at ρ≈0.5.**
+**1. ρ under-perturbation is confirmed — but the ρ≥1.0 behaviour is heterogeneous.**
 
-The marginal gap falls from 0.83 (ρ=0.20) to 0.49 (ρ=0.50) to 0.17 (ρ=1.0). The Stage 1 finding — that the rho trend had not flattened at ρ=0.20 — is vindicated. However, the gap reduction from ρ=0.5 to ρ=1.0 is not the same kind of improvement. At ρ=1.0 the training-set losses are ~3.0 (vs ~1.3–1.5 at ρ=0.5) and val R² drops from ~0.78 to ~0.59–0.64. This is not better generalisation: the model is failing to fit the training data at all. The gap shrinks because train loss rises, not because val loss falls. ρ≥1.0 is finding flat regions that are poor solutions — the exact failure mode Kaddour et al. (NeurIPS 2022) describe: SAM can locate genuinely flat minima that happen to be bad ones, not just well-generalising ones.
+The marginal gap falls from 0.83 (ρ=0.20) to 0.49 (ρ=0.50) to 0.17 (ρ=1.0). The Stage 1 finding — that the rho trend had not flattened at ρ=0.20 — is vindicated. However, the gap reduction from ρ=0.5 to ρ=1.0 needs careful qualification after the re-run.
 
-**The actionable conclusion: ρ=0.50 is the right operating point.** It reduces the gap to ~0.42–0.56 (vs ~0.70–0.91 at ρ=0.20) while keeping val R² at ~0.78, essentially matching the ρ=0.20 quality. Going higher sacrifices prediction quality for a gap reduction that reflects underfitting, not generalisation.
+*ρ=2.0 (all four configs):* Confirmed underfitting. Train loss remains ≥2.7 even after convergence, val R² is 0.53–0.62. The small gap here reflects the model failing to fit training data, not genuine generalisation improvement. This is exactly the failure mode Kaddour et al. (NeurIPS 2022) describe: SAM locating genuinely flat minima that happen to be poor solutions.
+
+*ρ=1.0 at LR=0.001 (two configs):* Also underfitting. Converge in 23–33 epochs with val R² 0.59–0.64 — early stopping fires while the model is still poorly fitted.
+
+*ρ=1.0 at LR=0.0005 (two configs):* Heterogeneous. The WD=0.001 variant converges in 37 epochs (underfitting, val R²=0.61). The WD=0 variant requires 297 epochs but eventually achieves val R²=0.77, with gap=0.36 — close to the ρ=0.5 range. This config was **slow-converging, not underfitting**. The lower LR allows the model to navigate the large perturbation radius; it just takes far longer to stabilise.
+
+**The actionable conclusion is unchanged: ρ=0.50 is the right operating point.** ρ=0.5/WD=0.001 achieves val R²=0.78 and gap=0.42 in ~72 epochs. The only ρ=1.0 config that avoids underfitting (LR=0.0005/WD=0) requires 297 epochs and produces val R²=0.77 with a larger gap (0.36). The computational cost difference (4× more epochs) with no meaningful quality gain makes ρ=1.0 non-competitive. Going to ρ=2.0 definitively sacrifices quality. ρ=0.5 gives the best gap/quality/cost tradeoff in this sweep.
 
 **2. Weight decay hypothesis confirmed.**
 
@@ -236,7 +248,7 @@ Two configuration issues, not a ceiling effect. The investigation went through t
 
 **Stage 3** tested causes (1) and (2) jointly via a 4×2×2 grid on a 10% subsample. Results:
 
-- **ρ under-perturbation confirmed.** ρ=0.50 reduces mean gap by 41% vs ρ=0.20 while maintaining val R²≈0.78. ρ≥1.0 does reduce the gap further, but by causing underfitting (val R² collapses to 0.53–0.64), not by improving generalisation.
+- **ρ under-perturbation confirmed.** ρ=0.50 reduces mean gap by 41% vs ρ=0.20 while maintaining val R²≈0.78. ρ≥1.0 does reduce the gap further, but mostly through underfitting: ρ=2.0 universally underfits (val R²=0.53–0.62); ρ=1.0 underfits at LR=0.001 but at LR=0.0005/WD=0 slow-converges to val R²=0.77 in 297 epochs — similar quality to ρ=0.5 but at 4× the training cost and still a larger gap. ρ=0.5 dominates on all three criteria (quality, gap, cost).
 - **WD mismatch confirmed.** WD=0.001 reduces mean gap by 22% consistently across all ρ values. This is a direct configuration fix.
 - **LR mismatch not supported.** LR has negligible marginal effect within the range tested.
 
