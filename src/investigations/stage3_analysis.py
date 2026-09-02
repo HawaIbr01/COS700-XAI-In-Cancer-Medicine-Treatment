@@ -37,11 +37,31 @@ def load_summary() -> dict:
         return json.load(f)
 
 
-def main() -> None:
-    summary = load_summary()
-    results = summary["results"]
+def load_partial_results() -> list[dict]:
+    """Read whatever per-config results exist so far (works mid-sweep).
+    Handles both .json and the buggy pjson extension from the running sweep."""
+    results = []
+    for f in sorted(SWEEP_DIR.iterdir()):
+        if f.name.startswith("config_") and (f.suffix == ".json" or f.name.endswith("pjson")):
+            try:
+                results.append(json.loads(f.read_text()))
+            except Exception:
+                pass
+    return results
+
+
+def main(partial: bool = False) -> None:
+    if partial:
+        results = load_partial_results()
+        print(f"Partial mode: loaded {len(results)} completed configs from {SWEEP_DIR}")
+        if not results:
+            print("No completed config files found yet.")
+            return
+    else:
+        summary = load_summary()
+        results = summary["results"]
     n = len(results)
-    print(f"Loaded {n} config results from sweep summary.")
+    print(f"Loaded {n} config results.")
 
     # ------------------------------------------------------------------ #
     # Extract arrays for plotting
@@ -272,4 +292,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--partial", action="store_true",
+                        help="Run on whatever config files exist so far (mid-sweep)")
+    args = parser.parse_args()
+    main(partial=args.partial)

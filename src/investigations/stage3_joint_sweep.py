@@ -350,7 +350,8 @@ def main(dry_run: bool = False) -> None:
         results.append(result)
 
         # Save incremental result
-        per_config_path = OUT_DIR / f"config_rho{rho}_lr{lr}_wd{wd}.json".replace(".", "p")
+        slug = f"rho{rho}_lr{lr}_wd{wd}".replace(".", "p")
+        per_config_path = OUT_DIR / f"config_{slug}.json"
         with open(per_config_path, "w", encoding="utf-8") as f:
             json.dump(asdict(result), f, indent=2)
 

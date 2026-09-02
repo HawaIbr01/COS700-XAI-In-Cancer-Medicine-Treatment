@@ -124,7 +124,45 @@ Each config trains the identical DeepCCDS architecture from scratch (same `arch_
 
 ### Result
 
-*[Sweep in progress — results to be filled in when complete.]*
+Sweep completed 2026-09-02, ~19:40 SAST. Total runtime ~2h 20min across 16 configs. All 16 per-config JSON files and the consolidated summary saved to `artifacts/sam_investigation/stage3_sweep/`. Analysis plots at `artifacts/sam_investigation/stage3_*.png`, numeric summary at `artifacts/sam_investigation/stage3_analysis.json`.
+
+**Full results table** (sorted by gap ascending; lower gap = better):
+
+| ρ | LR | WD | gap | val R² | epochs | conv |
+|--:|---:|---:|----:|-------:|-------:|------|
+| 2.00 | 0.001 | 0.001 | 0.0941 | 0.5326 | 42 | Y |
+| 1.00 | 0.0005 | 0.001 | 0.1137 | 0.6089 | 37 | Y |
+| 2.00 | 0.0005 | 0.001 | 0.1457 | 0.6043 | 150 | N |
+| 1.00 | 0.001 | 0.001 | 0.1555 | 0.5880 | 33 | Y |
+| 1.00 | 0.001 | 0 | 0.1620 | 0.5959 | 23 | Y |
+| 2.00 | 0.0005 | 0 | 0.1755 | 0.6231 | 150 | N |
+| 2.00 | 0.001 | 0 | 0.1776 | 0.6177 | 97 | Y |
+| 1.00 | 0.0005 | 0 | 0.2349 | 0.6359 | 150 | N |
+| **0.50** | **0.0005** | **0.001** | **0.4187** | **0.7809** | 92 | Y |
+| 0.50 | 0.001 | 0.001 | 0.4435 | 0.7823 | 72 | Y |
+| 0.50 | 0.0005 | 0 | 0.5495 | 0.7786 | 138 | Y |
+| 0.50 | 0.001 | 0 | 0.5584 | 0.7791 | 92 | Y |
+| 0.20 | 0.0005 | 0.001 | 0.6978 | 0.7755 | 36 | Y |
+| 0.20 | 0.001 | 0.001 | 0.7893 | 0.7732 | 32 | Y |
+| 0.20 | 0.0005 | 0 | 0.9087 | 0.7682 | 52 | Y |
+| 0.20 | 0.001 | 0 | 0.9126 | 0.7688 | 38 | Y |
+
+Bold row = recommended config (best gap/val_R² trade-off). "conv=N" = hit MAX_EPOCHS=150 without stopping.
+
+**Marginal effects** (mean gap collapsed over other dimensions):
+
+| Dimension | Value | Mean gap | n |
+|-----------|-------|----------|---|
+| ρ | 0.20 | 0.8271 | 4 |
+| ρ | 0.50 | 0.4925 | 4 |
+| ρ | 1.00 | 0.1665 | 4 |
+| ρ | 2.00 | 0.1482 | 4 |
+| LR | 0.001 | 0.4116 | 8 |
+| LR | 0.0005 | 0.4056 | 8 |
+| WD | 0 | 0.4599 | 8 |
+| WD | 0.001 | 0.3573 | 8 |
+
+**Rho trend** (holding LR=0.001, WD=0 to isolate ρ effect): 0.9126 → 0.5584 → 0.1620 → 0.1776. Broadly monotonic; gap collapses at ρ≥1.0.
 
 ### Reference
 
@@ -134,10 +172,60 @@ Each config trains the identical DeepCCDS architecture from scratch (same `arch_
 
 ### Interpretation
 
-*[To be filled in once results are available.]*
+Three findings, each requiring care about what they do and don't show.
+
+**1. ρ under-perturbation is confirmed — but there is a regime boundary at ρ≈0.5.**
+
+The marginal gap falls from 0.83 (ρ=0.20) to 0.49 (ρ=0.50) to 0.17 (ρ=1.0). The Stage 1 finding — that the rho trend had not flattened at ρ=0.20 — is vindicated. However, the gap reduction from ρ=0.5 to ρ=1.0 is not the same kind of improvement. At ρ=1.0 the training-set losses are ~3.0 (vs ~1.3–1.5 at ρ=0.5) and val R² drops from ~0.78 to ~0.59–0.64. This is not better generalisation: the model is failing to fit the training data at all. The gap shrinks because train loss rises, not because val loss falls. ρ≥1.0 is finding flat regions that are poor solutions — the exact failure mode Kaddour et al. (NeurIPS 2022) describe: SAM can locate genuinely flat minima that happen to be bad ones, not just well-generalising ones.
+
+**The actionable conclusion: ρ=0.50 is the right operating point.** It reduces the gap to ~0.42–0.56 (vs ~0.70–0.91 at ρ=0.20) while keeping val R² at ~0.78, essentially matching the ρ=0.20 quality. Going higher sacrifices prediction quality for a gap reduction that reflects underfitting, not generalisation.
+
+**2. Weight decay hypothesis confirmed.**
+
+WD=0.001 reduces mean gap by ~22% across all 16 configs (0.46 → 0.36). The effect is consistent across all ρ values. This directly confirms the Stage 2 finding that WD=0 was a configuration mismatch. Note: the absolute gap reduction from WD at full data is uncertain — but the relative ordering is reliable under the 10% subsample regime, and the effect is large enough to trust directionally.
+
+**3. LR hypothesis not supported.**
+
+LR has negligible marginal effect (0.412 vs 0.406). The Adam-tuned LR of 0.001 is not a binding constraint on SAM's effectiveness in this architecture. This does not mean LR never matters for SAM — it means that within the range tested (0.0005–0.001), the effect is swamped by ρ and WD.
+
+**Caveats.** (a) Absolute gap values in this sweep (10% subsample) are substantially larger than full-data results and must not be directly compared with Stage 1/2 numbers. The relative ordering of configs is what is interpretable. (b) Underfitting at ρ≥1.0 on the subsample may behave differently at full scale, where more training data could help the model converge even under large perturbation — but the effect would need a confirmatory full run before trusting ρ≥1.0 as a recommendation. (c) BN under-perturbation (Müller et al.) is not tested here and remains open.
 
 ---
 
 ## Summary verdict
 
-*[To be filled in after Stage 3 results are analysed.]*
+**Date:** 2026-09-02
+
+### Question
+
+Why does replacing Adam with SAM in the DeepCCDS pipeline produce a smaller-than-expected generalisation gap reduction?
+
+### Answer
+
+Two configuration issues, not a ceiling effect. The investigation went through three stages and found the following:
+
+**Stage 1** confirmed that Adam genuinely overfits (gap=0.337, val_loss 45% above train_loss at termination), ruling out a pure ceiling explanation. The rho-only sweep showed a monotonically improving gap that had not flattened at ρ=0.20 — suggesting the operating point was suboptimal, not that SAM was fundamentally ineffective.
+
+**Stage 2** identified three root causes: (1) ρ swept in isolation on Adam-tuned hyperparameters, (2) WD=0 for both runs (SAM literature consistently pairs SAM with non-zero WD), and (3) SAM-on-Adam geometry mismatch (unpreconditioned perturbation on an Adam-preconditioned loss surface). A fourth candidate — BN affine parameter under-perturbation — was provisionally set aside on parameter-count grounds, but with the caveat that Müller et al.'s finding argues against dismissing it on that basis alone.
+
+**Stage 3** tested causes (1) and (2) jointly via a 4×2×2 grid on a 10% subsample. Results:
+
+- **ρ under-perturbation confirmed.** ρ=0.50 reduces mean gap by 41% vs ρ=0.20 while maintaining val R²≈0.78. ρ≥1.0 does reduce the gap further, but by causing underfitting (val R² collapses to 0.53–0.64), not by improving generalisation.
+- **WD mismatch confirmed.** WD=0.001 reduces mean gap by 22% consistently across all ρ values. This is a direct configuration fix.
+- **LR mismatch not supported.** LR has negligible marginal effect within the range tested.
+
+### Recommendation
+
+For Bahiya's full-data SAM run, the change supported by the data is:
+
+| Parameter | Current | Recommended | Evidence |
+|-----------|---------|-------------|---------|
+| ρ | 0.20 | **0.50** | Stage 1 trend + Stage 3 marginal effect; largest single lever |
+| WD | 0 | **1e-3** | Stage 3 marginal: 22% gap reduction across all configs |
+| LR | 0.001 | 0.001 (unchanged) | Stage 3 marginal: negligible effect in tested range |
+
+Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. This is an estimate, not a guarantee — a confirmatory full run at ρ=0.5, WD=1e-3 is the right next step before treating this as closed.
+
+### Open question
+
+**BN under-perturbation (Stage 5 candidate).** Müller et al. (NeurIPS 2023) show that perturbing only BN affine parameters can match or beat full-network SAM in some architectures. DeepCCDS has 12 BN layers; this was provisionally ruled out in Stage 2 on parameter-count grounds, which the Stage 2 entry noted is insufficient on its own. If the recommended ρ=0.5/WD=1e-3 run does not fully resolve the gap, BN-only perturbation is the targeted Stage 5 experiment. It is not recommended speculatively — only if the above configuration change leaves an unexplained residual gap.
