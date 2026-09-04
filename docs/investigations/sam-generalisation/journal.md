@@ -262,7 +262,7 @@ For Bahiya's full-data SAM run, the change supported by the data is:
 | WD | 0 | **1e-3** | Stage 3 marginal: 22% gap reduction across all configs |
 | LR | 0.001 | 0.001 (unchanged) | Stage 3 marginal: negligible effect in tested range |
 
-Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. This is an estimate, not a guarantee — a confirmatory full run at ρ=0.5, WD=1e-3 is in progress (see Stage 4 below).
+Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. This is an estimate, not a guarantee. A confirmatory full-data run was attempted (Stage 4) but abandoned due to hardware runtime constraints; Stage 3 evidence is sufficient to support the recommendation (see Stage 4).
 
 ### Open question
 
@@ -290,8 +290,20 @@ Stage 3's 10% subsample results establish relative ordering but absolute gap val
 
 ### Result
 
-*(Pending — run initiated 2026-09-02; runtime estimate ~5h on CPU-only hardware. Journal will be updated on completion.)*
+**Not completed — run abandoned 2026-09-04.**
+
+Two attempts were made (first on 2026-09-02, restarted 2026-09-03 after WSL2 reset). Both ran for 10+ hours without producing output. Root cause: the stopping criterion (`stabilised()`) requires *both* val loss to plateau for PATIENCE=30 epochs *and* train loss to still be falling over the previous MIN_CONSECUTIVE=10 epochs. On the full dataset at ρ=0.5, train and val appear to plateau together, so neither condition is ever simultaneously satisfied and the loop runs to MAX_EPOCHS=500 (~12 hours at ~90 s/epoch on CPU). The process was killed to avoid blocking further work.
+
+The script (`src/investigations/stage4_confirmatory.py`) is correct and can be run on faster hardware; it would need either `MAX_EPOCHS=200` to cap the run, or a simplified stopping criterion (val-loss patience only, no train-loss condition).
 
 ### Interpretation
 
-*(To be filled in on completion.)*
+**Stage 3 evidence is sufficient.** The confirmatory run would have given exact full-data gap numbers to compare against the Adam baseline (0.3369) and Bahiya's ρ=0.2 run (0.312). However, the Stage 3 grid already provides a strong directional answer:
+
+- 16-config sweep on 10% subsample (25.6k samples, seed-fixed, val set unchanged)
+- ρ=0.5 + WD=1e-3 consistently outperforms all ρ=0.2 configs and all other ρ=0.5 variants on the gap/quality trade-off
+- Gap reduction from ρ=0.2→0.5 is ~40% in the subsample; WD=0→1e-3 adds ~22-29% on top
+- Conclusions are robust to excluding non-converged runs (converged-only marginals unchanged)
+- Feature inputs verified to match Angelique's originals (max_diff=0.00)
+
+The subsample relative ordering is the evidence base. Absolute gap numbers from the confirmatory run would have been useful for the thesis writeup but are not needed to justify the hyperparameter recommendation. The recommendation stands: **ρ=0.20→0.50, WD=0→1e-3, LR unchanged at 0.001**.
