@@ -1,0 +1,14 @@
+{
+  "last_epoch": 250,
+  "max_epochs": 250,
+  "latest": {
+    "epoch": 250,
+    "train_loss": 1.372532,
+    "val_loss": 1.398858,
+    "gap": 0.026325,
+    "no_improve_streak": 3,
+    "elapsed_s": 77161.6
+  },
+  "best_val_loss": 1.396538,
+  "converged": false
+}

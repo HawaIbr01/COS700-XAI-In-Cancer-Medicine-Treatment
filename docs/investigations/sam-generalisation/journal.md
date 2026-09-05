@@ -262,17 +262,17 @@ For Bahiya's full-data SAM run, the change supported by the data is:
 | WD | 0 | **1e-3** | Stage 3 marginal: 22% gap reduction across all configs |
 | LR | 0.001 | 0.001 (unchanged) | Stage 3 marginal: negligible effect in tested range |
 
-Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. This is an estimate, not a guarantee. A confirmatory full-data run was attempted (Stage 4) but abandoned due to hardware runtime constraints; Stage 3 evidence is sufficient to support the recommendation (see Stage 4).
+Expected effect on full-data gap: Stage 3 subsample data are not directly comparable, but the relative gap reduction at ρ=0.5 vs ρ=0.2 is ~40%. If that ordering holds at full scale, the full-data gap would move from ~0.337 toward ~0.20. **Confirmed at full scale (Stage 4, completed 2026-09-05):** full-data gap moved from 0.3369 (Adam) to **0.0517** (SAM ρ=0.5/WD=1e-3) — an 84.6% reduction, exceeding the ~0.20 estimate above — at a val R² cost of only 0.0115 (0.8565→0.8450). The first two Stage 4 attempts (2026-09-02/03) produced no output due to two persistence bugs plus a stopping criterion that could not fire on a non-overfitting run; both were fixed before the successful 2026-09-04/05 run (see Stage 4 for full detail).
 
 ### Open question
 
-**BN under-perturbation (Stage 5 candidate).** Müller et al. (NeurIPS 2023) show that perturbing only BN affine parameters can match or beat full-network SAM in some architectures. DeepCCDS has 12 BN layers; this was provisionally ruled out in Stage 2 on parameter-count grounds, which the Stage 2 entry noted is insufficient on its own. If the recommended ρ=0.5/WD=1e-3 run does not fully resolve the gap, BN-only perturbation is the targeted Stage 5 experiment. It is not recommended speculatively — only if the above configuration change leaves an unexplained residual gap.
+**BN under-perturbation (Stage 5 candidate) — closed.** Müller et al. (NeurIPS 2023) show that perturbing only BN affine parameters can match or beat full-network SAM in some architectures. DeepCCDS has 12 BN layers; this was provisionally ruled out in Stage 2 on parameter-count grounds, which the Stage 2 entry noted was insufficient on its own, with Stage 5 held as the targeted follow-up *if* the ρ=0.5/WD=1e-3 configuration left an unexplained residual gap. The Stage 4 confirmatory result (gap 0.3369→0.0517, an 84.6% reduction) resolves the gap to the point that a residual worth chasing with a separate BN-only experiment is no longer evident. Stage 5 is not pursued.
 
 ---
 
 ## Stage 4 — Confirmatory full-data run
 
-**Date:** 2026-09-02 (Thursday)
+**Date:** 2026-09-02 (Thursday), re-opened and re-run 2026-09-04.
 
 ### What
 
@@ -280,7 +280,7 @@ Full-data SAM training run at the Stage 3 recommended configuration: ρ=0.50, WD
 
 Script: `src/investigations/stage4_confirmatory.py`
 
-Stopping criterion: PATIENCE=30, MIN_CONSECUTIVE=10, MAX_EPOCHS=500 — identical to the production baseline/SAM runs.
+Stopping criterion (2026-09-04 re-run): **val-loss plateau only** — stop after PATIENCE=30 epochs with no val-loss improvement > MIN_DELTA=1e-4. MAX_EPOCHS=250 safety cap (~90 s/epoch on CPU → ≤~6 h). See "Why the stopping criterion changed" below.
 
 Reference baseline (Stage 1, full-data, eval-mode): gap=0.3369, val R²=0.8565.
 
@@ -288,22 +288,44 @@ Reference baseline (Stage 1, full-data, eval-mode): gap=0.3369, val R²=0.8565.
 
 Stage 3's 10% subsample results establish relative ordering but absolute gap values are inflated and not directly comparable to full-data figures. This run confirms whether the subsample ordering holds at scale: specifically, whether ρ=0.5/WD=1e-3 reduces the full-data generalisation gap relative to both (a) the current SAM run at ρ=0.2/WD=0, and (b) the Adam baseline.
 
-### Result
+### First attempts (2026-09-02 / 2026-09-03) — abandoned
 
-**Not completed — run abandoned 2026-09-04.**
+Two attempts were made (first on 2026-09-02, restarted 2026-09-03 after a WSL2 reset). Both ran for 10+ hours, were killed, and left **no usable output** — an empty `stage4_confirmatory.log` and an empty `confirmatory/` directory. At the time this was attributed solely to the stopping criterion never firing and the decision was to rely on Stage 3 evidence. The 2026-09-04 review found two distinct defects behind that outcome, both now fixed.
 
-Two attempts were made (first on 2026-09-02, restarted 2026-09-03 after WSL2 reset). Both ran for 10+ hours without producing output. Root cause: the stopping criterion (`stabilised()`) requires *both* val loss to plateau for PATIENCE=30 epochs *and* train loss to still be falling over the previous MIN_CONSECUTIVE=10 epochs. On the full dataset at ρ=0.5, train and val appear to plateau together, so neither condition is ever simultaneously satisfied and the loop runs to MAX_EPOCHS=500 (~12 hours at ~90 s/epoch on CPU). The process was killed to avoid blocking further work.
+### Why the log came out empty — two independent bugs
 
-The script (`src/investigations/stage4_confirmatory.py`) is correct and can be run on faster hardware; it would need either `MAX_EPOCHS=200` to cap the run, or a simplified stopping criterion (val-loss patience only, no train-loss condition).
+**Bug 1 — results were only persisted at the very end.** `epoch_history`, `confirmatory_history.json` and `confirmatory_scorecard.json` were all built in memory and written *once*, after the training loop **and** the final eval had completed. A run killed at hour 10 of a loop that never terminates therefore wrote nothing at all — every epoch of progress was lost. This is a real bug independent of the stopping-criterion issue: a multi-hour CPU run must persist progress every epoch.
+Fix: each completed epoch is now appended to `confirmatory/confirmatory_history.jsonl` (`flush()` + `os.fsync()` per line) and a small `confirmatory/confirmatory_progress.json` snapshot is rewritten atomically. The final `confirmatory_history.json` / `confirmatory_scorecard.json` are still written at the end (now via temp-file + atomic rename) but are no longer the only copy. A `KeyboardInterrupt` in the training loop is caught, flagged (`"interrupted": true` in the scorecard), and still runs the final eval + save on the partial model.
+
+**Bug 2 — the log handler was never fsync'd.** `logging` flushes its stream on every record but never calls `os.fsync()`. On the WSL2 `/mnt/c` (drvfs) mount, buffered writes are not guaranteed to reach the Windows-backed file until an fsync or a clean `close()`; a hard `kill` skips `close()`. Combined with the log being throttled to one line per 10 epochs, the file that survived the kill was 0 bytes. Fix: `_flush_log_handlers()` (flush + `os.fsync()` on every handler stream) is called after the startup lines and after every epoch, and the per-epoch log line is no longer throttled.
+
+### Why the stopping criterion changed
+
+The original `stabilised()` required **two** conditions simultaneously: (a) val loss plateaued for PATIENCE=30 epochs, **and** (b) train loss still falling over the previous MIN_CONSECUTIVE=10 epochs. Condition (b) is the *reverse-early-stopping* logic built for Angelique's baseline, whose job was to keep a deliberately-overfitting model training until it had demonstrably stopped overfitting (train loss must still be dropping while val loss flattens — the signature of the overfit regime).
+
+That is the wrong instrument for evaluating a configuration whose entire purpose is to *reduce* overfitting. At ρ=0.5, train and val loss plateau **together** — which is the desired outcome, a model that has converged without a widening gap, not a failure to converge. Under the paired rule that state never satisfies condition (b), so the loop runs to MAX_EPOCHS every time regardless of hardware. This is a methodological mismatch, not merely a runtime nuisance: keeping condition (b) would mean the confirmatory run can only ever "converge" by exhibiting the exact overfitting behaviour the intervention is meant to remove.
+
+The 2026-09-04 re-run therefore uses **val-loss plateau only** (condition (a)), with MAX_EPOCHS=250 as a pure safety cap. The scorecard records the rule change in its `stopping_rule` field.
+
+### Result (2026-09-04/05 re-run)
+
+**Completed 2026-09-05.** Config: ρ=0.50, LR=0.001, WD=1e-3. Full training set (train 255,628 / val 31,963 / test 31,952), CPU. Ran the full MAX_EPOCHS=250 cap — runtime 77,248 s (~21.5 h; slower than the ~5 h documented baseline due to host CPU contention from other applications during the run, not a training issue — see the epoch-pace discussion earlier in this session).
+
+| Metric | Adam baseline (Stage 1) | SAM ρ=0.5/WD=1e-3 (confirmatory) | Δ |
+|---|---|---|---|
+| Generalisation gap | 0.3369 | **0.0517** | **−84.6%** |
+| Val R² | 0.8565 | 0.8450 | −0.0115 |
+| Val RMSE | — | 1.0703 | — |
+| Final train loss | — | 1.3471 | — |
+| Final val loss | — | 1.3989 | — |
+| Final test loss | — | 1.4018 | — |
+
+`converged: false` in the scorecard — the val-loss-plateau condition (30 consecutive non-improving epochs) never fired; a new best val loss landed as late as epoch 247/250, so the loop ran to the MAX_EPOCHS safety cap rather than stopping early. This is not a red flag: the per-epoch history (`confirmatory_history.jsonl`, 250 rows) shows val loss noisily flat around 1.40–1.44 from roughly epoch 150 onward with no widening trend, gap held in the 0.01–0.05 band throughout the back half of training — exactly the "plateaus without diverging" behaviour that motivated dropping the paired train-loss condition in the first place, just noisier than a clean 30-in-a-row streak. The eval-mode final metrics (computed with the model in `.eval()` mode over full loaders, independent of which epoch the loop happened to stop on) are the numbers that matter and are stable.
 
 ### Interpretation
 
-**Stage 3 evidence is sufficient.** The confirmatory run would have given exact full-data gap numbers to compare against the Adam baseline (0.3369) and Bahiya's ρ=0.2 run (0.312). However, the Stage 3 grid already provides a strong directional answer:
+The full-data result **confirms and exceeds** the Stage 3 subsample projection. Stage 3 estimated (directionally, not quantitatively) that the gap might move "from ~0.337 toward ~0.20" if the subsample ordering held at scale. The actual full-data gap is **0.052** — less than a sixth of the Adam baseline gap, well past the Stage 3 estimate — at a val R² cost of only 0.0115. This is a materially stronger result than anything Stage 3's 10% subsample alone could establish, since Stage 3's absolute gap values were explicitly flagged as not comparable across scale (see Stage 3 caveats).
 
-- 16-config sweep on 10% subsample (25.6k samples, seed-fixed, val set unchanged)
-- ρ=0.5 + WD=1e-3 consistently outperforms all ρ=0.2 configs and all other ρ=0.5 variants on the gap/quality trade-off
-- Gap reduction from ρ=0.2→0.5 is ~40% in the subsample; WD=0→1e-3 adds ~22-29% on top
-- Conclusions are robust to excluding non-converged runs (converged-only marginals unchanged)
-- Feature inputs verified to match Angelique's originals (max_diff=0.00)
+Combined with Stage 3's evidence (16-config sweep; ρ=0.5+WD=1e-3 dominates the gap/quality/cost trade-off; ρ under-perturbation and WD mismatch both confirmed; robust to excluding non-converged runs; feature inputs verified against Angelique's originals at max_diff=0.00), the investigation's recommendation is now confirmed at full scale, not just projected: **ρ: 0.20→0.50, WD: 0→1e-3, LR unchanged at 0.001** reduces the DeepCCDS/SAM generalisation gap by 84.6% for a 1.15-point R² cost.
 
 The subsample relative ordering is the evidence base. Absolute gap numbers from the confirmatory run would have been useful for the thesis writeup but are not needed to justify the hyperparameter recommendation. The recommendation stands: **ρ=0.20→0.50, WD=0→1e-3, LR unchanged at 0.001**.

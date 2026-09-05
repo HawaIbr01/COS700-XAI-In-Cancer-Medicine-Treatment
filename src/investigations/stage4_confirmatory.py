@@ -1,9 +1,21 @@
 """
 Stage 4 — confirmatory full-data run: SAM at ρ=0.5, WD=1e-3, LR=0.001.
 
-Validates the Stage 3 subsample finding on the full training set, using the same
-stopping criterion as the original pipeline (PATIENCE=30, MIN_CONSECUTIVE=10).
-Results are saved to artifacts/sam_investigation/confirmatory/ (NOT Bahiya's
+Validates the Stage 3 subsample finding on the full training set.
+
+Stopping criterion (changed 2026-09-04): val-loss plateau only. The original
+pipeline pairs the val-loss plateau with a "train loss must still be improving"
+condition — that is Angelique's reverse-early-stopping logic, built to detect
+when a deliberately-overfitting baseline has stopped overfitting. It is the wrong
+tool for a configuration whose *purpose* is to reduce overfitting: at ρ=0.5 the
+train and val losses plateau together, which is the desired outcome, not a
+failure to converge. Keeping the paired condition made the loop run to
+MAX_EPOCHS every time. See docs/investigations/sam-generalisation/journal.md,
+Stage 4, for the full justification.
+
+Progress is persisted every epoch (confirmatory_history.jsonl, fsync'd) so a
+kill or crash does not lose the run. Results are saved to
+artifacts/sam_investigation/confirmatory/ (NOT Bahiya's
 artifacts/checkpoints/sam/ — that checkpoint must not be overwritten).
 
 Run from repo root:
@@ -13,6 +25,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import time
 from pathlib import Path
 
@@ -39,6 +52,36 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+def _flush_log_handlers() -> None:
+    """Force every log handler's buffer out to the OS and fsync file handlers.
+
+    Python's logging flushes the stream on each emit, but never fsyncs. On the
+    WSL2 /mnt/c (drvfs) mount, buffered writes are not guaranteed to reach the
+    Windows-backed file until fsync or a clean close(); a hard kill skips
+    close(), which is why the previous run left a 0-byte log after 10+ hours.
+    """
+    for h in logging.getLogger().handlers:
+        try:
+            h.flush()
+            stream = getattr(h, "stream", None)
+            if stream is not None and hasattr(stream, "fileno"):
+                os.fsync(stream.fileno())
+        except (OSError, ValueError):
+            pass
+
+
+def _atomic_write_json(path: Path, obj) -> None:
+    """Write JSON via a temp file + rename so a kill mid-write never truncates
+    the previous good copy. fsync before rename so the bytes are durable."""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, indent=2)
+        f.flush()
+        os.fsync(f.fileno())
+    tmp.replace(path)
+
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR   = REPO_ROOT / "artifacts" / "sam_investigation" / "confirmatory"
 BASELINE_CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints" / "baseline"
@@ -48,12 +91,10 @@ RHO = 0.50
 LR  = 0.001
 WD  = 1e-3
 
-# Stopping criterion — identical to baseline.py / sam.py production runs
-BATCH_SIZE      = 1024
-MIN_DELTA       = 1e-4
-PATIENCE        = 30
-MIN_CONSECUTIVE = 10
-MAX_EPOCHS      = 500
+BATCH_SIZE = 1024
+MIN_DELTA  = 1e-4
+PATIENCE   = 30       # val-loss plateau: stop after this many epochs with no improvement
+MAX_EPOCHS = 250      # safety cap (~90 s/epoch on CPU → ~6 h worst case)
 
 # Stage 1 baseline reference (full-data, eval-mode)
 BASELINE_GAP = 0.3369
@@ -77,14 +118,10 @@ class StoppingTracker:
             self.no_improve_streak += 1
 
     def stabilised(self) -> bool:
-        if self.no_improve_streak < PATIENCE:
-            return False
-        if len(self.train_history) < MIN_CONSECUTIVE + 1:
-            return False
-        return (
-            self.train_history[-1]
-            < self.train_history[-(MIN_CONSECUTIVE + 1)]
-        )
+        # Val-loss plateau only. The paired "train loss must still be falling"
+        # condition from the production pipeline is deliberately dropped here —
+        # see module docstring and journal Stage 4.
+        return self.no_improve_streak >= PATIENCE
 
 
 def eval_split(model, loader, device):
@@ -181,6 +218,7 @@ def main():
         "Dataset sizes — train: %d  val: %d  test: %d",
         len(train_ds), len(val_ds), len(test_ds),
     )
+    _flush_log_handlers()   # startup lines durable before the first (long) epoch
 
     torch.manual_seed(42)
     np.random.seed(42)
@@ -194,37 +232,69 @@ def main():
     t0        = time.time()
     final_epoch = 0
     converged   = False
+    interrupted = False
 
     epoch_history = []  # list of {epoch, train_loss, val_loss, gap}
 
+    # Per-epoch progress files. history.jsonl is append-only and fsync'd every
+    # epoch so a kill/crash keeps everything up to the last completed epoch;
+    # progress.json is a small human-readable "where is it" snapshot.
+    out_jsonl    = OUT_DIR / "confirmatory_history.jsonl"
+    out_progress = OUT_DIR / "confirmatory_progress.json"
+    out_jsonl.unlink(missing_ok=True)   # fresh run — drop any stale partial log
+
     for epoch in range(1, MAX_EPOCHS + 1):
-        train_loss = train_epoch_sam(model, train_loader, optimizer, device)
-        val_loss   = eval_split(model, val_loader, device)
+        try:
+            train_loss = train_epoch_sam(model, train_loader, optimizer, device)
+            val_loss   = eval_split(model, val_loader, device)
+        except KeyboardInterrupt:
+            logger.warning("Interrupted during epoch %d — persisting progress and stopping.", epoch)
+            interrupted = True
+            break
+
         tracker.update(train_loss, val_loss)
         final_epoch = epoch
 
         gap = val_loss - train_loss
-        epoch_history.append({
+        record = {
             "epoch": epoch,
             "train_loss": round(train_loss, 6),
             "val_loss":   round(val_loss,   6),
             "gap":        round(gap,         6),
+            "no_improve_streak": tracker.no_improve_streak,
+            "elapsed_s": round(time.time() - t0, 1),
+        }
+        epoch_history.append(record)
+
+        # --- persist this epoch immediately -------------------------------- #
+        with open(out_jsonl, "a", encoding="utf-8") as f:
+            f.write(json.dumps(record) + "\n")
+            f.flush()
+            os.fsync(f.fileno())
+        _atomic_write_json(out_progress, {
+            "last_epoch": epoch,
+            "max_epochs": MAX_EPOCHS,
+            "latest": record,
+            "best_val_loss": round(tracker.best_val_loss, 6),
+            "converged": False,
         })
 
-        if epoch % 10 == 0 or epoch == 1:
-            elapsed = time.time() - t0
-            logger.info(
-                "epoch %3d | train=%.4f val=%.4f gap=%.4f | no_imp=%d | %.0fs elapsed",
-                epoch, train_loss, val_loss, gap,
-                tracker.no_improve_streak, elapsed,
-            )
+        logger.info(
+            "epoch %3d/%d | train=%.4f val=%.4f gap=%.4f | no_imp=%d | %.0fs elapsed",
+            epoch, MAX_EPOCHS, train_loss, val_loss, gap,
+            tracker.no_improve_streak, time.time() - t0,
+        )
+        _flush_log_handlers()
 
         if tracker.stabilised():
-            logger.info("Stopping criterion met at epoch %d.", epoch)
+            logger.info(
+                "Stopping criterion met at epoch %d (val loss plateaued for %d epochs).",
+                epoch, tracker.no_improve_streak,
+            )
             converged = True
             break
     else:
-        logger.warning("Reached MAX_EPOCHS=%d without stopping criterion firing.", MAX_EPOCHS)
+        logger.warning("Reached MAX_EPOCHS=%d without the val-loss plateau firing.", MAX_EPOCHS)
 
     # Final eval-mode metrics
     final_train = eval_split(model, train_loader, device)
@@ -238,9 +308,9 @@ def main():
 
     logger.info(
         "FINAL | train=%.4f val=%.4f test=%.4f gap=%.4f val_r2=%.4f val_rmse=%.4f | "
-        "epochs=%d conv=%s runtime=%.0fs",
+        "epochs=%d conv=%s interrupted=%s runtime=%.0fs",
         final_train, final_val, final_test, gen_gap, val_r2, val_rmse,
-        final_epoch, converged, runtime,
+        final_epoch, converged, interrupted, runtime,
     )
 
     # Compare with baseline
@@ -255,7 +325,11 @@ def main():
         "config": {"rho": RHO, "lr": LR, "wd": WD},
         "n_epochs": final_epoch,
         "converged": converged,
-        "stopping_rule": f"patience={PATIENCE}, min_consecutive={MIN_CONSECUTIVE}, min_delta={MIN_DELTA}",
+        "interrupted": interrupted,
+        "stopping_rule": (
+            f"val_loss_plateau: patience={PATIENCE}, min_delta={MIN_DELTA}. "
+            "Train-loss 'still improving' condition removed 2026-09-04 — see journal Stage 4."
+        ),
         "final_train_loss": final_train,
         "final_val_loss":   final_val,
         "final_test_loss":  final_test,
@@ -280,13 +354,12 @@ def main():
     out_scorecard = OUT_DIR / "confirmatory_scorecard.json"
     out_history   = OUT_DIR / "confirmatory_history.json"
 
-    with open(out_scorecard, "w", encoding="utf-8") as f:
-        json.dump(scorecard, f, indent=2)
+    _atomic_write_json(out_scorecard, scorecard)
     logger.info("Saved: %s", out_scorecard)
 
-    with open(out_history, "w", encoding="utf-8") as f:
-        json.dump(epoch_history, f, indent=2)
-    logger.info("Saved: %s", out_history)
+    _atomic_write_json(out_history, epoch_history)
+    logger.info("Saved: %s (also streamed to %s)", out_history, out_jsonl)
+    _flush_log_handlers()
 
 
 if __name__ == "__main__":
