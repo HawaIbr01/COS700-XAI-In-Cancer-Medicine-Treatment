@@ -322,7 +322,7 @@ The 2026-09-04 re-run therefore uses **val-loss plateau only** (condition (a)), 
 | Final val loss | — | 1.3989 | — |
 | Final test loss | — | 1.4018 | — |
 
-`converged: false` in the scorecard — the val-loss-plateau condition (30 consecutive non-improving epochs) never fired; a new best val loss landed as late as epoch 247/250, so the loop ran to the MAX_EPOCHS safety cap rather than stopping early. This is not a red flag: the per-epoch history (`confirmatory_history.jsonl`, 250 rows) shows val loss noisily flat around 1.40–1.44 from roughly epoch 150 onward with no widening trend, gap held in the 0.01–0.05 band throughout the back half of training — exactly the "plateaus without diverging" behaviour that motivated dropping the paired train-loss condition in the first place, just noisier than a clean 30-in-a-row streak. The eval-mode final metrics (computed with the model in `.eval()` mode over full loaders, independent of which epoch the loop happened to stop on) are the numbers that matter and are stable.
+`converged: false` in the scorecard — the val-loss-plateau condition (30 consecutive non-improving epochs) never fired; a new best val loss landed as late as epoch 247/250, so the loop ran to the MAX_EPOCHS safety cap rather than stopping early. This is not a red flag: the per-epoch history (`confirmatory_history.jsonl`, 250 rows) shows val loss noisily flat around 1.40–1.44 from roughly epoch 150 onward with no widening trend, gap held in the 0.01–0.05 band throughout the back half of training — exactly the "plateaus without diverging" behaviour that motivated dropping the paired train-loss condition in the first place, just noisier than a clean 30-in-a-row streak. The eval-mode final metrics (computed with the model in `.eval()` mode over full loaders, independent of which epoch the loop happened to stop on) are the numbers that matter and are stable. **This flat, non-widening back half is the evidence Stage 4b's Result section leans on when comparing this non-plateau-stopped run against a control that did plateau-stop cleanly — see the note there.**
 
 ### Interpretation
 
@@ -397,6 +397,16 @@ to ~180 s/epoch after ~epoch 35 by the same host-CPU contention that affected St
 not a training issue). Unlike Stage 4's SAM run, this one **did plateau-stop**: the
 val-loss-plateau condition fired at epoch 157 (30 consecutive non-improving epochs).
 
+**Note on the converged/non-converged asymmetry:** this control plateau-stopped cleanly
+while Stage 4's SAM run ran the full 250-epoch cap without ever triggering the same rule
+(`converged: false`). Comparing a plateau-stopped run against one that hit its safety cap
+is only defensible because Stage 4's own per-epoch history shows the gap already flat in
+the 0.01–0.05 band from roughly epoch 150 onward (see Stage 4 Result) — i.e. the SAM run's
+failure to trigger the stopping rule reflects noisy val-loss bests around an already-settled
+plateau, not a still-improving trend that this comparison would be catching mid-flight. If
+that flat-band evidence did not hold, this matched-pair comparison would need to be treated
+with more caution than it is below.
+
 | Metric | Adam, WD=0 (original baseline) | Adam, WD=1e-3 (this control) | SAM ρ=0.5, WD=1e-3 (Stage 4) |
 |---|---|---|---|
 | Generalisation gap | 0.3369 | **0.2582** | 0.0517 |
@@ -459,7 +469,11 @@ result.** Of the two branches drafted before the run:
    above Stage 4's SAM run (0.8450). So the small R² dip in Stage 4 is associated with
    SAM specifically, not with weight decay; SAM buys a 0.2065 gap reduction for a
    ~0.017 R² cost relative to Adam+WD. Still a favourable trade, worth stating explicitly
-   rather than folding into the headline.
+   rather than folding into the headline. **This R² comparison carries the same
+   stopping-rule caveat as the gap decomposition above:** the original baseline's
+   R²=0.8565 was produced under the reverse-early-stopping rule, so only the Adam+WD vs
+   SAM+WD comparison — both under the matched val-loss-plateau rule — is a clean,
+   confound-free comparison. Adam+WD vs the original 0.8565 baseline is directional only.
 
 3. The Open Question's closure of BN under-perturbation moves from *provisional* to
    *confirmed* — see that section, now updated.
