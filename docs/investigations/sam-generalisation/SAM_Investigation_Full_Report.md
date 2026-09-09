@@ -85,7 +85,7 @@ The practical consequence, documented in the SAM literature as "spurious sharpne
 
 The pros/cons trade-off that matters for this project specifically: Adam is cheap and well-understood but provides no explicit guarantee against sharp, fragile minima; SAM directly targets that weakness but costs roughly double the compute per epoch and is more hyperparameter-sensitive, with a documented approximation error when paired with an adaptive base optimiser. Both of these costs are why the project's hyperparameter configuration mattered enormously, and why a poorly-configured SAM run can look worse than a well-configured Adam baseline even though SAM's underlying mechanism is sound — precisely the situation this investigation was launched to disentangle.
 
-![Adam vs SAM step comparison — original SAM sweep](figures/fig1_stage1_rho_only.png)
+![Adam vs SAM step comparison — original SAM sweep](fig1_stage1_rho_only.png)
 
 ---
 
@@ -174,7 +174,7 @@ A fourth candidate — **batch-norm affine parameters being under-perturbed** at
 
 **Result.**
 
-![Full-data gap decomposition](figures/fig4_gap_decomposition.png)
+![Full-data gap decomposition](fig4_gap_decomposition.png)
 
 The Adam+WD control plateau-stopped cleanly at epoch 157, reaching a gap of **0.2582** — a 23.4% reduction from the original baseline, landing almost exactly on Stage 3's ~22% marginal-effect prediction for weight decay alone. Decomposing the total full-data reduction:
 
@@ -233,9 +233,22 @@ This investigation was deliberately structured to meet that requirement rather t
 
 The SAM investigation's conclusion unblocks the piece of the pipeline that Sakhile's and Melisa's branches consume: a confirmed, defensible hyperparameter configuration for the SAM checkpoint that will feed rule extraction. Their branches are not blocked on waiting for this report — the infrastructure work has been proceeding in parallel against synthetic fixtures — but real per-drug extraction runs against the final checkpoints are now unblocked in principle, pending one team decision (below).
 
-### 7.1 One decision the team needs to make first
+### 7.1 No retrain is needed — but a promotion step is
 
-Before Sakhile or Melisa run extraction against a "final" SAM checkpoint, the team needs to decide: **does Bahiya's official `feat/sam-intervention` checkpoint get retrained at ρ=0.5/WD=1e-3 (this investigation's recommended configuration) and used going forward, replacing the original ρ=0.2/WD=0 checkpoint?** Nothing in this investigation has touched Bahiya's checkpoint — every run described above was a separate diagnostic run. This is a natural agenda item for the team to resolve immediately, given the 18 September internal deadline, since it determines which checkpoint Sakhile and Melisa should ultimately point real extraction runs at.
+An earlier draft of this report framed this as "does Bahiya need to retrain at ρ=0.5/WD=1e-3?" That framing was too cautious and has been corrected. **Stage 4 already is a full, from-scratch training run at exactly the recommended configuration, on the complete dataset, using the corrected persistence, logging, and stopping-rule code.** Re-running it would reproduce a run that already exists, at roughly 21.5 hours of compute, for zero new evidence. There is no scientific reason to redo it.
+
+What actually remains is a **promotion/format question, not a training question**: Stage 4's checkpoint was deliberately saved to `artifacts/sam_investigation/confirmatory/`, explicitly *not* to the canonical `artifacts/checkpoints/sam/` location that `checkpoint.py`'s contract-compliant, schema-validated format expects and that the extraction branches load from. Two things need checking before treating this as settled, both quick relative to a retrain:
+
+1. **Was the model saved through `checkpoint.py`'s contract (schema-validated `meta.json`, etc.), or through the investigation script's own ad hoc saving?** If the former, promoting it to `artifacts/checkpoints/sam/` is a copy/rename. If the latter, the weights are still valid and reusable, but need to be re-saved through `checkpoint.py` so the file satisfies the schema Sakhile's and Melisa's code expects to load.
+2. **Provenance should be documented explicitly**, since this checkpoint was produced by an investigation script (`stage4_confirmatory.py`), not by Bahiya's own branch entry point. A short note recording which script trained "the official SAM checkpoint," when, and why, avoids future confusion about why Bahiya's branch never itself produced the checkpoint that ended up in `artifacts/checkpoints/sam/`.
+
+The team decision that remains is narrower than originally framed: **confirm the promotion of Stage 4's checkpoint (with the format check above) as the official SAM checkpoint**, rather than deciding whether a retrain is needed at all.
+
+### 7.1a A note on reproducibility
+
+The project's central claim rests on training runs that are inherently stochastic (random weight initialisation, data-loader shuffling order), which matters because an examiner's natural question is "would rerunning this produce the same number?" What is already in place: Stage 3's subsampling used a fixed seed (`seed=42`); Stage 4b's script was confirmed (by direct code review) to call `torch.manual_seed(42)` and `np.random.seed(42)` before model initialisation; the train/val/test split is a locked, fixed interface rather than re-randomised per run; `config.py`'s `config_hash` and `checkpoint.py`'s `file_hash()` allow verifying two runs used identical configs or weights after the fact; and the feature matrices were verified bit-for-bit against Angelique's originals (`max_diff=0.00e+00`).
+
+Two gaps are worth naming rather than leaving implicit. First, it has not been separately confirmed that `stage4_confirmatory.py` — the script the headline 84.6% figure actually depends on — seeds model initialisation and data-loader shuffling as explicitly as Stage 4b's script does; this is worth a quick code check before the number is presented as final. Second, and more structurally: **every neural-network training result in this investigation is a single run (n=1) per configuration.** This is a real limitation, standard in ML research under compute constraints, but worth stating plainly rather than implying otherwise — contrast this with the project's own evolutionary-algorithm side, which explicitly runs 30 independent runs per condition precisely because search stochasticity is not trustworthy from a single run. The network-training side has the same underlying issue but no equivalent safeguard, purely because a single full-data SAM run already costs 5–21+ hours. Given the 18 September deadline, forcing multi-seed replication of the full run is not realistic; the honest response is to state this explicitly as a documented limitation — the direction and rough magnitude of the SAM effect is corroborated by Stage 3's pattern across sixteen configurations (even though each individual configuration is also n=1), but formal statistical confidence in the exact 84.6%/72% figures would require repeated runs not undertaken here.
 
 ### 7.2 What can proceed immediately, regardless of that decision
 
@@ -260,12 +273,16 @@ The rule extraction infrastructure does not depend on which checkpoint is finall
 
 | File | Why it matters right now |
 |---|---|
+| `artifacts/checkpoints/sam/` | **Where the finalised SAM checkpoint must land before real per-drug extraction can start.** Currently empty of this investigation's result — Stage 4's checkpoint sits at `artifacts/sam_investigation/confirmatory/` and needs the promotion step described in §7.1 |
+| `artifacts/checkpoints/baseline/` | Angelique's real trained baseline checkpoint — already in the canonical location, unaffected by this investigation |
 | `src/extraction/common.py` | The shared contract both branches build against — Sakhile's next edit, Melisa's primary reference |
 | `src/extraction/nsga.py` | Reference implementation for GA branch structure; also where `predict_with_rule()` currently lives before extraction |
 | `src/common/metrics.py` | `fidelity_f1`, `comprehensibility` (lower-is-better), `stability` — the canonical scoring functions both extractors must call, not reimplement |
 | `src/common/schema.py` | Rule pool output format; validates on write, so malformed pools fail fast rather than silently |
 | `tests/fixtures/synthetic/` | Where all prototyping and smoke-testing should happen before real data — never `artifacts/`, which is reserved for real pipeline output |
 | `docs/CONTRACTS.md` | The working authority on why shared-code changes are breaking changes requiring team announcement |
+
+**One more real gap, not yet built by anyone:** even once a checkpoint lands in `artifacts/checkpoints/sam/`, Sakhile's and Melisa's extractors still need the model's *predictions* over real data, discretised into sensitive/resistant, in the same schema Hawa's `01_synthetic_data_foundation.ipynb` established for the synthetic stand-in (named pathway/mutation features, per-drug structure, target discretisation). That real-data equivalent of notebook 01 has not been built yet — it is the actual bridge between "a trained checkpoint exists" and "extraction has real data to run against," and is a closer match to Hawa's own next-step list than to Sakhile's or Melisa's. Worth raising at the same team discussion as the checkpoint promotion, since both block real per-drug runs.
 
 **Realistic goal for the 14 September presentation:** given the above, a defensible progress update is (a) the SAM investigation's conclusion and the recommended configuration, presented from this report; (b) `predict_with_rule()` extraction and sparse initialisation landed on Sakhile's branch, with a smoke-test pass shown as evidence; (c) Melisa's GA scaffolding (population, decoding, operators) wired and smoke-tested against synthetic fixtures, with the fitness function as the clearly identified next and final piece once Sakhile's extraction lands. This is an honest, verifiable state to present — a fully working end-to-end rule extraction run against real per-drug data by Monday is not a realistic claim given the current dependency chain, and claiming otherwise would be worse for the presentation than an accurate account of exactly how close the pipeline is.
 
