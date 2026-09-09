@@ -1,16 +1,37 @@
 """
-src/extraction/common.py — shared rule-extraction encoding and operators.
+Shared chromosome encoding/decoding and genetic operators for rule
+extraction.
 
-PROTOTYPE STATUS: written solo for the NSGA-II arm's simulation phase, per
-the branch contract's explicit allowance ("coordinate with Arm 3 on
-common.py if you want the encoding to match, but you can prototype your
-own"). Once Melisa's GA arm lands, diff this against hers and reconcile to
-one shared file — the GA-vs-NSGA comparison in Evaluation (§4.6) depends on
-both extractors using identical operators. If they end up staying
-different, that's a documented deviation, not silent drift.
+OWNERS: Melisa + Sakhile, jointly (feat/ga-rule-extraction,
+feat/nsga2-rule-extraction)
 
-Chromosome = vector of feature-partition indices, one gene per discretised
-feature: -1 = feature excluded from the rule, 0/1/2 = Low/Intermediate/High.
+CONTRACT (docs/CONTRACTS.md Arm 3 & Arm 4):
+    GA and NSGA-II must use the SAME chromosome representation and
+    the SAME decode-to-rule logic, so that a rule produced by either
+    extractor is structurally comparable and both emit the identical
+    §0.4 rule-pool schema. This file is the one place that encoding
+    lives — ga.py and nsga.py both import it rather than each
+    re-implementing their own.
+
+    If either of you needs to change the encoding, coordinate first —
+    a divergence here quietly breaks the GA-vs-NSGA-II comparison
+    that the whole evaluation stage depends on.
+
+STATUS: this is Sakhile's real, working implementation (previously a
+TODO scaffold — superseded now that his NSGA-II arm has landed and
+actually calls these functions). Melisa: build your GA arm against
+THESE function names, not the earlier scaffold's `decode_chromosome` —
+that name was never implemented.
+
+KNOWN GAP: there is no shared `predict_with_rule()` here. The
+row-covered majority-vote prediction logic currently lives inline in
+nsga.py's `_score_genotype()`. If GA needs identical scoring logic for
+a fair GA-vs-NSGA-II comparison (§4.6), that inline logic needs
+extracting into a shared function here — flagged, not yet done.
+
+Chromosome = vector of feature-partition indices, one gene per
+discretised feature: -1 = feature excluded from the rule, 0/1/2 =
+Low/Intermediate/High.
 """
 
 import random
