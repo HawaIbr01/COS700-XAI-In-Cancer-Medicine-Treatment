@@ -44,6 +44,17 @@ Do not reintroduce either failure mode.
 Output: artifacts/sam_investigation/adam_wd_control/  (does NOT touch
 Angelique's baseline or Bahiya's SAM checkpoints).
 
+Checkpoint saving (added 2026-09-10): like the first Stage 4 confirmatory run,
+the original 2026-09-05 Adam+WD control saved metrics only and no weights. The
+matched-pair loss-geometry comparison the thesis wants (Adam+WD vs SAM ρ=0.5+WD
+under the same stopping rule) needs the Adam+WD parameters. This script now
+writes a contract-compliant checkpoint via src.common.checkpoint —
+artifacts/sam_investigation/adam_wd_control/{model.pt, meta.json} — with a
+periodic best-val-loss crash-recovery copy ("partial": true) overwritten at
+clean completion by the final-epoch state ("partial": false). model.pt is
+caught by the repo *.pt gitignore rule and must be transferred out of band;
+meta.json is trackable. Mirrors src/investigations/stage4_confirmatory.py.
+
 Run from repo root:
     python -m src.investigations.stage4b_adam_wd_control
 """
@@ -52,19 +63,26 @@ from __future__ import annotations
 import json
 import logging
 import os
+import platform
+import subprocess
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
+from src.common.checkpoint import hash_split, save_checkpoint
+from src.common.config import load_config
 from src.data.dataset import DeepCCDSDataset
 from src.model.deepccds import DeepCCDS, compute_loss
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR   = REPO_ROOT / "artifacts" / "sam_investigation" / "adam_wd_control"
 BASELINE_CHECKPOINT_DIR = REPO_ROOT / "artifacts" / "checkpoints" / "baseline"
+SPLITS_FILE           = REPO_ROOT / "artifacts" / "data" / "splits.json"
+RESPONSE_CLASSES_FILE = REPO_ROOT / "artifacts" / "data" / "response_classes.json"
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)   # must exist before the FileHandler below
 
@@ -109,6 +127,43 @@ def _atomic_write_json(path: Path, obj) -> None:
     tmp.replace(path)
 
 
+def _hardware_string() -> str:
+    """One-line description of the machine this run executes on, for the
+    checkpoint meta (this control was rerun on different hardware)."""
+    return (
+        f"{platform.system()} {platform.release()} | "
+        f"python {platform.python_version()} | torch {torch.__version__} | "
+        f"cpu={platform.processor() or platform.machine()!r} | "
+        f"cuda_available={torch.cuda.is_available()}"
+    )
+
+
+def _git_commit() -> str:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "--short", "HEAD"], cwd=REPO_ROOT, text=True
+        ).strip()
+    except Exception:      # noqa: BLE001 — provenance is best-effort
+        return "unknown"
+
+
+def _write_checkpoint(model, *, split_hash: str, config_hash: str, epoch: int,
+                      gap: float, r2: float, rmse_: float, extra: dict) -> None:
+    """Contract-compliant checkpoint write into OUT_DIR (optimiser="adam").
+    Same path src/investigations/stage4_confirmatory.py uses for the SAM run."""
+    save_checkpoint(
+        model, OUT_DIR,
+        optimiser="adam",
+        config_hash=config_hash,
+        split_hash=split_hash,
+        epoch=epoch,
+        generalisation_gap=gap,
+        r2=r2,
+        rmse=rmse_,
+        extra_meta=extra,
+    )
+
+
 # Config — only WD differs from the original Adam baseline (which had WD=0).
 LR = 0.001          # unchanged from original Adam baseline and SAM Stage 4
 WD = 1e-3           # THE variable under test
@@ -133,14 +188,16 @@ class StoppingTracker:
         self.train_history: list[float] = []
         self.val_history:   list[float] = []
 
-    def update(self, train_loss: float, val_loss: float) -> None:
+    def update(self, train_loss: float, val_loss: float) -> bool:
+        """Returns True iff this epoch set a new best val loss."""
         self.train_history.append(train_loss)
         self.val_history.append(val_loss)
         if val_loss < self.best_val_loss - MIN_DELTA:
             self.best_val_loss = val_loss
             self.no_improve_streak = 0
-        else:
-            self.no_improve_streak += 1
+            return True
+        self.no_improve_streak += 1
+        return False
 
     def stabilised(self) -> bool:
         # Val-loss plateau only — identical to Stage 4's SAM confirmatory run.
@@ -231,7 +288,20 @@ def main():
     )
 
     with open(BASELINE_CHECKPOINT_DIR / "meta.json", encoding="utf-8") as f:
-        arch_config = json.load(f)["arch_config"]
+        baseline_meta = json.load(f)
+    arch_config = baseline_meta["arch_config"]
+
+    config_hash = load_config().config_hash
+    with open(SPLITS_FILE, encoding="utf-8") as f:
+        split_hash = hash_split(json.load(f))
+    with open(RESPONSE_CLASSES_FILE, encoding="utf-8") as f:
+        response_threshold = json.load(f)["threshold"]
+    if baseline_meta.get("config_hash") != config_hash:
+        logger.warning("config_hash mismatch: baseline=%s  this run=%s",
+                       baseline_meta.get("config_hash"), config_hash)
+    if baseline_meta.get("split_hash") != split_hash:
+        logger.warning("split_hash mismatch: baseline=%s  this run=%s",
+                       baseline_meta.get("split_hash"), split_hash)
 
     train_ds = DeepCCDSDataset("train")
     val_ds   = DeepCCDSDataset("val")
@@ -263,6 +333,32 @@ def main():
     out_progress = OUT_DIR / "adam_wd_control_progress.json"
     out_jsonl.unlink(missing_ok=True)   # fresh run — drop any stale partial log
 
+    # Provenance shared by every checkpoint write this run makes.
+    ckpt_base = {
+        "arch_config": arch_config,
+        "optimizer": "adam",
+        "rho": None,
+        "weight_decay": WD,
+        "learning_rate": LR,
+        "batch_size": BATCH_SIZE,
+        "response_threshold": response_threshold,
+        "stopping_rule": (
+            f"val_loss_plateau: patience={PATIENCE}, min_delta={MIN_DELTA}, "
+            f"max_epochs={MAX_EPOCHS}"
+        ),
+        "produced_by": "src.investigations.stage4b_adam_wd_control",
+        "produced_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "git_commit": _git_commit(),
+        "hardware": _hardware_string(),
+        "run_note": (
+            "Adam + WD=1e-3 confound control for Stage 4 (matched stopping rule). "
+            "The original 2026-09-05 run saved metrics only; this rerun adds a "
+            "loadable model.pt so the Adam+WD vs SAM ρ=0.5+WD loss-geometry "
+            "comparison can be done on real weights."
+        ),
+        "original_metrics_run": "artifacts/sam_investigation/adam_wd_control/adam_wd_control_scorecard.json",
+    }
+
     for epoch in range(1, MAX_EPOCHS + 1):
         try:
             train_loss = train_epoch_adam(model, train_loader, optimizer, device)
@@ -272,7 +368,7 @@ def main():
             interrupted = True
             break
 
-        tracker.update(train_loss, val_loss)
+        improved = tracker.update(train_loss, val_loss)
         final_epoch = epoch
 
         gap = val_loss - train_loss
@@ -299,6 +395,24 @@ def main():
             "converged": False,
         })
 
+        # crash-recovery checkpoint on every val-loss improvement
+        if improved:
+            v_r2   = r_squared(model, val_loader, device)
+            v_rmse = rmse(model, val_loader, device)
+            _write_checkpoint(
+                model, split_hash=split_hash, config_hash=config_hash,
+                epoch=epoch, gap=gap, r2=v_r2, rmse_=v_rmse,
+                extra={
+                    **ckpt_base, "partial": True,
+                    "checkpoint_kind": "best_val_loss_mid_run",
+                    "epoch_of_this_save": epoch,
+                    "best_val_loss": round(tracker.best_val_loss, 6),
+                    "n_epochs": epoch, "converged": False, "interrupted": False,
+                },
+            )
+            logger.info("  wrote crash-recovery checkpoint at epoch %d (val_loss=%.4f) -> %s",
+                        epoch, val_loss, OUT_DIR / "model.pt")
+
         logger.info(
             "epoch %3d/%d | train=%.4f val=%.4f gap=%.4f | no_imp=%d | %.0fs elapsed",
             epoch, MAX_EPOCHS, train_loss, val_loss, gap,
@@ -322,6 +436,10 @@ def main():
     final_test  = eval_split(model, test_loader,  device)
     val_r2      = r_squared(model, val_loader, device)
     val_rmse    = rmse(model, val_loader, device)
+    train_r2    = r_squared(model, train_loader, device)
+    test_r2     = r_squared(model, test_loader, device)
+    train_rmse  = rmse(model, train_loader, device)
+    test_rmse   = rmse(model, test_loader, device)
     runtime     = time.time() - t0
 
     gen_gap = final_val - final_train
@@ -366,6 +484,10 @@ def main():
         "generalisation_gap": gen_gap,
         "val_r2":   val_r2,
         "val_rmse": val_rmse,
+        "train_r2": train_r2,
+        "test_r2":  test_r2,
+        "train_rmse": train_rmse,
+        "test_rmse":  test_rmse,
         "comparison": {
             "original_adam_baseline_wd0": {
                 "gap": BASELINE_GAP,
@@ -397,6 +519,24 @@ def main():
 
     _atomic_write_json(out_history, epoch_history)
     logger.info("Saved: %s (also streamed to %s)", out_history, out_jsonl)
+
+    # Final, authoritative checkpoint (overwrites the last crash-recovery copy).
+    _write_checkpoint(
+        model, split_hash=split_hash, config_hash=config_hash,
+        epoch=final_epoch, gap=gen_gap, r2=val_r2, rmse_=val_rmse,
+        extra={
+            **ckpt_base, "partial": False,
+            "checkpoint_kind": "final_epoch_state",
+            "n_epochs": final_epoch, "converged": converged, "interrupted": interrupted,
+            "best_val_loss": round(tracker.best_val_loss, 6),
+            "final_train_loss": final_train, "final_val_loss": final_val,
+            "final_test_loss": final_test,
+            "train_r2": train_r2, "test_r2": test_r2,
+            "train_rmse": train_rmse, "test_rmse": test_rmse,
+            "runtime_s": round(runtime, 1),
+        },
+    )
+    logger.info("Saved checkpoint: %s  (+ meta.json)", OUT_DIR / "model.pt")
     _flush_log_handlers()
 
 

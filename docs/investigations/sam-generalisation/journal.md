@@ -681,3 +681,69 @@ comparison; the confound-free comparison is the Adam+WD vs SAM ρ=0.5+WD matched
 pair. Figure 03 encodes that caveat directly. Once the Stage 4b Adam+WD
 checkpoint exists (see Stage 4e), figures 14–15 should be regenerated with that
 third condition for a clean three-way geometry comparison.
+
+## Stage 4e — Adam+WD control rerun to close the confound loose end
+
+**Date:** 2026-09-10
+
+### What
+
+Added checkpoint saving to `src/investigations/stage4b_adam_wd_control.py`
+(mirrors the Stage 4c change to `stage4_confirmatory.py`) and launched a fresh
+full-data run. Output unchanged:
+`artifacts/sam_investigation/adam_wd_control/`, now with
+`{model.pt, meta.json}` alongside the JSON progress/history files.
+
+### Why
+
+Stage 4b's original 2026-09-05 run had the same defect the first Stage 4
+confirmatory run had: it recorded metrics only and saved no weights. That was
+fine for the confound *number* (gap 0.2582, which stands), but it blocks the
+loss-geometry half of the write-up: the honest, confound-free comparison of
+local minimum flatness is **Adam+WD=1e-3 vs SAM ρ=0.5+WD=1e-3 under the same
+stopping rule**, and figures 14–15 (Stage 4d) could only use the original Adam
+baseline (WD=0, reverse-early-stopping) as the Adam side. To add the matched
+Adam+WD condition to the landscape / Hessian figures, its trained parameters
+have to exist as a file.
+
+### How
+
+Same pattern as `stage4_confirmatory.py`:
+
+- `save_checkpoint()` (optimiser="adam") writes
+  `adam_wd_control/{model.pt, meta.json}` at the end of training; `meta.json`
+  carries the schema keys + `arch_config` + provenance
+  (`produced_by`, `produced_at_utc`, `git_commit`, `hardware`, `run_note`).
+- Periodic best-val-loss crash-recovery save (`"partial": true`), overwritten at
+  clean completion by the final-epoch state (`"partial": false`) with full
+  eval-mode train/val/test R² and RMSE (the original run recorded val-only, so
+  the regenerated `adam_wd_control_scorecard.json` gains train/test R²/RMSE too
+  — which lets figures 09/10 show the Adam+WD train and test bars).
+- `config_hash` / `split_hash` cross-checked against the baseline checkpoint
+  (warn, not abort).
+- `StoppingTracker.update()` now returns an `improved` flag; nothing else in the
+  training loop, persistence, logging or the val-loss-plateau stopping rule
+  changed.
+
+Different hardware from the original Stage 4b run (WSL2 / i5 / CPU-only,
+`torch 2.14.0+cpu`) — same caveat as Stage 4c: exact reproduction of gap=0.2582
+/ val R²=0.8621 is not expected, but a large deviation should be flagged.
+
+### Result
+
+Run launched 2026-09-10T21:55:53Z on the WSL2/i5/CPU box (single-step Adam, so
+expected somewhat under the original's 6.6 h / 157 epochs). The checkpoint-saving
+path was confirmed live: `model.pt` (4.4 MB) + a schema-valid `meta.json`
+(`optimiser: "adam"`, `config_hash a2070aedcc19`, `split_hash dc2241cf73c6`,
+`partial: true`) were written by the crash-recovery path at epoch 1. Final gap /
+R² and the regenerated Adam+WD scorecard (now with train/test R² and RMSE) will
+be recorded here on completion; this commit covers the code change and the
+launch. `model.pt` is caught by the `*.pt` gitignore rule and must be
+transferred out of band; `meta.json` is committed once the run finishes.
+
+### Reference
+
+- Stage 4b (above) — the original confound analysis and the 0.2582 number.
+- Stage 4c — the equivalent checkpoint-saving change to `stage4_confirmatory.py`.
+- Stage 4d — figures 14–15, to be regenerated with this third condition once the
+  checkpoint exists.
