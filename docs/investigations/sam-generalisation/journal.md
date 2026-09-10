@@ -564,3 +564,120 @@ The rerun does its one job: there is now a `model.pt` for the SAM ρ=0.5 / WD=1e
 **Git-trackability of the checkpoint.** `model.pt` is caught by the repo-wide `*.pt` rule in `.gitignore` (confirmed with `git check-ignore -v`) *and* by `artifacts/*`; it is **not** committable and will not travel via `git push`. `meta.json` under `artifacts/sam_investigation/` *is* trackable and is committed. The weights file must be transferred to the rule-extraction arms out of band (shared drive). Absolute path on the run machine:
 
 `/mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt`
+
+## Stage 4d — Consolidated thesis figures
+
+**Date:** 2026-09-10
+
+### What
+
+Added `src/investigations/stage4c_figures.py`: one script that turns every numeric
+result the investigation produced into comparison figures spanning the full arc —
+the pre-investigation state (Adam baseline + the ρ=0.01–0.2 SAM sweep that barely
+moved the gap) and the investigation itself (Stage 3 subsample sweep, Stage 4
+confirmatory ρ=0.5+WD, Stage 4b Adam+WD control). Output:
+`artifacts/sam_investigation/figures/` — 15 PNGs (numbered 01–16, 08 reserved)
+plus `figures_manifest.json`
+(per-figure caption + suggested thesis section + caveats) and
+`conditions_table.json` (the seven full-data runs with ρ / WD / stopping rule /
+epochs / gap / R²).
+
+Figures:
+
+| # | file | shows |
+|---|---|---|
+| 01 | gap_full_story_bars | eval-mode gap for all 7 runs; pre-investigation vs outcome |
+| 02 | gap_vs_rho_fulldata | full-data gap vs ρ; the ρ under-perturbation region and the ρ=0.5 collapse |
+| 03 | gap_decomposition_waterfall | 0.337 → 0.258 (WD, ≈27%) → 0.049 (SAM ρ=0.5, ≈73%) |
+| 04 | gap_vs_valr2_tradeoff | each run as a point in (gap, val R²) space |
+| 05 | loss_curves_preinvestigation | train/val loss curves — baseline + ρ=0.01–0.2 |
+| 06 | loss_curves_investigation | train/val loss curves — baseline vs Adam+WD vs SAM ρ=0.5+WD |
+| 07 | gap_per_epoch | per-epoch gap trajectories, pre-investigation vs investigation panels |
+| 09 | r2_comparison | train/val/test R² (zoomed); ρ=0.5+WD is the only run with train R² ≈ val R² |
+| 10 | rmse_comparison | train/val/test RMSE (zoomed) |
+| 11 | final_loss_comparison | final eval-mode loss by split; train–val separation = the gap |
+| 12 | stage3_sweep_heatmaps | Stage 3 (ρ × lr,wd) grid — gap and val R² |
+| 13 | stage3_gap_vs_rho_subsample | Stage 3 subsample gap vs ρ, split by WD |
+| 14 | loss_landscape_stage4 | 1-D filter-normalised landscape, Adam baseline vs SAM ρ=0.5+WD, train+val, mean±sd over 3 directions |
+| 15 | hessian_top_eigenvalue | λ_max of the training-loss Hessian at each trained minimum (power iteration) |
+| 16 | pred_vs_actual | predicted vs true ln IC50 (val), baseline vs SAM ρ=0.5+WD |
+
+(08 is intentionally skipped — the numbering leaves room for a future
+train-mode-vs-eval-mode gap panel.)
+
+### Why
+
+The investigation's existing figures (`stage1_*.png`, `stage3_*.png`,
+`sam_vs_baseline_*` in `artifacts/reports/`) stop at Stage 3 and the ρ≤0.2
+sweep. Nothing visualised Stage 4 / 4b — the part that carries the headline
+result — and nothing put the whole arc on shared axes for the write-up. This
+script fills that in and is re-runnable as later results land (e.g. once the
+Stage 4b Adam+WD checkpoint exists, figures 14–15 can add that condition).
+
+### How
+
+Pure matplotlib over the committed JSON scorecards / histories for figures 1–13
+(no torch, ~5 s). Figures 14–16 load the three checkpoints
+(`artifacts/checkpoints/baseline`, `artifacts/checkpoints/sam` (ρ=0.2),
+`artifacts/sam_investigation/confirmatory` (ρ=0.5+WD)) via
+`src.common.checkpoint.load_checkpoint` and run on CPU subsamples:
+
+- **Landscape (14):** own filter-normalised 1-D implementation (same idea as
+  `src/model/sam.py::_plot_comparative_loss_landscape`, but evaluated on both the
+  train and the val loader and averaged over 3 random directions with a ±sd
+  band). 15 points, span 0.6, 8 000-row subsamples per split.
+- **Hessian λ_max (15):** power iteration on Hessian–vector products
+  (`torch.autograd.grad` twice), 25 steps, one 8 192-sample batch, per checkpoint.
+  A relative sharpness scalar to accompany the landscape picture.
+- **Pred vs actual (16):** baseline predictions from the committed parquet; SAM
+  ρ=0.5+WD predictions regenerated from the rerun checkpoint; true values joined
+  from `gdsc_processed.parquet`.
+
+Each figure is wrapped so one failure does not sink the batch;
+`figures_manifest.json` records every caveat (mixed stopping rules across the
+pre/investigation phases; train-mode per-epoch losses in the curve figures;
+BN running stats held fixed during landscape perturbation; subsample sizes;
+Stage 3's inflated subsample gaps).
+
+### Result
+
+15 figures (numbered 01–16, 08 reserved) written to
+`artifacts/sam_investigation/figures/`, generated in ~2.5 min on CPU. The
+clearest single-figure statements of the result:
+
+- **07_gap_per_epoch** — SAM ρ=0.5+WD holds the per-epoch gap on the zero line for
+  the whole 250-epoch run while the baseline and Adam+WD climb to ~0.3 / ~0.2.
+- **09_r2_comparison** — SAM ρ=0.5+WD is the only run whose train R² (0.852) sits
+  on top of its val R² (0.844); every other run has train R² ≈ 0.90 ≫ val ≈ 0.86.
+- **03_gap_decomposition_waterfall** — the Stage 4b split: WD ≈ 27% of the total
+  gap reduction, SAM ρ=0.5 ≈ 73%.
+- **14_loss_landscape_stage4** — over a ±0.06 filter-normalised slice: the Adam
+  baseline sits in a visibly curved basin (train 0.75 → 0.90 at |α|=0.06) with its
+  train and val curves ~0.35 apart; SAM ρ=0.5+WD's curve is nearly flat
+  (~1.37–1.40 across the whole range) with train and val almost coincident — a
+  flatter minimum with a smaller gap, at a higher absolute loss.
+- **15_hessian_top_eigenvalue** — λ_max of the training-loss Hessian: Adam
+  baseline 112, SAM ρ=0.2 15, SAM ρ=0.5+WD 43. Both SAM minima are markedly
+  flatter than Adam's (≈2.6–7.7×); the ρ=0.2 < ρ=0.5 ordering does not track the
+  gap and is within the noise of a single-batch power-iteration estimate — read
+  it as "SAM flattens the minimum", not as a fine-grained ρ ranking.
+
+### Reference
+
+- Data sources listed in the `stage4c_figures.py` module docstring.
+- Filter-normalised landscape method: Li et al. (2018), "Visualizing the Loss
+  Landscape of Neural Nets" — already cited in Stage 2/3.
+- Stage 4 (confirmatory rerun) and Stage 4b (Adam+WD control) above supply the
+  numbers behind figures 03, 06, 07, 09–11, 14–16.
+
+### Interpretation
+
+These are draft thesis figures, not new analysis — they restate Stage 1–4b
+conclusions visually. The one caveat to carry into the write-up is that the
+pre-investigation runs (baseline, ρ=0.01–0.2) used the reverse-early-stopping
+rule while the two investigation runs used val-loss-plateau, so any figure that
+places both phases on one axis (01, 04, 07-left-vs-right, 09–11) is a directional
+comparison; the confound-free comparison is the Adam+WD vs SAM ρ=0.5+WD matched
+pair. Figure 03 encodes that caveat directly. Once the Stage 4b Adam+WD
+checkpoint exists (see Stage 4e), figures 14–15 should be regenerated with that
+third condition for a clean three-way geometry comparison.
