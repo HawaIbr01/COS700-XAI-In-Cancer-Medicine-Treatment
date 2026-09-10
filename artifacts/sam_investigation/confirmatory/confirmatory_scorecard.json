@@ -8,23 +8,24 @@
   "converged": false,
   "interrupted": false,
   "stopping_rule": "val_loss_plateau: patience=30, min_delta=0.0001. Train-loss 'still improving' condition removed 2026-09-04 \u2014 see journal Stage 4.",
-  "final_train_loss": 1.347126348805789,
-  "final_val_loss": 1.3988578770010969,
-  "final_test_loss": 1.401788660986876,
-  "generalisation_gap": 0.05173152819530791,
-  "val_r2": 0.8449745774269104,
-  "val_rmse": 1.070297122001648,
+  "final_train_loss": 1.3547621836157826,
+  "final_val_loss": 1.403261004325069,
+  "final_test_loss": 1.4037522767625215,
+  "generalisation_gap": 0.04849882070928646,
+  "val_r2": 0.8444086313247681,
+  "val_rmse": 1.0722490549087524,
   "gap_vs_baseline": {
     "baseline_gap": 0.3369,
     "baseline_r2": 0.8565,
-    "gap_reduction_pct": 84.64,
-    "r2_delta": -0.0115
+    "gap_reduction_pct": 85.6,
+    "r2_delta": -0.0121
   },
-  "runtime_s": 77248.1,
+  "runtime_s": 48400.1,
   "dataset_sizes": {
     "train": 255628,
     "val": 31963,
     "test": 31952
   },
-  "max_epochs_cap": 250
+  "max_epochs_cap": 250,
+  "is_smoke_test": false
 }
