@@ -731,19 +731,103 @@ Different hardware from the original Stage 4b run (WSL2 / i5 / CPU-only,
 
 ### Result
 
-Run launched 2026-09-10T21:55:53Z on the WSL2/i5/CPU box (single-step Adam, so
-expected somewhat under the original's 6.6 h / 157 epochs). The checkpoint-saving
-path was confirmed live: `model.pt` (4.4 MB) + a schema-valid `meta.json`
-(`optimiser: "adam"`, `config_hash a2070aedcc19`, `split_hash dc2241cf73c6`,
-`partial: true`) were written by the crash-recovery path at epoch 1. Final gap /
-R² and the regenerated Adam+WD scorecard (now with train/test R² and RMSE) will
-be recorded here on completion; this commit covers the code change and the
-launch. `model.pt` is caught by the `*.pt` gitignore rule and must be
-transferred out of band; `meta.json` is committed once the run finishes.
+First launch (2026-09-10T21:55:53Z) died silently overnight at epoch 120/250
+(no crash message in the log; process simply stopped appearing in `ps` around
+2026-09-11 03:07 local) — likely the WSL2 session/terminal that owned it
+closed. No resume path exists in `stage4b_adam_wd_control.py` (no `--resume`
+flag, no optimiser-state checkpoint loading), so the dead run's epoch-120
+partial state (`model.pt`, `meta.json`, log, `.jsonl` history, progress.json)
+was backed up to
+`artifacts/sam_investigation/adam_wd_control/_partial_run_2026-09-10_backup/`
+and the run was **restarted from epoch 0** (`nohup`'d and disowned this time)
+at 2026-09-11T07:54:14Z.
+
+The restart completed cleanly: converged at **epoch 187/250** (val-loss
+plateau, patience=30), runtime 19,158 s (~5.3 h). Final: train=1.0027,
+val=1.2756, test=1.2717, **gap=0.2729**, val R²=0.8616, val RMSE=1.0111.
+`model.pt` + schema-valid `meta.json` (`converged: true`, `partial: false`)
+saved; `adam_wd_control_scorecard.json` / `_history.json` regenerated with
+train/test R² and RMSE alongside val.
+
+vs. original Adam baseline (WD=0, reverse-early-stop): gap 0.3369 → 0.2729
+(19.0% reduction from weight decay alone, on this rerun's own numbers).
+Matched pair vs. Stage 4 SAM ρ=0.5+WD (same val-plateau stopping rule):
+Adam+WD gap=0.2729 vs SAM gap=0.0517 → **SAM-specific extra reduction =
+0.2212**. This is in the same ballpark as the Stage 4b decomposition above
+(WD ≈ 27–19%, SAM ≈ 73–81% of the total reduction, depending on which Adam+WD
+run's number is used as the WD-alone baseline) — reinforces rather than
+overturns that conclusion. `model.pt` is caught by the `*.pt` gitignore rule
+and must be transferred out of band; `meta.json` + the regenerated JSON
+outputs are committed.
 
 ### Reference
 
 - Stage 4b (above) — the original confound analysis and the 0.2582 number.
 - Stage 4c — the equivalent checkpoint-saving change to `stage4_confirmatory.py`.
+- Stage 4f (below) — the 2-D/3-D loss-landscape figure built on this checkpoint.
 - Stage 4d — figures 14–15, to be regenerated with this third condition once the
   checkpoint exists.
+
+## Stage 4f — 2-D loss-landscape figure (all four checkpoints)
+
+**Date:** 2026-09-11
+
+### What
+
+Added `fig_loss_landscape_2d()` to `src/investigations/stage4c_figures.py`
+(figure `17_loss_landscape_2d.png`): a full 2-D extension of figure 14's 1-D
+filter-normalised slice, plotted as a 3-D surface (+ a train-loss contour
+projected onto the base plane) for all four full-data checkpoints that now
+have loadable weights — Adam baseline, SAM ρ=0.2, the Stage 4e Adam+WD
+control, and SAM ρ=0.5+WD (Stage 4/4c).
+
+### Why
+
+Figure 14 (Stage 4d) only had two conditions (Adam baseline vs SAM ρ=0.5+WD)
+because the Adam+WD control had no checkpoint yet, and it only showed one
+random 1-D slice through each minimum. A 2-D slice over two independent
+filter-normalised directions is a strictly more informative view of basin
+shape (curvature isn't isotropic), and with Stage 4e's checkpoint now on disk
+all four full-data conditions can go in one comparison.
+
+### How
+
+- `_landscape_grid()`: 2-D generalisation of the existing `_landscape_curve()`
+  — two independent filter-normalised directions (`_filter_norm_direction`,
+  reused unchanged), evaluated on an `n_points × n_points` grid of
+  (α, β) ∈ [−span, span]². Same per-point mechanics as the 1-D version
+  (perturb → eval → restore).
+- `fig_loss_landscape_2d()`: one direction pair per checkpoint (seeds 10/11,
+  shared across train/val so the two surfaces are directly comparable),
+  15×15 grid, span ±0.06 (matching figure 14), 4000-row train/val subsamples.
+  Rendered as a 2×2 grid of `mpl_toolkits.mplot3d` subplots: train loss as a
+  shaded surface in the condition's registry colour, val loss overlaid as a
+  red wireframe, plus a `contourf` of the train surface projected onto the
+  z-min base plane for a 2-D reading of the same data. z-axis clipped to a
+  shared ceiling (90th percentile across all four panels' losses) so basin
+  shape is comparable across subplots.
+- Timed before committing to the full run: ~0.17 s/grid-point compute-only
+  (measured on a 5×5 probe), so 15×15×2 splits×4 models ≈ 5–6 min total —
+  acceptable, so no further downsampling was needed.
+- Wired into `main()`'s job list right after `fig_loss_landscape` (both run
+  under the existing `--no-torch` skip flag).
+
+### Result
+
+Ran in ~5.5 min (`19:00:53`–`19:06:07`). All four panels confirm and extend
+the 1-D story: Adam baseline and SAM ρ=0.2 show a visibly curved bowl in
+*every* direction sampled, with the val (red) surface sitting clearly above
+and separate from the train (shaded) surface across the whole grid. Adam+WD
+narrows that separation somewhat but keeps the bowl shape. SAM ρ=0.5+WD is
+the outlier: both surfaces are close to flat and nearly coincident across the
+full ±0.06×±0.06 grid — the flat-minimum / closed-gap result holds along a
+second independent random direction, not just the one probed in figure 14.
+
+### Reference
+
+- Figure 14 (Stage 4d) — the 1-D precursor this extends; read together.
+- Figure 15 (Hessian λ_max) — the quantitative companion (still 3-condition;
+  extending it to include Adam+WD was not requested and is a natural next
+  addition if the write-up wants it).
+- Li et al. (2018), "Visualizing the Loss Landscape of Neural Nets" — same
+  method reference as figure 14.

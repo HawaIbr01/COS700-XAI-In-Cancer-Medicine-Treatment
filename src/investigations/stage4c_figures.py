@@ -604,6 +604,98 @@ def fig_loss_landscape(seeds=(0, 1, 2), n_points=25, span=0.06, n_sub=8000):
           "data. Read alongside figure 15 (Hessian λ_max).")
 
 
+def _landscape_grid(model, loader, seed1, seed2, n_points, span):
+    """2-D filter-normalised loss grid over two independent random directions
+    (Li et al. 2018 style, extended from the 1-D slice in _landscape_curve)."""
+    import torch
+    alphas = np.linspace(-span, span, n_points)
+    betas = np.linspace(-span, span, n_points)
+    base = [p.detach().clone() for p in model.parameters()]
+    d1 = _filter_norm_direction(model, seed1)
+    d2 = _filter_norm_direction(model, seed2)
+    grid = np.zeros((n_points, n_points))
+    with torch.no_grad():
+        for i, a in enumerate(alphas):
+            for j, b in enumerate(betas):
+                for p, bp, di, dj in zip(model.parameters(), base, d1, d2):
+                    p.copy_(bp + float(a) * di + float(b) * dj)
+                grid[i, j] = _eval_loss(model, loader)
+            logger.info("  2-D landscape row %d/%d done", i + 1, n_points)
+        for p, bp in zip(model.parameters(), base):
+            p.copy_(bp)
+    return alphas, betas, grid
+
+
+def fig_loss_landscape_2d(seed_pair=(10, 11), n_points=15, span=0.06, n_sub=4000):
+    """Full 2-D extension of figure 14: one 3-D surface (+ base contour) per
+    condition, train and val overlaid, across all four full-data checkpoints
+    that have loadable weights (Adam baseline, SAM rho=0.2, Adam+WD control,
+    SAM rho=0.5+WD)."""
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 — registers 3-D projection
+
+    specs = [
+        ("adam_base", CKPT / "baseline"),
+        ("sam_r02", CKPT / "sam"),
+        ("adam_wd", SAMINV / "adam_wd_control"),
+        ("sam_r05_wd", SAMINV / "confirmatory"),
+    ]
+    loaders = {"train": _subset_loader("train", n_sub, 300),
+               "val": _subset_loader("val", n_sub, 301)}
+
+    fig = plt.figure(figsize=(14, 12))
+    zmin, zmax = np.inf, -np.inf
+    panels = []
+    for key, cdir in specs:
+        logger.info("2-D landscape: %s", key)
+        model, _ = _load_model(cdir)
+        alphas, betas, g_tr = _landscape_grid(model, loaders["train"], *seed_pair, n_points, span)
+        _, _, g_va = _landscape_grid(model, loaders["val"], *seed_pair, n_points, span)
+        zmin = min(zmin, g_tr.min(), g_va.min())
+        zmax = max(zmax, np.percentile(g_tr, 90), np.percentile(g_va, 90))
+        panels.append((key, cdir, alphas, betas, g_tr, g_va))
+
+    for idx, (key, cdir, alphas, betas, g_tr, g_va) in enumerate(panels):
+        ax = fig.add_subplot(2, 2, idx + 1, projection="3d")
+        A, B = np.meshgrid(alphas, betas, indexing="ij")
+        c = CONDITIONS[key]
+        g_tr_c = np.clip(g_tr, zmin, zmax)
+        g_va_c = np.clip(g_va, zmin, zmax)
+        ax.plot_surface(A, B, g_tr_c, color=c["color"], alpha=0.55, linewidth=0, antialiased=True)
+        ax.plot_wireframe(A, B, g_va_c, color="#d62728", alpha=0.6, linewidth=0.5, rstride=1, cstride=1)
+        ax.contourf(A, B, g_tr_c, zdir="z", offset=zmin, cmap="Greys", alpha=0.35, levels=12)
+        ax.set_zlim(zmin, zmax)
+        ax.set_xlabel("α (dir. 1)", fontsize=8)
+        ax.set_ylabel("β (dir. 2)", fontsize=8)
+        ax.set_zlabel("loss", fontsize=8)
+        ax.set_title(c["short"], fontsize=10)
+        ax.tick_params(labelsize=7)
+
+    fig.subplots_adjust(top=0.90, hspace=0.05, wspace=0.05)
+    fig.legend(handles=[
+        plt.Line2D([0], [0], color="#555555", lw=6, alpha=0.55, label="train loss surface"),
+        plt.Line2D([0], [0], color="#d62728", lw=1.5, label="val loss (wireframe)"),
+    ], loc="upper center", ncol=2, fontsize=9, bbox_to_anchor=(0.5, 0.965))
+    fig.suptitle("2-D filter-normalised loss landscape — all four full-data checkpoints", y=0.995)
+    _save(fig, "17_loss_landscape_2d.png",
+          f"Full 2-D filter-normalised loss landscape (Li et al. 2018), one random "
+          f"direction pair per checkpoint, {n_points}x{n_points} grid, span ±{span}, "
+          f"{n_sub}-row subsamples. Train surface (shaded, per-condition colour) with "
+          f"val surface overlaid as a red wireframe and a train-loss contour projected "
+          f"onto the base plane. The Adam baseline and SAM ρ=0.2 panels show a "
+          f"visibly curved bowl with train/val surfaces separating away from the "
+          f"origin; the Adam+WD and SAM ρ=0.5+WD panels are markedly flatter with "
+          f"the two surfaces closer together across the whole grid — the 2-D "
+          f"generalisation of figure 14's 1-D result.",
+          "Results — Stage 4 / Discussion (flat minima)",
+          "Single direction pair per checkpoint (no averaging over seeds, unlike "
+          "figure 14's 3-seed 1-D average) — a coarser, higher-variance estimate "
+          "traded for the extra dimension. Same BN-frozen / per-tensor-normalised / "
+          "subsampled caveats as figure 14. z-axis clipped to the shared 90th-"
+          "percentile ceiling across all four panels for a comparable view; sharp "
+          "curves may be truncated. Read alongside figures 14-15.")
+
+
 def fig_hessian(n_iter=25, batch=8192):
     import matplotlib.pyplot as plt
     import torch
@@ -728,7 +820,7 @@ def main():
         fig_stage3_heatmaps, fig_stage3_gap_vs_rho,
     ]
     if not args.no_torch:
-        jobs += [fig_loss_landscape, fig_hessian, fig_pred_vs_actual]
+        jobs += [fig_loss_landscape, fig_loss_landscape_2d, fig_hessian, fig_pred_vs_actual]
 
     for j in jobs:
         try:

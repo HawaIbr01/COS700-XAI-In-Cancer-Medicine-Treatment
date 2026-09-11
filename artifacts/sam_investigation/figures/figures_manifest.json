@@ -78,6 +78,12 @@
     "caveats": "BN running statistics are held fixed while weights are perturbed (Li et al. recommend recomputing them); per-tensor (not per-filter) normalisation, so \u03b1 is only comparable within this figure; single 1-D slice family; subsampled data. Read alongside figure 15 (Hessian \u03bb_max)."
   },
   {
+    "file": "17_loss_landscape_2d.png",
+    "caption": "Full 2-D filter-normalised loss landscape (Li et al. 2018), one random direction pair per checkpoint, 15x15 grid, span \u00b10.06, 4000-row subsamples. Train surface (shaded, per-condition colour) with val surface overlaid as a red wireframe and a train-loss contour projected onto the base plane. The Adam baseline and SAM \u03c1=0.2 panels show a visibly curved bowl with train/val surfaces separating away from the origin; the Adam+WD and SAM \u03c1=0.5+WD panels are markedly flatter with the two surfaces closer together across the whole grid \u2014 the 2-D generalisation of figure 14's 1-D result.",
+    "thesis_section": "Results \u2014 Stage 4 / Discussion (flat minima)",
+    "caveats": "Single direction pair per checkpoint (no averaging over seeds, unlike figure 14's 3-seed 1-D average) \u2014 a coarser, higher-variance estimate traded for the extra dimension. Same BN-frozen / per-tensor-normalised / subsampled caveats as figure 14. z-axis clipped to the shared 90th-percentile ceiling across all four panels for a comparable view; sharp curves may be truncated. Read alongside figures 14-15."
+  },
+  {
     "file": "15_hessian_top_eigenvalue.png",
     "caption": "Largest Hessian eigenvalue of the training loss at each trained solution (power iteration, 25 steps, 8192-sample batch). Lower = flatter minimum. This is the quantitative companion to the landscape figure.",
     "thesis_section": "Results \u2014 Discussion (flat minima)",

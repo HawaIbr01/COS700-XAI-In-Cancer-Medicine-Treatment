@@ -1,166 +1,237 @@
-2026-09-05 16:20:55,195 [INFO] Device: cpu
-2026-09-05 16:20:55,196 [INFO] Config: optimizer=Adam (no SAM)  LR=0.001  WD=0.001  patience=30  min_delta=0.0001  MAX_EPOCHS=250
-2026-09-05 16:20:56,016 [INFO] Dataset sizes — train: 255628  val: 31963  test: 31952
-2026-09-05 16:21:24,640 [INFO] epoch   1/250 | train=2.5611 val=1.7897 gap=-0.7714 | no_imp=0 | 26s elapsed
-2026-09-05 16:21:50,454 [INFO] epoch   2/250 | train=1.7684 val=1.7070 gap=-0.0614 | no_imp=0 | 52s elapsed
-2026-09-05 16:22:17,958 [INFO] epoch   3/250 | train=1.6801 val=1.6164 gap=-0.0638 | no_imp=0 | 79s elapsed
-2026-09-05 16:22:42,805 [INFO] epoch   4/250 | train=1.6091 val=1.5808 gap=-0.0283 | no_imp=0 | 104s elapsed
-2026-09-05 16:23:08,877 [INFO] epoch   5/250 | train=1.5526 val=1.5301 gap=-0.0226 | no_imp=0 | 130s elapsed
-2026-09-05 16:23:37,342 [INFO] epoch   6/250 | train=1.5173 val=1.5149 gap=-0.0024 | no_imp=0 | 158s elapsed
-2026-09-05 16:24:06,205 [INFO] epoch   7/250 | train=1.4862 val=1.4839 gap=-0.0023 | no_imp=0 | 187s elapsed
-2026-09-05 16:24:32,966 [INFO] epoch   8/250 | train=1.4638 val=1.4763 gap=0.0125 | no_imp=0 | 214s elapsed
-2026-09-05 16:24:55,982 [INFO] epoch   9/250 | train=1.4467 val=1.4585 gap=0.0118 | no_imp=0 | 237s elapsed
-2026-09-05 16:25:22,883 [INFO] epoch  10/250 | train=1.4235 val=1.4543 gap=0.0308 | no_imp=0 | 264s elapsed
-2026-09-05 16:25:45,236 [INFO] epoch  11/250 | train=1.4111 val=1.4363 gap=0.0253 | no_imp=0 | 286s elapsed
-2026-09-05 16:26:17,673 [INFO] epoch  12/250 | train=1.3974 val=1.4287 gap=0.0313 | no_imp=0 | 319s elapsed
-2026-09-05 16:26:42,525 [INFO] epoch  13/250 | train=1.3800 val=1.4448 gap=0.0648 | no_imp=1 | 344s elapsed
-2026-09-05 16:27:06,346 [INFO] epoch  14/250 | train=1.3724 val=1.4074 gap=0.0349 | no_imp=0 | 367s elapsed
-2026-09-05 16:27:27,205 [INFO] epoch  15/250 | train=1.3570 val=1.4094 gap=0.0523 | no_imp=1 | 388s elapsed
-2026-09-05 16:27:48,923 [INFO] epoch  16/250 | train=1.3523 val=1.4005 gap=0.0482 | no_imp=0 | 410s elapsed
-2026-09-05 16:28:10,456 [INFO] epoch  17/250 | train=1.3394 val=1.3906 gap=0.0512 | no_imp=0 | 432s elapsed
-2026-09-05 16:28:33,282 [INFO] epoch  18/250 | train=1.3286 val=1.3899 gap=0.0613 | no_imp=0 | 454s elapsed
-2026-09-05 16:28:55,462 [INFO] epoch  19/250 | train=1.3210 val=1.3815 gap=0.0605 | no_imp=0 | 477s elapsed
-2026-09-05 16:29:18,478 [INFO] epoch  20/250 | train=1.3092 val=1.3686 gap=0.0593 | no_imp=0 | 500s elapsed
-2026-09-05 16:29:42,366 [INFO] epoch  21/250 | train=1.3042 val=1.3722 gap=0.0680 | no_imp=1 | 523s elapsed
-2026-09-05 16:30:18,320 [INFO] epoch  22/250 | train=1.2941 val=1.3682 gap=0.0741 | no_imp=0 | 559s elapsed
-2026-09-05 16:31:03,465 [INFO] epoch  23/250 | train=1.2882 val=1.3801 gap=0.0919 | no_imp=1 | 605s elapsed
-2026-09-05 16:31:53,073 [INFO] epoch  24/250 | train=1.2820 val=1.3540 gap=0.0720 | no_imp=0 | 654s elapsed
-2026-09-05 16:32:53,070 [INFO] epoch  25/250 | train=1.2741 val=1.3507 gap=0.0766 | no_imp=0 | 714s elapsed
-2026-09-05 16:33:57,266 [INFO] epoch  26/250 | train=1.2700 val=1.3476 gap=0.0776 | no_imp=0 | 778s elapsed
-2026-09-05 16:35:04,596 [INFO] epoch  27/250 | train=1.2594 val=1.3421 gap=0.0827 | no_imp=0 | 846s elapsed
-2026-09-05 16:36:03,642 [INFO] epoch  28/250 | train=1.2544 val=1.3441 gap=0.0897 | no_imp=1 | 905s elapsed
-2026-09-05 16:37:05,134 [INFO] epoch  29/250 | train=1.2480 val=1.3480 gap=0.1000 | no_imp=2 | 966s elapsed
-2026-09-05 16:37:57,407 [INFO] epoch  30/250 | train=1.2444 val=1.3355 gap=0.0912 | no_imp=0 | 1018s elapsed
-2026-09-05 16:38:52,262 [INFO] epoch  31/250 | train=1.2383 val=1.3332 gap=0.0949 | no_imp=0 | 1073s elapsed
-2026-09-05 16:39:54,981 [INFO] epoch  32/250 | train=1.2393 val=1.3349 gap=0.0956 | no_imp=1 | 1136s elapsed
-2026-09-05 16:41:39,568 [INFO] epoch  33/250 | train=1.2277 val=1.3236 gap=0.0959 | no_imp=0 | 1241s elapsed
-2026-09-05 16:44:33,249 [INFO] epoch  34/250 | train=1.2227 val=1.3310 gap=0.1083 | no_imp=1 | 1414s elapsed
-2026-09-05 16:47:37,994 [INFO] epoch  35/250 | train=1.2219 val=1.3377 gap=0.1158 | no_imp=2 | 1599s elapsed
-2026-09-05 16:50:22,713 [INFO] epoch  36/250 | train=1.2148 val=1.3200 gap=0.1052 | no_imp=0 | 1764s elapsed
-2026-09-05 16:52:53,772 [INFO] epoch  37/250 | train=1.2105 val=1.3163 gap=0.1058 | no_imp=0 | 1915s elapsed
-2026-09-05 16:55:11,906 [INFO] epoch  38/250 | train=1.2097 val=1.3325 gap=0.1228 | no_imp=1 | 2053s elapsed
-2026-09-05 16:57:31,590 [INFO] epoch  39/250 | train=1.2063 val=1.3211 gap=0.1148 | no_imp=2 | 2193s elapsed
-2026-09-05 16:59:49,839 [INFO] epoch  40/250 | train=1.2031 val=1.3158 gap=0.1127 | no_imp=0 | 2331s elapsed
-2026-09-05 17:02:18,039 [INFO] epoch  41/250 | train=1.1976 val=1.3144 gap=0.1169 | no_imp=0 | 2479s elapsed
-2026-09-05 17:04:52,116 [INFO] epoch  42/250 | train=1.1911 val=1.3302 gap=0.1391 | no_imp=1 | 2633s elapsed
-2026-09-05 17:07:45,000 [INFO] epoch  43/250 | train=1.1910 val=1.3098 gap=0.1188 | no_imp=0 | 2806s elapsed
-2026-09-05 17:10:21,100 [INFO] epoch  44/250 | train=1.1875 val=1.3095 gap=0.1220 | no_imp=0 | 2962s elapsed
-2026-09-05 17:13:00,492 [INFO] epoch  45/250 | train=1.1851 val=1.3152 gap=0.1301 | no_imp=1 | 3122s elapsed
-2026-09-05 17:15:43,943 [INFO] epoch  46/250 | train=1.1818 val=1.3242 gap=0.1424 | no_imp=2 | 3285s elapsed
-2026-09-05 17:18:33,905 [INFO] epoch  47/250 | train=1.1795 val=1.3160 gap=0.1365 | no_imp=3 | 3455s elapsed
-2026-09-05 17:21:23,887 [INFO] epoch  48/250 | train=1.1769 val=1.3093 gap=0.1324 | no_imp=0 | 3625s elapsed
-2026-09-05 17:24:12,823 [INFO] epoch  49/250 | train=1.1763 val=1.3147 gap=0.1384 | no_imp=1 | 3794s elapsed
-2026-09-05 17:27:07,580 [INFO] epoch  50/250 | train=1.1731 val=1.3075 gap=0.1345 | no_imp=0 | 3969s elapsed
-2026-09-05 17:30:04,873 [INFO] epoch  51/250 | train=1.1660 val=1.3037 gap=0.1377 | no_imp=0 | 4146s elapsed
-2026-09-05 17:33:05,066 [INFO] epoch  52/250 | train=1.1660 val=1.3192 gap=0.1532 | no_imp=1 | 4326s elapsed
-2026-09-05 17:36:14,534 [INFO] epoch  53/250 | train=1.1648 val=1.3067 gap=0.1419 | no_imp=2 | 4516s elapsed
-2026-09-05 17:39:18,097 [INFO] epoch  54/250 | train=1.1608 val=1.3187 gap=0.1579 | no_imp=3 | 4699s elapsed
-2026-09-05 17:42:21,945 [INFO] epoch  55/250 | train=1.1629 val=1.3080 gap=0.1452 | no_imp=4 | 4883s elapsed
-2026-09-05 17:45:20,882 [INFO] epoch  56/250 | train=1.1589 val=1.3242 gap=0.1653 | no_imp=5 | 5062s elapsed
-2026-09-05 17:48:20,619 [INFO] epoch  57/250 | train=1.1569 val=1.3255 gap=0.1686 | no_imp=6 | 5242s elapsed
-2026-09-05 17:51:21,879 [INFO] epoch  58/250 | train=1.1548 val=1.3013 gap=0.1465 | no_imp=0 | 5423s elapsed
-2026-09-05 17:54:23,643 [INFO] epoch  59/250 | train=1.1537 val=1.3093 gap=0.1556 | no_imp=1 | 5605s elapsed
-2026-09-05 17:57:26,900 [INFO] epoch  60/250 | train=1.1492 val=1.3065 gap=0.1573 | no_imp=2 | 5788s elapsed
-2026-09-05 18:00:27,547 [INFO] epoch  61/250 | train=1.1471 val=1.3060 gap=0.1589 | no_imp=3 | 5969s elapsed
-2026-09-05 18:03:31,169 [INFO] epoch  62/250 | train=1.1464 val=1.3115 gap=0.1651 | no_imp=4 | 6152s elapsed
-2026-09-05 18:06:33,453 [INFO] epoch  63/250 | train=1.1438 val=1.3096 gap=0.1658 | no_imp=5 | 6335s elapsed
-2026-09-05 18:09:40,484 [INFO] epoch  64/250 | train=1.1415 val=1.3011 gap=0.1596 | no_imp=0 | 6522s elapsed
-2026-09-05 18:12:48,351 [INFO] epoch  65/250 | train=1.1400 val=1.3079 gap=0.1679 | no_imp=1 | 6709s elapsed
-2026-09-05 18:16:00,278 [INFO] epoch  66/250 | train=1.1396 val=1.3061 gap=0.1665 | no_imp=2 | 6901s elapsed
-2026-09-05 18:19:18,478 [INFO] epoch  67/250 | train=1.1384 val=1.2912 gap=0.1528 | no_imp=0 | 7100s elapsed
-2026-09-05 18:22:26,596 [INFO] epoch  68/250 | train=1.1407 val=1.3142 gap=0.1735 | no_imp=1 | 7288s elapsed
-2026-09-05 18:25:35,428 [INFO] epoch  69/250 | train=1.1363 val=1.2899 gap=0.1536 | no_imp=0 | 7477s elapsed
-2026-09-05 18:28:41,556 [INFO] epoch  70/250 | train=1.1317 val=1.2848 gap=0.1532 | no_imp=0 | 7663s elapsed
-2026-09-05 18:31:47,542 [INFO] epoch  71/250 | train=1.1287 val=1.2929 gap=0.1642 | no_imp=1 | 7849s elapsed
-2026-09-05 18:34:53,454 [INFO] epoch  72/250 | train=1.1307 val=1.2882 gap=0.1576 | no_imp=2 | 8035s elapsed
-2026-09-05 18:38:06,949 [INFO] epoch  73/250 | train=1.1276 val=1.2873 gap=0.1597 | no_imp=3 | 8228s elapsed
-2026-09-05 18:41:18,707 [INFO] epoch  74/250 | train=1.1282 val=1.2880 gap=0.1597 | no_imp=4 | 8420s elapsed
-2026-09-05 18:44:25,783 [INFO] epoch  75/250 | train=1.1273 val=1.2941 gap=0.1668 | no_imp=5 | 8607s elapsed
-2026-09-05 18:47:31,721 [INFO] epoch  76/250 | train=1.1232 val=1.2933 gap=0.1702 | no_imp=6 | 8793s elapsed
-2026-09-05 18:50:40,417 [INFO] epoch  77/250 | train=1.1250 val=1.3018 gap=0.1768 | no_imp=7 | 8981s elapsed
-2026-09-05 18:53:48,326 [INFO] epoch  78/250 | train=1.1253 val=1.2846 gap=0.1594 | no_imp=0 | 9169s elapsed
-2026-09-05 18:56:51,733 [INFO] epoch  79/250 | train=1.1201 val=1.2983 gap=0.1782 | no_imp=1 | 9353s elapsed
-2026-09-05 18:59:55,462 [INFO] epoch  80/250 | train=1.1206 val=1.3085 gap=0.1880 | no_imp=2 | 9537s elapsed
-2026-09-05 19:03:03,454 [INFO] epoch  81/250 | train=1.1161 val=1.3052 gap=0.1890 | no_imp=3 | 9725s elapsed
-2026-09-05 19:06:09,304 [INFO] epoch  82/250 | train=1.1181 val=1.2856 gap=0.1676 | no_imp=4 | 9910s elapsed
-2026-09-05 19:09:20,876 [INFO] epoch  83/250 | train=1.1197 val=1.3050 gap=0.1853 | no_imp=5 | 10102s elapsed
-2026-09-05 19:12:26,389 [INFO] epoch  84/250 | train=1.1157 val=1.2959 gap=0.1803 | no_imp=6 | 10287s elapsed
-2026-09-05 19:15:32,993 [INFO] epoch  85/250 | train=1.1151 val=1.2804 gap=0.1653 | no_imp=0 | 10474s elapsed
-2026-09-05 19:18:41,024 [INFO] epoch  86/250 | train=1.1131 val=1.2871 gap=0.1740 | no_imp=1 | 10662s elapsed
-2026-09-05 19:21:48,724 [INFO] epoch  87/250 | train=1.1132 val=1.3075 gap=0.1943 | no_imp=2 | 10850s elapsed
-2026-09-05 19:24:57,508 [INFO] epoch  88/250 | train=1.1101 val=1.2898 gap=0.1798 | no_imp=3 | 11039s elapsed
-2026-09-05 19:28:08,535 [INFO] epoch  89/250 | train=1.1097 val=1.2899 gap=0.1802 | no_imp=4 | 11230s elapsed
-2026-09-05 19:31:14,560 [INFO] epoch  90/250 | train=1.1071 val=1.2922 gap=0.1851 | no_imp=5 | 11416s elapsed
-2026-09-05 19:34:23,119 [INFO] epoch  91/250 | train=1.1089 val=1.2856 gap=0.1768 | no_imp=6 | 11604s elapsed
-2026-09-05 19:37:33,245 [INFO] epoch  92/250 | train=1.1060 val=1.2912 gap=0.1852 | no_imp=7 | 11794s elapsed
-2026-09-05 19:40:51,043 [INFO] epoch  93/250 | train=1.1056 val=1.2896 gap=0.1840 | no_imp=8 | 11992s elapsed
-2026-09-05 19:43:57,144 [INFO] epoch  94/250 | train=1.1070 val=1.2918 gap=0.1848 | no_imp=9 | 12178s elapsed
-2026-09-05 19:47:01,995 [INFO] epoch  95/250 | train=1.1053 val=1.3010 gap=0.1957 | no_imp=10 | 12363s elapsed
-2026-09-05 19:50:05,903 [INFO] epoch  96/250 | train=1.1046 val=1.2916 gap=0.1870 | no_imp=11 | 12547s elapsed
-2026-09-05 19:53:12,516 [INFO] epoch  97/250 | train=1.1019 val=1.2862 gap=0.1843 | no_imp=12 | 12734s elapsed
-2026-09-05 19:56:50,325 [INFO] epoch  98/250 | train=1.1023 val=1.2888 gap=0.1865 | no_imp=13 | 12951s elapsed
-2026-09-05 19:59:56,016 [INFO] epoch  99/250 | train=1.1020 val=1.2880 gap=0.1860 | no_imp=14 | 13137s elapsed
-2026-09-05 20:03:05,313 [INFO] epoch 100/250 | train=1.1005 val=1.3013 gap=0.2008 | no_imp=15 | 13326s elapsed
-2026-09-05 20:06:10,768 [INFO] epoch 101/250 | train=1.1000 val=1.2869 gap=0.1869 | no_imp=16 | 13512s elapsed
-2026-09-05 20:09:17,484 [INFO] epoch 102/250 | train=1.1031 val=1.2862 gap=0.1831 | no_imp=17 | 13699s elapsed
-2026-09-05 20:12:25,068 [INFO] epoch 103/250 | train=1.0962 val=1.2831 gap=0.1869 | no_imp=18 | 13886s elapsed
-2026-09-05 20:15:40,055 [INFO] epoch 104/250 | train=1.0968 val=1.2820 gap=0.1852 | no_imp=19 | 14081s elapsed
-2026-09-05 20:18:53,953 [INFO] epoch 105/250 | train=1.0968 val=1.2882 gap=0.1915 | no_imp=20 | 14275s elapsed
-2026-09-05 20:21:57,566 [INFO] epoch 106/250 | train=1.0989 val=1.2770 gap=0.1781 | no_imp=0 | 14459s elapsed
-2026-09-05 20:25:02,136 [INFO] epoch 107/250 | train=1.0941 val=1.2975 gap=0.2033 | no_imp=1 | 14643s elapsed
-2026-09-05 20:28:06,297 [INFO] epoch 108/250 | train=1.0929 val=1.2829 gap=0.1901 | no_imp=2 | 14827s elapsed
-2026-09-05 20:31:10,792 [INFO] epoch 109/250 | train=1.0930 val=1.2778 gap=0.1848 | no_imp=3 | 15012s elapsed
-2026-09-05 20:34:12,549 [INFO] epoch 110/250 | train=1.0912 val=1.2867 gap=0.1955 | no_imp=4 | 15194s elapsed
-2026-09-05 20:37:18,288 [INFO] epoch 111/250 | train=1.0931 val=1.2861 gap=0.1930 | no_imp=5 | 15379s elapsed
-2026-09-05 20:40:20,440 [INFO] epoch 112/250 | train=1.0904 val=1.2887 gap=0.1983 | no_imp=6 | 15562s elapsed
-2026-09-05 20:43:20,541 [INFO] epoch 113/250 | train=1.0937 val=1.2915 gap=0.1979 | no_imp=7 | 15742s elapsed
-2026-09-05 20:46:19,920 [INFO] epoch 114/250 | train=1.0879 val=1.2798 gap=0.1919 | no_imp=8 | 15921s elapsed
-2026-09-05 20:49:21,914 [INFO] epoch 115/250 | train=1.0888 val=1.2871 gap=0.1983 | no_imp=9 | 16103s elapsed
-2026-09-05 20:52:22,702 [INFO] epoch 116/250 | train=1.0897 val=1.2832 gap=0.1935 | no_imp=10 | 16284s elapsed
-2026-09-05 20:55:21,620 [INFO] epoch 117/250 | train=1.0890 val=1.2863 gap=0.1972 | no_imp=11 | 16463s elapsed
-2026-09-05 20:58:20,179 [INFO] epoch 118/250 | train=1.0892 val=1.2833 gap=0.1940 | no_imp=12 | 16641s elapsed
-2026-09-05 21:01:15,851 [INFO] epoch 119/250 | train=1.0891 val=1.2926 gap=0.2034 | no_imp=13 | 16817s elapsed
-2026-09-05 21:04:11,421 [INFO] epoch 120/250 | train=1.0837 val=1.3015 gap=0.2178 | no_imp=14 | 16993s elapsed
-2026-09-05 21:07:06,666 [INFO] epoch 121/250 | train=1.0859 val=1.2739 gap=0.1880 | no_imp=0 | 17168s elapsed
-2026-09-05 21:10:00,798 [INFO] epoch 122/250 | train=1.0826 val=1.2780 gap=0.1954 | no_imp=1 | 17342s elapsed
-2026-09-05 21:12:55,302 [INFO] epoch 123/250 | train=1.0856 val=1.2891 gap=0.2034 | no_imp=2 | 17516s elapsed
-2026-09-05 21:15:49,473 [INFO] epoch 124/250 | train=1.0854 val=1.3046 gap=0.2191 | no_imp=3 | 17691s elapsed
-2026-09-05 21:18:43,605 [INFO] epoch 125/250 | train=1.0860 val=1.2829 gap=0.1969 | no_imp=4 | 17865s elapsed
-2026-09-05 21:21:36,612 [INFO] epoch 126/250 | train=1.0861 val=1.2985 gap=0.2125 | no_imp=5 | 18038s elapsed
-2026-09-05 21:24:31,844 [INFO] epoch 127/250 | train=1.0815 val=1.2626 gap=0.1811 | no_imp=0 | 18213s elapsed
-2026-09-05 21:27:27,814 [INFO] epoch 128/250 | train=1.0791 val=1.2871 gap=0.2080 | no_imp=1 | 18389s elapsed
-2026-09-05 21:30:25,639 [INFO] epoch 129/250 | train=1.0813 val=1.2799 gap=0.1986 | no_imp=2 | 18567s elapsed
-2026-09-05 21:33:20,922 [INFO] epoch 130/250 | train=1.0796 val=1.2738 gap=0.1942 | no_imp=3 | 18742s elapsed
-2026-09-05 21:36:17,539 [INFO] epoch 131/250 | train=1.0833 val=1.2790 gap=0.1957 | no_imp=4 | 18919s elapsed
-2026-09-05 21:39:17,264 [INFO] epoch 132/250 | train=1.0808 val=1.2719 gap=0.1910 | no_imp=5 | 19098s elapsed
-2026-09-05 21:42:11,269 [INFO] epoch 133/250 | train=1.0761 val=1.2860 gap=0.2099 | no_imp=6 | 19272s elapsed
-2026-09-05 21:45:06,151 [INFO] epoch 134/250 | train=1.0806 val=1.2928 gap=0.2122 | no_imp=7 | 19447s elapsed
-2026-09-05 21:48:02,528 [INFO] epoch 135/250 | train=1.0766 val=1.2951 gap=0.2185 | no_imp=8 | 19624s elapsed
-2026-09-05 21:50:55,891 [INFO] epoch 136/250 | train=1.0754 val=1.2740 gap=0.1987 | no_imp=9 | 19797s elapsed
-2026-09-05 21:53:49,417 [INFO] epoch 137/250 | train=1.0760 val=1.2831 gap=0.2071 | no_imp=10 | 19970s elapsed
-2026-09-05 21:56:44,601 [INFO] epoch 138/250 | train=1.0771 val=1.2825 gap=0.2055 | no_imp=11 | 20146s elapsed
-2026-09-05 21:59:39,640 [INFO] epoch 139/250 | train=1.0738 val=1.2932 gap=0.2194 | no_imp=12 | 20321s elapsed
-2026-09-05 22:02:37,343 [INFO] epoch 140/250 | train=1.0748 val=1.2740 gap=0.1992 | no_imp=13 | 20498s elapsed
-2026-09-05 22:05:33,479 [INFO] epoch 141/250 | train=1.0746 val=1.2830 gap=0.2084 | no_imp=14 | 20675s elapsed
-2026-09-05 22:08:29,387 [INFO] epoch 142/250 | train=1.0775 val=1.2962 gap=0.2188 | no_imp=15 | 20850s elapsed
-2026-09-05 22:11:24,763 [INFO] epoch 143/250 | train=1.0733 val=1.2966 gap=0.2232 | no_imp=16 | 21026s elapsed
-2026-09-05 22:14:28,122 [INFO] epoch 144/250 | train=1.0708 val=1.2940 gap=0.2232 | no_imp=17 | 21209s elapsed
-2026-09-05 22:17:30,508 [INFO] epoch 145/250 | train=1.0727 val=1.2861 gap=0.2134 | no_imp=18 | 21392s elapsed
-2026-09-05 22:20:31,974 [INFO] epoch 146/250 | train=1.0759 val=1.2860 gap=0.2101 | no_imp=19 | 21573s elapsed
-2026-09-05 22:23:29,819 [INFO] epoch 147/250 | train=1.0694 val=1.2957 gap=0.2264 | no_imp=20 | 21751s elapsed
-2026-09-05 22:26:25,786 [INFO] epoch 148/250 | train=1.0711 val=1.2681 gap=0.1970 | no_imp=21 | 21927s elapsed
-2026-09-05 22:29:20,542 [INFO] epoch 149/250 | train=1.0726 val=1.2855 gap=0.2129 | no_imp=22 | 22102s elapsed
-2026-09-05 22:32:13,947 [INFO] epoch 150/250 | train=1.0738 val=1.2816 gap=0.2078 | no_imp=23 | 22275s elapsed
-2026-09-05 22:35:25,349 [INFO] epoch 151/250 | train=1.0676 val=1.2700 gap=0.2024 | no_imp=24 | 22466s elapsed
-2026-09-05 22:39:10,358 [INFO] epoch 152/250 | train=1.0713 val=1.2933 gap=0.2220 | no_imp=25 | 22691s elapsed
-2026-09-05 22:42:33,866 [INFO] epoch 153/250 | train=1.0697 val=1.2712 gap=0.2014 | no_imp=26 | 22895s elapsed
-2026-09-05 22:46:06,431 [INFO] epoch 154/250 | train=1.0682 val=1.2772 gap=0.2090 | no_imp=27 | 23108s elapsed
-2026-09-05 22:49:28,382 [INFO] epoch 155/250 | train=1.0687 val=1.2835 gap=0.2148 | no_imp=28 | 23309s elapsed
-2026-09-05 22:52:59,069 [INFO] epoch 156/250 | train=1.0693 val=1.2761 gap=0.2069 | no_imp=29 | 23520s elapsed
-2026-09-05 22:56:23,894 [INFO] epoch 157/250 | train=1.0710 val=1.2724 gap=0.2013 | no_imp=30 | 23725s elapsed
-2026-09-05 22:56:23,897 [INFO] Stopping criterion met at epoch 157 (val loss plateaued for 30 epochs).
-2026-09-05 22:58:02,090 [INFO] FINAL | train=1.0142 val=1.2724 test=1.2782 gap=0.2582 val_r2=0.8621 val_rmse=1.0096 | epochs=157 conv=True interrupted=False runtime=23823s
-2026-09-05 22:58:02,091 [INFO] vs. original Adam baseline (WD=0, different stopping rule) | gap: 0.3369 → 0.2582 (23.4%)
-2026-09-05 22:58:02,092 [INFO] matched pair vs. Stage 4 SAM (ρ=0.5/WD=1e-3, same stopping rule) | this Adam+WD gap=0.2582  SAM gap=0.0517  SAM-specific extra reduction=0.2064
-2026-09-05 22:58:02,106 [INFO] Saved: /mnt/c/Users/hawai/2026/UP/HONOURS 2026/COS700/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/adam_wd_control_scorecard.json
-2026-09-05 22:58:02,116 [INFO] Saved: /mnt/c/Users/hawai/2026/UP/HONOURS 2026/COS700/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/adam_wd_control_history.json (also streamed to /mnt/c/Users/hawai/2026/UP/HONOURS 2026/COS700/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/adam_wd_control_history.jsonl)
+2026-09-11 09:53:56,419 [INFO] Device: cpu
+2026-09-11 09:53:56,420 [INFO] Config: optimizer=Adam (no SAM)  LR=0.001  WD=0.001  patience=30  min_delta=0.0001  MAX_EPOCHS=250
+2026-09-11 09:53:57,326 [INFO] Dataset sizes — train: 255628  val: 31963  test: 31952
+2026-09-11 09:54:41,972 [INFO]   wrote crash-recovery checkpoint at epoch 1 (val_loss=1.7877) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:54:41,973 [INFO] epoch   1/250 | train=2.5644 val=1.7877 gap=-0.7768 | no_imp=0 | 28s elapsed
+2026-09-11 09:55:10,932 [INFO]   wrote crash-recovery checkpoint at epoch 2 (val_loss=1.7070) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:55:10,932 [INFO] epoch   2/250 | train=1.7651 val=1.7070 gap=-0.0581 | no_imp=0 | 56s elapsed
+2026-09-11 09:55:38,845 [INFO]   wrote crash-recovery checkpoint at epoch 3 (val_loss=1.6363) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:55:38,847 [INFO] epoch   3/250 | train=1.6790 val=1.6363 gap=-0.0427 | no_imp=0 | 84s elapsed
+2026-09-11 09:56:06,794 [INFO]   wrote crash-recovery checkpoint at epoch 4 (val_loss=1.5903) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:56:06,795 [INFO] epoch   4/250 | train=1.6164 val=1.5903 gap=-0.0262 | no_imp=0 | 112s elapsed
+2026-09-11 09:56:36,222 [INFO]   wrote crash-recovery checkpoint at epoch 5 (val_loss=1.5522) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:56:36,223 [INFO] epoch   5/250 | train=1.5553 val=1.5522 gap=-0.0030 | no_imp=0 | 142s elapsed
+2026-09-11 09:57:06,517 [INFO]   wrote crash-recovery checkpoint at epoch 6 (val_loss=1.5058) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:57:06,518 [INFO] epoch   6/250 | train=1.5163 val=1.5058 gap=-0.0105 | no_imp=0 | 172s elapsed
+2026-09-11 09:57:36,011 [INFO]   wrote crash-recovery checkpoint at epoch 7 (val_loss=1.4961) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:57:36,012 [INFO] epoch   7/250 | train=1.4858 val=1.4961 gap=0.0103 | no_imp=0 | 202s elapsed
+2026-09-11 09:58:06,873 [INFO]   wrote crash-recovery checkpoint at epoch 8 (val_loss=1.4852) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:58:06,874 [INFO] epoch   8/250 | train=1.4620 val=1.4852 gap=0.0232 | no_imp=0 | 232s elapsed
+2026-09-11 09:58:36,493 [INFO]   wrote crash-recovery checkpoint at epoch 9 (val_loss=1.4719) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:58:36,493 [INFO] epoch   9/250 | train=1.4440 val=1.4719 gap=0.0279 | no_imp=0 | 262s elapsed
+2026-09-11 09:59:06,210 [INFO]   wrote crash-recovery checkpoint at epoch 10 (val_loss=1.4511) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 09:59:06,211 [INFO] epoch  10/250 | train=1.4237 val=1.4511 gap=0.0274 | no_imp=0 | 292s elapsed
+2026-09-11 09:59:32,186 [INFO] epoch  11/250 | train=1.4092 val=1.4563 gap=0.0471 | no_imp=1 | 318s elapsed
+2026-09-11 10:00:00,689 [INFO]   wrote crash-recovery checkpoint at epoch 12 (val_loss=1.4322) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:00:00,691 [INFO] epoch  12/250 | train=1.3906 val=1.4322 gap=0.0415 | no_imp=0 | 346s elapsed
+2026-09-11 10:00:30,610 [INFO]   wrote crash-recovery checkpoint at epoch 13 (val_loss=1.4230) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:00:30,610 [INFO] epoch  13/250 | train=1.3783 val=1.4230 gap=0.0448 | no_imp=0 | 376s elapsed
+2026-09-11 10:00:54,337 [INFO]   wrote crash-recovery checkpoint at epoch 14 (val_loss=1.4198) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:00:54,338 [INFO] epoch  14/250 | train=1.3646 val=1.4198 gap=0.0552 | no_imp=0 | 400s elapsed
+2026-09-11 10:01:17,935 [INFO]   wrote crash-recovery checkpoint at epoch 15 (val_loss=1.3970) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:01:17,935 [INFO] epoch  15/250 | train=1.3536 val=1.3970 gap=0.0435 | no_imp=0 | 423s elapsed
+2026-09-11 10:01:38,608 [INFO] epoch  16/250 | train=1.3388 val=1.4177 gap=0.0789 | no_imp=1 | 444s elapsed
+2026-09-11 10:02:02,129 [INFO]   wrote crash-recovery checkpoint at epoch 17 (val_loss=1.3891) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:02:02,129 [INFO] epoch  17/250 | train=1.3332 val=1.3891 gap=0.0559 | no_imp=0 | 468s elapsed
+2026-09-11 10:02:25,718 [INFO]   wrote crash-recovery checkpoint at epoch 18 (val_loss=1.3837) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:02:25,719 [INFO] epoch  18/250 | train=1.3258 val=1.3837 gap=0.0579 | no_imp=0 | 491s elapsed
+2026-09-11 10:02:48,719 [INFO] epoch  19/250 | train=1.3141 val=1.3850 gap=0.0709 | no_imp=1 | 514s elapsed
+2026-09-11 10:03:12,384 [INFO]   wrote crash-recovery checkpoint at epoch 20 (val_loss=1.3671) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:03:12,385 [INFO] epoch  20/250 | train=1.3084 val=1.3671 gap=0.0587 | no_imp=0 | 538s elapsed
+2026-09-11 10:03:38,645 [INFO] epoch  21/250 | train=1.2948 val=1.3715 gap=0.0768 | no_imp=1 | 564s elapsed
+2026-09-11 10:04:15,850 [INFO]   wrote crash-recovery checkpoint at epoch 22 (val_loss=1.3601) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:04:15,850 [INFO] epoch  22/250 | train=1.2900 val=1.3601 gap=0.0702 | no_imp=0 | 601s elapsed
+2026-09-11 10:04:59,183 [INFO]   wrote crash-recovery checkpoint at epoch 23 (val_loss=1.3550) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:04:59,184 [INFO] epoch  23/250 | train=1.2822 val=1.3550 gap=0.0728 | no_imp=0 | 645s elapsed
+2026-09-11 10:05:43,772 [INFO] epoch  24/250 | train=1.2741 val=1.3565 gap=0.0824 | no_imp=1 | 689s elapsed
+2026-09-11 10:06:34,957 [INFO]   wrote crash-recovery checkpoint at epoch 25 (val_loss=1.3452) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:06:34,958 [INFO] epoch  25/250 | train=1.2705 val=1.3452 gap=0.0747 | no_imp=0 | 740s elapsed
+2026-09-11 10:07:24,550 [INFO] epoch  26/250 | train=1.2608 val=1.3520 gap=0.0912 | no_imp=1 | 790s elapsed
+2026-09-11 10:08:08,905 [INFO] epoch  27/250 | train=1.2559 val=1.3508 gap=0.0949 | no_imp=2 | 834s elapsed
+2026-09-11 10:08:49,708 [INFO] epoch  28/250 | train=1.2501 val=1.3456 gap=0.0955 | no_imp=3 | 875s elapsed
+2026-09-11 10:09:29,731 [INFO] epoch  29/250 | train=1.2468 val=1.3454 gap=0.0985 | no_imp=4 | 915s elapsed
+2026-09-11 10:10:12,428 [INFO]   wrote crash-recovery checkpoint at epoch 30 (val_loss=1.3408) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:10:12,429 [INFO] epoch  30/250 | train=1.2430 val=1.3408 gap=0.0978 | no_imp=0 | 958s elapsed
+2026-09-11 10:11:03,007 [INFO]   wrote crash-recovery checkpoint at epoch 31 (val_loss=1.3306) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:11:03,007 [INFO] epoch  31/250 | train=1.2359 val=1.3306 gap=0.0947 | no_imp=0 | 1009s elapsed
+2026-09-11 10:12:18,457 [INFO] epoch  32/250 | train=1.2325 val=1.3456 gap=0.1131 | no_imp=1 | 1084s elapsed
+2026-09-11 10:13:56,583 [INFO]   wrote crash-recovery checkpoint at epoch 33 (val_loss=1.3284) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:13:56,584 [INFO] epoch  33/250 | train=1.2293 val=1.3284 gap=0.0991 | no_imp=0 | 1182s elapsed
+2026-09-11 10:15:46,236 [INFO] epoch  34/250 | train=1.2200 val=1.3450 gap=0.1250 | no_imp=1 | 1292s elapsed
+2026-09-11 10:17:39,173 [INFO] epoch  35/250 | train=1.2195 val=1.3355 gap=0.1160 | no_imp=2 | 1405s elapsed
+2026-09-11 10:19:26,844 [INFO] epoch  36/250 | train=1.2155 val=1.3387 gap=0.1232 | no_imp=3 | 1512s elapsed
+2026-09-11 10:21:16,599 [INFO]   wrote crash-recovery checkpoint at epoch 37 (val_loss=1.3201) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:21:16,600 [INFO] epoch  37/250 | train=1.2056 val=1.3201 gap=0.1145 | no_imp=0 | 1622s elapsed
+2026-09-11 10:22:54,944 [INFO] epoch  38/250 | train=1.2036 val=1.3276 gap=0.1239 | no_imp=1 | 1720s elapsed
+2026-09-11 10:24:37,952 [INFO]   wrote crash-recovery checkpoint at epoch 39 (val_loss=1.3156) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:24:37,953 [INFO] epoch  39/250 | train=1.2044 val=1.3156 gap=0.1112 | no_imp=0 | 1823s elapsed
+2026-09-11 10:26:21,505 [INFO]   wrote crash-recovery checkpoint at epoch 40 (val_loss=1.3102) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:26:21,506 [INFO] epoch  40/250 | train=1.1979 val=1.3102 gap=0.1123 | no_imp=0 | 1927s elapsed
+2026-09-11 10:28:09,328 [INFO]   wrote crash-recovery checkpoint at epoch 41 (val_loss=1.3092) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:28:09,329 [INFO] epoch  41/250 | train=1.1945 val=1.3092 gap=0.1147 | no_imp=0 | 2035s elapsed
+2026-09-11 10:30:00,276 [INFO]   wrote crash-recovery checkpoint at epoch 42 (val_loss=1.3052) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:30:00,277 [INFO] epoch  42/250 | train=1.1918 val=1.3052 gap=0.1134 | no_imp=0 | 2146s elapsed
+2026-09-11 10:31:46,518 [INFO] epoch  43/250 | train=1.1882 val=1.3064 gap=0.1182 | no_imp=1 | 2252s elapsed
+2026-09-11 10:33:32,612 [INFO] epoch  44/250 | train=1.1890 val=1.3379 gap=0.1489 | no_imp=2 | 2358s elapsed
+2026-09-11 10:35:18,038 [INFO] epoch  45/250 | train=1.1865 val=1.3232 gap=0.1368 | no_imp=3 | 2464s elapsed
+2026-09-11 10:37:05,965 [INFO] epoch  46/250 | train=1.1783 val=1.3090 gap=0.1307 | no_imp=4 | 2572s elapsed
+2026-09-11 10:39:04,742 [INFO]   wrote crash-recovery checkpoint at epoch 47 (val_loss=1.3034) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:39:04,742 [INFO] epoch  47/250 | train=1.1787 val=1.3034 gap=0.1246 | no_imp=0 | 2690s elapsed
+2026-09-11 10:40:59,551 [INFO] epoch  48/250 | train=1.1759 val=1.3126 gap=0.1367 | no_imp=1 | 2805s elapsed
+2026-09-11 10:42:55,527 [INFO] epoch  49/250 | train=1.1766 val=1.3073 gap=0.1307 | no_imp=2 | 2921s elapsed
+2026-09-11 10:44:54,616 [INFO] epoch  50/250 | train=1.1707 val=1.3043 gap=0.1336 | no_imp=3 | 3040s elapsed
+2026-09-11 10:46:55,500 [INFO] epoch  51/250 | train=1.1666 val=1.3388 gap=0.1722 | no_imp=4 | 3161s elapsed
+2026-09-11 10:48:57,359 [INFO] epoch  52/250 | train=1.1658 val=1.3040 gap=0.1383 | no_imp=5 | 3283s elapsed
+2026-09-11 10:51:08,273 [INFO]   wrote crash-recovery checkpoint at epoch 53 (val_loss=1.2968) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 10:51:08,274 [INFO] epoch  53/250 | train=1.1664 val=1.2968 gap=0.1304 | no_imp=0 | 3414s elapsed
+2026-09-11 10:53:09,177 [INFO] epoch  54/250 | train=1.1620 val=1.3127 gap=0.1507 | no_imp=1 | 3535s elapsed
+2026-09-11 10:55:12,062 [INFO] epoch  55/250 | train=1.1576 val=1.3138 gap=0.1562 | no_imp=2 | 3658s elapsed
+2026-09-11 10:57:16,161 [INFO] epoch  56/250 | train=1.1562 val=1.3081 gap=0.1519 | no_imp=3 | 3782s elapsed
+2026-09-11 10:59:19,143 [INFO] epoch  57/250 | train=1.1598 val=1.3111 gap=0.1514 | no_imp=4 | 3905s elapsed
+2026-09-11 11:01:17,532 [INFO] epoch  58/250 | train=1.1550 val=1.2981 gap=0.1432 | no_imp=5 | 4023s elapsed
+2026-09-11 11:03:14,954 [INFO] epoch  59/250 | train=1.1483 val=1.2983 gap=0.1500 | no_imp=6 | 4140s elapsed
+2026-09-11 11:05:15,347 [INFO] epoch  60/250 | train=1.1490 val=1.3034 gap=0.1545 | no_imp=7 | 4261s elapsed
+2026-09-11 11:07:17,517 [INFO] epoch  61/250 | train=1.1455 val=1.3085 gap=0.1630 | no_imp=8 | 4383s elapsed
+2026-09-11 11:09:25,634 [INFO]   wrote crash-recovery checkpoint at epoch 62 (val_loss=1.2961) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 11:09:25,634 [INFO] epoch  62/250 | train=1.1438 val=1.2961 gap=0.1523 | no_imp=0 | 4511s elapsed
+2026-09-11 11:11:25,862 [INFO] epoch  63/250 | train=1.1454 val=1.3002 gap=0.1548 | no_imp=1 | 4631s elapsed
+2026-09-11 11:13:39,253 [INFO]   wrote crash-recovery checkpoint at epoch 64 (val_loss=1.2934) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 11:13:39,253 [INFO] epoch  64/250 | train=1.1415 val=1.2934 gap=0.1519 | no_imp=0 | 4765s elapsed
+2026-09-11 11:15:38,781 [INFO] epoch  65/250 | train=1.1396 val=1.2995 gap=0.1600 | no_imp=1 | 4884s elapsed
+2026-09-11 11:17:40,193 [INFO] epoch  66/250 | train=1.1398 val=1.3025 gap=0.1627 | no_imp=2 | 5006s elapsed
+2026-09-11 11:19:39,916 [INFO] epoch  67/250 | train=1.1367 val=1.2986 gap=0.1619 | no_imp=3 | 5125s elapsed
+2026-09-11 11:21:49,073 [INFO]   wrote crash-recovery checkpoint at epoch 68 (val_loss=1.2876) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 11:21:49,074 [INFO] epoch  68/250 | train=1.1346 val=1.2876 gap=0.1530 | no_imp=0 | 5255s elapsed
+2026-09-11 11:23:49,892 [INFO] epoch  69/250 | train=1.1357 val=1.2940 gap=0.1583 | no_imp=1 | 5375s elapsed
+2026-09-11 11:25:51,354 [INFO] epoch  70/250 | train=1.1342 val=1.2990 gap=0.1647 | no_imp=2 | 5497s elapsed
+2026-09-11 11:27:50,366 [INFO] epoch  71/250 | train=1.1300 val=1.3009 gap=0.1709 | no_imp=3 | 5616s elapsed
+2026-09-11 11:29:49,803 [INFO] epoch  72/250 | train=1.1321 val=1.2972 gap=0.1651 | no_imp=4 | 5735s elapsed
+2026-09-11 11:31:47,729 [INFO] epoch  73/250 | train=1.1290 val=1.3031 gap=0.1740 | no_imp=5 | 5853s elapsed
+2026-09-11 11:33:46,013 [INFO] epoch  74/250 | train=1.1286 val=1.2999 gap=0.1713 | no_imp=6 | 5972s elapsed
+2026-09-11 11:35:53,075 [INFO]   wrote crash-recovery checkpoint at epoch 75 (val_loss=1.2795) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 11:35:53,075 [INFO] epoch  75/250 | train=1.1250 val=1.2795 gap=0.1544 | no_imp=0 | 6099s elapsed
+2026-09-11 11:37:51,763 [INFO] epoch  76/250 | train=1.1249 val=1.3004 gap=0.1754 | no_imp=1 | 6217s elapsed
+2026-09-11 11:39:50,478 [INFO] epoch  77/250 | train=1.1237 val=1.3119 gap=0.1883 | no_imp=2 | 6336s elapsed
+2026-09-11 11:41:50,480 [INFO] epoch  78/250 | train=1.1279 val=1.2987 gap=0.1709 | no_imp=3 | 6456s elapsed
+2026-09-11 11:43:49,177 [INFO] epoch  79/250 | train=1.1196 val=1.2944 gap=0.1748 | no_imp=4 | 6575s elapsed
+2026-09-11 11:45:47,334 [INFO] epoch  80/250 | train=1.1228 val=1.3004 gap=0.1776 | no_imp=5 | 6693s elapsed
+2026-09-11 11:47:45,348 [INFO] epoch  81/250 | train=1.1177 val=1.2874 gap=0.1697 | no_imp=6 | 6811s elapsed
+2026-09-11 11:49:41,936 [INFO] epoch  82/250 | train=1.1176 val=1.2852 gap=0.1677 | no_imp=7 | 6927s elapsed
+2026-09-11 11:51:38,545 [INFO] epoch  83/250 | train=1.1151 val=1.3121 gap=0.1970 | no_imp=8 | 7044s elapsed
+2026-09-11 11:53:36,441 [INFO] epoch  84/250 | train=1.1143 val=1.2985 gap=0.1842 | no_imp=9 | 7162s elapsed
+2026-09-11 11:55:35,014 [INFO] epoch  85/250 | train=1.1110 val=1.3088 gap=0.1977 | no_imp=10 | 7281s elapsed
+2026-09-11 11:57:34,236 [INFO] epoch  86/250 | train=1.1136 val=1.2955 gap=0.1819 | no_imp=11 | 7400s elapsed
+2026-09-11 11:59:32,388 [INFO] epoch  87/250 | train=1.1155 val=1.2875 gap=0.1721 | no_imp=12 | 7518s elapsed
+2026-09-11 12:01:30,992 [INFO] epoch  88/250 | train=1.1104 val=1.2922 gap=0.1818 | no_imp=13 | 7637s elapsed
+2026-09-11 12:03:28,211 [INFO] epoch  89/250 | train=1.1115 val=1.3126 gap=0.2011 | no_imp=14 | 7754s elapsed
+2026-09-11 12:05:24,989 [INFO] epoch  90/250 | train=1.1093 val=1.2932 gap=0.1839 | no_imp=15 | 7871s elapsed
+2026-09-11 12:07:21,994 [INFO] epoch  91/250 | train=1.1104 val=1.3200 gap=0.2096 | no_imp=16 | 7988s elapsed
+2026-09-11 12:09:28,997 [INFO]   wrote crash-recovery checkpoint at epoch 92 (val_loss=1.2758) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 12:09:28,998 [INFO] epoch  92/250 | train=1.1089 val=1.2758 gap=0.1669 | no_imp=0 | 8115s elapsed
+2026-09-11 12:11:35,442 [INFO]   wrote crash-recovery checkpoint at epoch 93 (val_loss=1.2753) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 12:11:35,442 [INFO] epoch  93/250 | train=1.1041 val=1.2753 gap=0.1711 | no_imp=0 | 8241s elapsed
+2026-09-11 12:13:32,405 [INFO] epoch  94/250 | train=1.1050 val=1.2889 gap=0.1839 | no_imp=1 | 8358s elapsed
+2026-09-11 12:15:29,384 [INFO] epoch  95/250 | train=1.1084 val=1.2894 gap=0.1810 | no_imp=2 | 8475s elapsed
+2026-09-11 12:17:26,448 [INFO] epoch  96/250 | train=1.1027 val=1.3039 gap=0.2012 | no_imp=3 | 8592s elapsed
+2026-09-11 12:19:24,776 [INFO] epoch  97/250 | train=1.1036 val=1.2803 gap=0.1767 | no_imp=4 | 8710s elapsed
+2026-09-11 12:21:23,568 [INFO] epoch  98/250 | train=1.1022 val=1.2781 gap=0.1759 | no_imp=5 | 8829s elapsed
+2026-09-11 12:23:22,791 [INFO] epoch  99/250 | train=1.1026 val=1.2874 gap=0.1848 | no_imp=6 | 8948s elapsed
+2026-09-11 12:25:21,893 [INFO] epoch 100/250 | train=1.1019 val=1.3024 gap=0.2006 | no_imp=7 | 9067s elapsed
+2026-09-11 12:27:19,153 [INFO] epoch 101/250 | train=1.1032 val=1.2814 gap=0.1782 | no_imp=8 | 9185s elapsed
+2026-09-11 12:29:27,207 [INFO] epoch 102/250 | train=1.1001 val=1.2985 gap=0.1985 | no_imp=9 | 9313s elapsed
+2026-09-11 12:31:39,107 [INFO] epoch 103/250 | train=1.0972 val=1.2796 gap=0.1824 | no_imp=10 | 9445s elapsed
+2026-09-11 12:33:44,212 [INFO] epoch 104/250 | train=1.0967 val=1.2847 gap=0.1881 | no_imp=11 | 9570s elapsed
+2026-09-11 12:35:41,396 [INFO] epoch 105/250 | train=1.0946 val=1.2865 gap=0.1919 | no_imp=12 | 9687s elapsed
+2026-09-11 12:37:40,990 [INFO] epoch 106/250 | train=1.0957 val=1.2937 gap=0.1979 | no_imp=13 | 9807s elapsed
+2026-09-11 12:39:50,266 [INFO] epoch 107/250 | train=1.0980 val=1.2891 gap=0.1911 | no_imp=14 | 9936s elapsed
+2026-09-11 12:41:59,418 [INFO] epoch 108/250 | train=1.0975 val=1.2862 gap=0.1887 | no_imp=15 | 10065s elapsed
+2026-09-11 12:44:03,739 [INFO] epoch 109/250 | train=1.0926 val=1.2986 gap=0.2060 | no_imp=16 | 10189s elapsed
+2026-09-11 12:46:00,422 [INFO] epoch 110/250 | train=1.0924 val=1.2970 gap=0.2045 | no_imp=17 | 10306s elapsed
+2026-09-11 12:47:57,021 [INFO] epoch 111/250 | train=1.0926 val=1.2787 gap=0.1861 | no_imp=18 | 10423s elapsed
+2026-09-11 12:49:54,303 [INFO] epoch 112/250 | train=1.0875 val=1.2833 gap=0.1958 | no_imp=19 | 10540s elapsed
+2026-09-11 12:52:00,602 [INFO]   wrote crash-recovery checkpoint at epoch 113 (val_loss=1.2699) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 12:52:00,603 [INFO] epoch 113/250 | train=1.0942 val=1.2699 gap=0.1757 | no_imp=0 | 10666s elapsed
+2026-09-11 12:53:56,824 [INFO] epoch 114/250 | train=1.0948 val=1.2836 gap=0.1888 | no_imp=1 | 10782s elapsed
+2026-09-11 12:55:52,040 [INFO] epoch 115/250 | train=1.0889 val=1.2898 gap=0.2010 | no_imp=2 | 10898s elapsed
+2026-09-11 12:57:47,688 [INFO] epoch 116/250 | train=1.0890 val=1.2832 gap=0.1942 | no_imp=3 | 11013s elapsed
+2026-09-11 12:59:48,391 [INFO] epoch 117/250 | train=1.0903 val=1.2718 gap=0.1815 | no_imp=4 | 11134s elapsed
+2026-09-11 13:01:48,962 [INFO] epoch 118/250 | train=1.0865 val=1.2797 gap=0.1932 | no_imp=5 | 11254s elapsed
+2026-09-11 13:03:43,735 [INFO] epoch 119/250 | train=1.0880 val=1.2767 gap=0.1888 | no_imp=6 | 11369s elapsed
+2026-09-11 13:05:38,240 [INFO] epoch 120/250 | train=1.0916 val=1.2807 gap=0.1891 | no_imp=7 | 11484s elapsed
+2026-09-11 13:07:33,264 [INFO] epoch 121/250 | train=1.0880 val=1.2872 gap=0.1991 | no_imp=8 | 11599s elapsed
+2026-09-11 13:09:27,191 [INFO] epoch 122/250 | train=1.0864 val=1.2863 gap=0.1998 | no_imp=9 | 11713s elapsed
+2026-09-11 13:11:20,011 [INFO] epoch 123/250 | train=1.0852 val=1.2807 gap=0.1955 | no_imp=10 | 11826s elapsed
+2026-09-11 13:13:13,430 [INFO] epoch 124/250 | train=1.0825 val=1.3021 gap=0.2196 | no_imp=11 | 11939s elapsed
+2026-09-11 13:15:06,586 [INFO] epoch 125/250 | train=1.0835 val=1.2805 gap=0.1970 | no_imp=12 | 12052s elapsed
+2026-09-11 13:17:00,141 [INFO] epoch 126/250 | train=1.0842 val=1.2881 gap=0.2039 | no_imp=13 | 12166s elapsed
+2026-09-11 13:18:55,783 [INFO] epoch 127/250 | train=1.0837 val=1.2775 gap=0.1938 | no_imp=14 | 12281s elapsed
+2026-09-11 13:20:50,828 [INFO] epoch 128/250 | train=1.0854 val=1.2759 gap=0.1905 | no_imp=15 | 12396s elapsed
+2026-09-11 13:22:56,814 [INFO]   wrote crash-recovery checkpoint at epoch 129 (val_loss=1.2672) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 13:22:56,814 [INFO] epoch 129/250 | train=1.0799 val=1.2672 gap=0.1873 | no_imp=0 | 12522s elapsed
+2026-09-11 13:24:52,863 [INFO] epoch 130/250 | train=1.0800 val=1.2819 gap=0.2020 | no_imp=1 | 12638s elapsed
+2026-09-11 13:26:50,029 [INFO] epoch 131/250 | train=1.0786 val=1.2775 gap=0.1988 | no_imp=2 | 12756s elapsed
+2026-09-11 13:28:45,323 [INFO] epoch 132/250 | train=1.0772 val=1.2842 gap=0.2070 | no_imp=3 | 12871s elapsed
+2026-09-11 13:30:37,783 [INFO] epoch 133/250 | train=1.0840 val=1.2774 gap=0.1934 | no_imp=4 | 12983s elapsed
+2026-09-11 13:32:30,689 [INFO] epoch 134/250 | train=1.0786 val=1.2845 gap=0.2059 | no_imp=5 | 13096s elapsed
+2026-09-11 13:34:22,991 [INFO] epoch 135/250 | train=1.0777 val=1.2880 gap=0.2103 | no_imp=6 | 13209s elapsed
+2026-09-11 13:36:14,435 [INFO] epoch 136/250 | train=1.0766 val=1.2739 gap=0.1973 | no_imp=7 | 13320s elapsed
+2026-09-11 13:38:06,586 [INFO] epoch 137/250 | train=1.0794 val=1.2684 gap=0.1891 | no_imp=8 | 13432s elapsed
+2026-09-11 13:39:57,716 [INFO] epoch 138/250 | train=1.0740 val=1.2787 gap=0.2046 | no_imp=9 | 13543s elapsed
+2026-09-11 13:41:57,796 [INFO]   wrote crash-recovery checkpoint at epoch 139 (val_loss=1.2641) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 13:41:57,797 [INFO] epoch 139/250 | train=1.0750 val=1.2641 gap=0.1891 | no_imp=0 | 13663s elapsed
+2026-09-11 13:43:49,583 [INFO] epoch 140/250 | train=1.0762 val=1.3115 gap=0.2353 | no_imp=1 | 13775s elapsed
+2026-09-11 13:45:40,592 [INFO] epoch 141/250 | train=1.0748 val=1.2692 gap=0.1944 | no_imp=2 | 13886s elapsed
+2026-09-11 13:47:31,165 [INFO] epoch 142/250 | train=1.0708 val=1.2822 gap=0.2114 | no_imp=3 | 13997s elapsed
+2026-09-11 13:49:30,112 [INFO] epoch 143/250 | train=1.0721 val=1.2682 gap=0.1961 | no_imp=4 | 14116s elapsed
+2026-09-11 13:51:27,534 [INFO] epoch 144/250 | train=1.0724 val=1.2731 gap=0.2007 | no_imp=5 | 14233s elapsed
+2026-09-11 13:53:18,220 [INFO] epoch 145/250 | train=1.0752 val=1.2739 gap=0.1987 | no_imp=6 | 14344s elapsed
+2026-09-11 13:55:09,313 [INFO] epoch 146/250 | train=1.0706 val=1.2711 gap=0.2005 | no_imp=7 | 14455s elapsed
+2026-09-11 13:56:59,816 [INFO] epoch 147/250 | train=1.0754 val=1.2755 gap=0.2001 | no_imp=8 | 14565s elapsed
+2026-09-11 13:58:51,321 [INFO] epoch 148/250 | train=1.0694 val=1.2707 gap=0.2012 | no_imp=9 | 14677s elapsed
+2026-09-11 14:00:42,541 [INFO] epoch 149/250 | train=1.0693 val=1.2880 gap=0.2188 | no_imp=10 | 14788s elapsed
+2026-09-11 14:02:33,449 [INFO] epoch 150/250 | train=1.0671 val=1.2792 gap=0.2121 | no_imp=11 | 14899s elapsed
+2026-09-11 14:04:26,083 [INFO] epoch 151/250 | train=1.0702 val=1.3060 gap=0.2358 | no_imp=12 | 15012s elapsed
+2026-09-11 14:06:18,591 [INFO] epoch 152/250 | train=1.0710 val=1.2686 gap=0.1977 | no_imp=13 | 15124s elapsed
+2026-09-11 14:08:11,714 [INFO] epoch 153/250 | train=1.0687 val=1.2729 gap=0.2042 | no_imp=14 | 15237s elapsed
+2026-09-11 14:10:03,777 [INFO] epoch 154/250 | train=1.0699 val=1.2872 gap=0.2173 | no_imp=15 | 15349s elapsed
+2026-09-11 14:11:55,039 [INFO] epoch 155/250 | train=1.0681 val=1.2749 gap=0.2069 | no_imp=16 | 15461s elapsed
+2026-09-11 14:13:45,585 [INFO] epoch 156/250 | train=1.0645 val=1.2894 gap=0.2249 | no_imp=17 | 15571s elapsed
+2026-09-11 14:15:45,048 [INFO]   wrote crash-recovery checkpoint at epoch 157 (val_loss=1.2614) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt
+2026-09-11 14:15:45,048 [INFO] epoch 157/250 | train=1.0680 val=1.2614 gap=0.1933 | no_imp=0 | 15691s elapsed
+2026-09-11 14:17:35,720 [INFO] epoch 158/250 | train=1.0693 val=1.2750 gap=0.2058 | no_imp=1 | 15801s elapsed
+2026-09-11 14:19:26,588 [INFO] epoch 159/250 | train=1.0633 val=1.2836 gap=0.2203 | no_imp=2 | 15912s elapsed
+2026-09-11 14:21:16,602 [INFO] epoch 160/250 | train=1.0684 val=1.2795 gap=0.2111 | no_imp=3 | 16022s elapsed
+2026-09-11 14:23:06,849 [INFO] epoch 161/250 | train=1.0694 val=1.2829 gap=0.2135 | no_imp=4 | 16132s elapsed
+2026-09-11 14:24:56,627 [INFO] epoch 162/250 | train=1.0651 val=1.2753 gap=0.2102 | no_imp=5 | 16242s elapsed
+2026-09-11 14:26:46,458 [INFO] epoch 163/250 | train=1.0670 val=1.2870 gap=0.2200 | no_imp=6 | 16352s elapsed
+2026-09-11 14:28:37,225 [INFO] epoch 164/250 | train=1.0645 val=1.2647 gap=0.2002 | no_imp=7 | 16463s elapsed
+2026-09-11 14:30:27,238 [INFO] epoch 165/250 | train=1.0671 val=1.2694 gap=0.2024 | no_imp=8 | 16573s elapsed
+2026-09-11 14:32:17,597 [INFO] epoch 166/250 | train=1.0659 val=1.2862 gap=0.2203 | no_imp=9 | 16683s elapsed
+2026-09-11 14:34:07,905 [INFO] epoch 167/250 | train=1.0625 val=1.2842 gap=0.2216 | no_imp=10 | 16793s elapsed
+2026-09-11 14:35:59,519 [INFO] epoch 168/250 | train=1.0619 val=1.2704 gap=0.2085 | no_imp=11 | 16905s elapsed
+2026-09-11 14:37:50,035 [INFO] epoch 169/250 | train=1.0631 val=1.2860 gap=0.2230 | no_imp=12 | 17016s elapsed
+2026-09-11 14:39:40,697 [INFO] epoch 170/250 | train=1.0621 val=1.2843 gap=0.2222 | no_imp=13 | 17126s elapsed
+2026-09-11 14:41:32,258 [INFO] epoch 171/250 | train=1.0623 val=1.2696 gap=0.2072 | no_imp=14 | 17238s elapsed
+2026-09-11 14:43:23,964 [INFO] epoch 172/250 | train=1.0630 val=1.2799 gap=0.2169 | no_imp=15 | 17349s elapsed
+2026-09-11 14:45:16,656 [INFO] epoch 173/250 | train=1.0626 val=1.2756 gap=0.2130 | no_imp=16 | 17462s elapsed
+2026-09-11 14:47:08,297 [INFO] epoch 174/250 | train=1.0637 val=1.2788 gap=0.2151 | no_imp=17 | 17574s elapsed
+2026-09-11 14:49:00,067 [INFO] epoch 175/250 | train=1.0609 val=1.2820 gap=0.2211 | no_imp=18 | 17686s elapsed
+2026-09-11 14:50:51,645 [INFO] epoch 176/250 | train=1.0629 val=1.2733 gap=0.2103 | no_imp=19 | 17797s elapsed
+2026-09-11 14:52:42,563 [INFO] epoch 177/250 | train=1.0639 val=1.2774 gap=0.2136 | no_imp=20 | 17908s elapsed
+2026-09-11 14:54:33,688 [INFO] epoch 178/250 | train=1.0597 val=1.2958 gap=0.2361 | no_imp=21 | 18019s elapsed
+2026-09-11 14:56:24,763 [INFO] epoch 179/250 | train=1.0609 val=1.2808 gap=0.2199 | no_imp=22 | 18130s elapsed
+2026-09-11 14:58:16,484 [INFO] epoch 180/250 | train=1.0589 val=1.2985 gap=0.2396 | no_imp=23 | 18242s elapsed
+2026-09-11 15:00:08,957 [INFO] epoch 181/250 | train=1.0565 val=1.2781 gap=0.2216 | no_imp=24 | 18354s elapsed
+2026-09-11 15:02:00,438 [INFO] epoch 182/250 | train=1.0568 val=1.2674 gap=0.2106 | no_imp=25 | 18466s elapsed
+2026-09-11 15:03:51,895 [INFO] epoch 183/250 | train=1.0609 val=1.2891 gap=0.2282 | no_imp=26 | 18577s elapsed
+2026-09-11 15:05:42,408 [INFO] epoch 184/250 | train=1.0582 val=1.2692 gap=0.2110 | no_imp=27 | 18688s elapsed
+2026-09-11 15:07:34,055 [INFO] epoch 185/250 | train=1.0581 val=1.2995 gap=0.2415 | no_imp=28 | 18800s elapsed
+2026-09-11 15:09:25,418 [INFO] epoch 186/250 | train=1.0572 val=1.3019 gap=0.2447 | no_imp=29 | 18911s elapsed
+2026-09-11 15:11:16,337 [INFO] epoch 187/250 | train=1.0580 val=1.2756 gap=0.2176 | no_imp=30 | 19022s elapsed
+2026-09-11 15:11:16,340 [INFO] Stopping criterion met at epoch 187 (val loss plateaued for 30 epochs).
+2026-09-11 15:13:32,027 [INFO] FINAL | train=1.0027 val=1.2756 test=1.2717 gap=0.2729 val_r2=0.8616 val_rmse=1.0111 | epochs=187 conv=True interrupted=False runtime=19158s
+2026-09-11 15:13:32,028 [INFO] vs. original Adam baseline (WD=0, different stopping rule) | gap: 0.3369 → 0.2729 (19.0%)
+2026-09-11 15:13:32,036 [INFO] matched pair vs. Stage 4 SAM (ρ=0.5/WD=1e-3, same stopping rule) | this Adam+WD gap=0.2729  SAM gap=0.0517  SAM-specific extra reduction=0.2212
+2026-09-11 15:13:32,048 [INFO] Saved: /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/adam_wd_control_scorecard.json
+2026-09-11 15:13:32,064 [INFO] Saved: /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/adam_wd_control_history.json (also streamed to /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/adam_wd_control_history.jsonl)
+2026-09-11 15:13:32,135 [INFO] Saved checkpoint: /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/adam_wd_control/model.pt  (+ meta.json)
