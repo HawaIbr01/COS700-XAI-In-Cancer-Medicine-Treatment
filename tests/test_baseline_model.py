@@ -17,7 +17,7 @@ def test_deepccds_forward_shape_pathway_only():
     model = DeepCCDS(mutation_dim=0, drug_dim=0)
     pathway_activity = torch.randn(16, N_PATHWAYS)
     out = model(pathway_activity)
-    assert out["prediction"].shape == (16, 1)
+    assert out["prediction"].shape == (16,)
     assert "mutation_recon" not in out
     assert "drug_recon" not in out
 
@@ -28,7 +28,7 @@ def test_deepccds_forward_shape_with_mutation_and_drug():
     mut = torch.rand(8, 50)   # rand (0-1) since mutation/fingerprint inputs are binary-ish
     drug = torch.rand(8, 30)
     out = model(pathway_activity, mutation=mut, drug=drug)
-    assert out["prediction"].shape == (8, 1)
+    assert out["prediction"].shape == (8,)
     assert out["mutation_recon"].shape == mut.shape
     assert out["drug_recon"].shape == drug.shape
 

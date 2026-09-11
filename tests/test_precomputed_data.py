@@ -60,10 +60,40 @@ def synthetic_precomputed_dir(tmp_path: Path) -> Path:
     return tmp_path
 
 
+@pytest.fixture
+def synthetic_artifacts_data_dir(tmp_path: Path) -> Path:
+    """Minimal artifacts/data/-shaped directory (post-preprocess.py layout),
+    matching what DeepCCDSDataset actually reads: gdsc_processed.parquet +
+    the three cached .npy matrices — not the raw precomputed-input CSVs
+    (those are covered by the synthetic_precomputed_dir fixture above and
+    src/data/preprocess.py's own tests)."""
+    rng = np.random.default_rng(0)
+    n_cells, n_drugs = 2, 2
+
+    pd.DataFrame({
+        "row_id": [0, 1],
+        "split": ["train", "train"],
+        "cell_idx": [0, 1],
+        "drug_idx": [0, 1],
+        "ln_ic50": [1.5, -2.3],
+    }).to_parquet(tmp_path / "gdsc_processed.parquet")
+
+    np.save(tmp_path / "pathway_activity_matrix.npy",
+            rng.normal(size=(n_cells, N_PATHWAYS)).astype(np.float32))
+    np.save(tmp_path / "mutation_matrix.npy",
+            rng.integers(0, 2, size=(n_cells, N_MUTATION_GENES)).astype(np.int8))
+    np.save(tmp_path / "drug_fingerprint_matrix.npy",
+            rng.integers(0, 2, size=(n_drugs, N_DRUG_FINGERPRINT_BITS)).astype(np.int8))
+
+    return tmp_path
+
+
 def test_load_pathway_activity_shape(synthetic_precomputed_dir):
-    arr = load_pathway_activity(synthetic_precomputed_dir)
+    arr, cell_names, pathway_cols = load_pathway_activity(synthetic_precomputed_dir)
     assert arr.shape == (5, N_PATHWAYS)
     assert arr.dtype == np.float32
+    assert len(cell_names) == 5
+    assert len(pathway_cols) == N_PATHWAYS
 
 
 def test_load_mutation_matrix_shape_and_dtype(synthetic_precomputed_dir):
@@ -89,22 +119,22 @@ def test_load_split_rejects_bad_split_name(synthetic_precomputed_dir):
         load_split("bogus", synthetic_precomputed_dir)
 
 
-def test_deepccds_dataset_end_to_end(synthetic_precomputed_dir):
+def test_deepccds_dataset_end_to_end(synthetic_artifacts_data_dir):
     from src.data.dataset import DeepCCDSDataset
 
-    ds = DeepCCDSDataset("train", precomputed_dir=synthetic_precomputed_dir)
+    ds = DeepCCDSDataset("train", artifacts_data_dir=synthetic_artifacts_data_dir)
     assert len(ds) == 2
 
-    pathway, mutation, drug, y = ds[0]
+    row_id, pathway, mutation, drug, y = ds[0]
     assert pathway.shape == (N_PATHWAYS,)
     assert mutation.shape == (N_MUTATION_GENES,)
     assert drug.shape == (N_DRUG_FINGERPRINT_BITS,)
-    assert y.shape == (1,)
+    assert y.shape == ()
     assert abs(y.item() - 1.5) < 1e-5
 
 
-def test_deepccds_dataset_rejects_bad_split(synthetic_precomputed_dir):
+def test_deepccds_dataset_rejects_bad_split(synthetic_artifacts_data_dir):
     from src.data.dataset import DeepCCDSDataset
 
     with pytest.raises(ValueError):
-        DeepCCDSDataset("bogus", precomputed_dir=synthetic_precomputed_dir)
+        DeepCCDSDataset("bogus", artifacts_data_dir=synthetic_artifacts_data_dir)

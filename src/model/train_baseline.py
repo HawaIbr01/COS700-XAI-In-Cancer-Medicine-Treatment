@@ -40,7 +40,7 @@ import torch
 from torch import nn
 from torch.utils.data import DataLoader
 
-from src.data.dataset import GDSCDataset
+from src.data.dataset import DeepCCDSDataset
 from src.model.deepccds import DeepCCDS, N_PATHWAYS
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -173,8 +173,8 @@ def train_baseline_proxy(
     genuine (non-placeholder) Stage 1 baseline."""
     set_seed()
 
-    train_ds = GDSCDataset("train")
-    val_ds = GDSCDataset("val")
+    train_ds = DeepCCDSDataset("train")
+    val_ds = DeepCCDSDataset("val")
 
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False)
