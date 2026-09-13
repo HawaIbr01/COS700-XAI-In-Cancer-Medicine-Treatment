@@ -1,0 +1,167 @@
+{
+  "checks": [
+    {
+      "check": "loads_via_real_nsga_loader",
+      "condition": "baseline",
+      "split": "train",
+      "n_rows": 245845,
+      "n_feature_cols": 38,
+      "class_pred_balance": {
+        "sensitive": 127127,
+        "resistant": 118718
+      },
+      "ok": true
+    },
+    {
+      "check": "loads_via_real_nsga_loader",
+      "condition": "baseline",
+      "split": "val",
+      "n_rows": 30720,
+      "n_feature_cols": 38,
+      "class_pred_balance": {
+        "sensitive": 15897,
+        "resistant": 14823
+      },
+      "ok": true
+    },
+    {
+      "check": "loads_via_real_nsga_loader",
+      "condition": "baseline",
+      "split": "test",
+      "n_rows": 30728,
+      "n_feature_cols": 38,
+      "class_pred_balance": {
+        "sensitive": 16129,
+        "resistant": 14599
+      },
+      "ok": true
+    },
+    {
+      "check": "loads_via_real_nsga_loader",
+      "condition": "sam",
+      "split": "train",
+      "n_rows": 245845,
+      "n_feature_cols": 38,
+      "class_pred_balance": {
+        "resistant": 129093,
+        "sensitive": 116752
+      },
+      "ok": true
+    },
+    {
+      "check": "loads_via_real_nsga_loader",
+      "condition": "sam",
+      "split": "val",
+      "n_rows": 30720,
+      "n_feature_cols": 38,
+      "class_pred_balance": {
+        "resistant": 16001,
+        "sensitive": 14719
+      },
+      "ok": true
+    },
+    {
+      "check": "loads_via_real_nsga_loader",
+      "condition": "sam",
+      "split": "test",
+      "n_rows": 30728,
+      "n_feature_cols": 38,
+      "class_pred_balance": {
+        "resistant": 16139,
+        "sensitive": 14589
+      },
+      "ok": true
+    },
+    {
+      "check": "row_count_matches_shortlist_filter",
+      "expected": 307293,
+      "actual": 307293,
+      "ok": true
+    },
+    {
+      "check": "per_drug_class_balance_not_degenerate",
+      "drug": "AZD5991",
+      "n": 645,
+      "true_class_balance": {
+        "sensitive": 0.505,
+        "resistant": 0.495
+      },
+      "class_pred_balance": {
+        "sensitive": 0.62,
+        "resistant": 0.38
+      },
+      "ok": true
+    },
+    {
+      "check": "per_drug_class_balance_not_degenerate",
+      "drug": "Dihydrorotenone",
+      "n": 646,
+      "true_class_balance": {
+        "sensitive": 0.508,
+        "resistant": 0.492
+      },
+      "class_pred_balance": {
+        "sensitive": 0.689,
+        "resistant": 0.311
+      },
+      "ok": true
+    },
+    {
+      "check": "per_drug_class_balance_not_degenerate",
+      "drug": "Nelarabine",
+      "n": 647,
+      "true_class_balance": {
+        "resistant": 0.502,
+        "sensitive": 0.498
+      },
+      "class_pred_balance": {
+        "sensitive": 0.532,
+        "resistant": 0.468
+      },
+      "ok": true
+    },
+    {
+      "check": "per_drug_class_balance_not_degenerate",
+      "drug": "Gemcitabine",
+      "n": 865,
+      "true_class_balance": {
+        "sensitive": 0.516,
+        "resistant": 0.484
+      },
+      "class_pred_balance": {
+        "sensitive": 0.501,
+        "resistant": 0.499
+      },
+      "ok": true
+    },
+    {
+      "check": "per_drug_class_balance_not_degenerate",
+      "drug": "BMS-536924",
+      "n": 865,
+      "true_class_balance": {
+        "sensitive": 0.506,
+        "resistant": 0.494
+      },
+      "class_pred_balance": {
+        "sensitive": 0.504,
+        "resistant": 0.496
+      },
+      "ok": true
+    },
+    {
+      "check": "per_drug_class_balance_not_degenerate",
+      "drug": "Avagacestat",
+      "n": 865,
+      "true_class_balance": {
+        "resistant": 0.501,
+        "sensitive": 0.499
+      },
+      "class_pred_balance": {
+        "sensitive": 0.526,
+        "resistant": 0.474
+      },
+      "ok": true
+    }
+  ],
+  "all_ok": true
+}
