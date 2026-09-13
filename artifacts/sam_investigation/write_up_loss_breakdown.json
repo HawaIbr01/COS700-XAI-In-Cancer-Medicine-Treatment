@@ -1,0 +1,40 @@
+{
+  "adam_baseline": {
+    "checkpoint_dir": "artifacts/checkpoints/baseline",
+    "n_val_rows": 31963,
+    "prediction_mse": 1.060662086185345,
+    "mutation_recon_mse": 0.012384668986047304,
+    "drug_recon_mse": 0.0012214838576414548,
+    "combined_eq2_loss": 1.074268239029034,
+    "recorded_final_val_loss_in_meta_or_scorecard": null
+  },
+  "sam_rho0.2": {
+    "checkpoint_dir": "artifacts/checkpoints/sam",
+    "n_val_rows": 31963,
+    "prediction_mse": 1.0332569859522631,
+    "mutation_recon_mse": 0.007829503578423967,
+    "drug_recon_mse": 0.000796785589728409,
+    "combined_eq2_loss": 1.0418832751204155,
+    "recorded_final_val_loss_in_meta_or_scorecard": null
+  },
+  "adam_wd_control": {
+    "checkpoint_dir": "artifacts/sam_investigation/adam_wd_control",
+    "status": "checkpoint_missing",
+    "note": "meta.json present but model.pt is absent from this working tree (gitignored *.pt, never regenerated on this machine). See writeup_audit.md item 9 / journal Stage 4c, 4e. Values below are DERIVED from meta.json's final_val_loss and rmse via the exact identity loss = prediction_mse + recon_mse (prediction_mse = val_rmse**2); NOT a direct per-checkpoint forward pass, and cannot be split into mutation vs. drug recon MSE without the weights.",
+    "final_val_loss": 1.2755740411744876,
+    "val_rmse": 1.0111308097839355,
+    "prediction_mse_implied": 1.0223855144943172,
+    "combined_recon_mse_derived": 0.25318852668017033,
+    "combined_recon_pct_of_loss": 19.84898708404621
+  },
+  "sam_rho0.5_wd_confirmatory": {
+    "checkpoint_dir": "artifacts/sam_investigation/confirmatory",
+    "status": "checkpoint_missing",
+    "note": "meta.json present but model.pt is absent from this working tree (gitignored *.pt, never regenerated on this machine). See writeup_audit.md item 9 / journal Stage 4c, 4e. Values below are DERIVED from meta.json's final_val_loss and rmse via the exact identity loss = prediction_mse + recon_mse (prediction_mse = val_rmse**2); NOT a direct per-checkpoint forward pass, and cannot be split into mutation vs. drug recon MSE without the weights.",
+    "final_val_loss": 1.403261004325069,
+    "val_rmse": 1.0722490549087524,
+    "prediction_mse_implied": 1.1497180357527128,
+    "combined_recon_mse_derived": 0.25354296857235625,
+    "combined_recon_pct_of_loss": 18.06812615692286
+  }
+}
