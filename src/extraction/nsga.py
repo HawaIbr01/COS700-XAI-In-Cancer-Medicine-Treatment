@@ -51,12 +51,12 @@ from deap import base, creator, tools
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from src.common.config import config_hash, load_config
-from src.common.metrics import fidelity_f1
 from src.common.schema import save_rule_pool
 from src.extraction.common import (
     cxTwoPoint_partitions,
     decode_individual,
     mutate_partition,
+    predict_with_rule,
     random_gene,
     resolve_genes,
 )
@@ -128,11 +128,10 @@ def _score_genotype(individual, df, feature_cols, class_pred_col, min_coverage):
     if length == 0 or mask.sum() == 0:
         return 0.0, length, coverage, None
 
+    # Majority-vote prediction + fidelity, shared with GA — see
+    # src/extraction/common.py's predict_with_rule() docstring.
     covered_preds = df.loc[mask, class_pred_col]
-    predicted_class = covered_preds.mode().iat[0]
-    rule_preds = pd.Series(predicted_class, index=covered_preds.index)
-
-    fidelity = fidelity_f1(rule_preds, covered_preds)
+    predicted_class, fidelity = predict_with_rule(covered_preds)
 
     # Optional support/coverage floor: without this, a rule matching 1-3 rows
     # trivially hits fidelity 1.0 (predicting the majority class among a
