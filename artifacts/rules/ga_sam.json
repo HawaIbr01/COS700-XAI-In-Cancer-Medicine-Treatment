@@ -1,0 +1,300 @@
+{
+  "meta": {
+    "extractor": "ga",
+    "condition": "sam",
+    "runs": 30,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "Focal_adhesion_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "JAK-STAT_signaling_pathway_activity",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "Regulation_of_actin_cytoskeleton_activity",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "Regulation_of_lipolysis_in_adipocytes_activity",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "Th17_cell_differentiation_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Focal adhesion",
+        "JAK-STAT signaling pathway",
+        "Regulation of actin cytoskeleton",
+        "Regulation of lipolysis in adipocytes",
+        "Th17 cell differentiation"
+      ],
+      "predicted_class": "sensitive",
+      "length": 5,
+      "fidelity_f1": 0.4384,
+      "coverage": 0.0135,
+      "run_ids": [
+        28
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4182,
+      "id": "ga_sam_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Axon_guidance_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Insulin_secretion_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Axon guidance",
+        "C-type lectin receptor signaling pathway",
+        "Insulin secretion"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4364,
+      "coverage": 0.0121,
+      "run_ids": [
+        22
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4286,
+      "id": "ga_sam_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "cAMP_signaling_pathway_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Regulation_of_lipolysis_in_adipocytes_activity",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "C-type lectin receptor signaling pathway",
+        "Regulation of lipolysis in adipocytes",
+        "cAMP signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4307,
+      "coverage": 0.0102,
+      "run_ids": [
+        28
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4359,
+      "id": "ga_sam_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Phospholipase_D_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Natural killer cell mediated cytotoxicity",
+        "Phospholipase D signaling pathway",
+        "Signaling pathways regulating pluripotency of stem cells"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4303,
+      "coverage": 0.011,
+      "run_ids": [
+        2
+      ],
+      "non_dominated": true,
+      "accuracy": 0.437,
+      "id": "ga_sam_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Relaxin_signaling_pathway_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "C-type lectin receptor signaling pathway",
+        "Relaxin signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4285,
+      "coverage": 0.0108,
+      "run_ids": [
+        3,
+        7,
+        9,
+        10,
+        14,
+        19,
+        25,
+        28,
+        29
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4128,
+      "id": "ga_sam_0005"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Chemokine_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Protein_digestion_and_absorption_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Chemokine signaling pathway",
+        "Protein digestion and absorption"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4159,
+      "coverage": 0.033,
+      "run_ids": [
+        2,
+        14,
+        17,
+        18,
+        19,
+        22,
+        25,
+        29
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4139,
+      "id": "ga_sam_0006"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Thyroid_hormone_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Signaling pathways regulating pluripotency of stem cells",
+        "Thyroid hormone signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4156,
+      "coverage": 0.0126,
+      "run_ids": [
+        16,
+        21,
+        25
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4144,
+      "id": "ga_sam_0007"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Phospholipase_D_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Phospholipase D signaling pathway",
+        "Signaling pathways regulating pluripotency of stem cells"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4149,
+      "coverage": 0.0139,
+      "run_ids": [
+        2,
+        5,
+        11,
+        18
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4235,
+      "id": "ga_sam_0008"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4029,
+      "coverage": 0.1471,
+      "run_ids": [
+        1,
+        2,
+        8,
+        9,
+        10,
+        12,
+        14,
+        16,
+        17,
+        20,
+        21,
+        27
+      ],
+      "non_dominated": true,
+      "accuracy": 0.3946,
+      "id": "ga_sam_0009"
+    }
+  ]
+}
