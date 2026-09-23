@@ -1,0 +1,73 @@
+{
+  "stage": 1,
+  "description": "Generalisation gap measurement \u2014 existing training runs",
+  "baseline": {
+    "optimiser": "adam",
+    "weight_decay": 0,
+    "learning_rate": 0.001,
+    "batch_size": 1024,
+    "n_epochs": 90,
+    "final_train_loss_eval_mode": 0.7373303457713831,
+    "final_val_loss_eval_mode": 1.0742682438187936,
+    "generalisation_gap_eval_mode": 0.3369378980474105,
+    "train_r2": 0.9027787446975708,
+    "val_r2": 0.8564605712890625,
+    "test_r2": 0.8568206429481506,
+    "val_rmse": 1.0298844575881958
+  },
+  "sam_rho_sweep": [
+    {
+      "rho": 0.01,
+      "n_epochs": 122,
+      "final_train_loss_eval_mode": 0.6976516794576022,
+      "final_val_loss_eval_mode": 1.0632080237468544,
+      "generalisation_gap_eval_mode": 0.3655563442892522,
+      "gap_pct_change_vs_baseline": -8.49,
+      "train_r2": 0.9078255295753479,
+      "val_r2": 0.8576691746711731,
+      "test_r2": 0.857612669467926,
+      "val_rmse": 1.025539517402649
+    },
+    {
+      "rho": 0.05,
+      "n_epochs": 162,
+      "final_train_loss_eval_mode": 0.6840404512999488,
+      "final_val_loss_eval_mode": 1.0501010492828653,
+      "generalisation_gap_eval_mode": 0.36606059798291646,
+      "gap_pct_change_vs_baseline": -8.64,
+      "train_r2": 0.9095125198364258,
+      "val_r2": 0.8592972755432129,
+      "test_r2": 0.8584927320480347,
+      "val_rmse": 1.0196571350097656
+    },
+    {
+      "rho": 0.1,
+      "n_epochs": 199,
+      "final_train_loss_eval_mode": 0.6935952115518149,
+      "final_val_loss_eval_mode": 1.0536052928461552,
+      "generalisation_gap_eval_mode": 0.3600100812943403,
+      "gap_pct_change_vs_baseline": -6.85,
+      "train_r2": 0.9081204533576965,
+      "val_r2": 0.8587095141410828,
+      "test_r2": 0.8568221926689148,
+      "val_rmse": 1.0217846632003784
+    },
+    {
+      "rho": 0.2,
+      "n_epochs": 215,
+      "final_train_loss_eval_mode": 0.7296935085677119,
+      "final_val_loss_eval_mode": 1.0418832493384826,
+      "generalisation_gap_eval_mode": 0.3121897407707708,
+      "gap_pct_change_vs_baseline": 7.35,
+      "train_r2": 0.9031393527984619,
+      "val_r2": 0.8601692914962769,
+      "test_r2": 0.8608267307281494,
+      "val_rmse": 1.016492486000061
+    }
+  ],
+  "gap_at_epoch_50": {
+    "baseline": 0.2038135204110597,
+    "sam_rho_0p20": 0.09794408078590933
+  },
+  "per_epoch_gap_note": "Per-epoch gap = val_loss(eval_mode) - train_loss(train_mode). Scorecard gap = both in eval_mode. Scorecard gaps are larger because eval_mode train_loss is lower (BN uses running stats, not mini-batch stats)."
+}

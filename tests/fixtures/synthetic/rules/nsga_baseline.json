@@ -1,0 +1,430 @@
+{
+  "meta": {
+    "extractor": "nsga",
+    "condition": "baseline",
+    "runs": 1,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_25",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_30",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "PATHWAY_25",
+        "PATHWAY_30"
+      ],
+      "predicted_class": "resistant",
+      "length": 2,
+      "fidelity_f1": 1.0,
+      "coverage": 0.02,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_01",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_19",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_25",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "PATHWAY_01",
+        "PATHWAY_19",
+        "PATHWAY_25"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4667,
+      "coverage": 0.0267,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_30",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_30"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4646,
+      "coverage": 0.1767,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_30",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_30"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4646,
+      "coverage": 0.1767,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_10",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_19",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_10",
+        "PATHWAY_19"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4615,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0005"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_15",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_07",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_10",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_23",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_33",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "GENE15",
+        "PATHWAY_07",
+        "PATHWAY_10",
+        "PATHWAY_23",
+        "PATHWAY_33"
+      ],
+      "predicted_class": "resistant",
+      "length": 5,
+      "fidelity_f1": 0.4615,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0006"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_15",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_30",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "GENE15",
+        "PATHWAY_30"
+      ],
+      "predicted_class": "resistant",
+      "length": 2,
+      "fidelity_f1": 0.4333,
+      "coverage": 0.0567,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0007"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_09",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_30",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_36",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_09",
+        "PATHWAY_30",
+        "PATHWAY_36"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4286,
+      "coverage": 0.0267,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0008"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_01",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_33",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_38",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_01",
+        "PATHWAY_33",
+        "PATHWAY_38"
+      ],
+      "predicted_class": "resistant",
+      "length": 3,
+      "fidelity_f1": 0.4286,
+      "coverage": 0.0267,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0009"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_15",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_24",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_36",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_15",
+        "PATHWAY_24",
+        "PATHWAY_36"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4286,
+      "coverage": 0.0667,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0010"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_12",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_19",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_12",
+        "PATHWAY_19"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4211,
+      "coverage": 0.0367,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0011"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_18",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_15",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_20",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_33",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "GENE18",
+        "PATHWAY_15",
+        "PATHWAY_20",
+        "PATHWAY_33"
+      ],
+      "predicted_class": "resistant",
+      "length": 4,
+      "fidelity_f1": 0.4211,
+      "coverage": 0.0367,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0012"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_07",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_15",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_07",
+        "PATHWAY_15"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4167,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0013"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_05",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_19",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_36",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_05",
+        "PATHWAY_19",
+        "PATHWAY_36"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4167,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0014"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_04",
+          "partition": "Low"
+        },
+        {
+          "feature": "GENE_17",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_17",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "GENE04",
+        "GENE17",
+        "PATHWAY_17"
+      ],
+      "predicted_class": "resistant",
+      "length": 3,
+      "fidelity_f1": 0.4138,
+      "coverage": 0.0567,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0015"
+    }
+  ]
+}

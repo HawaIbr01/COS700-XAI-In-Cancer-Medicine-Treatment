@@ -1,6 +1,16 @@
 """
 src/extraction/nsga.py — COS700 Part 4, Methodology §4.4.
 
+OWNER: Sakhile (feat/nsga2-rule-extraction)
+
+CONTRACT (docs/CONTRACTS.md Arm 4):
+    Produces:
+        artifacts/rules/nsga_baseline.json
+        artifacts/rules/nsga_sam.json
+    (same §0.4 schema as GA — this is what makes the GA-vs-NSGA-II
+    comparison in Evaluation fair; written via schema.save_rule_pool,
+    which validates before writing.)
+
 DEAP NSGA-II rule extraction. Multi-objective search over discretised GDSC
 features:
   objective 1 (maximise): fidelity macro-F1 vs the model's class_pred
@@ -15,6 +25,14 @@ Fully wired to src/common/{config,metrics,schema}.py and
 src/extraction/common.py — no fallback stubs. If any of those modules'
 signatures change, this file breaks loudly at import time rather than
 silently drifting.
+
+MERGE NOTE: this file's config access and rule-pool writing were updated
+to match the canonical src/common/config.py (PipelineConfig dataclass,
+attribute access) and src/common/schema.py (list-of-errors validate,
+save_rule_pool validates-then-writes) resolved during the merge with
+feat/nsga2-rule-extraction. Everything else — data loading, scoring,
+DEAP toolbox, run loop, aggregation, CLI — is unchanged from Sakhile's
+original implementation.
 """
 
 from __future__ import annotations
@@ -34,7 +52,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from src.common.config import config_hash, load_config
 from src.common.metrics import fidelity_f1
-from src.common.schema import validate_rule_pool
+from src.common.schema import save_rule_pool
 from src.extraction.common import (
     cxTwoPoint_partitions,
     decode_individual,
@@ -97,7 +115,17 @@ def _score_genotype(individual, df, feature_cols, class_pred_col, min_coverage):
     coverage = float(mask.mean())
     length = sum(1 for v in individual if v != -1)
 
-    if mask.sum() == 0:
+    # length == 0 means every gene is -1 (feature excluded): decode_individual()
+    # would return zero conditions, and rule_mask() with zero conditions matches
+    # every row. Left unguarded, this "empty rule" scores as a maximally general,
+    # zero-length rule that can dominate on both NSGA-II objectives for free and
+    # make it into the output pool with empty 'conditions'/'genes' — which fails
+    # schema validation at write time (caught via a real run against a smoke-test
+    # fixture, not just from reading the code). Route it through the same
+    # None-predicted_class path already used for zero-coverage genotypes, so
+    # aggregate_runs()'s existing `if predicted_class is None: continue` filters
+    # it out before it ever reaches the rule pool.
+    if length == 0 or mask.sum() == 0:
         return 0.0, length, coverage, None
 
     covered_preds = df.loc[mask, class_pred_col]
@@ -255,11 +283,13 @@ def write_rule_pool(out_path, condition, n_runs, config_hash_val, rules, feature
         "rules": rules,
     }
 
-    validate_rule_pool(payload, feature_map=feature_map)  # raises on any violation
-
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_path, "w") as f:
-        json.dump(payload, f, indent=2)
+    # save_rule_pool validates against schema.validate_rule_pool internally
+    # and raises ValueError with the full list of problems if invalid, then
+    # writes only on success. (Previously called validate_rule_pool() alone
+    # expecting it to raise — it doesn't, it returns a list of errors — so
+    # that call was silently doing nothing. save_rule_pool is the correct
+    # validate-then-write entry point in the resolved schema.py.)
+    save_rule_pool(payload, out_path, feature_map=feature_map)
     return out_path
 
 
@@ -285,10 +315,12 @@ def main():
 
     config_path = Path(args.config)
     cfg = load_config(config_path)
-    n_gen = args.n_gen or cfg["nsga"]["generations"]
-    pop_size = args.pop or cfg["nsga"]["pop"]
-    n_runs = args.n_runs or cfg["nsga"]["runs"]
-    base_seed = args.seed if args.seed is not None else cfg["seed"]
+    # cfg is a PipelineConfig dataclass (attribute access), not a dict —
+    # matches the canonical src/common/config.py resolved during the merge.
+    n_gen = args.n_gen or cfg.nsga.generations
+    pop_size = args.pop or cfg.nsga.pop
+    n_runs = args.n_runs or cfg.nsga.runs
+    base_seed = args.seed if args.seed is not None else cfg.seed
 
     df, feature_cols, feature_map, class_pred_col = load_condition_data(
         Path(args.data_dir), args.condition, FIDELITY_SPLIT

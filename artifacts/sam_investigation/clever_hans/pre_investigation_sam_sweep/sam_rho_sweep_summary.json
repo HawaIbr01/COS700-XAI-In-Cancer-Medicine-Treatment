@@ -1,0 +1,66 @@
+{
+  "created_at": "2026-08-27T13:44:14.604471Z",
+  "selection_rule": {
+    "primary": "max val_r2",
+    "tie_breaker_1": "min generalisation_gap",
+    "tie_breaker_2": "max test_r2"
+  },
+  "runs": [
+    {
+      "timestamp": "2026-08-26T17:26:33.635747Z",
+      "rho": 0.01,
+      "scorecard_file": "artifacts/reports/sam_gap_scorecard_rho_0p01.json",
+      "history_file": "artifacts/reports/sam_training_history_rho_0p01.json",
+      "curve_file": "artifacts/reports/sam_vs_baseline_loss_curve_rho_0p01.png",
+      "landscape_file": "artifacts/reports/sam_vs_baseline_loss_landscape_rho_0p01.png",
+      "val_r2": 0.8576691746711731,
+      "test_r2": 0.857612669467926,
+      "generalisation_gap": 0.3655563442892522,
+      "best_val_loss": null,
+      "n_epochs": 122,
+      "best_epoch": null
+    },
+    {
+      "timestamp": "2026-08-27T05:50:43.961078Z",
+      "rho": 0.05,
+      "scorecard_file": "artifacts/reports/sam_gap_scorecard_rho_0p05.json",
+      "history_file": "artifacts/reports/sam_training_history_rho_0p05.json",
+      "curve_file": "artifacts/reports/sam_vs_baseline_loss_curve_rho_0p05.png",
+      "landscape_file": "artifacts/reports/sam_vs_baseline_loss_landscape_rho_0p05.png",
+      "val_r2": 0.8592972755432129,
+      "test_r2": 0.8584927320480347,
+      "generalisation_gap": 0.36606059798291646,
+      "best_val_loss": null,
+      "n_epochs": 162,
+      "best_epoch": null
+    },
+    {
+      "timestamp": "2026-08-27T08:52:59.112421Z",
+      "rho": 0.1,
+      "scorecard_file": "artifacts/reports/sam_gap_scorecard_rho_0p1.json",
+      "history_file": "artifacts/reports/sam_training_history_rho_0p1.json",
+      "curve_file": "artifacts/reports/sam_vs_baseline_loss_curve_rho_0p1.png",
+      "landscape_file": "artifacts/reports/sam_vs_baseline_loss_landscape_rho_0p1.png",
+      "val_r2": 0.8587095141410828,
+      "test_r2": 0.8568221926689148,
+      "generalisation_gap": 0.3600100812943403,
+      "best_val_loss": null,
+      "n_epochs": 199,
+      "best_epoch": null
+    },
+    {
+      "timestamp": "2026-08-27T13:44:14.602814Z",
+      "rho": 0.2,
+      "scorecard_file": "artifacts/reports/sam_gap_scorecard_rho_0p2.json",
+      "history_file": "artifacts/reports/sam_training_history_rho_0p2.json",
+      "curve_file": "artifacts/reports/sam_vs_baseline_loss_curve_rho_0p2.png",
+      "landscape_file": "artifacts/reports/sam_vs_baseline_loss_landscape_rho_0p2.png",
+      "val_r2": 0.8601692914962769,
+      "test_r2": 0.8608267307281494,
+      "generalisation_gap": 0.3121897407707708,
+      "best_val_loss": null,
+      "n_epochs": 215,
+      "best_epoch": null
+    }
+  ]
+}

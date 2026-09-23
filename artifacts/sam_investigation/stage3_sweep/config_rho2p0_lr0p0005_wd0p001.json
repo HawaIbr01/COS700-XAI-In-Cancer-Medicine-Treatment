@@ -1,0 +1,13 @@
+{
+  "rho": 2.0,
+  "lr": 0.0005,
+  "wd": 0.001,
+  "n_epochs": 168,
+  "final_train_loss": 3.014435837949892,
+  "final_val_loss": 3.1750630410738054,
+  "generalisation_gap": 0.16062720312391354,
+  "val_r2": 0.6047084331512451,
+  "runtime_s": 1264.4,
+  "converged": true,
+  "max_epochs_used": 300
+}

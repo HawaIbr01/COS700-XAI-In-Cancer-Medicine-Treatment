@@ -1,29 +1,35 @@
-# requirements.txt
-# ==================
-# For: ga_rule_extraction.py, build_gdsc_target_table.py,
-#      generate_dummy_deepccds_output.py
+# Project dependencies — install into the project venv:
 #
-# Install with:
+#   python3 -m venv .venv
+#   source .venv/bin/activate          # or .venv\Scripts\activate on Windows
 #   pip install -r requirements.txt
-#   (or, if you hit PEP 668 "externally managed environment" errors:
-#    pip install -r requirements.txt --break-system-packages)
+#
+# PyTorch: install CPU-only build (no GPU on project hardware) via:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# or let the line below pull the default wheel (GPU-enabled, larger).
 
-# --- ga_rule_extraction.py ---------------------------------------------
-# array ops, chromosome encoding, rule matching
-numpy>=1.24
-# dataframe support for the loader/helper scripts
-pandas>=2.0
-# f1_score / accuracy_score for fidelity & accuracy objectives
+# --- core ---
+numpy>=1.26
+pandas>=2.1
+pyarrow>=14.0       # parquet I/O
+pyyaml>=6.0
+scipy>=1.11
 scikit-learn>=1.3
-# the GA engine itself (creator, base, tools)
-deap>=1.4
-# loads/runs the real DeepCCDS checkpoint (only needed outside --synthetic mode)
+
+# --- deep learning ---
 torch>=2.1
 
-# --- build_gdsc_target_table.py / generate_dummy_deepccds_output.py ----
-# lets pandas.read_excel() open the GDSC1/GDSC2 .xlsx dose-response files
-openpyxl>=3.1
+# --- evolutionary algorithms ---
+deap>=1.4
 
-# --- not yet needed, but coming up per Proposal Section 4.6 ------------
-# pymcdm>=1.1
-# gseapy>=1.1
+# --- multi-criteria decision analysis ---
+pymcdm>=1.1
+
+# --- biological pathway enrichment ---
+gseapy>=1.1
+
+# --- plotting ---
+matplotlib>=3.8
+
+# --- dev / testing ---
+pytest>=8.0
