@@ -53,6 +53,7 @@ from src.common.config import config_hash, load_config
 from src.common.metrics import comprehensibility, fidelity_f1
 from src.common.schema import save_rule_pool
 from src.extraction.common import (
+    PARTITION_LABELS,
     cxTwoPoint_partitions,
     decode_individual,
     mutate_partition,
@@ -143,43 +144,78 @@ def load_condition_data(data_dir: Path, condition: str):
 # reappears across the 30 independent runs.
 # --------------------------------------------------------------------------
 
+def _rule_mask(df, feature_cols, individual):
+    """
+    Boolean mask of rows in `df` satisfied by every active (non -1) gene
+    in `individual`.
+
+    NOTE: this used to live in src.extraction.common as a shared
+    `rule_mask()`. Sakhile's real common.py deliberately doesn't export
+    one -- his `predict_with_rule(covered_preds)` takes an already-masked
+    Series and leaves masking to each caller (see common.py's docstring:
+    "covered_preds ... the rows a rule's conditions match"). Rather than
+    add rule_mask back to common.py (which risks a merge fight with
+    nsga.py over shared-file ownership per docs/CONTRACTS.md), this stays
+    local to ga.py -- a few duplicated lines, not a divergent contract.
+    """
+    mask = np.ones(len(df), dtype=bool)
+    for i, val in enumerate(individual):
+        if val != -1:
+            mask &= (df[feature_cols[i]].values == PARTITION_LABELS[val])
+    return mask
+
+
 def _score_genotype(individual, df_train, df_val, feature_cols, w_fidelity,
                      w_accuracy, w_comprehensibility, min_coverage):
     """
     Returns (weighted_fitness, fidelity, accuracy, comp_score, length,
     train_coverage, predicted_class).
 
-    fidelity  : macro-F1 of the rule's predicted_class vs the model's
-                class_pred on TRAIN rows the rule covers.
-    accuracy  : macro-F1 of the same predicted_class vs the real
-                response_classes.json label on VAL rows the rule covers
-                (0.0 if the rule has no val coverage).
+    fidelity  : from common.predict_with_rule() on the TRAIN rows the rule
+                covers -- macro-F1 between that covered set's own
+                class_pred majority vote and the covered class_pred values
+                themselves (i.e. how internally consistent the model's
+                predictions are within the rule's covered region; a rule
+                that carves out a region the model classifies uniformly
+                scores near 1.0, a rule straddling the model's decision
+                boundary scores near 0.5).
+    accuracy  : macro-F1 of that SAME predicted_class (fixed, from train)
+                vs the real response_classes.json label on VAL rows the
+                rule covers (0.0 if no val coverage). predict_with_rule()
+                isn't reused here on purpose -- calling it on val's
+                true_class would re-derive its own majority-vote class
+                from true_class and self-compare, which measures label
+                homogeneity, not whether the rule's train-derived
+                prediction generalises to held-out ground truth. This
+                needs a fixed comparison target, so it's a direct
+                fidelity_f1() call instead.
     comp_score: 1 - length/n_features, a higher-is-better transform of
                 src.common.metrics.comprehensibility()'s raw length, per
                 that function's own docstring note that any such
                 transform belongs in the calling arm, not in metrics.py.
     """
     n_features = len(feature_cols)
-    predicted_class, length, train_coverage, covered_train_preds = predict_with_rule(
-        df_train, feature_cols, individual, "class_pred", min_coverage=min_coverage
-    )
-    if predicted_class is None:
+    length = sum(1 for v in individual if v != -1)
+    if length == 0:
+        return -1.0, 0.0, 0.0, 0.0, length, 0.0, None
+
+    train_mask = _rule_mask(df_train, feature_cols, individual)
+    train_coverage = float(train_mask.mean()) if len(df_train) else 0.0
+    if train_mask.sum() == 0 or (min_coverage > 0.0 and train_coverage < min_coverage):
         return -1.0, 0.0, 0.0, 0.0, length, train_coverage, None
 
-    rule_preds_train = pd.Series(predicted_class, index=covered_train_preds.index)
-    fidelity = fidelity_f1(rule_preds_train, covered_train_preds)
+    covered_train_preds = df_train.loc[train_mask, "class_pred"]
+    predicted_class, fidelity = predict_with_rule(covered_train_preds)
+    if predicted_class is None:  # can't happen given the train_mask.sum()==0 guard above, but stay defensive
+        return -1.0, 0.0, 0.0, 0.0, length, train_coverage, None
 
-    val_mask = np.ones(len(df_val), dtype=bool)
-    for i, val in enumerate(individual):
-        if val != -1:
-            from src.extraction.common import PARTITION_LABELS
-            val_mask &= (df_val[feature_cols[i]].values == PARTITION_LABELS[val])
+    val_mask = _rule_mask(df_val, feature_cols, individual)
     if val_mask.sum() == 0:
         accuracy = 0.0
     else:
         covered_true = df_val.loc[val_mask, "true_class"]
         rule_preds_val = pd.Series(predicted_class, index=covered_true.index)
-        accuracy = fidelity_f1(rule_preds_val, covered_true)  # same macro-F1 metric, different target
+        accuracy = fidelity_f1(rule_preds_val, covered_true)  # same macro-F1 metric, fixed target
 
     raw_length = comprehensibility({"conditions": [None] * length})  # matches metrics.py's contract
     comp_score = 1.0 - (raw_length / n_features)
