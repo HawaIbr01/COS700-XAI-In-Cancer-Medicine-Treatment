@@ -831,3 +831,29 @@ second independent random direction, not just the one probed in figure 14.
   addition if the write-up wants it).
 - Li et al. (2018), "Visualizing the Loss Landscape of Neural Nets" — same
   method reference as figure 14.
+
+## Housekeeping — pre-merge cleanup of `feat/sam-intervention`
+
+**Date:** 2026-09-27
+
+### What
+
+Removed `docs/investigations/sam-generalisation/files/` (a duplicated copy of
+`SAM_Investigation_Full_Report.md`, `journal.md`, and `fig1`-`fig5`) and
+`docs/investigations/sam-generalisation/files.zip` (the same bundle, zipped),
+ahead of merging `feat/sam-intervention` into `dev`.
+
+### Why
+
+Both were a stale export dated 2026-09-07: `files/journal.md` was byte-identical
+to this journal up to Stage 4c and then simply stopped, missing Stages 4c-4f.
+Neither was referenced from any other file in the repository, so removing
+them drops no live content, only a superseded snapshot.
+
+### Result
+
+`git rm -r` on both paths; no remaining file references either path
+(confirmed via a repo-wide grep before removal). No other cleanup changes
+to this journal or its figures were made as part of this pass; the full
+cleanup audit is recorded in `cleanup_report_sam-intervention.md` at the
+repository root.
