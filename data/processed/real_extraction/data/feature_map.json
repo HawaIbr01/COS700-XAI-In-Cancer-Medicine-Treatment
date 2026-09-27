@@ -1,0 +1,306 @@
+{
+  "Apelin_signaling_pathway_activity": {
+    "gene_symbol": "Apelin signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Axon_guidance_activity": {
+    "gene_symbol": "Axon guidance",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "B_cell_receptor_signaling_pathway_activity": {
+    "gene_symbol": "B cell receptor signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "C-type_lectin_receptor_signaling_pathway_activity": {
+    "gene_symbol": "C-type lectin receptor signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Calcium_signaling_pathway_activity": {
+    "gene_symbol": "Calcium signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "cAMP_signaling_pathway_activity": {
+    "gene_symbol": "cAMP signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Cardiac_muscle_contraction_activity": {
+    "gene_symbol": "Cardiac muscle contraction",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Cellular_senescence_activity": {
+    "gene_symbol": "Cellular senescence",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Chemokine_signaling_pathway_activity": {
+    "gene_symbol": "Chemokine signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Cholinergic_synapse_activity": {
+    "gene_symbol": "Cholinergic synapse",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "ErbB_signaling_pathway_activity": {
+    "gene_symbol": "ErbB signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Estrogen_signaling_pathway_activity": {
+    "gene_symbol": "Estrogen signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Focal_adhesion_activity": {
+    "gene_symbol": "Focal adhesion",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Gap_junction_activity": {
+    "gene_symbol": "Gap junction",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "GnRH_secretion_activity": {
+    "gene_symbol": "GnRH secretion",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Growth_hormone_synthesis_secretion_and_action_activity": {
+    "gene_symbol": "Growth hormone synthesis, secretion and action",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Insulin_secretion_activity": {
+    "gene_symbol": "Insulin secretion",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "JAK-STAT_signaling_pathway_activity": {
+    "gene_symbol": "JAK-STAT signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "MAPK_signaling_pathway_activity": {
+    "gene_symbol": "MAPK signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Melanogenesis_activity": {
+    "gene_symbol": "Melanogenesis",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Natural_killer_cell_mediated_cytotoxicity_activity": {
+    "gene_symbol": "Natural killer cell mediated cytotoxicity",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Oxidative_phosphorylation_activity": {
+    "gene_symbol": "Oxidative phosphorylation",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Phospholipase_D_signaling_pathway_activity": {
+    "gene_symbol": "Phospholipase D signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "PI3K-Akt_signaling_pathway_activity": {
+    "gene_symbol": "PI3K-Akt signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Protein_digestion_and_absorption_activity": {
+    "gene_symbol": "Protein digestion and absorption",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Rap1_signaling_pathway_activity": {
+    "gene_symbol": "Rap1 signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Ras_signaling_pathway_activity": {
+    "gene_symbol": "Ras signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Regulation_of_actin_cytoskeleton_activity": {
+    "gene_symbol": "Regulation of actin cytoskeleton",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Regulation_of_lipolysis_in_adipocytes_activity": {
+    "gene_symbol": "Regulation of lipolysis in adipocytes",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Relaxin_signaling_pathway_activity": {
+    "gene_symbol": "Relaxin signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Renin_secretion_activity": {
+    "gene_symbol": "Renin secretion",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Serotonergic_synapse_activity": {
+    "gene_symbol": "Serotonergic synapse",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity": {
+    "gene_symbol": "Signaling pathways regulating pluripotency of stem cells",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Taste_transduction_activity": {
+    "gene_symbol": "Taste transduction",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Th17_cell_differentiation_activity": {
+    "gene_symbol": "Th17 cell differentiation",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Thermogenesis_activity": {
+    "gene_symbol": "Thermogenesis",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Thyroid_hormone_signaling_pathway_activity": {
+    "gene_symbol": "Thyroid hormone signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  },
+  "Wnt_signaling_pathway_activity": {
+    "gene_symbol": "Wnt signaling pathway",
+    "note": "PLACEHOLDER: this is a KEGG pathway name, not a single HGNC gene symbol -- no per-gene expression is wired up yet. See the module docstring in this file and README.md Sec 5 before using this for GSEA (Sec 4.6.3).",
+    "partition_edges": [
+      -1.0,
+      1.0
+    ]
+  }
+}

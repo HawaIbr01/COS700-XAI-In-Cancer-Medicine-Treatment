@@ -1,0 +1,43 @@
+{
+  "n_drugs": 413,
+  "n_cell_lines_total": 866,
+  "n_rows_total": 319543,
+  "min": 112,
+  "max": 865,
+  "mean": 773.7118644067797,
+  "std": 137.06633919192822,
+  "median": 815.0,
+  "quantiles": {
+    "0.01": 350.12,
+    "0.05": 355.2,
+    "0.1": 648.0,
+    "0.25": 782.0,
+    "0.5": 815.0,
+    "0.75": 857.0,
+    "0.9": 863.0,
+    "0.95": 864.0,
+    "0.99": 864.0
+  },
+  "low_sanity_floor": 50,
+  "n_drugs_below_low_sanity_floor": 0,
+  "drugs_below_low_sanity_floor": {},
+  "smallest_10_drugs": {
+    "torin2": 112,
+    "Remodelin": 339,
+    "WH-4-023": 349,
+    "GW843682X": 349,
+    "GNF-2": 350,
+    "Sunitinib": 351,
+    "Seliciclib": 351,
+    "WZ-1-84": 352,
+    "CGP-082996": 352,
+    "Cyclopamine": 352
+  },
+  "largest_5_drugs": {
+    "AZD4547": 864,
+    "AZD8186": 864,
+    "Gemcitabine": 865,
+    "BMS-536924": 865,
+    "Avagacestat": 865
+  }
+}

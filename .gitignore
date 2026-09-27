@@ -280,8 +280,17 @@ __marimo__/
 .DS_Store
 Thumbs.db
 
+# Project data and model checkpoints — not committed (large files, licence considerations)
+data/
+checkpoints/
+
 artifacts/*
 !artifacts/.gitkeep
+!artifacts/reports/
+!artifacts/reports/sam_gap_scorecard.json
+!artifacts/reports/sam_training_history.json
+!artifacts/sam_investigation/
+!artifacts/sam_investigation/**
 __pycache__/
 *.pt
 *.parquet
@@ -291,3 +300,5 @@ __pycache__/
 # teammate downloads their own local copy (see BASELINE_README.md §4).
 /data/
 *.npy
+
+.claude/settings.local.json

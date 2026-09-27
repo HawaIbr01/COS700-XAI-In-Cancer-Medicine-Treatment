@@ -1,0 +1,12 @@
+{
+  "rho": 1.0,
+  "lr": 0.0005,
+  "wd": 0,
+  "n_epochs": 150,
+  "final_train_loss": 2.5058368824893957,
+  "final_val_loss": 2.740785395640722,
+  "generalisation_gap": 0.23494851315132648,
+  "val_r2": 0.6359474658966064,
+  "runtime_s": 766.4,
+  "converged": false
+}

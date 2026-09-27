@@ -1,0 +1,352 @@
+2026-09-10 09:25:22,685 [INFO] Device: cpu
+2026-09-10 09:25:22,687 [INFO] Hardware: Linux 6.18.33.2-microsoft-standard-WSL2 | python 3.10.12 | torch 2.14.0+cpu | cpu='x86_64' | cuda_available=False
+2026-09-10 09:25:22,688 [INFO] Config: rho=0.50  LR=0.001  WD=0.001  MAX_EPOCHS=250  patience=30
+2026-09-10 09:25:23,300 [INFO] Dataset sizes — train: 255628  val: 31963  test: 31952
+2026-09-10 09:26:16,446 [INFO]   wrote crash-recovery checkpoint at epoch 1 (val_loss=1.9356) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:26:16,447 [INFO] epoch   1/250 | train=3.3617 val=1.9356 gap=-1.4261 | no_imp=0 | 41s elapsed
+2026-09-10 09:26:55,817 [INFO]   wrote crash-recovery checkpoint at epoch 2 (val_loss=1.8552) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:26:55,818 [INFO] epoch   2/250 | train=1.9429 val=1.8552 gap=-0.0877 | no_imp=0 | 80s elapsed
+2026-09-10 09:27:35,455 [INFO]   wrote crash-recovery checkpoint at epoch 3 (val_loss=1.8247) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:27:35,455 [INFO] epoch   3/250 | train=1.8736 val=1.8247 gap=-0.0488 | no_imp=0 | 120s elapsed
+2026-09-10 09:28:16,856 [INFO]   wrote crash-recovery checkpoint at epoch 4 (val_loss=1.7960) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:28:16,857 [INFO] epoch   4/250 | train=1.8481 val=1.7960 gap=-0.0521 | no_imp=0 | 161s elapsed
+2026-09-10 09:28:54,858 [INFO]   wrote crash-recovery checkpoint at epoch 5 (val_loss=1.7735) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:28:54,859 [INFO] epoch   5/250 | train=1.8253 val=1.7735 gap=-0.0519 | no_imp=0 | 199s elapsed
+2026-09-10 09:29:30,508 [INFO]   wrote crash-recovery checkpoint at epoch 6 (val_loss=1.7699) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:29:30,509 [INFO] epoch   6/250 | train=1.8117 val=1.7699 gap=-0.0418 | no_imp=0 | 235s elapsed
+2026-09-10 09:30:07,871 [INFO]   wrote crash-recovery checkpoint at epoch 7 (val_loss=1.7526) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:30:07,872 [INFO] epoch   7/250 | train=1.7977 val=1.7526 gap=-0.0451 | no_imp=0 | 272s elapsed
+2026-09-10 09:30:45,186 [INFO]   wrote crash-recovery checkpoint at epoch 8 (val_loss=1.7465) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:30:45,187 [INFO] epoch   8/250 | train=1.7839 val=1.7465 gap=-0.0374 | no_imp=0 | 310s elapsed
+2026-09-10 09:31:22,282 [INFO]   wrote crash-recovery checkpoint at epoch 9 (val_loss=1.7328) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:31:22,283 [INFO] epoch   9/250 | train=1.7794 val=1.7328 gap=-0.0466 | no_imp=0 | 347s elapsed
+2026-09-10 09:31:56,929 [INFO] epoch  10/250 | train=1.7765 val=1.7336 gap=-0.0429 | no_imp=1 | 381s elapsed
+2026-09-10 09:32:30,911 [INFO] epoch  11/250 | train=1.7627 val=1.7352 gap=-0.0275 | no_imp=2 | 415s elapsed
+2026-09-10 09:33:08,182 [INFO]   wrote crash-recovery checkpoint at epoch 12 (val_loss=1.7226) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:33:08,183 [INFO] epoch  12/250 | train=1.7536 val=1.7226 gap=-0.0309 | no_imp=0 | 453s elapsed
+2026-09-10 09:33:46,042 [INFO]   wrote crash-recovery checkpoint at epoch 13 (val_loss=1.7108) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:33:46,043 [INFO] epoch  13/250 | train=1.7463 val=1.7108 gap=-0.0355 | no_imp=0 | 491s elapsed
+2026-09-10 09:34:23,495 [INFO]   wrote crash-recovery checkpoint at epoch 14 (val_loss=1.7090) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:34:23,495 [INFO] epoch  14/250 | train=1.7392 val=1.7090 gap=-0.0302 | no_imp=0 | 528s elapsed
+2026-09-10 09:34:58,272 [INFO] epoch  15/250 | train=1.7390 val=1.7174 gap=-0.0216 | no_imp=1 | 563s elapsed
+2026-09-10 09:35:33,906 [INFO]   wrote crash-recovery checkpoint at epoch 16 (val_loss=1.7029) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:35:33,907 [INFO] epoch  16/250 | train=1.7300 val=1.7029 gap=-0.0271 | no_imp=0 | 598s elapsed
+2026-09-10 09:36:12,539 [INFO]   wrote crash-recovery checkpoint at epoch 17 (val_loss=1.6893) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:36:12,540 [INFO] epoch  17/250 | train=1.7178 val=1.6893 gap=-0.0284 | no_imp=0 | 637s elapsed
+2026-09-10 09:36:47,926 [INFO] epoch  18/250 | train=1.7166 val=1.7156 gap=-0.0010 | no_imp=1 | 672s elapsed
+2026-09-10 09:37:27,355 [INFO]   wrote crash-recovery checkpoint at epoch 19 (val_loss=1.6761) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:37:27,355 [INFO] epoch  19/250 | train=1.7122 val=1.6761 gap=-0.0361 | no_imp=0 | 712s elapsed
+2026-09-10 09:38:07,379 [INFO]   wrote crash-recovery checkpoint at epoch 20 (val_loss=1.6659) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:38:07,380 [INFO] epoch  20/250 | train=1.6956 val=1.6659 gap=-0.0297 | no_imp=0 | 752s elapsed
+2026-09-10 09:39:01,135 [INFO]   wrote crash-recovery checkpoint at epoch 21 (val_loss=1.6540) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:39:01,136 [INFO] epoch  21/250 | train=1.6877 val=1.6540 gap=-0.0337 | no_imp=0 | 806s elapsed
+2026-09-10 09:40:12,440 [INFO] epoch  22/250 | train=1.6748 val=1.6560 gap=-0.0188 | no_imp=1 | 877s elapsed
+2026-09-10 09:41:42,424 [INFO]   wrote crash-recovery checkpoint at epoch 23 (val_loss=1.6414) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:41:42,425 [INFO] epoch  23/250 | train=1.6709 val=1.6414 gap=-0.0295 | no_imp=0 | 967s elapsed
+2026-09-10 09:43:17,287 [INFO] epoch  24/250 | train=1.6664 val=1.6472 gap=-0.0192 | no_imp=1 | 1062s elapsed
+2026-09-10 09:44:55,133 [INFO]   wrote crash-recovery checkpoint at epoch 25 (val_loss=1.6328) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:44:55,134 [INFO] epoch  25/250 | train=1.6571 val=1.6328 gap=-0.0243 | no_imp=0 | 1160s elapsed
+2026-09-10 09:46:28,812 [INFO]   wrote crash-recovery checkpoint at epoch 26 (val_loss=1.6274) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:46:28,813 [INFO] epoch  26/250 | train=1.6458 val=1.6274 gap=-0.0184 | no_imp=0 | 1253s elapsed
+2026-09-10 09:47:53,656 [INFO]   wrote crash-recovery checkpoint at epoch 27 (val_loss=1.6160) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:47:53,657 [INFO] epoch  27/250 | train=1.6453 val=1.6160 gap=-0.0293 | no_imp=0 | 1338s elapsed
+2026-09-10 09:49:12,278 [INFO] epoch  28/250 | train=1.6423 val=1.6204 gap=-0.0219 | no_imp=1 | 1417s elapsed
+2026-09-10 09:50:32,312 [INFO]   wrote crash-recovery checkpoint at epoch 29 (val_loss=1.6158) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:50:32,313 [INFO] epoch  29/250 | train=1.6351 val=1.6158 gap=-0.0192 | no_imp=0 | 1497s elapsed
+2026-09-10 09:51:48,737 [INFO] epoch  30/250 | train=1.6361 val=1.6186 gap=-0.0175 | no_imp=1 | 1573s elapsed
+2026-09-10 09:53:02,793 [INFO]   wrote crash-recovery checkpoint at epoch 31 (val_loss=1.6052) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:53:02,793 [INFO] epoch  31/250 | train=1.6245 val=1.6052 gap=-0.0194 | no_imp=0 | 1647s elapsed
+2026-09-10 09:54:14,955 [INFO]   wrote crash-recovery checkpoint at epoch 32 (val_loss=1.6042) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:54:14,955 [INFO] epoch  32/250 | train=1.6230 val=1.6042 gap=-0.0189 | no_imp=0 | 1719s elapsed
+2026-09-10 09:55:30,396 [INFO]   wrote crash-recovery checkpoint at epoch 33 (val_loss=1.6027) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 09:55:30,397 [INFO] epoch  33/250 | train=1.6184 val=1.6027 gap=-0.0157 | no_imp=0 | 1795s elapsed
+2026-09-10 09:57:27,602 [INFO] epoch  34/250 | train=1.6153 val=1.6044 gap=-0.0109 | no_imp=1 | 1912s elapsed
+2026-09-10 10:00:36,246 [INFO]   wrote crash-recovery checkpoint at epoch 35 (val_loss=1.5941) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:00:36,247 [INFO] epoch  35/250 | train=1.6143 val=1.5941 gap=-0.0201 | no_imp=0 | 2101s elapsed
+2026-09-10 10:04:08,892 [INFO]   wrote crash-recovery checkpoint at epoch 36 (val_loss=1.5933) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:04:08,893 [INFO] epoch  36/250 | train=1.6131 val=1.5933 gap=-0.0197 | no_imp=0 | 2313s elapsed
+2026-09-10 10:07:58,879 [INFO]   wrote crash-recovery checkpoint at epoch 37 (val_loss=1.5928) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:07:58,879 [INFO] epoch  37/250 | train=1.6063 val=1.5928 gap=-0.0136 | no_imp=0 | 2543s elapsed
+2026-09-10 10:11:48,966 [INFO]   wrote crash-recovery checkpoint at epoch 38 (val_loss=1.5885) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:11:48,966 [INFO] epoch  38/250 | train=1.6010 val=1.5885 gap=-0.0125 | no_imp=0 | 2774s elapsed
+2026-09-10 10:15:28,620 [INFO] epoch  39/250 | train=1.6109 val=1.5910 gap=-0.0199 | no_imp=1 | 2993s elapsed
+2026-09-10 10:19:00,489 [INFO]   wrote crash-recovery checkpoint at epoch 40 (val_loss=1.5841) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:19:00,490 [INFO] epoch  40/250 | train=1.5975 val=1.5841 gap=-0.0134 | no_imp=0 | 3205s elapsed
+2026-09-10 10:22:10,197 [INFO] epoch  41/250 | train=1.6108 val=1.5940 gap=-0.0167 | no_imp=1 | 3395s elapsed
+2026-09-10 10:25:18,611 [INFO] epoch  42/250 | train=1.5985 val=1.5866 gap=-0.0119 | no_imp=2 | 3583s elapsed
+2026-09-10 10:28:38,164 [INFO]   wrote crash-recovery checkpoint at epoch 43 (val_loss=1.5815) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:28:38,164 [INFO] epoch  43/250 | train=1.5920 val=1.5815 gap=-0.0105 | no_imp=0 | 3783s elapsed
+2026-09-10 10:31:49,761 [INFO] epoch  44/250 | train=1.5948 val=1.5829 gap=-0.0119 | no_imp=1 | 3974s elapsed
+2026-09-10 10:35:16,197 [INFO]   wrote crash-recovery checkpoint at epoch 45 (val_loss=1.5775) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:35:16,197 [INFO] epoch  45/250 | train=1.5865 val=1.5775 gap=-0.0090 | no_imp=0 | 4181s elapsed
+2026-09-10 10:38:39,789 [INFO] epoch  46/250 | train=1.5944 val=1.6013 gap=0.0069 | no_imp=1 | 4384s elapsed
+2026-09-10 10:41:59,546 [INFO] epoch  47/250 | train=1.5869 val=1.5800 gap=-0.0069 | no_imp=2 | 4584s elapsed
+2026-09-10 10:45:32,674 [INFO]   wrote crash-recovery checkpoint at epoch 48 (val_loss=1.5771) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:45:32,675 [INFO] epoch  48/250 | train=1.6025 val=1.5771 gap=-0.0254 | no_imp=0 | 4797s elapsed
+2026-09-10 10:49:10,281 [INFO]   wrote crash-recovery checkpoint at epoch 49 (val_loss=1.5755) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:49:10,282 [INFO] epoch  49/250 | train=1.5828 val=1.5755 gap=-0.0072 | no_imp=0 | 5015s elapsed
+2026-09-10 10:52:50,004 [INFO]   wrote crash-recovery checkpoint at epoch 50 (val_loss=1.5711) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 10:52:50,005 [INFO] epoch  50/250 | train=1.5807 val=1.5711 gap=-0.0096 | no_imp=0 | 5235s elapsed
+2026-09-10 10:56:27,275 [INFO] epoch  51/250 | train=1.5790 val=1.5776 gap=-0.0014 | no_imp=1 | 5452s elapsed
+2026-09-10 11:00:21,034 [INFO]   wrote crash-recovery checkpoint at epoch 52 (val_loss=1.5707) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 11:00:21,036 [INFO] epoch  52/250 | train=1.5757 val=1.5707 gap=-0.0050 | no_imp=0 | 5686s elapsed
+2026-09-10 11:04:17,314 [INFO]   wrote crash-recovery checkpoint at epoch 53 (val_loss=1.5690) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 11:04:17,315 [INFO] epoch  53/250 | train=1.5788 val=1.5690 gap=-0.0098 | no_imp=0 | 5922s elapsed
+2026-09-10 11:08:02,476 [INFO] epoch  54/250 | train=1.5777 val=1.5706 gap=-0.0071 | no_imp=1 | 6147s elapsed
+2026-09-10 11:11:51,891 [INFO]   wrote crash-recovery checkpoint at epoch 55 (val_loss=1.5664) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 11:11:51,891 [INFO] epoch  55/250 | train=1.5708 val=1.5664 gap=-0.0044 | no_imp=0 | 6376s elapsed
+2026-09-10 11:15:30,234 [INFO] epoch  56/250 | train=1.5698 val=1.5671 gap=-0.0027 | no_imp=1 | 6595s elapsed
+2026-09-10 11:19:09,057 [INFO] epoch  57/250 | train=1.5706 val=1.6471 gap=0.0765 | no_imp=2 | 6814s elapsed
+2026-09-10 11:22:55,799 [INFO]   wrote crash-recovery checkpoint at epoch 58 (val_loss=1.5583) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 11:22:55,800 [INFO] epoch  58/250 | train=1.5851 val=1.5583 gap=-0.0268 | no_imp=0 | 7040s elapsed
+2026-09-10 11:26:33,992 [INFO] epoch  59/250 | train=1.5739 val=1.6060 gap=0.0322 | no_imp=1 | 7259s elapsed
+2026-09-10 11:30:15,941 [INFO] epoch  60/250 | train=1.5701 val=1.5660 gap=-0.0041 | no_imp=2 | 7480s elapsed
+2026-09-10 11:33:56,932 [INFO] epoch  61/250 | train=1.5666 val=1.5969 gap=0.0302 | no_imp=3 | 7701s elapsed
+2026-09-10 11:37:38,857 [INFO] epoch  62/250 | train=1.5762 val=1.5701 gap=-0.0061 | no_imp=4 | 7923s elapsed
+2026-09-10 11:41:21,074 [INFO] epoch  63/250 | train=1.5623 val=1.5699 gap=0.0075 | no_imp=5 | 8146s elapsed
+2026-09-10 11:45:01,619 [INFO] epoch  64/250 | train=1.5571 val=1.5600 gap=0.0029 | no_imp=6 | 8366s elapsed
+2026-09-10 11:48:42,501 [INFO] epoch  65/250 | train=1.5624 val=1.5625 gap=0.0001 | no_imp=7 | 8587s elapsed
+2026-09-10 11:52:38,765 [INFO]   wrote crash-recovery checkpoint at epoch 66 (val_loss=1.5501) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 11:52:38,765 [INFO] epoch  66/250 | train=1.5548 val=1.5501 gap=-0.0047 | no_imp=0 | 8823s elapsed
+2026-09-10 11:56:28,773 [INFO] epoch  67/250 | train=1.5540 val=1.5564 gap=0.0024 | no_imp=1 | 9053s elapsed
+2026-09-10 12:00:24,498 [INFO]   wrote crash-recovery checkpoint at epoch 68 (val_loss=1.5474) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 12:00:24,499 [INFO] epoch  68/250 | train=1.5497 val=1.5474 gap=-0.0023 | no_imp=0 | 9289s elapsed
+2026-09-10 12:04:04,988 [INFO] epoch  69/250 | train=1.5496 val=1.5491 gap=-0.0005 | no_imp=1 | 9510s elapsed
+2026-09-10 12:07:47,433 [INFO] epoch  70/250 | train=1.5496 val=1.5661 gap=0.0166 | no_imp=2 | 9732s elapsed
+2026-09-10 12:11:30,408 [INFO] epoch  71/250 | train=1.5596 val=1.5517 gap=-0.0079 | no_imp=3 | 9955s elapsed
+2026-09-10 12:15:25,990 [INFO]   wrote crash-recovery checkpoint at epoch 72 (val_loss=1.5433) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 12:15:25,990 [INFO] epoch  72/250 | train=1.5447 val=1.5433 gap=-0.0014 | no_imp=0 | 10191s elapsed
+2026-09-10 12:19:11,148 [INFO] epoch  73/250 | train=1.5436 val=1.5442 gap=0.0005 | no_imp=1 | 10416s elapsed
+2026-09-10 12:22:52,914 [INFO] epoch  74/250 | train=1.5846 val=1.5582 gap=-0.0264 | no_imp=2 | 10637s elapsed
+2026-09-10 12:26:33,474 [INFO] epoch  75/250 | train=1.5543 val=1.5494 gap=-0.0049 | no_imp=3 | 10858s elapsed
+2026-09-10 12:30:15,854 [INFO] epoch  76/250 | train=1.5459 val=1.5491 gap=0.0032 | no_imp=4 | 11080s elapsed
+2026-09-10 12:33:54,547 [INFO] epoch  77/250 | train=1.5486 val=1.5449 gap=-0.0037 | no_imp=5 | 11299s elapsed
+2026-09-10 12:37:35,465 [INFO] epoch  78/250 | train=1.5422 val=1.5436 gap=0.0014 | no_imp=6 | 11520s elapsed
+2026-09-10 12:41:15,841 [INFO] epoch  79/250 | train=1.5403 val=1.5519 gap=0.0116 | no_imp=7 | 11740s elapsed
+2026-09-10 12:44:54,237 [INFO] epoch  80/250 | train=1.5483 val=1.6063 gap=0.0581 | no_imp=8 | 11959s elapsed
+2026-09-10 12:48:44,229 [INFO]   wrote crash-recovery checkpoint at epoch 81 (val_loss=1.5385) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 12:48:44,230 [INFO] epoch  81/250 | train=1.5599 val=1.5385 gap=-0.0214 | no_imp=0 | 12189s elapsed
+2026-09-10 12:52:28,998 [INFO] epoch  82/250 | train=1.5563 val=1.5595 gap=0.0031 | no_imp=1 | 12414s elapsed
+2026-09-10 12:56:15,865 [INFO] epoch  83/250 | train=1.5715 val=1.5516 gap=-0.0199 | no_imp=2 | 12640s elapsed
+2026-09-10 12:59:53,570 [INFO] epoch  84/250 | train=1.5400 val=1.5494 gap=0.0094 | no_imp=3 | 12858s elapsed
+2026-09-10 13:03:30,965 [INFO] epoch  85/250 | train=1.5392 val=1.5408 gap=0.0015 | no_imp=4 | 13076s elapsed
+2026-09-10 13:07:19,047 [INFO]   wrote crash-recovery checkpoint at epoch 86 (val_loss=1.5364) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 13:07:19,048 [INFO] epoch  86/250 | train=1.5356 val=1.5364 gap=0.0008 | no_imp=0 | 13304s elapsed
+2026-09-10 13:11:00,410 [INFO] epoch  87/250 | train=1.5418 val=1.5367 gap=-0.0052 | no_imp=1 | 13525s elapsed
+2026-09-10 13:14:40,133 [INFO] epoch  88/250 | train=1.5326 val=1.5372 gap=0.0046 | no_imp=2 | 13745s elapsed
+2026-09-10 13:18:23,239 [INFO] epoch  89/250 | train=1.5328 val=1.5386 gap=0.0058 | no_imp=3 | 13968s elapsed
+2026-09-10 13:22:02,495 [INFO] epoch  90/250 | train=1.5473 val=1.5510 gap=0.0037 | no_imp=4 | 14187s elapsed
+2026-09-10 13:25:56,615 [INFO]   wrote crash-recovery checkpoint at epoch 91 (val_loss=1.5343) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 13:25:56,616 [INFO] epoch  91/250 | train=1.5305 val=1.5343 gap=0.0039 | no_imp=0 | 14421s elapsed
+2026-09-10 13:29:45,160 [INFO]   wrote crash-recovery checkpoint at epoch 92 (val_loss=1.5306) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 13:29:45,160 [INFO] epoch  92/250 | train=1.5310 val=1.5306 gap=-0.0004 | no_imp=0 | 14650s elapsed
+2026-09-10 13:33:26,573 [INFO] epoch  93/250 | train=1.5269 val=1.5689 gap=0.0420 | no_imp=1 | 14871s elapsed
+2026-09-10 13:37:05,431 [INFO] epoch  94/250 | train=1.5365 val=1.5325 gap=-0.0040 | no_imp=2 | 15090s elapsed
+2026-09-10 13:40:54,600 [INFO]   wrote crash-recovery checkpoint at epoch 95 (val_loss=1.5269) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 13:40:54,600 [INFO] epoch  95/250 | train=1.5263 val=1.5269 gap=0.0006 | no_imp=0 | 15319s elapsed
+2026-09-10 13:44:31,148 [INFO] epoch  96/250 | train=1.5227 val=1.5302 gap=0.0075 | no_imp=1 | 15536s elapsed
+2026-09-10 13:48:09,837 [INFO] epoch  97/250 | train=1.5276 val=1.5614 gap=0.0338 | no_imp=2 | 15754s elapsed
+2026-09-10 13:51:53,176 [INFO] epoch  98/250 | train=1.5352 val=1.5291 gap=-0.0062 | no_imp=3 | 15978s elapsed
+2026-09-10 13:55:36,956 [INFO] epoch  99/250 | train=1.5568 val=1.5495 gap=-0.0073 | no_imp=4 | 16201s elapsed
+2026-09-10 13:59:15,237 [INFO] epoch 100/250 | train=1.5239 val=1.5273 gap=0.0034 | no_imp=5 | 16420s elapsed
+2026-09-10 14:02:56,127 [INFO] epoch 101/250 | train=1.5187 val=1.5403 gap=0.0216 | no_imp=6 | 16641s elapsed
+2026-09-10 14:06:47,355 [INFO]   wrote crash-recovery checkpoint at epoch 102 (val_loss=1.5215) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:06:47,356 [INFO] epoch 102/250 | train=1.5226 val=1.5215 gap=-0.0011 | no_imp=0 | 16872s elapsed
+2026-09-10 14:10:32,956 [INFO]   wrote crash-recovery checkpoint at epoch 103 (val_loss=1.5203) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:10:32,957 [INFO] epoch 103/250 | train=1.5143 val=1.5203 gap=0.0060 | no_imp=0 | 17097s elapsed
+2026-09-10 14:14:22,917 [INFO]   wrote crash-recovery checkpoint at epoch 104 (val_loss=1.5172) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:14:22,918 [INFO] epoch 104/250 | train=1.5156 val=1.5172 gap=0.0016 | no_imp=0 | 17327s elapsed
+2026-09-10 14:18:01,403 [INFO] epoch 105/250 | train=1.5210 val=1.5217 gap=0.0007 | no_imp=1 | 17546s elapsed
+2026-09-10 14:21:51,157 [INFO]   wrote crash-recovery checkpoint at epoch 106 (val_loss=1.5168) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:21:51,158 [INFO] epoch 106/250 | train=1.5152 val=1.5168 gap=0.0016 | no_imp=0 | 17776s elapsed
+2026-09-10 14:25:27,364 [INFO] epoch 107/250 | train=1.5290 val=1.5214 gap=-0.0076 | no_imp=1 | 17992s elapsed
+2026-09-10 14:29:04,449 [INFO] epoch 108/250 | train=1.5108 val=1.5183 gap=0.0074 | no_imp=2 | 18209s elapsed
+2026-09-10 14:32:42,228 [INFO] epoch 109/250 | train=1.5072 val=1.5169 gap=0.0096 | no_imp=3 | 18427s elapsed
+2026-09-10 14:36:25,597 [INFO] epoch 110/250 | train=1.5065 val=1.5174 gap=0.0109 | no_imp=4 | 18650s elapsed
+2026-09-10 14:40:06,017 [INFO] epoch 111/250 | train=1.5318 val=1.5319 gap=0.0001 | no_imp=5 | 18871s elapsed
+2026-09-10 14:43:43,346 [INFO] epoch 112/250 | train=1.5157 val=1.5213 gap=0.0056 | no_imp=6 | 19088s elapsed
+2026-09-10 14:47:28,284 [INFO]   wrote crash-recovery checkpoint at epoch 113 (val_loss=1.5143) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:47:28,285 [INFO] epoch 113/250 | train=1.5075 val=1.5143 gap=0.0068 | no_imp=0 | 19313s elapsed
+2026-09-10 14:51:14,373 [INFO]   wrote crash-recovery checkpoint at epoch 114 (val_loss=1.5116) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:51:14,374 [INFO] epoch 114/250 | train=1.5028 val=1.5116 gap=0.0089 | no_imp=0 | 19539s elapsed
+2026-09-10 14:55:01,923 [INFO]   wrote crash-recovery checkpoint at epoch 115 (val_loss=1.5087) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:55:01,924 [INFO] epoch 115/250 | train=1.4977 val=1.5087 gap=0.0110 | no_imp=0 | 19766s elapsed
+2026-09-10 14:58:47,711 [INFO]   wrote crash-recovery checkpoint at epoch 116 (val_loss=1.5060) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 14:58:47,712 [INFO] epoch 116/250 | train=1.4953 val=1.5060 gap=0.0108 | no_imp=0 | 19992s elapsed
+2026-09-10 15:02:31,191 [INFO]   wrote crash-recovery checkpoint at epoch 117 (val_loss=1.5033) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:02:31,191 [INFO] epoch 117/250 | train=1.5051 val=1.5033 gap=-0.0019 | no_imp=0 | 20216s elapsed
+2026-09-10 15:06:05,832 [INFO] epoch 118/250 | train=1.4952 val=1.5041 gap=0.0089 | no_imp=1 | 20430s elapsed
+2026-09-10 15:09:39,613 [INFO] epoch 119/250 | train=1.4950 val=1.5564 gap=0.0614 | no_imp=2 | 20644s elapsed
+2026-09-10 15:13:22,967 [INFO]   wrote crash-recovery checkpoint at epoch 120 (val_loss=1.5020) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:13:22,968 [INFO] epoch 120/250 | train=1.4989 val=1.5020 gap=0.0031 | no_imp=0 | 20868s elapsed
+2026-09-10 15:17:07,339 [INFO]   wrote crash-recovery checkpoint at epoch 121 (val_loss=1.4965) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:17:07,340 [INFO] epoch 121/250 | train=1.4874 val=1.4965 gap=0.0091 | no_imp=0 | 21092s elapsed
+2026-09-10 15:20:39,452 [INFO] epoch 122/250 | train=1.4841 val=1.4968 gap=0.0127 | no_imp=1 | 21304s elapsed
+2026-09-10 15:24:15,260 [INFO] epoch 123/250 | train=1.4953 val=1.4991 gap=0.0038 | no_imp=2 | 21520s elapsed
+2026-09-10 15:27:58,820 [INFO]   wrote crash-recovery checkpoint at epoch 124 (val_loss=1.4913) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:27:58,821 [INFO] epoch 124/250 | train=1.4822 val=1.4913 gap=0.0091 | no_imp=0 | 21743s elapsed
+2026-09-10 15:31:41,892 [INFO]   wrote crash-recovery checkpoint at epoch 125 (val_loss=1.4887) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:31:41,893 [INFO] epoch 125/250 | train=1.4781 val=1.4887 gap=0.0106 | no_imp=0 | 21966s elapsed
+2026-09-10 15:35:14,523 [INFO] epoch 126/250 | train=1.4781 val=1.4903 gap=0.0121 | no_imp=1 | 22179s elapsed
+2026-09-10 15:38:50,112 [INFO] epoch 127/250 | train=1.4731 val=1.4890 gap=0.0159 | no_imp=2 | 22395s elapsed
+2026-09-10 15:42:24,696 [INFO] epoch 128/250 | train=1.4716 val=1.4900 gap=0.0184 | no_imp=3 | 22609s elapsed
+2026-09-10 15:46:09,882 [INFO]   wrote crash-recovery checkpoint at epoch 129 (val_loss=1.4823) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:46:09,883 [INFO] epoch 129/250 | train=1.4690 val=1.4823 gap=0.0133 | no_imp=0 | 22834s elapsed
+2026-09-10 15:49:45,626 [INFO] epoch 130/250 | train=1.5039 val=1.4997 gap=-0.0043 | no_imp=1 | 23050s elapsed
+2026-09-10 15:53:21,022 [INFO] epoch 131/250 | train=1.4812 val=1.4825 gap=0.0013 | no_imp=2 | 23266s elapsed
+2026-09-10 15:57:06,915 [INFO]   wrote crash-recovery checkpoint at epoch 132 (val_loss=1.4808) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 15:57:06,916 [INFO] epoch 132/250 | train=1.4705 val=1.4808 gap=0.0103 | no_imp=0 | 23491s elapsed
+2026-09-10 16:00:42,807 [INFO] epoch 133/250 | train=1.4703 val=1.4856 gap=0.0153 | no_imp=1 | 23707s elapsed
+2026-09-10 16:04:17,764 [INFO] epoch 134/250 | train=1.4656 val=1.4809 gap=0.0154 | no_imp=2 | 23922s elapsed
+2026-09-10 16:08:02,160 [INFO]   wrote crash-recovery checkpoint at epoch 135 (val_loss=1.4770) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:08:02,161 [INFO] epoch 135/250 | train=1.4605 val=1.4770 gap=0.0165 | no_imp=0 | 24147s elapsed
+2026-09-10 16:11:33,016 [INFO] epoch 136/250 | train=1.4724 val=1.4892 gap=0.0168 | no_imp=1 | 24358s elapsed
+2026-09-10 16:15:13,184 [INFO]   wrote crash-recovery checkpoint at epoch 137 (val_loss=1.4735) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:15:13,185 [INFO] epoch 137/250 | train=1.4688 val=1.4735 gap=0.0048 | no_imp=0 | 24578s elapsed
+2026-09-10 16:18:43,177 [INFO] epoch 138/250 | train=1.4619 val=1.4806 gap=0.0187 | no_imp=1 | 24788s elapsed
+2026-09-10 16:22:23,623 [INFO]   wrote crash-recovery checkpoint at epoch 139 (val_loss=1.4709) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:22:23,624 [INFO] epoch 139/250 | train=1.4564 val=1.4709 gap=0.0145 | no_imp=0 | 25008s elapsed
+2026-09-10 16:26:04,289 [INFO]   wrote crash-recovery checkpoint at epoch 140 (val_loss=1.4689) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:26:04,290 [INFO] epoch 140/250 | train=1.4636 val=1.4689 gap=0.0053 | no_imp=0 | 25229s elapsed
+2026-09-10 16:29:45,973 [INFO]   wrote crash-recovery checkpoint at epoch 141 (val_loss=1.4680) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:29:45,974 [INFO] epoch 141/250 | train=1.4524 val=1.4680 gap=0.0156 | no_imp=0 | 25451s elapsed
+2026-09-10 16:33:17,725 [INFO] epoch 142/250 | train=1.4529 val=1.4687 gap=0.0158 | no_imp=1 | 25662s elapsed
+2026-09-10 16:37:00,984 [INFO]   wrote crash-recovery checkpoint at epoch 143 (val_loss=1.4669) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:37:00,985 [INFO] epoch 143/250 | train=1.4662 val=1.4669 gap=0.0007 | no_imp=0 | 25886s elapsed
+2026-09-10 16:40:32,333 [INFO] epoch 144/250 | train=1.4499 val=1.4743 gap=0.0244 | no_imp=1 | 26097s elapsed
+2026-09-10 16:44:01,681 [INFO] epoch 145/250 | train=1.4530 val=1.4670 gap=0.0140 | no_imp=2 | 26306s elapsed
+2026-09-10 16:47:44,537 [INFO]   wrote crash-recovery checkpoint at epoch 146 (val_loss=1.4587) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 16:47:44,538 [INFO] epoch 146/250 | train=1.4442 val=1.4587 gap=0.0145 | no_imp=0 | 26529s elapsed
+2026-09-10 16:51:14,493 [INFO] epoch 147/250 | train=1.4479 val=1.4641 gap=0.0162 | no_imp=1 | 26739s elapsed
+2026-09-10 16:54:43,200 [INFO] epoch 148/250 | train=1.4932 val=1.5344 gap=0.0412 | no_imp=2 | 26948s elapsed
+2026-09-10 16:58:13,194 [INFO] epoch 149/250 | train=1.4621 val=1.4595 gap=-0.0026 | no_imp=3 | 27158s elapsed
+2026-09-10 17:01:42,785 [INFO] epoch 150/250 | train=1.4428 val=1.4597 gap=0.0170 | no_imp=4 | 27367s elapsed
+2026-09-10 17:05:12,866 [INFO] epoch 151/250 | train=1.4437 val=1.4734 gap=0.0297 | no_imp=5 | 27577s elapsed
+2026-09-10 17:08:42,682 [INFO] epoch 152/250 | train=1.4574 val=1.4650 gap=0.0077 | no_imp=6 | 27787s elapsed
+2026-09-10 17:12:13,638 [INFO] epoch 153/250 | train=1.4526 val=1.4594 gap=0.0067 | no_imp=7 | 27998s elapsed
+2026-09-10 17:15:42,949 [INFO] epoch 154/250 | train=1.4449 val=1.4595 gap=0.0146 | no_imp=8 | 28207s elapsed
+2026-09-10 17:19:22,126 [INFO]   wrote crash-recovery checkpoint at epoch 155 (val_loss=1.4532) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:19:22,127 [INFO] epoch 155/250 | train=1.4373 val=1.4532 gap=0.0159 | no_imp=0 | 28427s elapsed
+2026-09-10 17:23:00,722 [INFO]   wrote crash-recovery checkpoint at epoch 156 (val_loss=1.4513) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:23:00,723 [INFO] epoch 156/250 | train=1.4317 val=1.4513 gap=0.0196 | no_imp=0 | 28645s elapsed
+2026-09-10 17:26:38,273 [INFO]   wrote crash-recovery checkpoint at epoch 157 (val_loss=1.4490) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:26:38,273 [INFO] epoch 157/250 | train=1.4321 val=1.4490 gap=0.0169 | no_imp=0 | 28863s elapsed
+2026-09-10 17:30:07,836 [INFO] epoch 158/250 | train=1.4278 val=1.4527 gap=0.0249 | no_imp=1 | 29072s elapsed
+2026-09-10 17:33:45,485 [INFO]   wrote crash-recovery checkpoint at epoch 159 (val_loss=1.4393) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:33:45,485 [INFO] epoch 159/250 | train=1.4288 val=1.4393 gap=0.0105 | no_imp=0 | 29290s elapsed
+2026-09-10 17:37:15,165 [INFO] epoch 160/250 | train=1.4234 val=1.4450 gap=0.0216 | no_imp=1 | 29500s elapsed
+2026-09-10 17:41:18,145 [INFO]   wrote crash-recovery checkpoint at epoch 161 (val_loss=1.4386) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:41:18,146 [INFO] epoch 161/250 | train=1.4235 val=1.4386 gap=0.0151 | no_imp=0 | 29743s elapsed
+2026-09-10 17:45:13,692 [INFO]   wrote crash-recovery checkpoint at epoch 162 (val_loss=1.4383) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:45:13,693 [INFO] epoch 162/250 | train=1.4231 val=1.4383 gap=0.0153 | no_imp=0 | 29978s elapsed
+2026-09-10 17:48:46,524 [INFO] epoch 163/250 | train=1.4197 val=1.4399 gap=0.0202 | no_imp=1 | 30191s elapsed
+2026-09-10 17:52:22,506 [INFO] epoch 164/250 | train=1.4366 val=1.4398 gap=0.0031 | no_imp=2 | 30407s elapsed
+2026-09-10 17:56:20,291 [INFO]   wrote crash-recovery checkpoint at epoch 165 (val_loss=1.4367) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 17:56:20,291 [INFO] epoch 165/250 | train=1.4221 val=1.4367 gap=0.0147 | no_imp=0 | 30645s elapsed
+2026-09-10 17:59:55,999 [INFO] epoch 166/250 | train=1.4260 val=1.4705 gap=0.0445 | no_imp=1 | 30861s elapsed
+2026-09-10 18:03:43,228 [INFO]   wrote crash-recovery checkpoint at epoch 167 (val_loss=1.4347) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 18:03:43,229 [INFO] epoch 167/250 | train=1.4221 val=1.4347 gap=0.0125 | no_imp=0 | 31088s elapsed
+2026-09-10 18:07:18,444 [INFO] epoch 168/250 | train=1.4177 val=1.4360 gap=0.0183 | no_imp=1 | 31303s elapsed
+2026-09-10 18:10:52,443 [INFO] epoch 169/250 | train=1.4294 val=1.5796 gap=0.1502 | no_imp=2 | 31517s elapsed
+2026-09-10 18:14:23,412 [INFO] epoch 170/250 | train=1.4433 val=1.4459 gap=0.0025 | no_imp=3 | 31728s elapsed
+2026-09-10 18:17:53,534 [INFO] epoch 171/250 | train=1.4190 val=1.4358 gap=0.0168 | no_imp=4 | 31938s elapsed
+2026-09-10 18:21:22,782 [INFO] epoch 172/250 | train=1.4151 val=1.4352 gap=0.0201 | no_imp=5 | 32147s elapsed
+2026-09-10 18:24:50,541 [INFO] epoch 173/250 | train=1.4141 val=1.4377 gap=0.0236 | no_imp=6 | 32355s elapsed
+2026-09-10 18:28:20,369 [INFO] epoch 174/250 | train=1.4146 val=1.4363 gap=0.0217 | no_imp=7 | 32565s elapsed
+2026-09-10 18:31:53,000 [INFO] epoch 175/250 | train=1.4162 val=1.4784 gap=0.0622 | no_imp=8 | 32778s elapsed
+2026-09-10 18:35:33,748 [INFO]   wrote crash-recovery checkpoint at epoch 176 (val_loss=1.4290) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 18:35:33,749 [INFO] epoch 176/250 | train=1.4226 val=1.4290 gap=0.0064 | no_imp=0 | 32998s elapsed
+2026-09-10 18:39:08,536 [INFO] epoch 177/250 | train=1.4554 val=1.4573 gap=0.0019 | no_imp=1 | 33213s elapsed
+2026-09-10 18:42:46,304 [INFO]   wrote crash-recovery checkpoint at epoch 178 (val_loss=1.4262) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 18:42:46,305 [INFO] epoch 178/250 | train=1.4172 val=1.4262 gap=0.0089 | no_imp=0 | 33431s elapsed
+2026-09-10 18:46:13,898 [INFO] epoch 179/250 | train=1.4068 val=1.4269 gap=0.0201 | no_imp=1 | 33638s elapsed
+2026-09-10 18:49:49,085 [INFO]   wrote crash-recovery checkpoint at epoch 180 (val_loss=1.4241) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 18:49:49,086 [INFO] epoch 180/250 | train=1.4021 val=1.4241 gap=0.0221 | no_imp=0 | 33854s elapsed
+2026-09-10 18:53:23,476 [INFO]   wrote crash-recovery checkpoint at epoch 181 (val_loss=1.4235) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 18:53:23,476 [INFO] epoch 181/250 | train=1.4044 val=1.4235 gap=0.0191 | no_imp=0 | 34068s elapsed
+2026-09-10 18:57:02,538 [INFO]   wrote crash-recovery checkpoint at epoch 182 (val_loss=1.4221) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 18:57:02,539 [INFO] epoch 182/250 | train=1.4015 val=1.4221 gap=0.0207 | no_imp=0 | 34287s elapsed
+2026-09-10 19:00:29,591 [INFO] epoch 183/250 | train=1.4183 val=1.4358 gap=0.0174 | no_imp=1 | 34494s elapsed
+2026-09-10 19:03:53,985 [INFO] epoch 184/250 | train=1.4057 val=1.4278 gap=0.0220 | no_imp=2 | 34699s elapsed
+2026-09-10 19:07:21,653 [INFO] epoch 185/250 | train=1.4171 val=1.4330 gap=0.0159 | no_imp=3 | 34906s elapsed
+2026-09-10 19:10:49,599 [INFO] epoch 186/250 | train=1.4135 val=1.4222 gap=0.0087 | no_imp=4 | 35114s elapsed
+2026-09-10 19:14:26,634 [INFO]   wrote crash-recovery checkpoint at epoch 187 (val_loss=1.4154) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 19:14:26,635 [INFO] epoch 187/250 | train=1.3985 val=1.4154 gap=0.0169 | no_imp=0 | 35331s elapsed
+2026-09-10 19:17:56,230 [INFO] epoch 188/250 | train=1.4000 val=1.4236 gap=0.0236 | no_imp=1 | 35541s elapsed
+2026-09-10 19:21:38,311 [INFO] epoch 189/250 | train=1.3991 val=1.4208 gap=0.0217 | no_imp=2 | 35763s elapsed
+2026-09-10 19:25:17,443 [INFO] epoch 190/250 | train=1.4003 val=1.4225 gap=0.0222 | no_imp=3 | 35982s elapsed
+2026-09-10 19:28:43,385 [INFO] epoch 191/250 | train=1.3972 val=1.4171 gap=0.0199 | no_imp=4 | 36188s elapsed
+2026-09-10 19:32:08,516 [INFO] epoch 192/250 | train=1.3964 val=1.4189 gap=0.0226 | no_imp=5 | 36393s elapsed
+2026-09-10 19:35:33,516 [INFO] epoch 193/250 | train=1.4020 val=1.4251 gap=0.0232 | no_imp=6 | 36598s elapsed
+2026-09-10 19:39:00,187 [INFO] epoch 194/250 | train=1.4022 val=1.4248 gap=0.0227 | no_imp=7 | 36805s elapsed
+2026-09-10 19:42:33,065 [INFO]   wrote crash-recovery checkpoint at epoch 195 (val_loss=1.4127) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 19:42:33,066 [INFO] epoch 195/250 | train=1.3971 val=1.4127 gap=0.0156 | no_imp=0 | 37018s elapsed
+2026-09-10 19:45:58,567 [INFO] epoch 196/250 | train=1.4143 val=1.4285 gap=0.0142 | no_imp=1 | 37223s elapsed
+2026-09-10 19:49:25,791 [INFO] epoch 197/250 | train=1.4034 val=1.4149 gap=0.0115 | no_imp=2 | 37430s elapsed
+2026-09-10 19:52:52,419 [INFO] epoch 198/250 | train=1.3997 val=1.4269 gap=0.0272 | no_imp=3 | 37637s elapsed
+2026-09-10 19:56:15,612 [INFO] epoch 199/250 | train=1.4013 val=1.4204 gap=0.0191 | no_imp=4 | 37840s elapsed
+2026-09-10 19:59:41,291 [INFO] epoch 200/250 | train=1.3977 val=1.4177 gap=0.0200 | no_imp=5 | 38046s elapsed
+2026-09-10 20:03:07,945 [INFO] epoch 201/250 | train=1.3979 val=1.4341 gap=0.0362 | no_imp=6 | 38252s elapsed
+2026-09-10 20:06:34,341 [INFO] epoch 202/250 | train=1.4017 val=1.4167 gap=0.0150 | no_imp=7 | 38459s elapsed
+2026-09-10 20:10:00,930 [INFO] epoch 203/250 | train=1.3990 val=1.4156 gap=0.0166 | no_imp=8 | 38665s elapsed
+2026-09-10 20:13:24,191 [INFO] epoch 204/250 | train=1.3920 val=1.4157 gap=0.0237 | no_imp=9 | 38869s elapsed
+2026-09-10 20:16:55,256 [INFO]   wrote crash-recovery checkpoint at epoch 205 (val_loss=1.4103) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 20:16:55,257 [INFO] epoch 205/250 | train=1.3926 val=1.4103 gap=0.0176 | no_imp=0 | 39080s elapsed
+2026-09-10 20:20:17,899 [INFO] epoch 206/250 | train=1.3919 val=1.4126 gap=0.0207 | no_imp=1 | 39282s elapsed
+2026-09-10 20:23:41,978 [INFO] epoch 207/250 | train=1.3902 val=1.4131 gap=0.0229 | no_imp=2 | 39487s elapsed
+2026-09-10 20:27:08,356 [INFO] epoch 208/250 | train=1.3934 val=1.4198 gap=0.0264 | no_imp=3 | 39693s elapsed
+2026-09-10 20:30:31,945 [INFO] epoch 209/250 | train=1.3885 val=1.4116 gap=0.0232 | no_imp=4 | 39896s elapsed
+2026-09-10 20:33:55,867 [INFO] epoch 210/250 | train=1.3980 val=1.4280 gap=0.0300 | no_imp=5 | 40100s elapsed
+2026-09-10 20:37:19,632 [INFO] epoch 211/250 | train=1.3987 val=1.4140 gap=0.0153 | no_imp=6 | 40304s elapsed
+2026-09-10 20:40:43,460 [INFO] epoch 212/250 | train=1.3873 val=1.4130 gap=0.0257 | no_imp=7 | 40508s elapsed
+2026-09-10 20:44:28,472 [INFO]   wrote crash-recovery checkpoint at epoch 213 (val_loss=1.4088) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 20:44:28,473 [INFO] epoch 213/250 | train=1.3875 val=1.4088 gap=0.0212 | no_imp=0 | 40733s elapsed
+2026-09-10 20:47:52,150 [INFO] epoch 214/250 | train=1.3983 val=1.4226 gap=0.0243 | no_imp=1 | 40937s elapsed
+2026-09-10 20:51:15,392 [INFO] epoch 215/250 | train=1.3892 val=1.4130 gap=0.0238 | no_imp=2 | 41140s elapsed
+2026-09-10 20:54:37,973 [INFO] epoch 216/250 | train=1.3901 val=1.4093 gap=0.0192 | no_imp=3 | 41343s elapsed
+2026-09-10 20:58:00,845 [INFO] epoch 217/250 | train=1.3840 val=1.4355 gap=0.0515 | no_imp=4 | 41545s elapsed
+2026-09-10 21:01:34,237 [INFO]   wrote crash-recovery checkpoint at epoch 218 (val_loss=1.4084) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 21:01:34,237 [INFO] epoch 218/250 | train=1.3928 val=1.4084 gap=0.0156 | no_imp=0 | 41759s elapsed
+2026-09-10 21:04:57,086 [INFO] epoch 219/250 | train=1.4355 val=1.4203 gap=-0.0152 | no_imp=1 | 41962s elapsed
+2026-09-10 21:08:20,143 [INFO] epoch 220/250 | train=1.3885 val=1.4146 gap=0.0261 | no_imp=2 | 42165s elapsed
+2026-09-10 21:11:43,257 [INFO] epoch 221/250 | train=1.3841 val=1.4085 gap=0.0244 | no_imp=3 | 42368s elapsed
+2026-09-10 21:15:08,089 [INFO] epoch 222/250 | train=1.3826 val=1.4090 gap=0.0263 | no_imp=4 | 42573s elapsed
+2026-09-10 21:18:31,379 [INFO] epoch 223/250 | train=1.3974 val=1.4443 gap=0.0469 | no_imp=5 | 42776s elapsed
+2026-09-10 21:21:55,054 [INFO] epoch 224/250 | train=1.4040 val=1.4916 gap=0.0876 | no_imp=6 | 42980s elapsed
+2026-09-10 21:25:18,613 [INFO] epoch 225/250 | train=1.4089 val=1.4084 gap=-0.0004 | no_imp=7 | 43183s elapsed
+2026-09-10 21:28:41,613 [INFO] epoch 226/250 | train=1.3887 val=1.4086 gap=0.0199 | no_imp=8 | 43386s elapsed
+2026-09-10 21:32:13,503 [INFO]   wrote crash-recovery checkpoint at epoch 227 (val_loss=1.4068) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 21:32:13,504 [INFO] epoch 227/250 | train=1.3840 val=1.4068 gap=0.0229 | no_imp=0 | 43598s elapsed
+2026-09-10 21:35:35,207 [INFO] epoch 228/250 | train=1.3892 val=1.4280 gap=0.0388 | no_imp=1 | 43800s elapsed
+2026-09-10 21:39:06,002 [INFO]   wrote crash-recovery checkpoint at epoch 229 (val_loss=1.4041) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 21:39:06,002 [INFO] epoch 229/250 | train=1.3902 val=1.4041 gap=0.0139 | no_imp=0 | 44011s elapsed
+2026-09-10 21:42:35,796 [INFO]   wrote crash-recovery checkpoint at epoch 230 (val_loss=1.4004) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 21:42:35,797 [INFO] epoch 230/250 | train=1.3817 val=1.4004 gap=0.0187 | no_imp=0 | 44220s elapsed
+2026-09-10 21:45:55,814 [INFO] epoch 231/250 | train=1.3850 val=1.4183 gap=0.0333 | no_imp=1 | 44420s elapsed
+2026-09-10 21:49:16,968 [INFO] epoch 232/250 | train=1.3870 val=1.4028 gap=0.0158 | no_imp=2 | 44622s elapsed
+2026-09-10 21:52:39,033 [INFO] epoch 233/250 | train=1.3936 val=1.4139 gap=0.0203 | no_imp=3 | 44824s elapsed
+2026-09-10 21:56:00,487 [INFO] epoch 234/250 | train=1.3929 val=1.4144 gap=0.0215 | no_imp=4 | 45025s elapsed
+2026-09-10 21:59:21,418 [INFO] epoch 235/250 | train=1.3838 val=1.4087 gap=0.0248 | no_imp=5 | 45226s elapsed
+2026-09-10 22:02:45,834 [INFO] epoch 236/250 | train=1.3832 val=1.4264 gap=0.0431 | no_imp=6 | 45430s elapsed
+2026-09-10 22:06:11,638 [INFO] epoch 237/250 | train=1.3881 val=1.4079 gap=0.0198 | no_imp=7 | 45636s elapsed
+2026-09-10 22:09:36,105 [INFO] epoch 238/250 | train=1.3768 val=1.4061 gap=0.0293 | no_imp=8 | 45841s elapsed
+2026-09-10 22:12:58,293 [INFO] epoch 239/250 | train=1.3761 val=1.4036 gap=0.0275 | no_imp=9 | 46043s elapsed
+2026-09-10 22:16:19,655 [INFO] epoch 240/250 | train=1.3965 val=1.4084 gap=0.0120 | no_imp=10 | 46244s elapsed
+2026-09-10 22:19:40,273 [INFO] epoch 241/250 | train=1.3777 val=1.4055 gap=0.0278 | no_imp=11 | 46445s elapsed
+2026-09-10 22:23:02,074 [INFO] epoch 242/250 | train=1.3822 val=1.4121 gap=0.0300 | no_imp=12 | 46647s elapsed
+2026-09-10 22:26:22,213 [INFO] epoch 243/250 | train=1.3899 val=1.4012 gap=0.0113 | no_imp=13 | 46847s elapsed
+2026-09-10 22:29:43,155 [INFO] epoch 244/250 | train=1.3768 val=1.4117 gap=0.0348 | no_imp=14 | 47048s elapsed
+2026-09-10 22:33:04,358 [INFO] epoch 245/250 | train=1.3844 val=1.4084 gap=0.0240 | no_imp=15 | 47249s elapsed
+2026-09-10 22:36:26,214 [INFO] epoch 246/250 | train=1.3795 val=1.4007 gap=0.0212 | no_imp=16 | 47451s elapsed
+2026-09-10 22:39:57,118 [INFO]   wrote crash-recovery checkpoint at epoch 247 (val_loss=1.3989) -> /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt
+2026-09-10 22:39:57,119 [INFO] epoch 247/250 | train=1.3754 val=1.3989 gap=0.0235 | no_imp=0 | 47662s elapsed
+2026-09-10 22:43:18,601 [INFO] epoch 248/250 | train=1.3794 val=1.4065 gap=0.0271 | no_imp=1 | 47863s elapsed
+2026-09-10 22:46:43,051 [INFO] epoch 249/250 | train=1.3852 val=1.4209 gap=0.0357 | no_imp=2 | 48068s elapsed
+2026-09-10 22:50:03,305 [INFO] epoch 250/250 | train=1.3770 val=1.4033 gap=0.0262 | no_imp=3 | 48268s elapsed
+2026-09-10 22:50:03,309 [WARNING] Reached MAX_EPOCHS=250 without the val-loss plateau firing.
+2026-09-10 22:52:15,593 [INFO] FINAL | train=1.3548 val=1.4033 test=1.4038 gap=0.0485 val_r2=0.8444 val_rmse=1.0722 | epochs=250 conv=False interrupted=False runtime=48400s
+2026-09-10 22:52:15,595 [INFO] vs. Adam baseline | gap: 0.3369 → 0.0485 (85.6%) | val_r2: 0.8565 → 0.8444 (Δ=-0.0121)
+2026-09-10 22:52:15,596 [INFO] vs. original Stage 4 (metrics-only) | gap: 0.0485 vs 0.0517 (Δ=-0.0032) | val_r2: 0.8444 vs 0.8450 (Δ=-0.0006)
+2026-09-10 22:52:15,608 [INFO] Saved: /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/confirmatory_scorecard.json
+2026-09-10 22:52:15,622 [INFO] Saved: /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/confirmatory_history.json (also streamed to /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/confirmatory_history.jsonl)
+2026-09-10 22:52:15,713 [INFO] Saved checkpoint: /mnt/c/Users/ibrah/hawa/github/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/confirmatory/model.pt  (+ meta.json)

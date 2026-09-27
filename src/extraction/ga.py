@@ -29,12 +29,23 @@ TODO (Melisa):
     - Do this once per condition ("baseline" and "sam" — i.e. against
       each checkpoint's predictions).
     - Decode each surviving chromosome via
-      src.extraction.common.decode_chromosome, compute fidelity_f1 /
+      src.extraction.common.decode_individual, compute fidelity_f1 /
       comprehensibility / coverage, assemble into the §0.4 schema,
       and schema.save_rule_pool(...) to artifacts/rules/.
 
     Do NOT pre-rank beyond non-domination — PROMETHEE ranking is the
     Evaluation arm's job on the full raw pool.
+
+    NOTE (fixed 2026-09-11): this module's import used to reference
+    `decode_chromosome` and `predict_with_rule`, neither of which exists in
+    src.extraction.common — decode_chromosome was never implemented (use
+    decode_individual, which is), and predict_with_rule is a documented
+    KNOWN GAP in common.py's docstring (the row-covered majority-vote
+    scoring logic currently lives inline in nsga.py's `_score_genotype()`;
+    extract it into common.py if GA needs identical scoring for a fair
+    GA-vs-NSGA-II comparison, or implement your own here — coordinate with
+    Sakhile either way). The import below is corrected so this module is
+    at least importable; the TODOs above are still yours to implement.
 """
 
 from __future__ import annotations
@@ -43,7 +54,7 @@ from pathlib import Path
 
 from src.common.config import load_config
 from src.common.schema import save_rule_pool
-from src.extraction.common import decode_chromosome, predict_with_rule
+from src.extraction.common import decode_individual
 
 ARTIFACTS_DIR = Path(__file__).resolve().parents[2] / "artifacts"
 
