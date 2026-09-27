@@ -2,6 +2,10 @@
 
 COS700 Honours thesis project (UP, 2026). Tests whether replacing Adam with SAM in the DeepCCDS drug-response framework widens the generalisation gap enough to improve symbolically-extracted rules downstream.
 
+## Commit conventions
+
+Do not add a `Co-Authored-By: Claude` (or any Claude/Anthropic attribution) trailer to commit messages, and do not include a `Claude-Session` link. Commits should be authored as Hawa alone. Write plain, conventional commit messages (e.g. `feat: ...`, `fix: ...`, `docs: ...`) with no AI attribution footer.
+
 ## Environment setup
 
 ```bash
