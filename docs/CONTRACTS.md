@@ -106,6 +106,35 @@ feat/sam-intervention (reuses arch+data)    ──► checkpoints/sam/, predicti
 
 Each extractor runs **twice** (once per checkpoint). Evaluation consumes all four rule pools.
 
+### 0.6 Real-data handoff for rule extraction (`data/processed/real_extraction/`)
+
+A second drop zone, produced by `src/data/prepare_real_extraction_data.py` (Hawa), that feeds Melisa (GA) and Sakhile (NSGA-II) real GDSC data instead of the synthetic fixtures in `tests/fixtures/synthetic/`. It re-emits the section 0.1 contract shape, filtered to a drug shortlist and re-discretised, so both extractors can point at it with no code changes beyond the input directory:
+
+```
+data/processed/real_extraction/
+├── data/
+│   ├── gdsc_processed.parquet     # same schema as artifacts/data/gdsc_processed.parquet,
+│   │                               # filtered to the drug shortlist, response_class re-discretised
+│   ├── splits.json                # same shape as 0.1, row_ids restricted to the shortlist
+│   └── feature_map.json           # unchanged from artifacts/data/feature_map.json
+├── predictions/
+│   └── {baseline|sam}_{train|val|test}.parquet   # same schema as artifacts/predictions/
+└── meta.json                      # PROVISIONAL flag, discretisation mode/threshold(s),
+                                    # shortlist, config_hash, git_commit, conditions_run
+data/processed/real_extraction_inputs_{baseline,sam_final}.parquet   # flattened, human-readable
+                                                                       # combined file per condition,
+                                                                       # for manual inspection only
+```
+
+Usage: `python -m src.extraction.nsga --condition baseline --data-dir data/processed/real_extraction/data` (GA takes the equivalent flag via `src/extraction/common.py`).
+
+Configuration lives in `configs/data_prep.yaml` (`discretisation.mode`, `drug_shortlist.min_samples_per_drug`, `drug_shortlist.low_sanity_floor`), separate from `pipeline.yaml`, and is specific to this handoff.
+
+**Two things extractors must check before treating this data as final:**
+
+1. **`meta.json["PROVISIONAL"]` is `true` until Hawa confirms the discretisation mode and `min_samples_per_drug` threshold.** Do not hardcode results against this data while the flag is set; re-check `meta.json` after re-running `prepare_real_extraction_data.py`.
+2. **The `"sam"` condition here is inferred from `artifacts/sam_investigation/confirmatory/model.pt`** (the SAM ρ=0.5, WD=1e-3 confirmatory checkpoint), **not** `artifacts/checkpoints/sam/model.pt` (the original ρ=0.2, no-WD checkpoint from section 0.1/2). The confirmatory checkpoint's own `meta.json` records it was produced specifically to give the rule-extraction arms a loadable model; treat it, not `checkpoints/sam`, as canonical for anything reading `data/processed/real_extraction/`.
+
 ---
 
 ## 1. `feat/baseline-model` — Angelique (u23542838)
@@ -165,7 +194,7 @@ Each extractor runs **twice** (once per checkpoint). Evaluation consumes all fou
 
 **Methodology:** §4.3 (GA via DEAP).
 
-**Receives:** `artifacts/data/*`, both checkpoints/predictions (baseline + SAM), and `src/common/metrics.py`.
+**Receives:** `artifacts/data/*`, both checkpoints/predictions (baseline + SAM), and `src/common/metrics.py`. For real (non-synthetic) data, use `data/processed/real_extraction/` instead (see §0.6).
 
 **Implements (`src/extraction/ga.py`, shared encoding in `src/extraction/common.py`):**
 - DEAP GA over discretised features. Chromosome = vector of feature-partition indices with `-1` = "feature excluded".
@@ -186,7 +215,7 @@ Each extractor runs **twice** (once per checkpoint). Evaluation consumes all fou
 
 **Methodology:** §4.4 (NSGA-II via DEAP).
 
-**Receives:** identical inputs to Arm 3, plus the shared `common.py` encoding.
+**Receives:** identical inputs to Arm 3, plus the shared `common.py` encoding. Same §0.6 note applies for real (non-synthetic) data.
 
 **Implements (`src/extraction/nsga.py`):**
 - DEAP NSGA-II on the same discretised data and checkpoints. **True multi-objective:** maximise fidelity (macro-F1 vs model `class_pred`), minimise rule length.
