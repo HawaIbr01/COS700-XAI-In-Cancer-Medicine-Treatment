@@ -1,0 +1,86 @@
+[
+  {
+    "key": "adam_base",
+    "label": "Adam baseline (WD=0)",
+    "phase": "pre",
+    "rho": 0.0,
+    "wd": 0.0,
+    "stopping_rule": "reverse-early-stop",
+    "n_epochs": 90,
+    "gap": 0.3369378980474105,
+    "val_r2": 0.8564605712890625,
+    "val_rmse": 1.0298844575881958
+  },
+  {
+    "key": "sam_r001",
+    "label": "SAM \u03c1=0.01",
+    "phase": "pre",
+    "rho": 0.01,
+    "wd": 0.0,
+    "stopping_rule": "reverse-early-stop",
+    "n_epochs": 122,
+    "gap": 0.3655563442892522,
+    "val_r2": 0.8576691746711731,
+    "val_rmse": 1.025539517402649
+  },
+  {
+    "key": "sam_r005",
+    "label": "SAM \u03c1=0.05",
+    "phase": "pre",
+    "rho": 0.05,
+    "wd": 0.0,
+    "stopping_rule": "reverse-early-stop",
+    "n_epochs": 162,
+    "gap": 0.36606059798291646,
+    "val_r2": 0.8592972755432129,
+    "val_rmse": 1.0196571350097656
+  },
+  {
+    "key": "sam_r01",
+    "label": "SAM \u03c1=0.1",
+    "phase": "pre",
+    "rho": 0.1,
+    "wd": 0.0,
+    "stopping_rule": "reverse-early-stop",
+    "n_epochs": 199,
+    "gap": 0.3600100812943403,
+    "val_r2": 0.8587095141410828,
+    "val_rmse": 1.0217846632003784
+  },
+  {
+    "key": "sam_r02",
+    "label": "SAM \u03c1=0.2",
+    "phase": "pre",
+    "rho": 0.2,
+    "wd": 0.0,
+    "stopping_rule": "reverse-early-stop",
+    "n_epochs": 215,
+    "gap": 0.3121897407707708,
+    "val_r2": 0.8601692914962769,
+    "val_rmse": 1.016492486000061
+  },
+  {
+    "key": "adam_wd",
+    "label": "Adam+WD (4b control)",
+    "phase": "inv",
+    "rho": 0.0,
+    "wd": 0.001,
+    "stopping_rule": "val-plateau",
+    "n_epochs": 187,
+    "gap": 0.27291290211006136,
+    "val_r2": 0.8616405129432678,
+    "val_rmse": 1.0111308097839355
+  },
+  {
+    "key": "sam_r05_wd",
+    "label": "SAM \u03c1=0.5+WD (Stage 4)",
+    "phase": "inv",
+    "rho": 0.5,
+    "wd": 0.001,
+    "stopping_rule": "val-plateau",
+    "n_epochs": 250,
+    "gap": 0.04849882070928646,
+    "val_r2": 0.8444086313247681,
+    "val_rmse": 1.0722490549087524
+  }
+]

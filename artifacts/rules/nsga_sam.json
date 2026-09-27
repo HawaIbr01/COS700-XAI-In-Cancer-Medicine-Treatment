@@ -3,7 +3,7 @@
     "extractor": "nsga",
     "condition": "sam",
     "runs": 30,
-    "config_hash": "3c645c30e081"
+    "config_hash": "a2070aedcc19"
   },
   "rules": [
     {

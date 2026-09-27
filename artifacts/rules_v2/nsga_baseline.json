@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "extractor": "nsga",
+    "condition": "baseline",
+    "runs": 30,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "EGFR_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "MYC_expr",
+          "partition": "High"
+        },
+        {
+          "feature": "BRAF_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "NRAS_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "STK11_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "SMAD4_expr",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "BRAF",
+        "EGFR",
+        "MYC",
+        "NRAS",
+        "SMAD4",
+        "STK11"
+      ],
+      "predicted_class": "resistant",
+      "length": 6,
+      "fidelity_f1": 1.0,
+      "coverage": 0.0213,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "MYC_expr",
+          "partition": "High"
+        },
+        {
+          "feature": "BRAF_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "NRAS_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "STK11_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "SMAD4_expr",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "BRAF",
+        "MYC",
+        "NRAS",
+        "SMAD4",
+        "STK11"
+      ],
+      "predicted_class": "resistant",
+      "length": 5,
+      "fidelity_f1": 0.4902,
+      "coverage": 0.0325,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PTEN_expr",
+          "partition": "Low"
+        },
+        {
+          "feature": "ERBB2_expr",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "NRAS_expr",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "ERBB2",
+        "NRAS",
+        "PTEN"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4857,
+      "coverage": 0.0225,
+      "run_ids": [
+        3,
+        19
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "CDKN2A_expr",
+          "partition": "Low"
+        },
+        {
+          "feature": "STK11_expr",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "CDKN2A",
+        "STK11"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4737,
+      "coverage": 0.025,
+      "run_ids": [
+        4
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "MYC_expr",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "MYC"
+      ],
+      "predicted_class": "resistant",
+      "length": 1,
+      "fidelity_f1": 0.4458,
+      "coverage": 0.1663,
+      "run_ids": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        13,
+        22,
+        23,
+        24,
+        25,
+        26,
+        29,
+        30
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0005"
+    }
+  ]
+}

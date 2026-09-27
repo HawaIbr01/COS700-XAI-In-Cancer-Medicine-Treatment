@@ -1,0 +1,43 @@
+{
+  "config": {
+    "optimizer": "adam",
+    "rho": null,
+    "lr": 0.001,
+    "wd": 0.001
+  },
+  "n_epochs": 187,
+  "converged": true,
+  "interrupted": false,
+  "stopping_rule": "val_loss_plateau: patience=30, min_delta=0.0001. Identical to Stage 4's SAM confirmatory run; deliberately NOT Angelique's reverse-early-stopping rule (see journal Stage 4b). This makes the result a matched pair against Stage 4's SAM run, not a clean three-way comparison against the original 0.3369 baseline.",
+  "final_train_loss": 1.0026611390644262,
+  "final_val_loss": 1.2755740411744876,
+  "final_test_loss": 1.2717056458869098,
+  "generalisation_gap": 0.27291290211006136,
+  "val_r2": 0.8616405129432678,
+  "val_rmse": 1.0111308097839355,
+  "train_r2": 0.8993769288063049,
+  "test_r2": 0.862537682056427,
+  "train_rmse": 0.8655763864517212,
+  "test_rmse": 1.0090489387512207,
+  "comparison": {
+    "original_adam_baseline_wd0": {
+      "gap": 0.3369,
+      "r2": 0.8565,
+      "note": "different stopping rule (reverse-early-stopping); reference only",
+      "gap_reduction_pct_informational": 18.99
+    },
+    "sam_rho05_wd1e3_stage4": {
+      "gap": 0.05173152819530791,
+      "r2": 0.8449745774269104,
+      "note": "matched pair \u2014 same stopping rule; WD is the only differing variable",
+      "sam_specific_extra_gap_reduction": 0.221181
+    }
+  },
+  "runtime_s": 19157.6,
+  "dataset_sizes": {
+    "train": 255628,
+    "val": 31963,
+    "test": 31952
+  },
+  "max_epochs_cap": 250
+}

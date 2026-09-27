@@ -1,0 +1,389 @@
+{
+  "meta": {
+    "extractor": "ga",
+    "condition": "baseline",
+    "runs": 30,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "Axon_guidance_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Insulin_secretion_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Melanogenesis_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Axon guidance",
+        "C-type lectin receptor signaling pathway",
+        "Insulin secretion",
+        "Melanogenesis"
+      ],
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4438,
+      "coverage": 0.0103,
+      "run_ids": [
+        10
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4272,
+      "id": "ga_baseline_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Cardiac_muscle_contraction_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Focal_adhesion_activity",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "C-type lectin receptor signaling pathway",
+        "Cardiac muscle contraction",
+        "Focal adhesion",
+        "Natural killer cell mediated cytotoxicity"
+      ],
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4366,
+      "coverage": 0.01,
+      "run_ids": [
+        13
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4273,
+      "id": "ga_baseline_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Insulin_secretion_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Melanogenesis_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "C-type lectin receptor signaling pathway",
+        "Insulin secretion",
+        "Melanogenesis"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4364,
+      "coverage": 0.0115,
+      "run_ids": [
+        10
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4224,
+      "id": "ga_baseline_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Calcium_signaling_pathway_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Regulation_of_actin_cytoskeleton_activity",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "Calcium signaling pathway",
+        "Natural killer cell mediated cytotoxicity",
+        "Regulation of actin cytoskeleton"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4355,
+      "coverage": 0.0119,
+      "run_ids": [
+        17
+      ],
+      "non_dominated": true,
+      "accuracy": 0.425,
+      "id": "ga_baseline_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Cardiac_muscle_contraction_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Chemokine_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "PI3K-Akt_signaling_pathway_activity",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Cardiac muscle contraction",
+        "Chemokine signaling pathway",
+        "PI3K-Akt signaling pathway",
+        "Signaling pathways regulating pluripotency of stem cells"
+      ],
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4347,
+      "coverage": 0.0104,
+      "run_ids": [
+        18
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4283,
+      "id": "ga_baseline_0005"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Thyroid_hormone_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Natural killer cell mediated cytotoxicity",
+        "Signaling pathways regulating pluripotency of stem cells",
+        "Thyroid hormone signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4339,
+      "coverage": 0.0103,
+      "run_ids": [
+        6
+      ],
+      "non_dominated": true,
+      "accuracy": 0.425,
+      "id": "ga_baseline_0006"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Phospholipase_D_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Natural killer cell mediated cytotoxicity",
+        "Phospholipase D signaling pathway",
+        "Signaling pathways regulating pluripotency of stem cells"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.432,
+      "coverage": 0.011,
+      "run_ids": [
+        27
+      ],
+      "non_dominated": true,
+      "accuracy": 0.437,
+      "id": "ga_baseline_0007"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Relaxin_signaling_pathway_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "C-type lectin receptor signaling pathway",
+        "Relaxin signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4294,
+      "coverage": 0.0108,
+      "run_ids": [
+        3,
+        20
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4128,
+      "id": "ga_baseline_0008"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Chemokine_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Protein_digestion_and_absorption_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Chemokine signaling pathway",
+        "Protein digestion and absorption"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4212,
+      "coverage": 0.033,
+      "run_ids": [
+        4,
+        5,
+        8,
+        9,
+        13,
+        15,
+        16,
+        18,
+        19,
+        20,
+        22,
+        24,
+        25
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4139,
+      "id": "ga_baseline_0009"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Chemokine_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Insulin_secretion_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Chemokine signaling pathway",
+        "Insulin secretion"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4196,
+      "coverage": 0.0162,
+      "run_ids": [
+        19,
+        21,
+        29
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4162,
+      "id": "ga_baseline_0010"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Phospholipase_D_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Phospholipase D signaling pathway",
+        "Signaling pathways regulating pluripotency of stem cells"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4176,
+      "coverage": 0.0139,
+      "run_ids": [
+        3,
+        5,
+        30
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4235,
+      "id": "ga_baseline_0011"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4064,
+      "coverage": 0.1471,
+      "run_ids": [
+        2,
+        3,
+        5,
+        9,
+        11,
+        22
+      ],
+      "non_dominated": true,
+      "accuracy": 0.3946,
+      "id": "ga_baseline_0012"
+    }
+  ]
+}

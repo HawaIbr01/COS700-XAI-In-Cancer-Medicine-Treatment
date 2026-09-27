@@ -1,0 +1,224 @@
+{
+  "stage": 3,
+  "description": "Joint (rho, lr, wd) sweep on 10% training subsample. Tests rho under-perturbation and LR/WD mismatch hypotheses.",
+  "subsample_frac": 0.1,
+  "subsample_n_train": 25562,
+  "subsample_seed": 42,
+  "full_train_n": 255628,
+  "val_n": 31963,
+  "patience": 15,
+  "min_consecutive": 5,
+  "max_epochs": 150,
+  "batch_size": 1024,
+  "total_runtime_s": 8238.6,
+  "grid": {
+    "rho": [
+      0.2,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "lr": [
+      0.001,
+      0.0005
+    ],
+    "wd": [
+      0,
+      0.001
+    ]
+  },
+  "results": [
+    {
+      "rho": 0.2,
+      "lr": 0.001,
+      "wd": 0,
+      "n_epochs": 38,
+      "final_train_loss": 0.8714069417268959,
+      "final_val_loss": 1.7840112674908746,
+      "generalisation_gap": 0.9126043257639787,
+      "val_r2": 0.7687972784042358,
+      "runtime_s": 302.4,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.001,
+      "wd": 0.001,
+      "n_epochs": 32,
+      "final_train_loss": 1.1311970744723585,
+      "final_val_loss": 1.920452466503504,
+      "generalisation_gap": 0.7892553920311456,
+      "val_r2": 0.7732197046279907,
+      "runtime_s": 272.6,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.0005,
+      "wd": 0,
+      "n_epochs": 52,
+      "final_train_loss": 0.8927270140215858,
+      "final_val_loss": 1.801449491216629,
+      "generalisation_gap": 0.9087224771950432,
+      "val_r2": 0.7681759595870972,
+      "runtime_s": 663.0,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "n_epochs": 36,
+      "final_train_loss": 1.200197608862094,
+      "final_val_loss": 1.897969000025401,
+      "generalisation_gap": 0.697771391163307,
+      "val_r2": 0.775471031665802,
+      "runtime_s": 566.7,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.001,
+      "wd": 0,
+      "n_epochs": 92,
+      "final_train_loss": 1.1204881490037042,
+      "final_val_loss": 1.6788988860815692,
+      "generalisation_gap": 0.558410737077865,
+      "val_r2": 0.7791073322296143,
+      "runtime_s": 931.3,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.001,
+      "wd": 0.001,
+      "n_epochs": 72,
+      "final_train_loss": 1.4180595199040111,
+      "final_val_loss": 1.861572762766115,
+      "generalisation_gap": 0.4435132428621038,
+      "val_r2": 0.7823322415351868,
+      "runtime_s": 532.4,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.0005,
+      "wd": 0,
+      "n_epochs": 138,
+      "final_train_loss": 1.1356433246833564,
+      "final_val_loss": 1.685098073578215,
+      "generalisation_gap": 0.5494547488948587,
+      "val_r2": 0.7785528898239136,
+      "runtime_s": 872.8,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "n_epochs": 92,
+      "final_train_loss": 1.4500742668408237,
+      "final_val_loss": 1.868784961505605,
+      "generalisation_gap": 0.41871069466478117,
+      "val_r2": 0.7808769345283508,
+      "runtime_s": 494.0,
+      "converged": true
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.001,
+      "wd": 0,
+      "n_epochs": 23,
+      "final_train_loss": 2.972086821836575,
+      "final_val_loss": 3.1341242020282998,
+      "generalisation_gap": 0.16203738019172498,
+      "val_r2": 0.5958935022354126,
+      "runtime_s": 124.2,
+      "converged": true
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.001,
+      "wd": 0.001,
+      "n_epochs": 33,
+      "final_train_loss": 3.137697239547406,
+      "final_val_loss": 3.2931691005994295,
+      "generalisation_gap": 0.15547186105202337,
+      "val_r2": 0.5880250334739685,
+      "runtime_s": 169.7,
+      "converged": true
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.0005,
+      "wd": 0,
+      "n_epochs": 150,
+      "final_train_loss": 2.5058368824893957,
+      "final_val_loss": 2.740785395640722,
+      "generalisation_gap": 0.23494851315132648,
+      "val_r2": 0.6359474658966064,
+      "runtime_s": 766.4,
+      "converged": false
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "n_epochs": 37,
+      "final_train_loss": 3.0170366052786197,
+      "final_val_loss": 3.130699389994497,
+      "generalisation_gap": 0.11366278471587732,
+      "val_r2": 0.608906626701355,
+      "runtime_s": 198.3,
+      "converged": true
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.001,
+      "wd": 0,
+      "n_epochs": 97,
+      "final_train_loss": 2.708653795132474,
+      "final_val_loss": 2.88620650946928,
+      "generalisation_gap": 0.17755271433680608,
+      "val_r2": 0.6177240610122681,
+      "runtime_s": 534.4,
+      "converged": true
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.001,
+      "wd": 0.001,
+      "n_epochs": 42,
+      "final_train_loss": 3.611628371928091,
+      "final_val_loss": 3.7057448688557564,
+      "generalisation_gap": 0.09411649692766533,
+      "val_r2": 0.5325504541397095,
+      "runtime_s": 236.9,
+      "converged": true
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.0005,
+      "wd": 0,
+      "n_epochs": 150,
+      "final_train_loss": 2.672614864168495,
+      "final_val_loss": 2.848068893968367,
+      "generalisation_gap": 0.17545402979987212,
+      "val_r2": 0.623062252998352,
+      "runtime_s": 774.3,
+      "converged": false
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "n_epochs": 150,
+      "final_train_loss": 3.032302554005721,
+      "final_val_loss": 3.1780063831414203,
+      "generalisation_gap": 0.14570382913569935,
+      "val_r2": 0.6042827367782593,
+      "runtime_s": 787.3,
+      "converged": false
+    }
+  ]
+}
