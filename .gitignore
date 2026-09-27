@@ -300,3 +300,5 @@ __pycache__/
 # teammate downloads their own local copy (see BASELINE_README.md §4).
 /data/
 *.npy
+
+.claude/settings.local.json
