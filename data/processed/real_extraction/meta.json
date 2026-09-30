@@ -776,7 +776,7 @@
     "test": 30728
   },
   "pipeline_config_hash": "a2070aedcc19",
-  "git_commit": "c7f316c",
+  "git_commit": "fcf091f",
   "conditions_run": {
     "baseline": {
       "checkpoint_dir": "artifacts/checkpoints/baseline",

@@ -302,5 +302,2675 @@
       -1.0,
       1.0
     ]
+  },
+  "ABI1_mut": {
+    "gene_symbol": "ABI1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ABL1_mut": {
+    "gene_symbol": "ABL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ABL2_mut": {
+    "gene_symbol": "ABL2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ACSL3_mut": {
+    "gene_symbol": "ACSL3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ACVR1_mut": {
+    "gene_symbol": "ACVR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ACVR1B_mut": {
+    "gene_symbol": "ACVR1B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ACVR2A_mut": {
+    "gene_symbol": "ACVR2A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AFF1_mut": {
+    "gene_symbol": "AFF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AFF3_mut": {
+    "gene_symbol": "AFF3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AFF4_mut": {
+    "gene_symbol": "AFF4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AKT1_mut": {
+    "gene_symbol": "AKT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AKT2_mut": {
+    "gene_symbol": "AKT2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ALK_mut": {
+    "gene_symbol": "ALK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AMER1_mut": {
+    "gene_symbol": "AMER1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "APC_mut": {
+    "gene_symbol": "APC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AR_mut": {
+    "gene_symbol": "AR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARHGAP26_mut": {
+    "gene_symbol": "ARHGAP26",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARHGAP35_mut": {
+    "gene_symbol": "ARHGAP35",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARHGEF12_mut": {
+    "gene_symbol": "ARHGEF12",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARID1A_mut": {
+    "gene_symbol": "ARID1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARID1B_mut": {
+    "gene_symbol": "ARID1B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARID2_mut": {
+    "gene_symbol": "ARID2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ARNT_mut": {
+    "gene_symbol": "ARNT",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ASPSCR1_mut": {
+    "gene_symbol": "ASPSCR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ASXL1_mut": {
+    "gene_symbol": "ASXL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATF1_mut": {
+    "gene_symbol": "ATF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATIC_mut": {
+    "gene_symbol": "ATIC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATM_mut": {
+    "gene_symbol": "ATM",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATP1A1_mut": {
+    "gene_symbol": "ATP1A1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATP2B3_mut": {
+    "gene_symbol": "ATP2B3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATR_mut": {
+    "gene_symbol": "ATR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ATRX_mut": {
+    "gene_symbol": "ATRX",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AXIN1_mut": {
+    "gene_symbol": "AXIN1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "AXIN2_mut": {
+    "gene_symbol": "AXIN2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "B2M_mut": {
+    "gene_symbol": "B2M",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BAP1_mut": {
+    "gene_symbol": "BAP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BARD1_mut": {
+    "gene_symbol": "BARD1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BAX_mut": {
+    "gene_symbol": "BAX",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL10_mut": {
+    "gene_symbol": "BCL10",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL11A_mut": {
+    "gene_symbol": "BCL11A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL11B_mut": {
+    "gene_symbol": "BCL11B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL2_mut": {
+    "gene_symbol": "BCL2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL3_mut": {
+    "gene_symbol": "BCL3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL6_mut": {
+    "gene_symbol": "BCL6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL7A_mut": {
+    "gene_symbol": "BCL7A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL9_mut": {
+    "gene_symbol": "BCL9",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCL9L_mut": {
+    "gene_symbol": "BCL9L",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCOR_mut": {
+    "gene_symbol": "BCOR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCORL1_mut": {
+    "gene_symbol": "BCORL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BCR_mut": {
+    "gene_symbol": "BCR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BIRC3_mut": {
+    "gene_symbol": "BIRC3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BLM_mut": {
+    "gene_symbol": "BLM",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BMPR1A_mut": {
+    "gene_symbol": "BMPR1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BRAF_mut": {
+    "gene_symbol": "BRAF",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BRCA1_mut": {
+    "gene_symbol": "BRCA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BRCA2_mut": {
+    "gene_symbol": "BRCA2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BRD3_mut": {
+    "gene_symbol": "BRD3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BRD4_mut": {
+    "gene_symbol": "BRD4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BRIP1_mut": {
+    "gene_symbol": "BRIP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BTG1_mut": {
+    "gene_symbol": "BTG1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BTK_mut": {
+    "gene_symbol": "BTK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "BUB1B_mut": {
+    "gene_symbol": "BUB1B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CALR_mut": {
+    "gene_symbol": "CALR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CAMTA1_mut": {
+    "gene_symbol": "CAMTA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CARD11_mut": {
+    "gene_symbol": "CARD11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CASP8_mut": {
+    "gene_symbol": "CASP8",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CBFA2T3_mut": {
+    "gene_symbol": "CBFA2T3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CBFB_mut": {
+    "gene_symbol": "CBFB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CBL_mut": {
+    "gene_symbol": "CBL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CBLB_mut": {
+    "gene_symbol": "CBLB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CBLC_mut": {
+    "gene_symbol": "CBLC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CCDC6_mut": {
+    "gene_symbol": "CCDC6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CCNB1IP1_mut": {
+    "gene_symbol": "CCNB1IP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CCND1_mut": {
+    "gene_symbol": "CCND1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CCND2_mut": {
+    "gene_symbol": "CCND2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CCND3_mut": {
+    "gene_symbol": "CCND3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CCNE1_mut": {
+    "gene_symbol": "CCNE1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CD274_mut": {
+    "gene_symbol": "CD274",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CD74_mut": {
+    "gene_symbol": "CD74",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CD79A_mut": {
+    "gene_symbol": "CD79A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CD79B_mut": {
+    "gene_symbol": "CD79B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDC73_mut": {
+    "gene_symbol": "CDC73",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDH1_mut": {
+    "gene_symbol": "CDH1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDH11_mut": {
+    "gene_symbol": "CDH11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDK12_mut": {
+    "gene_symbol": "CDK12",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDK4_mut": {
+    "gene_symbol": "CDK4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDK6_mut": {
+    "gene_symbol": "CDK6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDKN1B_mut": {
+    "gene_symbol": "CDKN1B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDKN2A_mut": {
+    "gene_symbol": "CDKN2A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDKN2C_mut": {
+    "gene_symbol": "CDKN2C",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CDX2_mut": {
+    "gene_symbol": "CDX2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CEBPA_mut": {
+    "gene_symbol": "CEBPA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CHD4_mut": {
+    "gene_symbol": "CHD4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CHEK2_mut": {
+    "gene_symbol": "CHEK2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CIC_mut": {
+    "gene_symbol": "CIC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CIITA_mut": {
+    "gene_symbol": "CIITA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CLIP1_mut": {
+    "gene_symbol": "CLIP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CLTC_mut": {
+    "gene_symbol": "CLTC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CLTCL1_mut": {
+    "gene_symbol": "CLTCL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CNBP_mut": {
+    "gene_symbol": "CNBP",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CNOT3_mut": {
+    "gene_symbol": "CNOT3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CNTRL_mut": {
+    "gene_symbol": "CNTRL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "COL1A1_mut": {
+    "gene_symbol": "COL1A1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "COL2A1_mut": {
+    "gene_symbol": "COL2A1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CREB1_mut": {
+    "gene_symbol": "CREB1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CREB3L1_mut": {
+    "gene_symbol": "CREB3L1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CREB3L2_mut": {
+    "gene_symbol": "CREB3L2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CREBBP_mut": {
+    "gene_symbol": "CREBBP",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CRLF2_mut": {
+    "gene_symbol": "CRLF2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CRTC1_mut": {
+    "gene_symbol": "CRTC1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CRTC3_mut": {
+    "gene_symbol": "CRTC3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CSF3R_mut": {
+    "gene_symbol": "CSF3R",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CTCF_mut": {
+    "gene_symbol": "CTCF",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CTNNB1_mut": {
+    "gene_symbol": "CTNNB1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CUX1_mut": {
+    "gene_symbol": "CUX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CXCR4_mut": {
+    "gene_symbol": "CXCR4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "CYLD_mut": {
+    "gene_symbol": "CYLD",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DAXX_mut": {
+    "gene_symbol": "DAXX",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DCTN1_mut": {
+    "gene_symbol": "DCTN1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDB2_mut": {
+    "gene_symbol": "DDB2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDIT3_mut": {
+    "gene_symbol": "DDIT3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDR2_mut": {
+    "gene_symbol": "DDR2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDX10_mut": {
+    "gene_symbol": "DDX10",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDX3X_mut": {
+    "gene_symbol": "DDX3X",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDX5_mut": {
+    "gene_symbol": "DDX5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DDX6_mut": {
+    "gene_symbol": "DDX6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DEK_mut": {
+    "gene_symbol": "DEK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DICER1_mut": {
+    "gene_symbol": "DICER1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DNAJB1_mut": {
+    "gene_symbol": "DNAJB1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DNM2_mut": {
+    "gene_symbol": "DNM2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DNMT3A_mut": {
+    "gene_symbol": "DNMT3A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "DROSHA_mut": {
+    "gene_symbol": "DROSHA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EBF1_mut": {
+    "gene_symbol": "EBF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EGFR_mut": {
+    "gene_symbol": "EGFR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EIF3E_mut": {
+    "gene_symbol": "EIF3E",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EIF4A2_mut": {
+    "gene_symbol": "EIF4A2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ELF4_mut": {
+    "gene_symbol": "ELF4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ELK4_mut": {
+    "gene_symbol": "ELK4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ELL_mut": {
+    "gene_symbol": "ELL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EML4_mut": {
+    "gene_symbol": "EML4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EP300_mut": {
+    "gene_symbol": "EP300",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EPAS1_mut": {
+    "gene_symbol": "EPAS1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EPS15_mut": {
+    "gene_symbol": "EPS15",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERBB2_mut": {
+    "gene_symbol": "ERBB2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERBB3_mut": {
+    "gene_symbol": "ERBB3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERBB4_mut": {
+    "gene_symbol": "ERBB4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERC1_mut": {
+    "gene_symbol": "ERC1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERCC2_mut": {
+    "gene_symbol": "ERCC2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERCC3_mut": {
+    "gene_symbol": "ERCC3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERCC4_mut": {
+    "gene_symbol": "ERCC4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERCC5_mut": {
+    "gene_symbol": "ERCC5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ERG_mut": {
+    "gene_symbol": "ERG",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ESR1_mut": {
+    "gene_symbol": "ESR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ETNK1_mut": {
+    "gene_symbol": "ETNK1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ETV1_mut": {
+    "gene_symbol": "ETV1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ETV4_mut": {
+    "gene_symbol": "ETV4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ETV5_mut": {
+    "gene_symbol": "ETV5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ETV6_mut": {
+    "gene_symbol": "ETV6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EWSR1_mut": {
+    "gene_symbol": "EWSR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EXT1_mut": {
+    "gene_symbol": "EXT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EXT2_mut": {
+    "gene_symbol": "EXT2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EZH2_mut": {
+    "gene_symbol": "EZH2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "EZR_mut": {
+    "gene_symbol": "EZR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FANCA_mut": {
+    "gene_symbol": "FANCA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FANCC_mut": {
+    "gene_symbol": "FANCC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FANCD2_mut": {
+    "gene_symbol": "FANCD2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FANCE_mut": {
+    "gene_symbol": "FANCE",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FANCF_mut": {
+    "gene_symbol": "FANCF",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FANCG_mut": {
+    "gene_symbol": "FANCG",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FAS_mut": {
+    "gene_symbol": "FAS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FAT1_mut": {
+    "gene_symbol": "FAT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FAT4_mut": {
+    "gene_symbol": "FAT4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FBXO11_mut": {
+    "gene_symbol": "FBXO11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FBXW7_mut": {
+    "gene_symbol": "FBXW7",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FCGR2B_mut": {
+    "gene_symbol": "FCGR2B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FCRL4_mut": {
+    "gene_symbol": "FCRL4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FES_mut": {
+    "gene_symbol": "FES",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FGFR1_mut": {
+    "gene_symbol": "FGFR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FGFR2_mut": {
+    "gene_symbol": "FGFR2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FGFR3_mut": {
+    "gene_symbol": "FGFR3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FGFR4_mut": {
+    "gene_symbol": "FGFR4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FH_mut": {
+    "gene_symbol": "FH",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FHIT_mut": {
+    "gene_symbol": "FHIT",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FIP1L1_mut": {
+    "gene_symbol": "FIP1L1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FLCN_mut": {
+    "gene_symbol": "FLCN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FLI1_mut": {
+    "gene_symbol": "FLI1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FLT3_mut": {
+    "gene_symbol": "FLT3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FLT4_mut": {
+    "gene_symbol": "FLT4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FOXA1_mut": {
+    "gene_symbol": "FOXA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FOXL2_mut": {
+    "gene_symbol": "FOXL2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FOXO1_mut": {
+    "gene_symbol": "FOXO1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FOXO3_mut": {
+    "gene_symbol": "FOXO3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FOXO4_mut": {
+    "gene_symbol": "FOXO4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FOXP1_mut": {
+    "gene_symbol": "FOXP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FSTL3_mut": {
+    "gene_symbol": "FSTL3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FUBP1_mut": {
+    "gene_symbol": "FUBP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "FUS_mut": {
+    "gene_symbol": "FUS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GAS7_mut": {
+    "gene_symbol": "GAS7",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GATA1_mut": {
+    "gene_symbol": "GATA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GATA2_mut": {
+    "gene_symbol": "GATA2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GATA3_mut": {
+    "gene_symbol": "GATA3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GNA11_mut": {
+    "gene_symbol": "GNA11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GNAQ_mut": {
+    "gene_symbol": "GNAQ",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GNAS_mut": {
+    "gene_symbol": "GNAS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GOLGA5_mut": {
+    "gene_symbol": "GOLGA5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GOPC_mut": {
+    "gene_symbol": "GOPC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GPC3_mut": {
+    "gene_symbol": "GPC3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GPHN_mut": {
+    "gene_symbol": "GPHN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "GRIN2A_mut": {
+    "gene_symbol": "GRIN2A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HERPUD1_mut": {
+    "gene_symbol": "HERPUD1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HEY1_mut": {
+    "gene_symbol": "HEY1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HIF1A_mut": {
+    "gene_symbol": "HIF1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HIP1_mut": {
+    "gene_symbol": "HIP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HLA-A_mut": {
+    "gene_symbol": "HLA-A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HLF_mut": {
+    "gene_symbol": "HLF",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HMGA1_mut": {
+    "gene_symbol": "HMGA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HMGA2_mut": {
+    "gene_symbol": "HMGA2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HNF1A_mut": {
+    "gene_symbol": "HNF1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HNRNPA2B1_mut": {
+    "gene_symbol": "HNRNPA2B1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOOK3_mut": {
+    "gene_symbol": "HOOK3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOXA11_mut": {
+    "gene_symbol": "HOXA11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOXA13_mut": {
+    "gene_symbol": "HOXA13",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOXA9_mut": {
+    "gene_symbol": "HOXA9",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOXC11_mut": {
+    "gene_symbol": "HOXC11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOXC13_mut": {
+    "gene_symbol": "HOXC13",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HOXD13_mut": {
+    "gene_symbol": "HOXD13",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HRAS_mut": {
+    "gene_symbol": "HRAS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HSP90AA1_mut": {
+    "gene_symbol": "HSP90AA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "HSP90AB1_mut": {
+    "gene_symbol": "HSP90AB1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IDH1_mut": {
+    "gene_symbol": "IDH1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IDH2_mut": {
+    "gene_symbol": "IDH2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IKBKB_mut": {
+    "gene_symbol": "IKBKB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IKZF1_mut": {
+    "gene_symbol": "IKZF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IKZF3_mut": {
+    "gene_symbol": "IKZF3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IL2_mut": {
+    "gene_symbol": "IL2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IL21R_mut": {
+    "gene_symbol": "IL21R",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IL6ST_mut": {
+    "gene_symbol": "IL6ST",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IL7R_mut": {
+    "gene_symbol": "IL7R",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IRF4_mut": {
+    "gene_symbol": "IRF4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "IRS4_mut": {
+    "gene_symbol": "IRS4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ITK_mut": {
+    "gene_symbol": "ITK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "JAK1_mut": {
+    "gene_symbol": "JAK1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "JAK2_mut": {
+    "gene_symbol": "JAK2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "JAK3_mut": {
+    "gene_symbol": "JAK3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "JUN_mut": {
+    "gene_symbol": "JUN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KAT6A_mut": {
+    "gene_symbol": "KAT6A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KAT6B_mut": {
+    "gene_symbol": "KAT6B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KCNJ5_mut": {
+    "gene_symbol": "KCNJ5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KDM5A_mut": {
+    "gene_symbol": "KDM5A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KDM5C_mut": {
+    "gene_symbol": "KDM5C",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KDM6A_mut": {
+    "gene_symbol": "KDM6A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KDR_mut": {
+    "gene_symbol": "KDR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KEAP1_mut": {
+    "gene_symbol": "KEAP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KIF5B_mut": {
+    "gene_symbol": "KIF5B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KIT_mut": {
+    "gene_symbol": "KIT",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KLF4_mut": {
+    "gene_symbol": "KLF4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KLF6_mut": {
+    "gene_symbol": "KLF6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KLK2_mut": {
+    "gene_symbol": "KLK2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KMT2A_mut": {
+    "gene_symbol": "KMT2A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KMT2C_mut": {
+    "gene_symbol": "KMT2C",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KMT2D_mut": {
+    "gene_symbol": "KMT2D",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KRAS_mut": {
+    "gene_symbol": "KRAS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "KTN1_mut": {
+    "gene_symbol": "KTN1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LASP1_mut": {
+    "gene_symbol": "LASP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LATS1_mut": {
+    "gene_symbol": "LATS1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LATS2_mut": {
+    "gene_symbol": "LATS2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LCK_mut": {
+    "gene_symbol": "LCK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LEF1_mut": {
+    "gene_symbol": "LEF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LIFR_mut": {
+    "gene_symbol": "LIFR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LMNA_mut": {
+    "gene_symbol": "LMNA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LMO1_mut": {
+    "gene_symbol": "LMO1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LMO2_mut": {
+    "gene_symbol": "LMO2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LPP_mut": {
+    "gene_symbol": "LPP",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LRP1B_mut": {
+    "gene_symbol": "LRP1B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LYL1_mut": {
+    "gene_symbol": "LYL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "LZTR1_mut": {
+    "gene_symbol": "LZTR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAF_mut": {
+    "gene_symbol": "MAF",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAFB_mut": {
+    "gene_symbol": "MAFB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MALT1_mut": {
+    "gene_symbol": "MALT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAML2_mut": {
+    "gene_symbol": "MAML2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAP2K1_mut": {
+    "gene_symbol": "MAP2K1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAP2K2_mut": {
+    "gene_symbol": "MAP2K2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAP2K4_mut": {
+    "gene_symbol": "MAP2K4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAP3K1_mut": {
+    "gene_symbol": "MAP3K1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAP3K13_mut": {
+    "gene_symbol": "MAP3K13",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAPK1_mut": {
+    "gene_symbol": "MAPK1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MAX_mut": {
+    "gene_symbol": "MAX",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MDM2_mut": {
+    "gene_symbol": "MDM2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MDM4_mut": {
+    "gene_symbol": "MDM4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MECOM_mut": {
+    "gene_symbol": "MECOM",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MED12_mut": {
+    "gene_symbol": "MED12",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MEN1_mut": {
+    "gene_symbol": "MEN1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MET_mut": {
+    "gene_symbol": "MET",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MITF_mut": {
+    "gene_symbol": "MITF",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLF1_mut": {
+    "gene_symbol": "MLF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLH1_mut": {
+    "gene_symbol": "MLH1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLLT1_mut": {
+    "gene_symbol": "MLLT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLLT10_mut": {
+    "gene_symbol": "MLLT10",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLLT11_mut": {
+    "gene_symbol": "MLLT11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLLT3_mut": {
+    "gene_symbol": "MLLT3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MLLT6_mut": {
+    "gene_symbol": "MLLT6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MPL_mut": {
+    "gene_symbol": "MPL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MSH2_mut": {
+    "gene_symbol": "MSH2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MSH6_mut": {
+    "gene_symbol": "MSH6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MSI2_mut": {
+    "gene_symbol": "MSI2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MSN_mut": {
+    "gene_symbol": "MSN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MTCP1_mut": {
+    "gene_symbol": "MTCP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MTOR_mut": {
+    "gene_symbol": "MTOR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MUC1_mut": {
+    "gene_symbol": "MUC1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MUTYH_mut": {
+    "gene_symbol": "MUTYH",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYB_mut": {
+    "gene_symbol": "MYB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYC_mut": {
+    "gene_symbol": "MYC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYCL_mut": {
+    "gene_symbol": "MYCL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYCN_mut": {
+    "gene_symbol": "MYCN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYD88_mut": {
+    "gene_symbol": "MYD88",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYH11_mut": {
+    "gene_symbol": "MYH11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYH9_mut": {
+    "gene_symbol": "MYH9",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYO5A_mut": {
+    "gene_symbol": "MYO5A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "MYOD1_mut": {
+    "gene_symbol": "MYOD1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NAB2_mut": {
+    "gene_symbol": "NAB2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NBN_mut": {
+    "gene_symbol": "NBN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NCOA1_mut": {
+    "gene_symbol": "NCOA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NCOA2_mut": {
+    "gene_symbol": "NCOA2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NCOA4_mut": {
+    "gene_symbol": "NCOA4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NCOR1_mut": {
+    "gene_symbol": "NCOR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NCOR2_mut": {
+    "gene_symbol": "NCOR2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NDRG1_mut": {
+    "gene_symbol": "NDRG1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NF1_mut": {
+    "gene_symbol": "NF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NF2_mut": {
+    "gene_symbol": "NF2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NFATC2_mut": {
+    "gene_symbol": "NFATC2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NFE2L2_mut": {
+    "gene_symbol": "NFE2L2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NFIB_mut": {
+    "gene_symbol": "NFIB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NFKB2_mut": {
+    "gene_symbol": "NFKB2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NFKBIE_mut": {
+    "gene_symbol": "NFKBIE",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NIN_mut": {
+    "gene_symbol": "NIN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NKX2-1_mut": {
+    "gene_symbol": "NKX2-1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NONO_mut": {
+    "gene_symbol": "NONO",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NOTCH1_mut": {
+    "gene_symbol": "NOTCH1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NOTCH2_mut": {
+    "gene_symbol": "NOTCH2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NPM1_mut": {
+    "gene_symbol": "NPM1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NR4A3_mut": {
+    "gene_symbol": "NR4A3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NRAS_mut": {
+    "gene_symbol": "NRAS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NRG1_mut": {
+    "gene_symbol": "NRG1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NSD1_mut": {
+    "gene_symbol": "NSD1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NT5C2_mut": {
+    "gene_symbol": "NT5C2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NTRK1_mut": {
+    "gene_symbol": "NTRK1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NTRK2_mut": {
+    "gene_symbol": "NTRK2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NTRK3_mut": {
+    "gene_symbol": "NTRK3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NUMA1_mut": {
+    "gene_symbol": "NUMA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NUP214_mut": {
+    "gene_symbol": "NUP214",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NUP98_mut": {
+    "gene_symbol": "NUP98",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "NUTM1_mut": {
+    "gene_symbol": "NUTM1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "OLIG2_mut": {
+    "gene_symbol": "OLIG2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PAFAH1B2_mut": {
+    "gene_symbol": "PAFAH1B2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PALB2_mut": {
+    "gene_symbol": "PALB2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PATZ1_mut": {
+    "gene_symbol": "PATZ1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PAX3_mut": {
+    "gene_symbol": "PAX3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PAX5_mut": {
+    "gene_symbol": "PAX5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PAX7_mut": {
+    "gene_symbol": "PAX7",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PAX8_mut": {
+    "gene_symbol": "PAX8",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PBRM1_mut": {
+    "gene_symbol": "PBRM1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PBX1_mut": {
+    "gene_symbol": "PBX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PCM1_mut": {
+    "gene_symbol": "PCM1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PDE4DIP_mut": {
+    "gene_symbol": "PDE4DIP",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PDGFB_mut": {
+    "gene_symbol": "PDGFB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PDGFRA_mut": {
+    "gene_symbol": "PDGFRA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PDGFRB_mut": {
+    "gene_symbol": "PDGFRB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PER1_mut": {
+    "gene_symbol": "PER1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PHF6_mut": {
+    "gene_symbol": "PHF6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PICALM_mut": {
+    "gene_symbol": "PICALM",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PIK3CA_mut": {
+    "gene_symbol": "PIK3CA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PIK3CB_mut": {
+    "gene_symbol": "PIK3CB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PIK3R1_mut": {
+    "gene_symbol": "PIK3R1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PIM1_mut": {
+    "gene_symbol": "PIM1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PLAG1_mut": {
+    "gene_symbol": "PLAG1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PLCG1_mut": {
+    "gene_symbol": "PLCG1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PML_mut": {
+    "gene_symbol": "PML",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PMS2_mut": {
+    "gene_symbol": "PMS2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "POLD1_mut": {
+    "gene_symbol": "POLD1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "POLE_mut": {
+    "gene_symbol": "POLE",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "POT1_mut": {
+    "gene_symbol": "POT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "POU2AF1_mut": {
+    "gene_symbol": "POU2AF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "POU5F1_mut": {
+    "gene_symbol": "POU5F1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PPARG_mut": {
+    "gene_symbol": "PPARG",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PPFIBP1_mut": {
+    "gene_symbol": "PPFIBP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PPM1D_mut": {
+    "gene_symbol": "PPM1D",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PPP2R1A_mut": {
+    "gene_symbol": "PPP2R1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PPP6C_mut": {
+    "gene_symbol": "PPP6C",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRCC_mut": {
+    "gene_symbol": "PRCC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRDM1_mut": {
+    "gene_symbol": "PRDM1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRDM16_mut": {
+    "gene_symbol": "PRDM16",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PREX2_mut": {
+    "gene_symbol": "PREX2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRF1_mut": {
+    "gene_symbol": "PRF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRKACA_mut": {
+    "gene_symbol": "PRKACA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRKAR1A_mut": {
+    "gene_symbol": "PRKAR1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PRRX1_mut": {
+    "gene_symbol": "PRRX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PSIP1_mut": {
+    "gene_symbol": "PSIP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTCH1_mut": {
+    "gene_symbol": "PTCH1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTEN_mut": {
+    "gene_symbol": "PTEN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTK6_mut": {
+    "gene_symbol": "PTK6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTPN11_mut": {
+    "gene_symbol": "PTPN11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTPN13_mut": {
+    "gene_symbol": "PTPN13",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTPRB_mut": {
+    "gene_symbol": "PTPRB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTPRC_mut": {
+    "gene_symbol": "PTPRC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTPRK_mut": {
+    "gene_symbol": "PTPRK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "PTPRT_mut": {
+    "gene_symbol": "PTPRT",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "QKI_mut": {
+    "gene_symbol": "QKI",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RABEP1_mut": {
+    "gene_symbol": "RABEP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RAC1_mut": {
+    "gene_symbol": "RAC1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RAD21_mut": {
+    "gene_symbol": "RAD21",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RAD51B_mut": {
+    "gene_symbol": "RAD51B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RAF1_mut": {
+    "gene_symbol": "RAF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RANBP2_mut": {
+    "gene_symbol": "RANBP2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RAP1GDS1_mut": {
+    "gene_symbol": "RAP1GDS1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RARA_mut": {
+    "gene_symbol": "RARA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RB1_mut": {
+    "gene_symbol": "RB1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RBM10_mut": {
+    "gene_symbol": "RBM10",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RBM15_mut": {
+    "gene_symbol": "RBM15",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RECQL4_mut": {
+    "gene_symbol": "RECQL4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "REL_mut": {
+    "gene_symbol": "REL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RET_mut": {
+    "gene_symbol": "RET",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RHOA_mut": {
+    "gene_symbol": "RHOA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RHOH_mut": {
+    "gene_symbol": "RHOH",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RMI2_mut": {
+    "gene_symbol": "RMI2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RNF213_mut": {
+    "gene_symbol": "RNF213",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RNF43_mut": {
+    "gene_symbol": "RNF43",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ROS1_mut": {
+    "gene_symbol": "ROS1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RPL10_mut": {
+    "gene_symbol": "RPL10",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RPL22_mut": {
+    "gene_symbol": "RPL22",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RPL5_mut": {
+    "gene_symbol": "RPL5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RPN1_mut": {
+    "gene_symbol": "RPN1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RSPO2_mut": {
+    "gene_symbol": "RSPO2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RSPO3_mut": {
+    "gene_symbol": "RSPO3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RUNX1_mut": {
+    "gene_symbol": "RUNX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "RUNX1T1_mut": {
+    "gene_symbol": "RUNX1T1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SBDS_mut": {
+    "gene_symbol": "SBDS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SDC4_mut": {
+    "gene_symbol": "SDC4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SDHA_mut": {
+    "gene_symbol": "SDHA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SDHAF2_mut": {
+    "gene_symbol": "SDHAF2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SDHB_mut": {
+    "gene_symbol": "SDHB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SDHC_mut": {
+    "gene_symbol": "SDHC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SET_mut": {
+    "gene_symbol": "SET",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SETBP1_mut": {
+    "gene_symbol": "SETBP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SETD2_mut": {
+    "gene_symbol": "SETD2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SF3B1_mut": {
+    "gene_symbol": "SF3B1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SFPQ_mut": {
+    "gene_symbol": "SFPQ",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SH2B3_mut": {
+    "gene_symbol": "SH2B3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SH3GL1_mut": {
+    "gene_symbol": "SH3GL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SIX1_mut": {
+    "gene_symbol": "SIX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SLC34A2_mut": {
+    "gene_symbol": "SLC34A2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMAD2_mut": {
+    "gene_symbol": "SMAD2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMAD3_mut": {
+    "gene_symbol": "SMAD3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMAD4_mut": {
+    "gene_symbol": "SMAD4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMARCA4_mut": {
+    "gene_symbol": "SMARCA4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMARCB1_mut": {
+    "gene_symbol": "SMARCB1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMARCE1_mut": {
+    "gene_symbol": "SMARCE1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SMO_mut": {
+    "gene_symbol": "SMO",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SND1_mut": {
+    "gene_symbol": "SND1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SOCS1_mut": {
+    "gene_symbol": "SOCS1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SOX2_mut": {
+    "gene_symbol": "SOX2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SPEN_mut": {
+    "gene_symbol": "SPEN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SPOP_mut": {
+    "gene_symbol": "SPOP",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SRC_mut": {
+    "gene_symbol": "SRC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SRSF3_mut": {
+    "gene_symbol": "SRSF3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SS18_mut": {
+    "gene_symbol": "SS18",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SS18L1_mut": {
+    "gene_symbol": "SS18L1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SSX1_mut": {
+    "gene_symbol": "SSX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STAG2_mut": {
+    "gene_symbol": "STAG2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STAT3_mut": {
+    "gene_symbol": "STAT3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STAT5B_mut": {
+    "gene_symbol": "STAT5B",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STAT6_mut": {
+    "gene_symbol": "STAT6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STIL_mut": {
+    "gene_symbol": "STIL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STK11_mut": {
+    "gene_symbol": "STK11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "STRN_mut": {
+    "gene_symbol": "STRN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SUFU_mut": {
+    "gene_symbol": "SUFU",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SUZ12_mut": {
+    "gene_symbol": "SUZ12",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "SYK_mut": {
+    "gene_symbol": "SYK",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TAF15_mut": {
+    "gene_symbol": "TAF15",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TAL1_mut": {
+    "gene_symbol": "TAL1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TAL2_mut": {
+    "gene_symbol": "TAL2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TBL1XR1_mut": {
+    "gene_symbol": "TBL1XR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TBX3_mut": {
+    "gene_symbol": "TBX3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TCEA1_mut": {
+    "gene_symbol": "TCEA1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TCF12_mut": {
+    "gene_symbol": "TCF12",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TCF3_mut": {
+    "gene_symbol": "TCF3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TCF7L2_mut": {
+    "gene_symbol": "TCF7L2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TCL1A_mut": {
+    "gene_symbol": "TCL1A",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TERT_mut": {
+    "gene_symbol": "TERT",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TET2_mut": {
+    "gene_symbol": "TET2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TFE3_mut": {
+    "gene_symbol": "TFE3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TFEB_mut": {
+    "gene_symbol": "TFEB",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TFG_mut": {
+    "gene_symbol": "TFG",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TGFBR2_mut": {
+    "gene_symbol": "TGFBR2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TLX1_mut": {
+    "gene_symbol": "TLX1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TLX3_mut": {
+    "gene_symbol": "TLX3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TNFAIP3_mut": {
+    "gene_symbol": "TNFAIP3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TNFRSF14_mut": {
+    "gene_symbol": "TNFRSF14",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TNFRSF17_mut": {
+    "gene_symbol": "TNFRSF17",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TOP1_mut": {
+    "gene_symbol": "TOP1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TP53_mut": {
+    "gene_symbol": "TP53",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TP63_mut": {
+    "gene_symbol": "TP63",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TPM3_mut": {
+    "gene_symbol": "TPM3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TPM4_mut": {
+    "gene_symbol": "TPM4",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TPR_mut": {
+    "gene_symbol": "TPR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TRAF7_mut": {
+    "gene_symbol": "TRAF7",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TRIM24_mut": {
+    "gene_symbol": "TRIM24",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TRIM27_mut": {
+    "gene_symbol": "TRIM27",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TRIM33_mut": {
+    "gene_symbol": "TRIM33",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TRIP11_mut": {
+    "gene_symbol": "TRIP11",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TRRAP_mut": {
+    "gene_symbol": "TRRAP",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TSC1_mut": {
+    "gene_symbol": "TSC1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TSC2_mut": {
+    "gene_symbol": "TSC2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "TSHR_mut": {
+    "gene_symbol": "TSHR",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "U2AF1_mut": {
+    "gene_symbol": "U2AF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "UBR5_mut": {
+    "gene_symbol": "UBR5",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "USP6_mut": {
+    "gene_symbol": "USP6",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "USP8_mut": {
+    "gene_symbol": "USP8",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "VHL_mut": {
+    "gene_symbol": "VHL",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "WAS_mut": {
+    "gene_symbol": "WAS",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "WIF1_mut": {
+    "gene_symbol": "WIF1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "WRN_mut": {
+    "gene_symbol": "WRN",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "WT1_mut": {
+    "gene_symbol": "WT1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "WWTR1_mut": {
+    "gene_symbol": "WWTR1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "XPA_mut": {
+    "gene_symbol": "XPA",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "XPC_mut": {
+    "gene_symbol": "XPC",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "XPO1_mut": {
+    "gene_symbol": "XPO1",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "YWHAE_mut": {
+    "gene_symbol": "YWHAE",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZBTB16_mut": {
+    "gene_symbol": "ZBTB16",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZFHX3_mut": {
+    "gene_symbol": "ZFHX3",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZMYM2_mut": {
+    "gene_symbol": "ZMYM2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZNF331_mut": {
+    "gene_symbol": "ZNF331",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZNF384_mut": {
+    "gene_symbol": "ZNF384",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZNF521_mut": {
+    "gene_symbol": "ZNF521",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
+  },
+  "ZRSR2_mut": {
+    "gene_symbol": "ZRSR2",
+    "note": "Real HGNC gene symbol (binary driver-gene mutation status from GDSC_mutation_input.csv) -- unlike the pathway-activity entries above, gene_symbol here is not a placeholder.",
+    "partition_edges": null
   }
 }
