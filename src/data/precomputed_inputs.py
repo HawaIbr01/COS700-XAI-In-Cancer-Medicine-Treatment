@@ -84,8 +84,10 @@ def load_pathway_activity(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> tu
     return arr, cell_names, pathway_cols
 
 
-def load_mutation_matrix(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> np.ndarray:
-    """Returns (878, 534) int8 array (binary driver-gene mutation calls), row-aligned to cell_idx."""
+def load_mutation_matrix(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> tuple[np.ndarray, list[str], list[str]]:
+    """Returns (mutation, cell_names, gene_names).
+    mutation: (878, 534) int8 array (binary driver-gene mutation calls), row-aligned to cell_idx.
+    """
     path = precomputed_dir / "GDSC_mutation_input.csv"
     _require(path)
     df = pd.read_csv(path, index_col=0)
@@ -94,8 +96,9 @@ def load_mutation_matrix(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> np.
     if len(gene_cols) != N_MUTATION_GENES:
         raise ValueError(f"Expected {N_MUTATION_GENES} gene columns, got {len(gene_cols)}")
     arr = df[gene_cols].to_numpy(dtype=np.int8)
+    cell_names = df[cell_col].astype(str).tolist() if cell_col in df.columns else df.index.astype(str).tolist()
     logger.info("Loaded mutation matrix: %s", arr.shape)
-    return arr
+    return arr, cell_names, gene_cols
 
 
 def load_drug_fingerprints(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> np.ndarray:

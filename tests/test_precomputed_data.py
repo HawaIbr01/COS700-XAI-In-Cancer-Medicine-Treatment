@@ -97,9 +97,11 @@ def test_load_pathway_activity_shape(synthetic_precomputed_dir):
 
 
 def test_load_mutation_matrix_shape_and_dtype(synthetic_precomputed_dir):
-    arr = load_mutation_matrix(synthetic_precomputed_dir)
+    arr, cell_names, gene_names = load_mutation_matrix(synthetic_precomputed_dir)
     assert arr.shape == (5, N_MUTATION_GENES)
     assert arr.dtype == np.int8
+    assert len(cell_names) == 5
+    assert len(gene_names) == N_MUTATION_GENES
 
 
 def test_load_drug_fingerprints_shape(synthetic_precomputed_dir):

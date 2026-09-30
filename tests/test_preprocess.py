@@ -81,7 +81,7 @@ def test_preprocess_writes_valid_contract_artifacts(synthetic_precomputed_dir, t
     with open(out_dir / "feature_map.json") as f:
         feature_map = json.load(f)
     assert not validate_feature_map(feature_map)
-    assert len(feature_map) == N_PATHWAYS
+    assert len(feature_map) == N_PATHWAYS + N_MUTATION_GENES
 
     with open(out_dir / "response_classes.json") as f:
         response_classes = json.load(f)
@@ -93,3 +93,9 @@ def test_preprocess_writes_valid_contract_artifacts(synthetic_precomputed_dir, t
     assert len(discretised_cols) == N_PATHWAYS
     for col in discretised_cols:
         assert set(df[col].unique()) <= {"High", "Low", "Intermediate"}
+
+    # mutation columns: binary, so only High/Low -- never Intermediate
+    mutation_cols = [c for c in df.columns if c.endswith("_mut")]
+    assert len(mutation_cols) == N_MUTATION_GENES
+    for col in mutation_cols:
+        assert set(df[col].unique()) <= {"High", "Low"}

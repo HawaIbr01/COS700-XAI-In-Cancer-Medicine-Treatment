@@ -125,7 +125,7 @@ def preprocess(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> None:
 
     # ---- 1. load the DeepCCDS authors' real precomputed inputs -----------
     pathway_activity, cell_names, pathway_names = load_pathway_activity(precomputed_dir)
-    mutation_matrix = load_mutation_matrix(precomputed_dir)
+    mutation_matrix, mutation_cell_names, mutation_gene_names = load_mutation_matrix(precomputed_dir)
     drug_fingerprints = load_drug_fingerprints(precomputed_dir)
 
     splits_raw = {s: load_split(s, precomputed_dir) for s in ("train", "val", "test")}
@@ -158,10 +158,29 @@ def preprocess(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> None:
         col: _discretise(pathway_z[:, j], high_z, low_z) for j, col in enumerate(feature_cols)
     }
     # discretised[col] is (878,) aligned to cell_idx -> broadcast onto every
-    # row that references that cell_idx.
+    # row that references that cell_idx. Stored as `category` dtype, not
+    # object/str: at 572 discretised columns x 319,543 rows, object dtype
+    # (a full Python string per cell) pushed gdsc_processed.parquet's
+    # in-memory footprint past this project's 3.7GB WSL2 ceiling and got the
+    # real-extraction prep step OOM-killed (each column only ever holds 2-3
+    # distinct values, so this is a pure dtype fix -- rule_mask's `==`
+    # comparisons work identically against a categorical column).
     cell_idx_per_row = long_df["cell_idx"].to_numpy()
     for col in feature_cols:
-        long_df[col] = discretised[col][cell_idx_per_row]
+        long_df[col] = pd.Categorical(
+            discretised[col][cell_idx_per_row], categories=["Low", "Intermediate", "High"]
+        )
+
+    # ---- 3b. mutation status: already binary (0/1), no Z-score/threshold
+    #          needed -- straight High/Low on the raw calls. Real HGNC gene
+    #          symbols (mutation_gene_names), suffixed _mut to avoid
+    #          colliding with the pathway _activity columns above. Same
+    #          cell_idx_per_row broadcast as the pathway block, same
+    #          category-dtype reasoning as above.
+    mutation_feature_cols = [f"{g.strip()}_mut" for g in mutation_gene_names]
+    mutation_labels = np.where(mutation_matrix == 1, "High", "Low")  # (878, 534)
+    for j, col in enumerate(mutation_feature_cols):
+        long_df[col] = pd.Categorical(mutation_labels[cell_idx_per_row, j], categories=["Low", "High"])
 
     # ---- 4. response-class binning (§4.2.2 / §4.6.1: continuous ln_ic50 ->
     #         sensitive/resistant for rule-fidelity classification). Threshold
@@ -209,6 +228,18 @@ def preprocess(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> None:
         }
         for j, col in enumerate(feature_cols)
     }
+    feature_map.update({
+        col: {
+            "gene_symbol": gene,
+            "note": (
+                "Real HGNC gene symbol (binary driver-gene mutation status from "
+                "GDSC_mutation_input.csv) -- unlike the pathway-activity entries "
+                "above, gene_symbol here is not a placeholder."
+            ),
+            "partition_edges": None,
+        }
+        for gene, col in zip(mutation_gene_names, mutation_feature_cols)
+    })
     fm_errors = validate_feature_map(feature_map)
     if fm_errors:
         raise ValueError(f"feature_map.json failed validation: {fm_errors}")
@@ -239,7 +270,9 @@ def preprocess(precomputed_dir: Path = DEFAULT_PRECOMPUTED_DIR) -> None:
     print(f"Wrote {len(long_df):,} rows -> {ARTIFACTS_DATA_DIR}")
     print(f"  splits: train={len(splits['train']):,} val={len(splits['val']):,} test={len(splits['test']):,}")
     print(f"  response threshold ({cfg.response_binning.threshold}, from train): {threshold:.4f}")
-    print(f"  feature_map: {len(feature_map)} pathway-derived features (see limitation note above)")
+    print(f"  feature_map: {len(feature_map)} features "
+          f"({len(feature_cols)} pathway-activity, see limitation note above; "
+          f"{len(mutation_feature_cols)} mutation)")
 
 
 if __name__ == "__main__":
