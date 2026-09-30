@@ -58,8 +58,8 @@ from src.extraction.common import (
     decode_individual,
     mutate_partition,
     predict_with_rule,
-    random_gene,
     resolve_genes,
+    sparse_individual,
 )
 
 ARTIFACTS_DIR = Path(__file__).resolve().parents[2] / "artifacts"
@@ -253,9 +253,8 @@ def build_toolbox(n_features, scorer, tournament_size=3):
         creator.create("GAIndividual", list, fitness=creator.FitnessGA)
 
     toolbox = base.Toolbox()
-    toolbox.register("attr_partition", random_gene)
     toolbox.register(
-        "individual", tools.initRepeat, creator.GAIndividual, toolbox.attr_partition, n=n_features
+        "individual", tools.initIterate, creator.GAIndividual, lambda: sparse_individual(n_features)
     )
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
     toolbox.register("clone", copy.deepcopy)
@@ -524,8 +523,8 @@ def main():
     ap.add_argument("--seed", type=int, default=None, help="override pipeline.yaml seed")
     ap.add_argument("--cxpb", type=float, default=0.8)
     ap.add_argument("--mutpb", type=float, default=0.2)
-    ap.add_argument("--min-coverage", type=float, default=0.01,
-                     help="prune/reject rules covering less than this fraction of train rows")
+    ap.add_argument("--min-coverage", type=float, default=0.02,
+                     help="prune/reject rules covering less than this fraction of train rows (C6: 2% floor)")
     ap.add_argument("--max-age", type=int, default=DEFAULT_MAX_AGE,
                      help="aging-evolution: replace individuals older than this many generations")
     ap.add_argument("--w-fidelity", type=float, default=DEFAULT_W_FIDELITY)

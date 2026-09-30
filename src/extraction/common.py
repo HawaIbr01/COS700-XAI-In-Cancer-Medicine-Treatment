@@ -51,6 +51,31 @@ def random_gene() -> int:
     return random.randint(-1, N_PARTITIONS - 1)
 
 
+def sparse_individual(n_features: int, max_active: int = 5) -> list:
+    """Build one whole chromosome with a small number (1..max_active) of
+    active genes, everything else excluded (-1) -- C10 (sparse init).
+
+    Uniform per-gene sampling via random_gene() can't produce this: at real
+    feature counts (~40+), calling it independently per position makes a
+    dense, near-unreadable chromosome overwhelmingly likely by construction,
+    and sparsity is a whole-chromosome property random_gene() has no way to
+    see (it doesn't know how many genes are already active, or how many
+    positions remain). Ported from
+    notebooks/02_synthetic_rule_pools.ipynb's sample_sparse_chromosome(),
+    which the synthetic fixtures already relied on for this same reason.
+
+    Register with DEAP via tools.initIterate (calls this once per
+    individual), not tools.initRepeat (calls a per-gene function n_features
+    times) -- the two are not interchangeable for this.
+    """
+    n_active = random.randint(1, min(max_active, n_features))
+    active_positions = random.sample(range(n_features), n_active)
+    individual = [-1] * n_features
+    for pos in active_positions:
+        individual[pos] = random.randint(0, N_PARTITIONS - 1)
+    return individual
+
+
 def decode_individual(individual, feature_cols):
     """Chromosome -> list of {"feature", "partition"} conditions (Branch
     Contracts §0.4 rule-pool schema), skipping excluded (-1) genes."""

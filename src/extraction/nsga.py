@@ -57,8 +57,8 @@ from src.extraction.common import (
     decode_individual,
     mutate_partition,
     predict_with_rule,
-    random_gene,
     resolve_genes,
+    sparse_individual,
 )
 
 FIDELITY_SPLIT = "train"  # rules are fit against train predictions; test is
@@ -133,13 +133,13 @@ def _score_genotype(individual, df, feature_cols, class_pred_col, min_coverage):
     covered_preds = df.loc[mask, class_pred_col]
     predicted_class, fidelity = predict_with_rule(covered_preds)
 
-    # Optional support/coverage floor: without this, a rule matching 1-3 rows
-    # trivially hits fidelity 1.0 (predicting the majority class among a
-    # handful of rows is guaranteed to match) and dominates on the fidelity
-    # axis for free. Zeroing fidelity below the floor means such genotypes
-    # never survive selNSGA2's dominance check against any genotype with
-    # real coverage and non-trivial fidelity. Off by default (0.0) to match
-    # the branch contract exactly; opt in with --min-coverage.
+    # Support/coverage floor (C6, locked at 2%): without this, a rule matching
+    # 1-3 rows trivially hits fidelity 1.0 (predicting the majority class
+    # among a handful of rows is guaranteed to match) and dominates on the
+    # fidelity axis for free. Zeroing fidelity below the floor means such
+    # genotypes never survive selNSGA2's dominance check against any genotype
+    # with real coverage and non-trivial fidelity. --min-coverage 0.0 still
+    # turns it off if ever needed.
     if min_coverage > 0.0 and coverage < min_coverage:
         fidelity = 0.0
 
@@ -169,9 +169,8 @@ def build_toolbox(n_features, scorer):
         creator.create("Individual", list, fitness=creator.FitnessMulti)
 
     toolbox = base.Toolbox()
-    toolbox.register("attr_partition", random_gene)
     toolbox.register(
-        "individual", tools.initRepeat, creator.Individual, toolbox.attr_partition, n=n_features
+        "individual", tools.initIterate, creator.Individual, lambda: sparse_individual(n_features)
     )
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
     toolbox.register("clone", copy.deepcopy)
@@ -308,8 +307,8 @@ def main():
     ap.add_argument("--seed", type=int, default=None, help="override pipeline.yaml seed")
     ap.add_argument("--cxpb", type=float, default=0.9)
     ap.add_argument("--mutpb", type=float, default=0.2)
-    ap.add_argument("--min-coverage", type=float, default=0.0,
-                     help="zero out fidelity below this coverage fraction (0.0 = off, matches spec exactly)")
+    ap.add_argument("--min-coverage", type=float, default=0.02,
+                     help="zero out fidelity below this coverage fraction (C6: 2% floor; 0.0 = off)")
     args = ap.parse_args()
 
     config_path = Path(args.config)
