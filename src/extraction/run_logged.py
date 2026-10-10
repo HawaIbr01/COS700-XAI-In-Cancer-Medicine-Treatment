@@ -48,6 +48,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
+from src.extraction.coverage import coverage_floor  # noqa: E402
+
 # ---- parameters that the original CLI/config supplied (see ga.py / nsga.py
 # defaults and the 2026-09-30 run logs: seed 42 -> run seeds 43..72, GA pop
 # drawn from 35..45, NSGA-II pop 40, 50 generations, 30 runs, 2% floor) ------
@@ -174,14 +176,15 @@ def read_config_hash(compare_with: Path | None) -> str:
 # GA
 # --------------------------------------------------------------------------
 
-def run_ga_logged(condition, n_runs, n_gen, out_dir, log):
+def run_ga_logged(condition, n_runs, n_gen, out_dir, log, drug=None, min_cover_n=None):
     import random
     from src.extraction import ga as ga_mod
     if FAST[0]:
         install_fast_scorer(ga_mod)
 
-    df_train, df_val, feature_cols, feature_map = ga_mod.load_condition_data(DATA_DIR, condition)
-    scorer = ga_mod.make_scorer(df_train, df_val, feature_cols, *GA_WEIGHTS, MIN_COVERAGE)
+    df_train, df_val, feature_cols, feature_map = ga_mod.load_condition_data(DATA_DIR, condition, drug=drug)
+    min_cov = coverage_floor(MIN_COVERAGE, min_cover_n, len(df_train))
+    scorer = ga_mod.make_scorer(df_train, df_val, feature_cols, *GA_WEIGHTS, min_cov)
     log(f"[ga] condition={condition} features={len(feature_cols)} train_rows={len(df_train)} "
         f"val_rows={len(df_val)} gens={n_gen} runs={n_runs}")
 
@@ -224,7 +227,7 @@ def run_ga_logged(condition, n_runs, n_gen, out_dir, log):
         logbook = dtools.Logbook()
         t0 = time.time()
         front = ga_mod.run_ga(toolbox, scorer, pop_size, n_gen, GA_CXPB, GA_MUTPB,
-                              MIN_COVERAGE, GA_MAX_AGE, seed, logbook=logbook)
+                              min_cov, GA_MAX_AGE, seed, logbook=logbook)
         dt = time.time() - t0
         # cross-check: logbook == hook record for the standard stats
         mine = [r for r in gen_rows if r["run_id"] == run_id]
@@ -252,16 +255,17 @@ def run_ga_logged(condition, n_runs, n_gen, out_dir, log):
 # NSGA-II
 # --------------------------------------------------------------------------
 
-def run_nsga_logged(condition, n_runs, n_gen, out_dir, log, pop_size=NSGA_POP):
+def run_nsga_logged(condition, n_runs, n_gen, out_dir, log, pop_size=NSGA_POP, drug=None, min_cover_n=None):
     from src.extraction import nsga as nsga_mod
     if FAST[0]:
         install_fast_scorer(nsga_mod)
 
-    df, feature_cols, feature_map, class_col = nsga_mod.load_condition_data(DATA_DIR, condition, "train")
-    scorer = nsga_mod.make_scorer(df, feature_cols, class_col, min_coverage=MIN_COVERAGE)
+    df, feature_cols, feature_map, class_col = nsga_mod.load_condition_data(DATA_DIR, condition, "train", drug=drug)
+    min_cov = coverage_floor(MIN_COVERAGE, min_cover_n, len(df))
+    scorer = nsga_mod.make_scorer(df, feature_cols, class_col, min_coverage=min_cov)
     toolbox = nsga_mod.build_toolbox(len(feature_cols), scorer)
     log(f"[nsga] condition={condition} features={len(feature_cols)} rows={len(df)} pop={pop_size} "
-        f"gens={n_gen} runs={n_runs} min_coverage={MIN_COVERAGE}")
+        f"gens={n_gen} runs={n_runs} min_coverage={min_cov}")
 
     gen_rows, run_rows, run_fronts = [], [], {}
     state = {"gen": -1, "run": None, "seed": None}
@@ -269,7 +273,7 @@ def run_nsga_logged(condition, n_runs, n_gen, out_dir, log, pop_size=NSGA_POP):
     def hook(pop, rec):
         state["gen"] += 1
         sc = [scorer(i) for i in pop]  # (fidelity, length, coverage, pred)
-        above = [s for s in sc if s[3] is not None and s[2] >= MIN_COVERAGE and s[1] > 0]
+        above = [s for s in sc if s[3] is not None and s[2] >= min_cov and s[1] > 0]
         lens = [s[1] for s in sc]
         front0 = dtools.sortNondominated(pop, len(pop), first_front_only=True)[0]
         best = max(above, key=lambda s: (s[0], -s[1])) if above else None
@@ -362,6 +366,8 @@ def main():
     ap.add_argument("--out-dir", default="outputs")
     ap.add_argument("--no-fast", action="store_true", help="use the original sklearn/pandas scorer (slow)")
     ap.add_argument("--tag", default="", help="suffix for smoke tests, e.g. 'smoke'")
+    ap.add_argument("--drug", default=None, help="restrict to one drug_name; implies no comparison with the global shipped pools")
+    ap.add_argument("--min-cover-n", type=int, default=None, help="fixed coverage floor in rows; overrides the 2%% fraction")
     ap.add_argument("--compare-with", default=None,
                     help="shipped pool JSON to compare against (default artifacts/rules_orig/<ext>_<cond>.json)")
     args = ap.parse_args()
@@ -370,7 +376,9 @@ def main():
     out = Path(args.out_dir)
     for sub in ("logs", "rules", "runs"):
         (out / sub).mkdir(parents=True, exist_ok=True)
-    name = f"{args.extractor}_{args.condition}" + (f"_{args.tag}" if args.tag else "")
+    drug_slug = "".join(ch if ch.isalnum() else "-" for ch in args.drug) if args.drug else ""
+    name = (f"{args.extractor}_{args.condition}" + (f"_{drug_slug}" if drug_slug else "")
+            + (f"_{args.tag}" if args.tag else ""))
     log_path = out / "logs" / f"{name}_rerun.log"
     logf = open(log_path, "w", encoding="utf-8")
 
@@ -387,10 +395,11 @@ def main():
     t_start = time.time()
     if args.extractor == "ga":
         rules, feature_map, gen_rows, run_rows, run_fronts, mod = run_ga_logged(
-            args.condition, args.n_runs, args.n_gen, out, log)
+            args.condition, args.n_runs, args.n_gen, out, log, drug=args.drug, min_cover_n=args.min_cover_n)
     else:
         rules, feature_map, gen_rows, run_rows, run_fronts, mod = run_nsga_logged(
-            args.condition, args.n_runs, args.n_gen, out, log, pop_size=args.pop)
+            args.condition, args.n_runs, args.n_gen, out, log, pop_size=args.pop,
+            drug=args.drug, min_cover_n=args.min_cover_n)
 
     pool_path = out / "rules" / f"{name}.json"
     mod.write_rule_pool(pool_path, args.condition, args.n_runs, cfg_hash, rules, feature_map)
@@ -401,7 +410,7 @@ def main():
     with open(out / "runs" / f"{name}_run_fronts.json", "w", encoding="utf-8") as f:
         json.dump(run_fronts, f, indent=1)
 
-    if not args.tag:
+    if not args.tag and not args.drug:
         msg = compare_pools(pool_path, compare_with)
         log(msg)
         with open(out / "logs" / f"{name}_repro_check.txt", "w") as f:

@@ -1,0 +1,204 @@
+{
+  "n_candidates": 379,
+  "random_seed": 700,
+  "random_draw_pool_size": 370,
+  "best_predicted": [
+    "SCH772984",
+    "PD0325901",
+    "QL-X-138",
+    "Irinotecan",
+    "Lestaurtinib"
+  ],
+  "positive_controls": {
+    "Erlotinib": [
+      "EGFR_mut"
+    ],
+    "PLX-4720": [
+      "BRAF_mut"
+    ],
+    "Olaparib": [
+      "BRCA1_mut",
+      "BRCA2_mut"
+    ],
+    "Selumetinib": [
+      "BRAF_mut",
+      "KRAS_mut"
+    ]
+  },
+  "random": [
+    "CHIR-99021",
+    "Capivasertib",
+    "Nelarabine",
+    "XMD13-2",
+    "Daporinad"
+  ],
+  "pilot_drugs": [
+    "SCH772984",
+    "PD0325901",
+    "QL-X-138",
+    "Irinotecan",
+    "Lestaurtinib",
+    "Erlotinib",
+    "PLX-4720",
+    "Olaparib",
+    "Selumetinib",
+    "CHIR-99021",
+    "Capivasertib",
+    "Nelarabine",
+    "XMD13-2",
+    "Daporinad"
+  ],
+  "n_pilot_drugs": 14,
+  "groups_of": {
+    "SCH772984": [
+      "best_predicted"
+    ],
+    "PD0325901": [
+      "best_predicted"
+    ],
+    "QL-X-138": [
+      "best_predicted"
+    ],
+    "Irinotecan": [
+      "best_predicted"
+    ],
+    "Lestaurtinib": [
+      "best_predicted"
+    ],
+    "Erlotinib": [
+      "positive_control"
+    ],
+    "PLX-4720": [
+      "positive_control"
+    ],
+    "Olaparib": [
+      "positive_control"
+    ],
+    "Selumetinib": [
+      "positive_control"
+    ],
+    "CHIR-99021": [
+      "random"
+    ],
+    "Capivasertib": [
+      "random"
+    ],
+    "Nelarabine": [
+      "random"
+    ],
+    "XMD13-2": [
+      "random"
+    ],
+    "Daporinad": [
+      "random"
+    ]
+  },
+  "per_drug_val_macro_f1": {
+    "SCH772984": {
+      "adam": 0.928922,
+      "adam_wd": 0.895167,
+      "sam": 0.903441,
+      "mean": 0.909176,
+      "n_val_rows": 87
+    },
+    "PD0325901": {
+      "adam": 0.890947,
+      "adam_wd": 0.870594,
+      "sam": 0.89033,
+      "mean": 0.883957,
+      "n_val_rows": 93
+    },
+    "QL-X-138": {
+      "adam": 0.922078,
+      "adam_wd": 0.85974,
+      "sam": 0.847926,
+      "mean": 0.876581,
+      "n_val_rows": 66
+    },
+    "Irinotecan": {
+      "adam": 0.879718,
+      "adam_wd": 0.870233,
+      "sam": 0.868396,
+      "mean": 0.872782,
+      "n_val_rows": 93
+    },
+    "Lestaurtinib": {
+      "adam": 0.849151,
+      "adam_wd": 0.887482,
+      "sam": 0.874293,
+      "mean": 0.870309,
+      "n_val_rows": 80
+    },
+    "LMP744": {
+      "adam": 0.857026,
+      "adam_wd": 0.856675,
+      "sam": 0.871402,
+      "mean": 0.861701,
+      "n_val_rows": 70
+    },
+    "Trametinib": {
+      "adam": 0.890997,
+      "adam_wd": 0.831301,
+      "sam": 0.855401,
+      "mean": 0.859233,
+      "n_val_rows": 83
+    },
+    "Tubastatin A": {
+      "adam": 0.846899,
+      "adam_wd": 0.858492,
+      "sam": 0.871753,
+      "mean": 0.859048,
+      "n_val_rows": 79
+    },
+    "XMD13-2": {
+      "adam": 0.838889,
+      "adam_wd": 0.861905,
+      "sam": 0.873496,
+      "mean": 0.858097,
+      "n_val_rows": 87
+    },
+    "Topotecan": {
+      "adam": 0.845864,
+      "adam_wd": 0.845864,
+      "sam": 0.880116,
+      "mean": 0.857281,
+      "n_val_rows": 59
+    },
+    "CUDC-101": {
+      "adam": 0.88534,
+      "adam_wd": 0.840216,
+      "sam": 0.842051,
+      "mean": 0.855869,
+      "n_val_rows": 70
+    },
+    "Camptothecin": {
+      "adam": 0.809524,
+      "adam_wd": 0.879241,
+      "sam": 0.873798,
+      "mean": 0.854188,
+      "n_val_rows": 84
+    },
+    "MK-2206": {
+      "adam": 0.836863,
+      "adam_wd": 0.912486,
+      "sam": 0.812236,
+      "mean": 0.853862,
+      "n_val_rows": 80
+    },
+    "Pictilisib": {
+      "adam": 0.880349,
+      "adam_wd": 0.821053,
+      "sam": 0.85786,
+      "mean": 0.853087,
+      "n_val_rows": 85
+    },
+    "Docetaxel": {
+      "adam": 0.889777,
+      "adam_wd": 0.877643,
+      "sam": 0.790805,
+      "mean": 0.852742,
+      "n_val_rows": 91
+    }
+  },
+  "note": "per_drug_val_macro_f1 lists only the 15 best-ranked drugs; full table in pilot_drug_val_f1_all.csv"
+}

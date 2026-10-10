@@ -52,6 +52,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src.common.config import config_hash, load_config
 from src.common.metrics import comprehensibility, fidelity_f1
 from src.common.schema import save_rule_pool
+from src.extraction.coverage import coverage_floor
 from src.extraction.common import (
     PARTITION_LABELS,
     cxTwoPoint_partitions,
@@ -88,8 +89,11 @@ DEFAULT_MAX_AGE = 8
 # Data loading
 # --------------------------------------------------------------------------
 
-def load_condition_data(data_dir: Path, condition: str):
+def load_condition_data(data_dir: Path, condition: str, drug: str | None = None):
     """
+    drug: if given, keep only that drug's rows (filter applied right after the
+    parquet read; all other logic -- split lookup, prediction merge -- unchanged).
+
     Returns (df_train, df_val, feature_cols, feature_map, true_class_by_row).
 
     df_train carries the condition's class_pred for the fidelity target;
@@ -98,6 +102,10 @@ def load_condition_data(data_dir: Path, condition: str):
     joined from response_classes.json's per_row_class.
     """
     df = pd.read_parquet(data_dir / "gdsc_processed.parquet")
+    if drug is not None:
+        df = df[df["drug_name"] == drug].reset_index(drop=True)
+        if df.empty:
+            raise ValueError(f"no rows for drug {drug!r} in {data_dir / 'gdsc_processed.parquet'}")
 
     with open(data_dir / "splits.json") as f:
         splits = json.load(f)
@@ -496,8 +504,10 @@ def write_rule_pool(out_path, condition, n_runs, config_hash_val, rules, feature
 
 def extract_rules_ga(condition: str, cfg, args) -> list:
     df_train, df_val, feature_cols, feature_map = load_condition_data(
-        Path(args.data_dir), condition
+        Path(args.data_dir), condition, drug=args.drug
     )
+    # --min-cover-n (fixed row count) overrides the fractional --min-coverage
+    args.min_coverage = coverage_floor(args.min_coverage, args.min_cover_n, len(df_train))
     scorer = make_scorer(
         df_train, df_val, feature_cols,
         args.w_fidelity, args.w_accuracy, args.w_comprehensibility,
@@ -542,6 +552,9 @@ def main():
     ap.add_argument("--mutpb", type=float, default=0.2)
     ap.add_argument("--min-coverage", type=float, default=0.02,
                      help="prune/reject rules covering less than this fraction of train rows (C6: 2% floor)")
+    ap.add_argument("--min-cover-n", type=int, default=None,
+                     help="fixed coverage floor in rows (cell lines); overrides --min-coverage")
+    ap.add_argument("--drug", default=None, help="restrict to one drug_name (default: all drugs)")
     ap.add_argument("--max-age", type=int, default=DEFAULT_MAX_AGE,
                      help="aging-evolution: replace individuals older than this many generations")
     ap.add_argument("--w-fidelity", type=float, default=DEFAULT_W_FIDELITY)

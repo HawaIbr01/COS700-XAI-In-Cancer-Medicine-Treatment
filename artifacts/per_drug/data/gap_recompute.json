@@ -1,0 +1,89 @@
+{
+  "adam_baseline": {
+    "checkpoint_dir": "artifacts/checkpoints/baseline",
+    "meta_epoch": 90,
+    "meta_n_epochs": null,
+    "meta_generalisation_gap": 0.3369378980474105,
+    "meta_git_commit": null,
+    "meta_produced_by": null,
+    "meta_stopping_rule": null,
+    "all_rows": {
+      "train_loss": 0.7373303461752326,
+      "val_loss": 1.0742682342710108,
+      "test_loss": 1.0741190218185268,
+      "n_train": 255628,
+      "n_val": 31963,
+      "n_test": 31952,
+      "gap_val_minus_train": 0.3369378880957782,
+      "gap_test_minus_train": 0.3367886756432942
+    },
+    "extraction_379_drugs": {
+      "train_loss": 0.7366161583295185,
+      "val_loss": 1.0697416484355926,
+      "test_loss": 1.0690342693457968,
+      "n_train": 245845,
+      "n_val": 30720,
+      "n_test": 30728,
+      "gap_val_minus_train": 0.33312549010607406,
+      "gap_test_minus_train": 0.3324181110162783
+    }
+  },
+  "adam_wd": {
+    "checkpoint_dir": "artifacts/sam_investigation/adam_wd_control",
+    "meta_epoch": 187,
+    "meta_n_epochs": 187,
+    "meta_generalisation_gap": 0.27291290211006136,
+    "meta_git_commit": "6f13fb6",
+    "meta_produced_by": "src.investigations.stage4b_adam_wd_control",
+    "meta_stopping_rule": "val_loss_plateau: patience=30, min_delta=0.0001, max_epochs=250",
+    "all_rows": {
+      "train_loss": 1.0026611344859107,
+      "val_loss": 1.2755740747297228,
+      "test_loss": 1.2717056267847702,
+      "n_train": 255628,
+      "n_val": 31963,
+      "n_test": 31952,
+      "gap_val_minus_train": 0.2729129402438122,
+      "gap_test_minus_train": 0.2690444922988595
+    },
+    "extraction_379_drugs": {
+      "train_loss": 1.001667447908314,
+      "val_loss": 1.271612576643626,
+      "test_loss": 1.26822774784542,
+      "n_train": 245845,
+      "n_val": 30720,
+      "n_test": 30728,
+      "gap_val_minus_train": 0.26994512873531185,
+      "gap_test_minus_train": 0.26656029993710595
+    }
+  },
+  "sam_confirmatory": {
+    "checkpoint_dir": "artifacts/sam_investigation/confirmatory",
+    "meta_epoch": 250,
+    "meta_n_epochs": 250,
+    "meta_generalisation_gap": 0.04849882070928646,
+    "meta_git_commit": "cf6c950",
+    "meta_produced_by": "src.investigations.stage4_confirmatory",
+    "meta_stopping_rule": "val_loss_plateau: patience=30, min_delta=0.0001, max_epochs=250",
+    "all_rows": {
+      "train_loss": 1.3547621794187321,
+      "val_loss": 1.4032610157824084,
+      "test_loss": 1.4037522675696168,
+      "n_train": 255628,
+      "n_val": 31963,
+      "n_test": 31952,
+      "gap_val_minus_train": 0.048498836363676245,
+      "gap_test_minus_train": 0.04899008815088468
+    },
+    "extraction_379_drugs": {
+      "train_loss": 1.3510191583001119,
+      "val_loss": 1.3991997162501018,
+      "test_loss": 1.4005952422211052,
+      "n_train": 245845,
+      "n_val": 30720,
+      "n_test": 30728,
+      "gap_val_minus_train": 0.04818055794998988,
+      "gap_test_minus_train": 0.04957608392099333
+    }
+  }
+}

@@ -52,6 +52,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from src.common.config import config_hash, load_config
 from src.common.schema import save_rule_pool
+from src.extraction.coverage import coverage_floor
 from src.extraction.common import (
     cxTwoPoint_partitions,
     decode_individual,
@@ -69,9 +70,16 @@ FIDELITY_SPLIT = "train"  # rules are fit against train predictions; test is
 # Data loading
 # --------------------------------------------------------------------------
 
-def load_condition_data(data_dir: Path, condition: str, split: str):
-    """Returns (df, feature_cols, feature_map, class_pred_col)."""
+def load_condition_data(data_dir: Path, condition: str, split: str, drug: str | None = None):
+    """Returns (df, feature_cols, feature_map, class_pred_col).
+
+    drug: if given, keep only that drug's rows (filter applied right after the
+    parquet read)."""
     df = pd.read_parquet(data_dir / "gdsc_processed.parquet")
+    if drug is not None:
+        df = df[df["drug_name"] == drug].reset_index(drop=True)
+        if df.empty:
+            raise ValueError(f"no rows for drug {drug!r} in {data_dir / 'gdsc_processed.parquet'}")
 
     with open(data_dir / "splits.json") as f:
         splits = json.load(f)
@@ -324,6 +332,9 @@ def main():
     ap.add_argument("--mutpb", type=float, default=0.2)
     ap.add_argument("--min-coverage", type=float, default=0.02,
                      help="zero out fidelity below this coverage fraction (C6: 2% floor; 0.0 = off)")
+    ap.add_argument("--min-cover-n", type=int, default=None,
+                     help="fixed coverage floor in rows (cell lines); overrides --min-coverage")
+    ap.add_argument("--drug", default=None, help="restrict to one drug_name (default: all drugs)")
     args = ap.parse_args()
 
     config_path = Path(args.config)
@@ -336,8 +347,9 @@ def main():
     base_seed = args.seed if args.seed is not None else cfg.seed
 
     df, feature_cols, feature_map, class_pred_col = load_condition_data(
-        Path(args.data_dir), args.condition, FIDELITY_SPLIT
+        Path(args.data_dir), args.condition, FIDELITY_SPLIT, drug=args.drug
     )
+    args.min_coverage = coverage_floor(args.min_coverage, args.min_cover_n, len(df))
     scorer = make_scorer(df, feature_cols, class_pred_col, min_coverage=args.min_coverage)
     toolbox = build_toolbox(len(feature_cols), scorer)
 
