@@ -1,0 +1,11 @@
+pathway,partition,rules,pools
+B cell receptor signaling pathway,High,8,"ga_baseline, ga_sam"
+Axon guidance,Low,4,"ga_baseline, nsga_baseline"
+Estrogen signaling pathway,Low,3,ga_sam
+Natural killer cell mediated cytotoxicity,High,3,"ga_baseline, ga_sam"
+Cellular senescence,High,1,nsga_sam
+C-type lectin receptor signaling pathway,High,1,ga_sam
+Gap junction,Low,1,nsga_sam
+Regulation of lipolysis in adipocytes,Low,1,nsga_sam
+Th17 cell differentiation,High,1,nsga_sam
+Thyroid hormone signaling pathway,High,1,ga_baseline

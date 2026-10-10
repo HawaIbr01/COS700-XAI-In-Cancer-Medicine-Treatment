@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "extractor": "nsga",
+    "condition": "baseline",
+    "runs": 30,
+    "config_hash": "unknown"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "Axon_guidance_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "GOLGA5_mut",
+          "partition": "High"
+        },
+        {
+          "feature": "PPP6C_mut",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Axon guidance",
+        "GOLGA5",
+        "PPP6C"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4617,
+      "coverage": 0.0212,
+      "run_ids": [
+        20
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Axon_guidance_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "PPP6C_mut",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Axon guidance",
+        "PPP6C"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4524,
+      "coverage": 0.0553,
+      "run_ids": [
+        20
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Axon_guidance_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Axon guidance"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4517,
+      "coverage": 0.1807,
+      "run_ids": [
+        20
+      ],
+      "non_dominated": true,
+      "id": "nsga_baseline_0003"
+    }
+  ]
+}

@@ -1,0 +1,2130 @@
+{
+ "1": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "KAT6A_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "MSH6_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4700486841176886,
+   "accuracy": 0.4454707985697259,
+   "coverage": 0.061103540848908865,
+   "weighted_fitness": 0.5663877363034129
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4681525282389508,
+   "accuracy": 0.44142857142857145,
+   "coverage": 0.1426833980760235,
+   "weighted_fitness": 0.5648189873578775
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CD79B_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4675452561093696,
+   "accuracy": 0.44147062966615014,
+   "coverage": 0.13196526266550063,
+   "weighted_fitness": 0.5642107849330681
+  }
+ ],
+ "2": [
+  {
+   "conditions": [
+    {
+     "feature": "Chemokine_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "AXIN1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "NDRG1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.45917419572743395,
+   "accuracy": 0.4372594303310239,
+   "coverage": 0.026053000874534767,
+   "weighted_fitness": 0.5586202376442526
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Chemokine_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "AXIN1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "MAX_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NDRG1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.4594266504809039,
+   "accuracy": 0.43665540540540543,
+   "coverage": 0.02354735707457951,
+   "weighted_fitness": 0.5581727832096973
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "PRKAR1A_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.45724097495602645,
+   "accuracy": 0.4296148738379814,
+   "coverage": 0.026358071142386464,
+   "weighted_fitness": 0.5554243438742047
+  },
+  {
+   "conditions": [
+    {
+     "feature": "SDC4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36438399493911117,
+   "accuracy": 0.35971406688792446,
+   "coverage": 0.08173849376639752,
+   "weighted_fitness": 0.48952307078372326
+  }
+ ],
+ "3": [
+  {
+   "conditions": [
+    {
+     "feature": "Chemokine_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Thermogenesis_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.47651195499296767,
+   "accuracy": 0.447822514379622,
+   "coverage": 0.02270943073888019,
+   "weighted_fitness": 0.5704689590804024
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Chemokine_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4097960920367885,
+   "accuracy": 0.3983539094650206,
+   "coverage": 0.14669812280095182,
+   "weighted_fitness": 0.5234824593796616
+  }
+ ],
+ "4": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "FUBP1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.45644768856447687,
+   "accuracy": 0.44139821795750517,
+   "coverage": 0.02726107913522748,
+   "weighted_fitness": 0.5591915354398407
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "SND1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4568651494932737,
+   "accuracy": 0.43085185737729376,
+   "coverage": 0.12251215196566942,
+   "weighted_fitness": 0.5556881666547253
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "5": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "AFF3_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "SMARCB1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4774495791646816,
+   "accuracy": 0.4369208838203849,
+   "coverage": 0.02676889910309341,
+   "weighted_fitness": 0.5667256689122904
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "ETV6_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "SMARCB1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4640906497106057,
+   "accuracy": 0.4422043010752688,
+   "coverage": 0.026740425878093922,
+   "weighted_fitness": 0.5625633466971656
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Calcium_signaling_pathway_activity",
+     "partition": "Intermediate"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.45852995852995854,
+   "accuracy": 0.4384014423076923,
+   "coverage": 0.123215847383514,
+   "weighted_fitness": 0.5590796854468729
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "SMARCB1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.46199090990107833,
+   "accuracy": 0.4326295585412668,
+   "coverage": 0.049112245520551566,
+   "weighted_fitness": 0.5586169542456279
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "6": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "PAX7_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.48374794140591143,
+   "accuracy": 0.45339652448657186,
+   "coverage": 0.024226646870995953,
+   "weighted_fitness": 0.5756760565036596
+  }
+ ],
+ "7": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "HIF1A_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PIM1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4728271931610014,
+   "accuracy": 0.43940714908456846,
+   "coverage": 0.021070186499623746,
+   "weighted_fitness": 0.5655157880530985
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "MAX_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4679036041799957,
+   "accuracy": 0.43545279383429675,
+   "coverage": 0.020297341821066118,
+   "weighted_fitness": 0.5622657990237012
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "8": [
+  {
+   "conditions": [
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "POLD1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4546688382193268,
+   "accuracy": 0.43253968253968256,
+   "coverage": 0.04085907787427037,
+   "weighted_fitness": 0.5552905653882853
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Melanogenesis_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNAS_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "TPM3_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4570103139215421,
+   "accuracy": 0.41468101460415063,
+   "coverage": 0.04903902865626716,
+   "weighted_fitness": 0.5497440453271957
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Protein_digestion_and_absorption_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4011473303654128,
+   "accuracy": 0.3897536462801814,
+   "coverage": 0.16305395676137405,
+   "weighted_fitness": 0.5165804245128489
+  }
+ ],
+ "9": [
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Wnt_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "RB1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4584244036871615,
+   "accuracy": 0.4206611570247934,
+   "coverage": 0.023181272753157477,
+   "weighted_fitness": 0.5524734355689493
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "ATR_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4392301998519615,
+   "accuracy": 0.4186708860759494,
+   "coverage": 0.06163232931318514,
+   "weighted_fitness": 0.5434890993606643
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4378711335637685,
+   "accuracy": 0.4183635690485005,
+   "coverage": 0.15479265390795013,
+   "weighted_fitness": 0.5431196089210206
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "ATR_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "HSP90AA1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4365040396375485,
+   "accuracy": 0.4213932242101256,
+   "coverage": 0.05134942748479733,
+   "weighted_fitness": 0.5428654952614897
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "BLM_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.44156275976724857,
+   "accuracy": 0.4116222760290557,
+   "coverage": 0.040989241188553766,
+   "weighted_fitness": 0.5420717378061306
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CBLB_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4341166596726815,
+   "accuracy": 0.41947177628171933,
+   "coverage": 0.10970326831946958,
+   "weighted_fitness": 0.5414683178520077
+  }
+ ],
+ "10": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "PCM1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PTPN13_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4664794299682738,
+   "accuracy": 0.4360146252285192,
+   "coverage": 0.04172547743496919,
+   "weighted_fitness": 0.5614719112667539
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "EPS15_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "MTOR_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "RANBP2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.458825233577171,
+   "accuracy": 0.4447910168434186,
+   "coverage": 0.03039313388517155,
+   "weighted_fitness": 0.560749609606322
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Focal_adhesion_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "QKI_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.44012764852128095,
+   "accuracy": 0.41576506955177744,
+   "coverage": 0.06137200268461836,
+   "weighted_fitness": 0.5428759154783979
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.42382690766628084,
+   "accuracy": 0.4058787507654623,
+   "coverage": 0.15792877626146556,
+   "weighted_fitness": 0.5324300208680879
+  }
+ ],
+ "11": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "CCNE1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4818805765271105,
+   "accuracy": 0.4510166358595194,
+   "coverage": 0.03070633936016596,
+   "weighted_fitness": 0.5740027812887308
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "12": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CBL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "FAT4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IRS4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "KDM5A_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 6,
+   "fidelity_f1": 0.48062456539604276,
+   "accuracy": 0.45085255767301907,
+   "coverage": 0.03341943094226037,
+   "weighted_fitness": 0.5719815475158738
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "BRIP1_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "FAT4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IRS4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "KDM5A_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 6,
+   "fidelity_f1": 0.480835581205696,
+   "accuracy": 0.44871794871794873,
+   "coverage": 0.03366348715654172,
+   "weighted_fitness": 0.5713293914959432
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "PRCC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.47666326435928363,
+   "accuracy": 0.44963738920225627,
+   "coverage": 0.022941284142447477,
+   "weighted_fitness": 0.5711722544831667
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "FAT4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IRS4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "KDM5A_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 5,
+   "fidelity_f1": 0.4779219332924996,
+   "accuracy": 0.44986571172784245,
+   "coverage": 0.03813785108503325,
+   "weighted_fitness": 0.5707696173381179
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CBL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "FAT4_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.4727272727272727,
+   "accuracy": 0.45073450376209245,
+   "coverage": 0.048245845959852755,
+   "weighted_fitness": 0.5690857476454037
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Focal_adhesion_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "resistant",
+   "length": 1,
+   "fidelity_f1": 0.40029907402082016,
+   "accuracy": 0.37339819648789746,
+   "coverage": 0.16965160975411336,
+   "weighted_fitness": 0.5104743017304828
+  }
+ ],
+ "13": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CHEK2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "CNTRL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNA11_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IL6ST_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NCOA2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PREX2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 7,
+   "fidelity_f1": 0.4887885739658107,
+   "accuracy": 0.4657195799876467,
+   "coverage": 0.028099005470926804,
+   "weighted_fitness": 0.5805091588327388
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CHEK2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "CNTRL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNA11_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IL6ST_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NCOA1_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PREX2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 7,
+   "fidelity_f1": 0.486127558788699,
+   "accuracy": 0.4664784756527876,
+   "coverage": 0.02471069169598731,
+   "weighted_fitness": 0.5795773154858378
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CHEK2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "CNTRL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNA11_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IL6ST_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PREX2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 6,
+   "fidelity_f1": 0.48522657160485366,
+   "accuracy": 0.46105020196191576,
+   "coverage": 0.03054363521731172,
+   "weighted_fitness": 0.5776216258109526
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CHEK2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNA11_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IL6ST_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NCOA2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "QKI_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 6,
+   "fidelity_f1": 0.4877213579884551,
+   "accuracy": 0.45623836126629425,
+   "coverage": 0.021297972299619678,
+   "weighted_fitness": 0.5770601354401057
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "NCOA2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "QKI_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.48341448569689593,
+   "accuracy": 0.4563806777217015,
+   "coverage": 0.027619028249506804,
+   "weighted_fitness": 0.5762208047172477
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "GNA11_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IL6ST_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NCOA2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "QKI_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 5,
+   "fidelity_f1": 0.48324836125273124,
+   "accuracy": 0.45743766122098023,
+   "coverage": 0.02308771787101629,
+   "weighted_fitness": 0.5758166922428204
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CHEK2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNA11_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IL6ST_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "QKI_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 5,
+   "fidelity_f1": 0.48384240814519697,
+   "accuracy": 0.45309882747068675,
+   "coverage": 0.023714128821005105,
+   "weighted_fitness": 0.5745654215318272
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "QKI_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4790449841172251,
+   "accuracy": 0.45471264367816094,
+   "coverage": 0.04135939311354715,
+   "weighted_fitness": 0.5740203674408069
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "14": [
+  {
+   "conditions": [
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "BCL2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "ELF4_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.48886833179155104,
+   "accuracy": 0.4528400208441897,
+   "coverage": 0.033712298399397995,
+   "weighted_fitness": 0.577086155203063
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CIC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4832457676590776,
+   "accuracy": 0.4467651553744269,
+   "coverage": 0.036006426813642745,
+   "weighted_fitness": 0.5731290991283337
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4681525282389508,
+   "accuracy": 0.44142857142857145,
+   "coverage": 0.1426833980760235,
+   "weighted_fitness": 0.5648189873578775
+  }
+ ],
+ "15": [
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Focal_adhesion_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4628,
+   "accuracy": 0.43043696634856854,
+   "coverage": 0.03823954117431715,
+   "weighted_fitness": 0.5582136375226983
+  },
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Focal_adhesion_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "ABL2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4564211695040711,
+   "accuracy": 0.4326404926866821,
+   "coverage": 0.02389717098171612,
+   "weighted_fitness": 0.5557647476682197
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4378711335637685,
+   "accuracy": 0.4183635690485005,
+   "coverage": 0.15479265390795013,
+   "weighted_fitness": 0.5431196089210206
+  }
+ ],
+ "16": [
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "NKX2-1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4913289835164835,
+   "accuracy": 0.4628921193573068,
+   "coverage": 0.02410055116028392,
+   "weighted_fitness": 0.5820613333085239
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.42451186010102504,
+   "accuracy": 0.40254340914649056,
+   "coverage": 0.15849010555431267,
+   "weighted_fitness": 0.5315708798970826
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "CHEK2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4276016383495146,
+   "accuracy": 0.4064516129032258,
+   "coverage": 0.12278468140495027,
+   "weighted_fitness": 0.5339795010741099
+  }
+ ],
+ "17": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "HNRNPA2B1_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NUMA1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "SDC4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "STAT6_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 5,
+   "fidelity_f1": 0.48356046888401794,
+   "accuracy": 0.45525291828793774,
+   "coverage": 0.022042343753177814,
+   "weighted_fitness": 0.5751924806503346
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "NUMA1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4788490033937192,
+   "accuracy": 0.44578815679733114,
+   "coverage": 0.044349081738493765,
+   "weighted_fitness": 0.5708086057069388
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4681525282389508,
+   "accuracy": 0.44142857142857145,
+   "coverage": 0.1426833980760235,
+   "weighted_fitness": 0.5648189873578775
+  }
+ ],
+ "18": [
+  {
+   "conditions": [
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "FGFR4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "SLC34A2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.47862398091071784,
+   "accuracy": 0.4525974025974026,
+   "coverage": 0.053326282820476315,
+   "weighted_fitness": 0.5723912809203126
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNAQ_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.44253334305079806,
+   "accuracy": 0.4206686930091185,
+   "coverage": 0.031113099717301553,
+   "weighted_fitness": 0.5456747462267499
+  },
+  {
+   "conditions": [
+    {
+     "feature": "HOXA13_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.35947097063438693,
+   "accuracy": 0.35676691729323307,
+   "coverage": 0.05811385222396225,
+   "weighted_fitness": 0.48628070748845537
+  }
+ ],
+ "19": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "FIP1L1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "NCOA4_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "USP8_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.47406838263542067,
+   "accuracy": 0.43156199677938806,
+   "coverage": 0.022274197156745102,
+   "weighted_fitness": 0.5629788696601237
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Gap_junction_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "WRN_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.42045454545454547,
+   "accuracy": 0.4011130136986301,
+   "coverage": 0.0916919197055055,
+   "weighted_fitness": 0.5288947995497653
+  },
+  {
+   "conditions": [
+    {
+     "feature": "MAPK_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "PICALM_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "RNF43_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "resistant",
+   "length": 3,
+   "fidelity_f1": 0.43199079401611046,
+   "accuracy": 0.3862704918032787,
+   "coverage": 0.020077691228212898,
+   "weighted_fitness": 0.5285415783894463
+  },
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "Intermediate"
+    }
+   ],
+   "predicted_class": "resistant",
+   "length": 1,
+   "fidelity_f1": 0.3684248554913295,
+   "accuracy": 0.35125314450759343,
+   "coverage": 0.6755435335272224,
+   "weighted_fitness": 0.4883801351991056
+  }
+ ],
+ "20": [
+  {
+   "conditions": [
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "SDHC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4818444880052273,
+   "accuracy": 0.4487065120428189,
+   "coverage": 0.0225792674245968,
+   "weighted_fitness": 0.5731779981180382
+  },
+  {
+   "conditions": [
+    {
+     "feature": "FOXL2_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36561626674376024,
+   "accuracy": 0.3685778108711839,
+   "coverage": 0.026777034310236123,
+   "weighted_fitness": 0.4931799034899561
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CREB1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3721429073774527,
+   "accuracy": 0.3479148439778361,
+   "coverage": 0.07262706176656022,
+   "weighted_fitness": 0.488884853362446
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Thermogenesis_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3708678685458122,
+   "accuracy": 0.3638753779413698,
+   "coverage": 0.15869755333645183,
+   "weighted_fitness": 0.4938972727754446
+  }
+ ],
+ "21": [
+  {
+   "conditions": [
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CBLB_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "FLT4_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.4913883089770355,
+   "accuracy": 0.4663359319631467,
+   "coverage": 0.023783278081718155,
+   "weighted_fitness": 0.5829437138281659
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CBLB_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4858046199509614,
+   "accuracy": 0.4584450402144772,
+   "coverage": 0.03241473286013545,
+   "weighted_fitness": 0.5780188920040487
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Estrogen_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4853632704935395,
+   "accuracy": 0.45467574346112505,
+   "coverage": 0.04941324818483191,
+   "weighted_fitness": 0.5768506812341858
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Melanogenesis_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4358371521551438,
+   "accuracy": 0.41440173253925283,
+   "coverage": 0.17276332648620066,
+   "weighted_fitness": 0.5408176745089028
+  }
+ ],
+ "22": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "23": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Insulin_secretion_activity",
+     "partition": "Intermediate"
+    },
+    {
+     "feature": "GOPC_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NCOR1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.46139018355486505,
+   "accuracy": 0.43745427944403803,
+   "coverage": 0.07614960645935447,
+   "weighted_fitness": 0.5593359790065011
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Insulin_secretion_activity",
+     "partition": "Intermediate"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4578860148425679,
+   "accuracy": 0.4291858678955453,
+   "coverage": 0.12241859708352824,
+   "weighted_fitness": 0.5555644597432957
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "Insulin_secretion_activity",
+     "partition": "Intermediate"
+    },
+    {
+     "feature": "EWSR1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.45910652920962197,
+   "accuracy": 0.423836389280677,
+   "coverage": 0.028810836095914092,
+   "weighted_fitness": 0.5538917233436158
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Focal_adhesion_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4233939721774715,
+   "accuracy": 0.4018132716049383,
+   "coverage": 0.19945087351786694,
+   "weighted_fitness": 0.5308122821919402
+  }
+ ],
+ "24": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "cAMP_signaling_pathway_activity",
+     "partition": "Intermediate"
+    },
+    {
+     "feature": "Insulin_secretion_activity",
+     "partition": "Intermediate"
+    },
+    {
+     "feature": "KMT2A_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.4696982327442481,
+   "accuracy": 0.4441722086104305,
+   "coverage": 0.05175212023836157,
+   "weighted_fitness": 0.5654258763499609
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Chemokine_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4678125402343247,
+   "accuracy": 0.43977272727272726,
+   "coverage": 0.03362687872439952,
+   "weighted_fitness": 0.5637367969516
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "25": [
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "YWHAE_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.43926426298684723,
+   "accuracy": 0.420701405651001,
+   "coverage": 0.13404787569403487,
+   "weighted_fitness": 0.5442151096226309
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CREBBP_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "YWHAE_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.436579955636217,
+   "accuracy": 0.4234985700667302,
+   "coverage": 0.0795541906485794,
+   "weighted_fitness": 0.5436365285107022
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4378711335637685,
+   "accuracy": 0.4183635690485005,
+   "coverage": 0.15479265390795013,
+   "weighted_fitness": 0.5431196089210206
+  },
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "KAT6A_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.43029440407521163,
+   "accuracy": 0.42131350681536556,
+   "coverage": 0.03093412516016189,
+   "weighted_fitness": 0.5403929085199225
+  }
+ ],
+ "26": [
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Regulation_of_actin_cytoskeleton_activity",
+     "partition": "Intermediate"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "ATP1A1_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "RNF213_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 5,
+   "fidelity_f1": 0.46670112862927543,
+   "accuracy": 0.45236414961185606,
+   "coverage": 0.02517846610669324,
+   "weighted_fitness": 0.5665947084990718
+  },
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "KLF6_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PMS2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PPFIBP1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 5,
+   "fidelity_f1": 0.46872340425531916,
+   "accuracy": 0.44075829383886256,
+   "coverage": 0.020313612235351542,
+   "weighted_fitness": 0.5634426830102438
+  },
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "PMS2_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PPFIBP1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.460558499796168,
+   "accuracy": 0.43408071748878924,
+   "coverage": 0.021529825703186966,
+   "weighted_fitness": 0.5577809746307504
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "CNOT3_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4581456823967104,
+   "accuracy": 0.4322498944702406,
+   "coverage": 0.045024303931338855,
+   "weighted_fitness": 0.5567537194438031
+  },
+  {
+   "conditions": [
+    {
+     "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.45695553763300983,
+   "accuracy": 0.4331744951213978,
+   "coverage": 0.08490308934491245,
+   "weighted_fitness": 0.5565417645280429
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Chemokine_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4097960920367885,
+   "accuracy": 0.3983539094650206,
+   "coverage": 0.14669812280095182,
+   "weighted_fitness": 0.5234824593796616
+  }
+ ],
+ "27": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "POLE_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.47082369358451764,
+   "accuracy": 0.4479009362730293,
+   "coverage": 0.05861416746323903,
+   "weighted_fitness": 0.5679366891092924
+  },
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4681525282389508,
+   "accuracy": 0.44142857142857145,
+   "coverage": 0.1426833980760235,
+   "weighted_fitness": 0.5648189873578775
+  }
+ ],
+ "28": [
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "LMNA_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.46805309734513273,
+   "accuracy": 0.4423229912490056,
+   "coverage": 0.02445036506742053,
+   "weighted_fitness": 0.564737640043161
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4545153089421908,
+   "accuracy": 0.4299677654154102,
+   "coverage": 0.18066261262177388,
+   "weighted_fitness": 0.5546709565697291
+  }
+ ],
+ "29": [
+  {
+   "conditions": [
+    {
+     "feature": "B_cell_receptor_signaling_pathway_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "ATP1A1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.46980800678335655,
+   "accuracy": 0.4391857506361323,
+   "coverage": 0.03560780166364986,
+   "weighted_fitness": 0.564429315075856
+  },
+  {
+   "conditions": [
+    {
+     "feature": "PI3K-Akt_signaling_pathway_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "resistant",
+   "length": 1,
+   "fidelity_f1": 0.3939270203051338,
+   "accuracy": 0.3665718927701056,
+   "coverage": 0.19923529052858507,
+   "weighted_fitness": 0.5052176712571969
+  }
+ ],
+ "30": [
+  {
+   "conditions": [
+    {
+     "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "ZNF384_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4426390940423437,
+   "accuracy": 0.4272667971298108,
+   "coverage": 0.027627163456649517,
+   "weighted_fitness": 0.5480316706151878
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4166725940678569,
+   "accuracy": 0.40390879478827363,
+   "coverage": 0.16679208444345014,
+   "weighted_fitness": 0.528521095156781
+  }
+ ]
+}

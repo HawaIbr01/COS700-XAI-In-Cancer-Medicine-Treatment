@@ -330,8 +330,19 @@ def apply_aging(population, toolbox, max_age):
 # Single GA run
 # --------------------------------------------------------------------------
 
-def run_ga(toolbox, scorer, pop_size, n_gen, cxpb, mutpb, min_coverage, max_age, seed):
+def run_ga(toolbox, scorer, pop_size, n_gen, cxpb, mutpb, min_coverage, max_age, seed, logbook=None):
+    """logbook: optional tools.Logbook -- when given, records per-generation
+    fitness stats (min/max/avg of the weighted scalar fitness) across the
+    population. Purely additive/opt-in: callers that don't pass it (every
+    real extraction run) get identical behaviour and RNG consumption to
+    before this parameter existed."""
     random.seed(seed)
+    stats = None
+    if logbook is not None:
+        stats = tools.Statistics(lambda ind: ind.fitness.values[0])
+        stats.register("min", min)
+        stats.register("max", max)
+        stats.register("avg", lambda vals: sum(vals) / len(vals))
 
     population = toolbox.population(n=pop_size)
     for ind in population:
@@ -340,6 +351,9 @@ def run_ga(toolbox, scorer, pop_size, n_gen, cxpb, mutpb, min_coverage, max_age,
 
     hof = tools.HallOfFame(10)
     hof.update(population)
+
+    if logbook is not None:
+        logbook.record(gen=0, popsize=len(population), **stats.compile(population))
 
     for _gen in range(n_gen):
         offspring = toolbox.select(population, len(population))
@@ -369,6 +383,9 @@ def run_ga(toolbox, scorer, pop_size, n_gen, cxpb, mutpb, min_coverage, max_age,
 
         population[:] = offspring
         hof.update(population)
+
+        if logbook is not None:
+            logbook.record(gen=_gen + 1, popsize=len(population), **stats.compile(population))
 
     # "Non-dominated" for a scalarised GA is filtered post-hoc across the
     # three underlying objectives (fidelity, accuracy, comprehensibility)

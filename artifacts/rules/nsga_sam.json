@@ -9,24 +9,33 @@
     {
       "conditions": [
         {
-          "feature": "EGFR_expr",
+          "feature": "Gap_junction_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "DDX3X_mut",
           "partition": "High"
         },
         {
-          "feature": "MYC_expr",
-          "partition": "High"
+          "feature": "EPS15_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "MUTYH_mut",
+          "partition": "Low"
         }
       ],
       "genes": [
-        "EGFR",
-        "MYC"
+        "DDX3X",
+        "EPS15",
+        "Gap junction",
+        "MUTYH"
       ],
-      "predicted_class": "resistant",
-      "length": 2,
-      "fidelity_f1": 1.0,
-      "coverage": 0.0288,
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4553,
+      "coverage": 0.0222,
       "run_ids": [
-        2,
         17
       ],
       "non_dominated": true,
@@ -35,25 +44,24 @@
     {
       "conditions": [
         {
-          "feature": "TP53_expr",
+          "feature": "Cellular_senescence_activity",
           "partition": "High"
         },
         {
-          "feature": "MDM2_expr",
-          "partition": "High"
+          "feature": "Regulation_of_lipolysis_in_adipocytes_activity",
+          "partition": "Low"
         }
       ],
       "genes": [
-        "MDM2",
-        "TP53"
+        "Cellular senescence",
+        "Regulation of lipolysis in adipocytes"
       ],
       "predicted_class": "sensitive",
       "length": 2,
-      "fidelity_f1": 1.0,
-      "coverage": 0.0175,
+      "fidelity_f1": 0.4452,
+      "coverage": 0.0294,
       "run_ids": [
-        5,
-        26
+        20
       ],
       "non_dominated": true,
       "id": "nsga_sam_0002"
@@ -61,131 +69,22 @@
     {
       "conditions": [
         {
-          "feature": "ERBB2_expr",
+          "feature": "Th17_cell_differentiation_activity",
           "partition": "High"
-        },
-        {
-          "feature": "NRAS_expr",
-          "partition": "Low"
         }
       ],
       "genes": [
-        "ERBB2",
-        "NRAS"
+        "Th17 cell differentiation"
       ],
       "predicted_class": "sensitive",
-      "length": 2,
-      "fidelity_f1": 1.0,
-      "coverage": 0.0187,
+      "length": 1,
+      "fidelity_f1": 0.4379,
+      "coverage": 0.1548,
       "run_ids": [
-        13
+        16
       ],
       "non_dominated": true,
       "id": "nsga_sam_0003"
-    },
-    {
-      "conditions": [
-        {
-          "feature": "MYC_expr",
-          "partition": "High"
-        },
-        {
-          "feature": "SMAD4_expr",
-          "partition": "Low"
-        }
-      ],
-      "genes": [
-        "MYC",
-        "SMAD4"
-      ],
-      "predicted_class": "resistant",
-      "length": 2,
-      "fidelity_f1": 1.0,
-      "coverage": 0.0275,
-      "run_ids": [
-        9
-      ],
-      "non_dominated": true,
-      "id": "nsga_sam_0004"
-    },
-    {
-      "conditions": [
-        {
-          "feature": "MYC_expr",
-          "partition": "High"
-        },
-        {
-          "feature": "ERBB2_expr",
-          "partition": "Low"
-        }
-      ],
-      "genes": [
-        "ERBB2",
-        "MYC"
-      ],
-      "predicted_class": "resistant",
-      "length": 2,
-      "fidelity_f1": 1.0,
-      "coverage": 0.0238,
-      "run_ids": [
-        6
-      ],
-      "non_dominated": true,
-      "id": "nsga_sam_0005"
-    },
-    {
-      "conditions": [
-        {
-          "feature": "MYC_expr",
-          "partition": "High"
-        }
-      ],
-      "genes": [
-        "MYC"
-      ],
-      "predicted_class": "resistant",
-      "length": 1,
-      "fidelity_f1": 0.4743,
-      "coverage": 0.1663,
-      "run_ids": [
-        2,
-        5,
-        6,
-        7,
-        9,
-        11,
-        13,
-        14,
-        17,
-        25,
-        28
-      ],
-      "non_dominated": true,
-      "id": "nsga_sam_0006"
-    },
-    {
-      "conditions": [],
-      "genes": [],
-      "predicted_class": "sensitive",
-      "length": 0,
-      "fidelity_f1": 0.4298,
-      "coverage": 1.0,
-      "run_ids": [
-        2,
-        3,
-        5,
-        6,
-        7,
-        10,
-        12,
-        13,
-        14,
-        25,
-        26,
-        29
-      ],
-      "non_dominated": true,
-      "id": "nsga_sam_0007"
     }
   ]
 }

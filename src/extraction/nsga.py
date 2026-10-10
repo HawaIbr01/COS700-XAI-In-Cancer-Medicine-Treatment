@@ -192,14 +192,26 @@ def build_toolbox(n_features, scorer):
 # Single NSGA-II run
 # --------------------------------------------------------------------------
 
-def run_nsga2(toolbox, pop_size, n_gen, cxpb, mutpb, seed):
+def run_nsga2(toolbox, pop_size, n_gen, cxpb, mutpb, seed, logbook=None):
+    """logbook: optional tools.Logbook -- when given, records per-generation
+    fitness stats (min/max/avg of each objective: fidelity, length) across
+    the population. Purely additive/opt-in, same as ga.py's run_ga."""
     assert pop_size % 4 == 0, "selTournamentDCD requires pop_size % 4 == 0"
     random.seed(seed)
+    stats = None
+    if logbook is not None:
+        stats = tools.Statistics(lambda ind: ind.fitness.values)
+        stats.register("avg", lambda vals: tuple(sum(v[i] for v in vals) / len(vals) for i in range(2)))
+        stats.register("min", lambda vals: tuple(min(v[i] for v in vals) for i in range(2)))
+        stats.register("max", lambda vals: tuple(max(v[i] for v in vals) for i in range(2)))
 
     pop = toolbox.population(n=pop_size)
     for ind in pop:
         ind.fitness.values = toolbox.evaluate(ind)
     pop = toolbox.select(pop, len(pop))  # assigns rank + crowding distance
+
+    if logbook is not None:
+        logbook.record(gen=0, popsize=len(pop), **stats.compile(pop))
 
     for _gen in range(n_gen):
         parents = toolbox.select_parents(pop, len(pop))
@@ -221,6 +233,9 @@ def run_nsga2(toolbox, pop_size, n_gen, cxpb, mutpb, seed):
             ind.fitness.values = toolbox.evaluate(ind)
 
         pop = toolbox.select(pop + offspring, pop_size)  # elitist mu+lambda
+
+        if logbook is not None:
+            logbook.record(gen=_gen + 1, popsize=len(pop), **stats.compile(pop))
 
     front0 = tools.sortNondominated(pop, len(pop), first_front_only=True)[0]
     return front0
