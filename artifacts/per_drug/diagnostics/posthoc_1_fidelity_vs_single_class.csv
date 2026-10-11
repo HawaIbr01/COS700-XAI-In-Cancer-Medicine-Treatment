@@ -1,0 +1,7 @@
+extractor,arm,fid==1 & single_class,fid==1 & not single_class,fid<=0.5 & single_class,fid max when 2 classes covered
+ga,adam,47.0,0.0,1.0,0.49122807017543857
+ga,adam_wd,88.0,0.0,2.0,0.49122807017543857
+ga,sam,83.0,0.0,1.0,0.49206349206349204
+nsga,adam,7.0,0.0,1.0,0.49019607843137253
+nsga,adam_wd,15.0,0.0,0.0,0.4888888888888889
+nsga,sam,15.0,0.0,0.0,0.4864864864864865

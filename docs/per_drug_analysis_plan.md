@@ -91,6 +91,38 @@ Pooled KEGG over-representation (`gseapy.enrichr`, library `KEGG_2021_Human`, ba
 using genes from `High` mutation conditions in all rules across drugs. Named "over-representation analysis", not GSEA. Needs network access to Enrichr; if it
 is not reachable the gene lists are saved and the failure is reported, nothing is substituted.
 
+## 9. Decisions added 2026-10-10 (Hawa)
+
+**Positive-control interpretation.** For features flagged in more than 30 % of cell lines (BRAF_mut, EGFR_mut), a hit counts as evidence and a miss is
+inconclusive, because the flag looks like "any recorded variant" rather than an activating mutation.
+
+**Arm definitions and limitation.** The "SAM" arm is SAM + weight decay (rho 0.5, WD 1e-3). The two weight-decay arms (Adam + WD, SAM + WD) reconstruct
+their inputs about 10x worse than the Adam baseline (validation reconstruction MSE: mutation 0.1445 / 0.1440 vs 0.0124; drug 0.1087 / 0.1096 vs 0.0012).
+This is a limitation: the arms differ in the autoencoder branches as well as in the optimiser.
+
+**Stage 1 timing and seed choice.** Erlotinib, 1 worker, 90 seed runs, 0 errors: GA 7.77 s/seed, NSGA-II 0.95 s/seed, per-cell overhead about 1.5 s / 0.35 s,
+peak RSS 735 MB per process. Per drug about 130.8 x seeds + 28 s on one core. The pilot uses **10 seeds and 3 workers** (estimate 14 drugs x 10 seeds: 5.2 h single
+core, about 1.7 h with 3 workers; scaling assumed linear). Details: `artifacts/per_drug/STAGE1_REPORT.md`.
+
+## 10. POST-HOC DIAGNOSTICS (added 2026-10-11, after seeing RESULTS.md)
+
+Everything in this section was decided **after** `artifacts/per_drug/RESULTS.md` had been produced. It is not part of the frozen design, does not
+change any primary number (RESULTS.md and the primary CSVs are unchanged), re-runs no extraction, and is stored in `artifacts/per_drug/diagnostics/`
+(report: `POST_HOC_DIAGNOSTICS.md`; code: `src/per_drug/diagnostics.py`; files prefixed `posthoc_`). Added, and why:
+
+1. **Fidelity-metric behaviour** (share of evaluations with fidelity exactly 1.0, share with a single network class among covered rows, deciles, net_train vs net_other):
+   because the macro-F1 call has no `labels` argument, so its value depends on whether the covered rows contain one class or two.
+2. **Accuracy and coverage as a sensitivity analysis** (same paired comparisons as §3): a metric without the single-class artefact.
+3. **Matched random-rule chance baseline** (200 random rules per real rule, same number of conditions, >= 25 covered extraction rows): to place the observed fidelity against chance.
+4. **Stability definitions, set sizes and chance Jaccard** for those sizes out of 572 features.
+5. **Rule-length units** (number of conditions) and a BH correction across all planned comparisons (Kuncheva rows with n < 5 excluded), next to the within-metric BH.
+6. **Timing estimates for 379 drugs** (3 workers; 10, 5, 3 seeds; GA, NSGA-II and NSGA-II only) from the pilot manifest.
+7. **Positive-control feasibility**: the single-condition rule `feature = High` on all rows of each control drug, against each network's class_pred and the true class, compared with random single-condition rules.
+   Purpose: separate "features and network do not carry the signal" from "the extractor missed it".
+8. **Original global rule pools (19 rules), POST-HOC** (added 2026-10-11, after the pilot results): per-rule agreement with the network's class_pred and coverage on
+   train/val/test, per-pool share of test rows covered by >= 1 and by exactly 1 rule, and a matched random-rule baseline (200 draws per rule, same length, 2% train coverage floor).
+   Why: to put the pilot's agreement and fidelity numbers next to the global pools under the same functions. Files: `posthoc_global_*.csv`, `POST_HOC_DIAGNOSTICS_global_pools.md`; code `src/per_drug/diagnostics_global.py`.
+
 ## 8. What will not be done
 
 No new experiments, parameters or drugs chosen after seeing results; no parameter set from rule quality; Stage 1 (Erlotinib, 3 seeds) is used for timing and
