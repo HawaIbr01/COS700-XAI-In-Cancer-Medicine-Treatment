@@ -23,6 +23,11 @@ import sys
 import time
 from pathlib import Path
 
+# One thread per worker process: set before numpy/pandas are imported so the BLAS pools pick it up
+# and N workers never oversubscribe the CPU.
+for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
+    os.environ[_v] = "1"
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
@@ -42,6 +47,7 @@ def _same_design(existing: dict, key: dict) -> bool:
 
 
 _CACHE: dict = {}
+_INPUT_HASHES: dict = {}      # set once in main() before workers fork; embedded in every cell's manifest
 
 
 def _work(task):
@@ -52,6 +58,7 @@ def _work(task):
         _CACHE.clear()
         _CACHE["drug"], _CACHE["dd"] = drug, D.load_drug_frame(drug)
     cell = X.run_cell(_CACHE["dd"], arm, extractor, fold, n_seeds, n_gen=n_gen, min_cover_n=min_cover_n)
+    cell["manifest"]["input_sha256"] = _INPUT_HASHES
     path = cell_path(Path(out_root), drug, arm, extractor, fold)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(".tmp")
@@ -65,7 +72,7 @@ def main():
     ap.add_argument("--out-root", required=True)
     ap.add_argument("--drugs", nargs="*", default=None)
     ap.add_argument("--drugs-from", default=None, help="pilot_drugs.json (uses its pilot_drugs list)")
-    ap.add_argument("--n-seeds", type=int, default=30)
+    ap.add_argument("--n-seeds", type=int, required=True, help="no default: state the seed count explicitly")
     ap.add_argument("--n-gen", type=int, default=DESIGN["n_gen"])
     ap.add_argument("--min-cover-n", type=int, default=DESIGN["min_cover_n"])
     ap.add_argument("--folds", type=int, nargs="*", default=list(range(DESIGN["n_folds"])))
@@ -81,6 +88,16 @@ def main():
         ap.error("no drugs given")
     out_root = Path(args.out_root)
     out_root.mkdir(parents=True, exist_ok=True)
+
+    from src.per_drug import provenance as P          # once per run, before any cell is scheduled
+    prov = P.collect()
+    _INPUT_HASHES.update(prov["input_sha256"])
+    now = time.gmtime()
+    record_json = json.dumps({**prov, "design_hash": design_hash(), "argv": sys.argv[1:],
+                              "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", now)}, indent=2)
+    # run_provenance.json is the latest start; the timestamped copy is never overwritten, so resumes keep a history
+    (out_root / "run_provenance.json").write_text(record_json)
+    (out_root / f"run_provenance_{time.strftime('%Y%m%dT%H%M%SZ', now)}.json").write_text(record_json)
 
     tasks, skipped = [], 0
     for drug in drugs:
