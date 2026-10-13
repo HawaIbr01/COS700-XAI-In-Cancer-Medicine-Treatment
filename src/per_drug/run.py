@@ -62,8 +62,19 @@ def _work(task):
     path = cell_path(Path(out_root), drug, arm, extractor, fold)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(".tmp")
-    tmp.write_text(json.dumps(cell))
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(json.dumps(cell))
+        f.flush()
+        os.fsync(f.fileno())                     # data on disk before the rename can make it visible
     os.replace(tmp, path)                        # atomic: a cell file is either complete or absent
+    try:                                         # persist the rename itself; unsupported on Windows
+        dfd = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(dfd)
+        finally:
+            os.close(dfd)
+    except OSError:
+        pass
     return cell["key"], cell["manifest"], cell["seed_rows"], cell["wall_clock_s"]
 
 
@@ -79,6 +90,8 @@ def main():
     ap.add_argument("--arms", nargs="*", default=list(ARMS))
     ap.add_argument("--extractors", nargs="*", default=list(EXTRACTORS))
     ap.add_argument("--workers", type=int, default=1)
+    ap.add_argument("--max-cells-per-worker", type=int, default=None,
+                    help="recycle each worker process after N cells (Pool maxtasksperchild); default: never")
     args = ap.parse_args()
 
     drugs = list(args.drugs or [])
@@ -108,7 +121,14 @@ def main():
                            "n_gen": args.n_gen, "min_cover_n": args.min_cover_n}
                     p = cell_path(out_root, drug, arm, ext, fold)
                     if p.exists():
-                        existing = json.loads(p.read_text())
+                        try:
+                            existing = json.loads(p.read_text(encoding="utf-8"))
+                        except (ValueError, OSError) as e:     # empty / truncated / undecodable: not a finished cell
+                            print(f"[run] WARNING: {p} is unreadable ({type(e).__name__}); treating it as not done "
+                                  f"and re-running it", flush=True)
+                            tasks.append((drug, arm, ext, fold, args.n_seeds, args.n_gen, args.min_cover_n,
+                                          str(out_root)))
+                            continue
                         if not _same_design(existing, key):
                             sys.exit(f"REFUSING to overwrite {p}: it was made with a different key/design "
                                      f"({existing.get('key')} / {existing.get('manifest', {}).get('design_hash')}). "
@@ -140,7 +160,7 @@ def main():
         for t in tasks:
             record(_work(t))
     else:
-        with mp.get_context("fork").Pool(args.workers, maxtasksperchild=None) as pool:
+        with mp.get_context("fork").Pool(args.workers, maxtasksperchild=args.max_cells_per_worker) as pool:
             for res in pool.imap_unordered(_work, tasks, chunksize=1):
                 record(res)
     print(f"[run] finished in {time.time() - t0:.0f}s", flush=True)
