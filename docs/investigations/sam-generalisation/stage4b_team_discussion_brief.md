@@ -62,6 +62,7 @@ just changes how we write about it, is worth deciding explicitly.
 
 ## Status at time of this brief
 
-- Stage 4 (SAM confirmatory, full data): complete. gap=0.0517, val R²=0.8450.
+- Stage 4 (SAM confirmatory, full data): complete. Original run, weights not saved: gap=0.0517, val R²=0.8450.
+  Saved checkpoint (rerun): gap=0.0485, val R²=0.8444.
 - Stage 4b (Adam+WD control): *[in progress / complete — update before the meeting]*
 - No changes made to Angelique's or Bahiya's branches or checkpoints.

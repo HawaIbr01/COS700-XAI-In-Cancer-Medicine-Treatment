@@ -18,13 +18,15 @@ where noted.
 | Adam + WD=1e-3 control (rerun, Stage 4e) | 0.2729 | 0.8616 | 1.0111 | 1.0027 | 1.2756 | 1.2717 | 187 (converged) | val-plateau only (patience=30, min_delta=1e-4) — matched to the SAM confirmatory rule, deliberately **not** the paired rule above (see journal Stage 4b) | `artifacts/sam_investigation/adam_wd_control/model.pt` — **meta.json says it exists; file is absent from this working tree — see Item 9** |
 | SAM ρ=0.5, WD=1e-3 (confirmatory rerun, Stage 4c — "this rerun") | 0.0485 | 0.8444 | 1.0722 | 1.3548 | 1.4033 | 1.4038 | 250 (hit max-epoch cap; `converged: false`, val loss flat/non-widening from ~epoch 150) | val-plateau only, MAX_EPOCHS=250 safety cap | `artifacts/sam_investigation/confirmatory/model.pt` — **meta.json says it exists; file is absent from this working tree — see Item 9** |
 
-**Original (pre-rerun) SAM ρ=0.5+WD confirmatory numbers**, for reference (see
+**Original run (pre-rerun, weights not saved), SAM ρ=0.5+WD confirmatory numbers**, for reference (see
 Item 6 for the reproducibility comparison): gap=0.0517, val R²=0.8450, val
 RMSE=1.0703, epoch 250 (also non-converged). These were the numbers in
 `artifacts/sam_investigation/confirmatory/confirmatory_scorecard.json` before
 the Stage 4c rerun overwrote that file with the rerun's own numbers (git
 commit `43707e6` → `61d85eb`); they only survive in git history and in the
 Stage 4 journal narrative now, not as a live JSON file.
+
+Saved-checkpoint value (rerun, `confirmatory/model.pt`): gap=0.0485, val R²=0.8444, val RMSE=1.0722 (table row above).
 
 ## Sources
 

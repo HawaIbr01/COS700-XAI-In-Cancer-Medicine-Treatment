@@ -313,6 +313,8 @@ The 2026-09-04 re-run therefore uses **val-loss plateau only** (condition (a)), 
 
 **Completed 2026-09-05.** Config: ρ=0.50, LR=0.001, WD=1e-3. Full training set (train 255,628 / val 31,963 / test 31,952), CPU. Ran the full MAX_EPOCHS=250 cap — runtime 77,248 s (~21.5 h; slower than the ~5 h documented baseline due to host CPU contention from other applications during the run, not a training issue — see the epoch-pace discussion earlier in this session).
 
+*Original run (2026-09-04/05), weights not saved:*
+
 | Metric | Adam baseline (Stage 1) | SAM ρ=0.5/WD=1e-3 (confirmatory) | Δ |
 |---|---|---|---|
 | Generalisation gap | 0.3369 | **0.0517** | **−84.6%** |
@@ -321,6 +323,8 @@ The 2026-09-04 re-run therefore uses **val-loss plateau only** (condition (a)), 
 | Final train loss | — | 1.3471 | — |
 | Final val loss | — | 1.3989 | — |
 | Final test loss | — | 1.4018 | — |
+
+*Saved-checkpoint value (rerun of 2026-09-10, `confirmatory/model.pt`): gap 0.0485 (−85.6%), val R² 0.8444, val RMSE 1.0722.*
 
 `converged: false` in the scorecard — the val-loss-plateau condition (30 consecutive non-improving epochs) never fired; a new best val loss landed as late as epoch 247/250, so the loop ran to the MAX_EPOCHS safety cap rather than stopping early. This is not a red flag: the per-epoch history (`confirmatory_history.jsonl`, 250 rows) shows val loss noisily flat around 1.40–1.44 from roughly epoch 150 onward with no widening trend, gap held in the 0.01–0.05 band throughout the back half of training — exactly the "plateaus without diverging" behaviour that motivated dropping the paired train-loss condition in the first place, just noisier than a clean 30-in-a-row streak. The eval-mode final metrics (computed with the model in `.eval()` mode over full loaders, independent of which epoch the loop happened to stop on) are the numbers that matter and are stable. **This flat, non-widening back half is the evidence Stage 4b's Result section leans on when comparing this non-plateau-stopped run against a control that did plateau-stop cleanly — see the note there.**
 
@@ -407,6 +411,8 @@ plateau, not a still-improving trend that this comparison would be catching mid-
 that flat-band evidence did not hold, this matched-pair comparison would need to be treated
 with more caution than it is below.
 
+*Original runs (2026-09-04/05), weights not saved. This label covers the table, the decomposition and the text below, up to “Interpretation”.*
+
 | Metric | Adam, WD=0 (original baseline) | Adam, WD=1e-3 (this control) | SAM ρ=0.5, WD=1e-3 (Stage 4) |
 |---|---|---|---|
 | Generalisation gap | 0.3369 | **0.2582** | 0.0517 |
@@ -437,20 +443,24 @@ informational, not clean. The confound-free result is the matched pair: **under 
 identical val-loss-plateau rule, SAM ρ=0.5 reduces the gap by 0.2065 relative to plain
 Adam, both with WD=1e-3.**
 
+*Saved-checkpoint values (reruns of 2026-09-10/11): Adam+WD gap 0.2729 (187 epochs, val R² 0.8616); SAM+WD gap 0.0485 (val R² 0.8444). Of the total reduction (0.2884), weight decay accounts for 0.0640 (~22%) and SAM for 0.2244 (~78%); SAM ≈ 3.5× weight decay.*
+
 ### Interpretation
+
+*The numbers in this section are the saved-checkpoint values (reruns of 2026-09-10/11); the original-run values are in the tables above.*
 
 **The second pre-considered reading applies: weight decay alone does not explain Stage 4's
 result.** Of the two branches drafted before the run:
 
 - **"Adam+WD closes most of the gap" (lands substantially below 0.15–0.20) — did NOT
-  occur.** Adam+WD landed at 0.2582, a 23.4% reduction from the 0.3369 baseline. It is
+  occur.** Adam+WD landed at 0.2729, a 19.0% reduction from the 0.3369 baseline. It is
   nowhere near closing the gap; it is closer to the un-regularised baseline than to the
   SAM result.
 - **"Adam+WD barely moves / weight decay is not sufficient" — this is what occurred.**
-  Weight decay produced roughly the reduction Stage 3 predicted for it (~23% vs the ~22%
+  Weight decay produced roughly the reduction Stage 3 predicted for it (~19% vs the ~22%
   marginal estimate) and no more. SAM's uphill-perturbation geometry, applied on top of
-  the same weight decay, removed a further 0.2065 of gap — about 2.6× the weight-decay
-  contribution and ~72% of the total reduction from baseline. Under the matched
+  the same weight decay, removed a further 0.2244 of gap — about 3.5× the weight-decay
+  contribution and ~78% of the total reduction from baseline. Under the matched
   stopping rule, SAM is the primary lever, not a secondary one.
 
 **Consequences:**
@@ -461,13 +471,13 @@ result.** Of the two branches drafted before the run:
    consistent with Foret et al. (2021) and the Springer et al. reasoning already in use —
    not to generic regularisation that the original baseline happened to lack. The
    emergent-byproduct argument (SAM improves rule quality without being designed to)
-   can treat the SAM-specific gap contribution as the ~72% share, with the ~28% WD
+   can treat the SAM-specific gap contribution as the ~78% share, with the ~22% WD
    share reasoned about separately.
 
 2. **Predictive quality is not the trade-off it appeared to be in Stage 4.** Adam+WD
-   reaches val R² 0.8621 — slightly *above* the original baseline (0.8565) and clearly
-   above Stage 4's SAM run (0.8450). So the small R² dip in Stage 4 is associated with
-   SAM specifically, not with weight decay; SAM buys a 0.2065 gap reduction for a
+   reaches val R² 0.8616 — slightly *above* the original baseline (0.8565) and clearly
+   above Stage 4's SAM run (0.8444). So the small R² dip in Stage 4 is associated with
+   SAM specifically, not with weight decay; SAM buys a 0.2244 gap reduction for a
    ~0.017 R² cost relative to Adam+WD. Still a favourable trade, worth stating explicitly
    rather than folding into the headline. **This R² comparison carries the same
    stopping-rule caveat as the gap decomposition above:** the original baseline's

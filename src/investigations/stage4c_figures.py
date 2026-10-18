@@ -232,7 +232,7 @@ def fig_gap_vs_rho():
 def fig_gap_decomposition():
     import matplotlib.pyplot as plt
     g_base = metrics("adam_base")["gap"]      # 0.3369
-    g_wd = metrics("adam_wd")["gap"]          # 0.2582
+    g_wd = metrics("adam_wd")["gap"]          # 0.2729 (saved Adam+WD checkpoint)
     g_sam = metrics("sam_r05_wd")["gap"]      # 0.0485
     d_wd = g_base - g_wd
     d_sam = g_wd - g_sam
@@ -262,8 +262,8 @@ def fig_gap_decomposition():
             f"SAM ρ=0.5 ≈ {pct_sam:.0f}%", ha="center", fontsize=8.5,
             bbox=dict(boxstyle="round", fc="#fff8e1", ec="grey"))
     _save(fig, "03_gap_decomposition_waterfall.png",
-          "Decomposition of the total gap reduction (0.337 → 0.049): weight decay "
-          "accounts for ~28%, SAM ρ=0.5 for ~72%.",
+          f"Decomposition of the total gap reduction ({g_base:.3f} → {g_sam:.3f}): weight decay "
+          f"accounts for ~{pct_wd:.0f}%, SAM ρ=0.5 for ~{pct_sam:.0f}%.",
           "Results — Stage 4b / Discussion (confound)",
           "The Adam-baseline → Adam+WD step also carries the stopping-rule change "
           "(reverse-early-stop → val-plateau); the Adam+WD → SAM+WD step is the clean "

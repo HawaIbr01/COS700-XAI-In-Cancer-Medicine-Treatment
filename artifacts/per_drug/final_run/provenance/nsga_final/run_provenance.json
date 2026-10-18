@@ -1,0 +1,48 @@
+{
+  "input_sha256": {
+    "artifacts/checkpoints/baseline/model.pt": "685b4478dc558108bdb3cb03f05dff3ce22cd71faf4b169d22f117f8d6ab69ce",
+    "artifacts/sam_investigation/confirmatory/model.pt": "3cae2804d4ed7bdfc1c8ce668c4790c2c7efefd5ca7f412d2436d56681d1e53f",
+    "artifacts/sam_investigation/adam_wd_control/model.pt": "09233223efa5fcb2cf724899e9796b1bfb14930c9d3e109106814bc74f76cee5",
+    "data/processed/real_extraction/predictions/baseline_train.parquet": "26909724f281c201afe62d5653ebc41f9d9c6f1e9066d0b64833d7f5a914fbea",
+    "data/processed/real_extraction/predictions/baseline_val.parquet": "f085a6a442f3482330d161a3a52078837d0b70dcafcbcd0b36f40aa8c1d24ae6",
+    "data/processed/real_extraction/predictions/baseline_test.parquet": "7b8625e10a9e6c9a032e2c73a112fafffb0c72dc1b25bb0f6d42f20b42248487",
+    "artifacts/per_drug/data/predictions/adam_wd_train.parquet": "2854db8fd5458012be02ab08a804b376b74d73ffa51d01c34e225ff453fc9f18",
+    "artifacts/per_drug/data/predictions/adam_wd_val.parquet": "aad27c538cdd0d5d06e8c4aec0b25fdb6c9dc145353ac3489b54143db9d4dd43",
+    "artifacts/per_drug/data/predictions/adam_wd_test.parquet": "5ca7d478ae48851615b484247a02a177a5a986159f1d539b4606df3841d119b7",
+    "data/processed/real_extraction/predictions/sam_train.parquet": "67c9ea87de5a44b6034626a9f2f831167f3e5155b993e16f88b3b62db25b7bd5",
+    "data/processed/real_extraction/predictions/sam_val.parquet": "e7322f01d593a22bd02b93ac37a6339770776f29a5efe7d39dc905904788f577",
+    "data/processed/real_extraction/predictions/sam_test.parquet": "702520091cfd4e1d1bfc2a60d6b0f1495aced5c85bf83844e7e686cb361fc5c9",
+    "data/processed/real_extraction/data/gdsc_processed.parquet": "2bec08e5fdbb46b03637e6caad4e81767b8b6c3f630bb21263e25c3c60dcf08c",
+    "data/processed/real_extraction/data/feature_map.json": "9fe61ea135676fdce89404c6dac37e8899e8de2dcf46a2e1d03ccf0883b2a429"
+  },
+  "python": "3.14.5",
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "torch": "not installed",
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "pyarrow": "26.0.0",
+    "scikit-learn": "1.9.1",
+    "deap": "1.4.4",
+    "pymcdm": "1.4.0",
+    "gseapy": "not installed"
+  },
+  "device": "cpu (torch unavailable)",
+  "hostname": "Mac",
+  "design_hash": "8036bd516e6d",
+  "argv": [
+    "--out-root",
+    "/Users/melisaledwaba/runs/nsga_final",
+    "--drugs-from",
+    "configs/pilot2_drugs_379.json",
+    "--n-seeds",
+    "10",
+    "--extractors",
+    "nsga",
+    "--workers",
+    "4",
+    "--max-cells-per-worker",
+    "3"
+  ],
+  "started_utc": "2026-10-13T20:24:42Z"
+}

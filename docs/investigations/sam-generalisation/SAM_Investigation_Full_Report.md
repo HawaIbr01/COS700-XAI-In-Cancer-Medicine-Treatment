@@ -176,19 +176,21 @@ A fourth candidate — **batch-norm affine parameters being under-perturbed** at
 
 ![Full-data gap decomposition](fig4_gap_decomposition.png)
 
-The Adam+WD control plateau-stopped cleanly at epoch 157, reaching a gap of **0.2582** — a 23.4% reduction from the original baseline, landing almost exactly on Stage 3's ~22% marginal-effect prediction for weight decay alone. Decomposing the total full-data reduction:
+The Adam+WD control (saved checkpoint) plateau-stopped at epoch 187, reaching a gap of **0.2729** — a 19.0% reduction from the original baseline, close to (slightly below) Stage 3's ~22% marginal-effect prediction for weight decay alone. Decomposing the total full-data reduction:
 
 | Step | Gap | Share of total reduction |
 |---|---|---|
 | Adam baseline (WD=0) | 0.3369 | — |
-| + weight decay alone | 0.2582 | ~28% |
-| + SAM's mechanism on top | 0.0517 | ~72% |
+| + weight decay alone | 0.2729 | ~22% |
+| + SAM's mechanism on top | 0.0485 | ~78% |
 
-The clean, confound-free comparison is the matched pair (SAM+WD vs Adam+WD, identical stopping rule): SAM's mechanism removes a further **0.2065** of gap beyond weight decay alone — roughly **2.6× the weight-decay contribution**.
+The clean, confound-free comparison is the matched pair (SAM+WD vs Adam+WD, identical stopping rule): SAM's mechanism removes a further **0.2244** of gap beyond weight decay alone — roughly **3.5× the weight-decay contribution**.
+
+*Provenance: the original Adam+WD and SAM+WD runs (2026-09-04/05) saved metrics only; their weights were not saved. All numbers in this section are from the saved checkpoints (reruns of 2026-09-10/11); the original-run values are recorded in the journal.*
 
 ![Validation R² across the three configurations](fig5_val_r2_comparison.png)
 
-A secondary finding worth stating plainly: Adam+WD's validation R² (0.8621) is slightly *above* the original baseline and clearly above the SAM run's R² (0.8450) — meaning the small predictive-quality cost observed in Stage 4 is associated specifically with SAM, not with weight decay. SAM buys its additional 0.2065 gap reduction for roughly a 0.017-point R² cost relative to Adam+WD, which is still a favourable trade but is worth stating explicitly rather than folding silently into the headline figure. This comparison, like the gap decomposition's weight-decay step, carries the caveat that it is not clean against the *original* 0.8565 baseline, since that number used a different stopping rule; only the Adam+WD vs SAM+WD comparison is fully confound-free.
+A secondary finding worth stating plainly: Adam+WD's validation R² (0.8616) is slightly *above* the original baseline and clearly above the SAM run's R² (0.8444) — meaning the small predictive-quality cost observed in Stage 4 is associated specifically with SAM, not with weight decay. SAM buys its additional 0.2244 gap reduction for roughly a 0.0172-point R² cost relative to Adam+WD, which is still a favourable trade but is worth stating explicitly rather than folding silently into the headline figure. This comparison, like the gap decomposition's weight-decay step, carries the caveat that it is not clean against the *original* 0.8565 baseline, since that number used a different stopping rule; only the Adam+WD vs SAM+WD comparison is fully confound-free.
 
 **Interpretation and consequence.** The outcome supports the thesis's core mechanistic claim: SAM's sharpness-seeking geometry, not generic regularisation, is the primary driver of the observed gap reduction. This directly closes the loop back to Section 1.1 — the project can claim, with a matched, confound-controlled comparison behind it, that SAM's effect on the gap is attributable to its specific mechanism (consistent with Foret et al. and the Springer et al. balanced-feature-learning argument already cited in the proposal), which is the premise the emergent-byproduct novelty argument depends on. It also resolves the open BN-under-perturbation question left provisionally open at Stage 2: with SAM's specific contribution now confirmed as the majority driver of an already-large reduction, there is no unexplained residual gap left to motivate a targeted BN-only follow-up (Stage 5), which is accordingly not pursued.
 
@@ -203,7 +205,7 @@ A secondary finding worth stating plainly: Adam+WD's validation R² (0.8621) is 
 | Was it a configuration issue? | Yes — three issues found | Stage 2 |
 | Does correcting ρ and weight decay jointly help? | Yes, substantially, at the right ρ | Stage 3 |
 | Does the fix hold at full data scale? | Yes — 84.6% gap reduction | Stage 4 |
-| Is the reduction attributable to SAM specifically, or mostly weight decay? | SAM specifically — ~72% of the total reduction | Stage 4b |
+| Is the reduction attributable to SAM specifically, or mostly weight decay? | SAM specifically — ~78% of the total reduction | Stage 4b |
 | Is BN under-perturbation still an open concern? | No — closed, given the confirmed SAM-specific effect | Stage 4b closes the Stage 2 open item |
 
 **Final recommendation for the SAM intervention branch:** ρ 0.20 → 0.50, weight decay 0 → 1e-3, learning rate unchanged at 0.001.

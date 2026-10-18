@@ -13,7 +13,7 @@
   },
   {
     "file": "03_gap_decomposition_waterfall.png",
-    "caption": "Decomposition of the total gap reduction (0.337 \u2192 0.049): weight decay accounts for ~28%, SAM \u03c1=0.5 for ~72%.",
+    "caption": "Decomposition of the total gap reduction (0.337 \u2192 0.048): weight decay accounts for ~22%, SAM \u03c1=0.5 for ~78%.",
     "thesis_section": "Results \u2014 Stage 4b / Discussion (confound)",
     "caveats": "The Adam-baseline \u2192 Adam+WD step also carries the stopping-rule change (reverse-early-stop \u2192 val-plateau); the Adam+WD \u2192 SAM+WD step is the clean matched pair (single variable: the SAM wrapper)."
   },

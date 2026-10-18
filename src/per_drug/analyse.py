@@ -3,11 +3,11 @@
 Reads <root>/cells/<drug>/<arm>__<ext>__fold<k>.json and writes, next to <root>:
   results_tidy.csv           one row per drug x arm x extractor x fold
   results_drug_level.csv     one row per drug x arm x extractor (fold-averaged, stability)
-  comparisons.csv            planned comparisons (Wilcoxon, BH, bootstrap CI, TOST)
+  comparisons.csv            planned comparisons (paired Wilcoxon, BH within metric, median/mean difference)
   comparisons.md             markdown view of comparisons.csv
   positive_controls.csv      hit / top-rule hit per control drug x arm x extractor x fold
   wallclock.csv              wall-clock seconds per cell and per arm x extractor
-  kegg_gene_lists.csv, kegg_ora_results.csv   pooled KEGG over-representation per arm
+  kegg_gene_lists.csv, kegg_ora_results.csv   pooled KEGG over-representation per arm (only with --kegg)
   RESULTS.md                 numbers only
 
 PROMETHEE II: once per fold, per drug and extractor, over the union of the three arms' pools for that
@@ -26,13 +26,12 @@ import pandas as pd
 from scipy import stats
 
 from src.per_drug.config import DESIGN
-from src.per_drug.scoring import POSITIVE_CONTROLS, jaccard, kuncheva, pairwise_stats
+from src.per_drug.scoring import POSITIVE_CONTROLS, jaccard, pairwise_stats
 
 ARMS = ["adam", "adam_wd", "sam"]
 EXTS = ["ga", "nsga"]
 W = np.array([0.5, 0.2]) / 0.7            # fidelity, length (stability dropped, renormalised)
 TYPES = np.array([1, -1])
-BOOT_N, BOOT_SEED, TOST_MARGIN = 10_000, 20261010, 0.05
 FEATURE_MAP = Path("data/processed/real_extraction/data/feature_map.json")
 
 
@@ -52,6 +51,7 @@ def load_cells(root: Path) -> dict:
     cells = {}
     for f in sorted((root / "cells").glob("*/*.json")):
         c = json.loads(f.read_text())
+        c.pop("traces", None)          # monitoring only; never used here, so not kept in memory
         k = c["key"]
         cells[(k["drug"], k["arm"], k["extractor"], k["fold"])] = c
     return cells
@@ -93,8 +93,6 @@ def build_tidy(cells: dict):
                         continue
                     h = c["heldout"]
                     fid = [x["fidelity"] for x in h]
-                    gene_sets = [set(s["genes"]) for s in c["seed_rows"]]
-                    seed_stats = pairwise_stats(gene_sets)
                     pool_genes = {g for r in c["pool"] for g in r["genes"]}
                     row = {
                         "drug": drug, "arm": arm, "extractor": ext, "fold": fold,
@@ -109,9 +107,6 @@ def build_tidy(cells: dict):
                         "n_rules_in_promethee": int(sum(1 for x in h if x["id"] in phi_of)),
                         "n_pool_genes": len(pool_genes),
                         "pool_genes": ";".join(sorted(pool_genes)),
-                        "seed_jaccard_fold": seed_stats["jaccard"],
-                        "n_seed_sets_empty": seed_stats["n_empty_sets"],
-                        "n_seed_pairs_jaccard_defined": seed_stats["n_pairs_jaccard_defined"],
                         "train_rows_fid": c["sizes"]["fid"], "heldout_rows": c["sizes"]["heldout"],
                         "wall_clock_s": c["wall_clock_s"],
                     }
@@ -157,8 +152,6 @@ def drug_level(tidy: pd.DataFrame) -> pd.DataFrame:
             "n_empty_pools": int((g["n_pool_rules"] == 0).sum()),
             "stability_jaccard_folds": ps["jaccard"], "n_fold_sets_empty": ps["n_empty_sets"],
             "n_fold_pairs_jaccard_defined": ps["n_pairs_jaccard_defined"],
-            "stability_kuncheva_folds": ps["kuncheva"], "n_fold_pairs_kuncheva_defined": ps["n_pairs_kuncheva_defined"],
-            "stability_jaccard_seeds": _nanmean(g["seed_jaccard_fold"]),
             "wall_clock_s": float(g["wall_clock_s"].sum()),
         })
     return pd.DataFrame(out)
@@ -190,11 +183,9 @@ def _wilcoxon(d, **kw):
 
 def comparisons(dl: pd.DataFrame) -> pd.DataFrame:
     metrics = {"heldout_fidelity": "fidelity", "phi": "phi", "length": "length",
-               "stability_jaccard_folds": "stability_jaccard_folds",
-               "stability_kuncheva_folds": "stability_kuncheva_folds",
-               "stability_jaccard_seeds": "stability_jaccard_seeds"}
-    comps = {"SAM_minus_AdamWD": ("sam", "adam_wd"), "AdamWD_minus_Adam": ("adam_wd", "adam")}
-    rng = np.random.default_rng(BOOT_SEED)
+               "stability_jaccard_folds": "stability_jaccard_folds"}
+    comps = {"SAM_minus_AdamWD": ("sam", "adam_wd"), "AdamWD_minus_Adam": ("adam_wd", "adam"),
+             "sam_vs_adam (proposal contrast, confounded)": ("sam", "adam")}
     rows = []
     for metric in metrics:
         for ext in EXTS:
@@ -202,21 +193,10 @@ def comparisons(dl: pd.DataFrame) -> pd.DataFrame:
                 wide = dl[dl.extractor == ext].pivot(index="drug", columns="arm", values=metric)
                 d = (wide[a] - wide[b]).dropna()
                 n = len(d)
-                if n:
-                    boots = np.median(rng.choice(d.to_numpy(), size=(BOOT_N, n), replace=True), axis=1)
-                    lo, hi = np.percentile(boots, [2.5, 97.5])
-                else:
-                    lo = hi = float("nan")
                 r = {"metric": metric, "extractor": ext, "comparison": cname, "n_drugs_paired": n,
                      "n_drugs_total": len(wide), "median_diff": float(d.median()) if n else float("nan"),
                      "mean_diff": float(d.mean()) if n else float("nan"),
-                     "ci95_lo_median_diff": float(lo), "ci95_hi_median_diff": float(hi),
                      "n_zero_diffs": int((d == 0).sum()), "wilcoxon_p": _wilcoxon(d)}
-                if metric == "heldout_fidelity":
-                    p_lo = _wilcoxon(d + TOST_MARGIN, alternative="greater")   # H0: d <= -margin
-                    p_hi = _wilcoxon(d - TOST_MARGIN, alternative="less")      # H0: d >= +margin
-                    r.update({"tost_margin": TOST_MARGIN, "tost_p_lower": p_lo, "tost_p_upper": p_hi,
-                              "tost_p": max(p_lo, p_hi) if not (math.isnan(p_lo) or math.isnan(p_hi)) else float("nan")})
                 rows.append(r)
     df = pd.DataFrame(rows)
     df["wilcoxon_p_bh"] = np.nan
@@ -262,7 +242,7 @@ def write_md(outdir, tidy, dl, comp, ctrl, wall, gl, enr, err, n_seeds_note):
     L = ["# Per-drug pilot: RESULTS (numbers only)", "",
          f"Drugs: {tidy.drug.nunique()}; cells: {len(tidy)} (expected {tidy.drug.nunique() * 30}); {n_seeds_note}.", ""]
     L += ["## Drug-level means by arm and extractor (mean over drugs)", ""]
-    cols = ["heldout_fidelity", "phi", "length", "stability_jaccard_folds", "stability_kuncheva_folds", "stability_jaccard_seeds",
+    cols = ["heldout_fidelity", "phi", "length", "stability_jaccard_folds",
             "heldout_fidelity_net_train", "heldout_fidelity_net_other"]
     t = dl.groupby(["extractor", "arm"])[cols].mean().reset_index()
     L += ["| extractor | arm | " + " | ".join(cols) + " |", "|" + "---|" * (len(cols) + 2)]
@@ -276,11 +256,10 @@ def write_md(outdir, tidy, dl, comp, ctrl, wall, gl, enr, err, n_seeds_note):
     for _, r in cnt.iterrows():
         L.append(f"| {r.extractor} | {r.arm} | {r.empty_pools} | {r.low_cov_rules} | {r.nan_fid_rules} | {r.empty_fold_sets} |")
     L += ["", "## Planned comparisons (paired by drug)", "",
-          "| metric | extractor | comparison | n | median diff | 95% CI | Wilcoxon p | BH p | TOST p (±0.05) |", "|---|---|---|---|---|---|---|---|---|"]
+          "| metric | extractor | comparison | n | median diff | mean diff | zero diffs | Wilcoxon p | BH p |", "|---|---|---|---|---|---|---|---|---|"]
     for _, r in comp.iterrows():
         L.append(f"| {r.metric} | {r.extractor} | {r.comparison} | {r.n_drugs_paired} | {fmt(r.median_diff)} | "
-                 f"[{fmt(r.ci95_lo_median_diff)}, {fmt(r.ci95_hi_median_diff)}] | {fmt(r.wilcoxon_p)} | {fmt(r.wilcoxon_p_bh)} | "
-                 f"{fmt(r.get('tost_p', float('nan')))} |")
+                 f"{fmt(r.mean_diff)} | {r.n_zero_diffs} | {fmt(r.wilcoxon_p)} | {fmt(r.wilcoxon_p_bh)} |")
     L += ["", "## Positive controls (folds with a hit, out of 5)", "",
           "| drug | features | extractor | arm | folds with hit in pool | folds where top-phi rule (3-arm union) contains the feature (High) |", "|---|---|---|---|---|---|"]
     if len(ctrl):
@@ -291,15 +270,16 @@ def write_md(outdir, tidy, dl, comp, ctrl, wall, gl, enr, err, n_seeds_note):
     L += ["", "## Wall-clock (seconds, summed over cells)", "", "| extractor | arm | total s | mean s per cell |", "|---|---|---|---|"]
     for _, r in wall.iterrows():
         L.append(f"| {r.extractor} | {r.arm} | {r.total_s:.0f} | {r.mean_cell_s:.1f} |")
-    L += ["", "## Pooled KEGG over-representation (High mutation genes per arm; background 534 genes; BH)", ""]
-    L += ["| arm | n genes |", "|---|---|"] + [f"| {r.arm} | {r.n_genes} |" for _, r in gl.iterrows()]
-    if err:
-        L += ["", f"Enrichr not run: {err}. Gene lists saved in kegg_gene_lists.csv."]
-    elif enr is not None:
-        L += ["", "Terms with adjusted p < 0.05 per arm:", ""]
-        for a, g in enr.groupby("arm"):
-            s = g[g["Adjusted P-value"] < 0.05].sort_values("Adjusted P-value")
-            L.append(f"- {a}: {len(s)} of {len(g)} terms" + ("".join(f"; {r.Term} (adj p {r['Adjusted P-value']:.3g}, overlap {r.Overlap})" for _, r in s.head(10).iterrows())))
+    if gl is not None:                   # KEGG section only when the KEGG step was run (--kegg)
+        L += ["", "## Pooled KEGG over-representation (High mutation genes per arm; background 534 genes; BH)", ""]
+        L += ["| arm | n genes |", "|---|---|"] + [f"| {r.arm} | {r.n_genes} |" for _, r in gl.iterrows()]
+        if err:
+            L += ["", f"Enrichr not run: {err}. Gene lists saved in kegg_gene_lists.csv."]
+        elif enr is not None:
+            L += ["", "Terms with adjusted p < 0.05 per arm:", ""]
+            for a, g in enr.groupby("arm"):
+                s = g[g["Adjusted P-value"] < 0.05].sort_values("Adjusted P-value")
+                L.append(f"- {a}: {len(s)} of {len(g)} terms" + ("".join(f"; {r.Term} (adj p {r['Adjusted P-value']:.3g}, overlap {r.Overlap})" for _, r in s.head(10).iterrows())))
     (outdir / "RESULTS.md").write_text("\n".join(L) + "\n", encoding="utf-8")
 
 
@@ -307,7 +287,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", required=True)
     ap.add_argument("--out", default=None)
-    ap.add_argument("--no-kegg", action="store_true")
+    ap.add_argument("--kegg", action="store_true", help="run the pooled KEGG enrichment step (needs network); off by default")
+    ap.add_argument("--no-kegg", action="store_true", help="force the KEGG step off (the default)")
     a = ap.parse_args()
     root = Path(a.root)
     out = Path(a.out) if a.out else root.parent
@@ -324,10 +305,10 @@ def main():
     ctrl.to_csv(out / "positive_controls.csv", index=False)
     wall = tidy.groupby(["extractor", "arm"]).wall_clock_s.agg(total_s="sum", mean_cell_s="mean").reset_index()
     tidy[["drug", "arm", "extractor", "fold", "wall_clock_s"]].to_csv(out / "wallclock.csv", index=False)
-    if a.no_kegg:
-        gl, enr, err = kegg(cells, out)[0], None, "skipped (--no-kegg)"
-    else:
+    if a.kegg and not a.no_kegg:
         gl, enr, err = kegg(cells, out)
+    else:
+        gl, enr, err = None, None, None
     n_seeds = sorted({c["key"]["n_seeds"] for c in cells.values()})
     write_md(out, tidy, dl, comp, ctrl, wall, gl, enr, err, f"seeds per cell: {n_seeds}")
     print("wrote outputs to", out)
