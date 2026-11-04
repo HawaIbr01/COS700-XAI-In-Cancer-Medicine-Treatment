@@ -1,0 +1,272 @@
+% !TeX root = ../../report.tex
+% Section 4: Per Drug Evolutionary Rule Extraction (PDERE).
+% The \section heading lives in report.tex; this file starts at 4.1.
+% Figures live in figures/ (see \graphicspath in report.tex).
+
+%--------------------------------------------------------------------
+\subsection{Overview}
+\label{sec:pdere-overview}
+
+PDERE is the rule extraction approach developed in this study. It is an XAI approach to explain a trained drug-response network by approximating the network's sensitive or resistant predictions with short IF-THEN rules that are extracted separately for each drug. A rule is a set of conditions on discretised cell-line features joined by AND, for example: IF the activity of a pathway P is High AND the mutation flag of gene G is High THEN resistant. The rules were searched for with evolutionary algorithms, which improve a population of candidate solutions over generations through selection, crossover and mutation \citep{holland1975}.
+
+Two versions of PDERE were designed. The first is PDERE-GA, which uses a genetic algorithm \citep{holland1975} with a single scalar fitness. The second is PDERE-NSGA, which uses the non-dominated sorting genetic algorithm II (NSGA-II) \citep{deb2002}, which optimises several objectives at once (two in PDERE-NSGA) and returns a set of trade-off solutions. The encoding, decoding routine, sparse initialisation and crossover and mutation operators were shared between the two algorithms. Keeping these constant between the two algorithms allows the differences between the rules to be attributed to the search objective and not to the encoding. Both were implemented with the DEAP library \citep{fortin2012}.
+
+In brief, for each drug the cell lines are split into five folds. For each fold, rules are searched on the other four folds by initialising a sparse population, evaluating each candidate, and repeatedly selecting, recombining, mutating and repairing candidates. The surviving rules are scored on the held-out fold. The search is repeated with 10 independent seeds, and the results are pooled (Section~\ref{sec:replication}).
+
+%--------------------------------------------------------------------
+\subsection{Inputs}
+\label{sec:inputs}
+
+For each drug, PDERE received one row per cell line at a time. Each row held the cell line's features and the class predicted for it by the network that is to be explained.
+
+\subsubsection{Features}
+\label{sec:features}
+
+As described in Section~\ref{sec:dl-cancer} (also see Appendix~\ref{app:chromosome}), the 572 total features comprise 534 binary mutation flags and 38 pathway activity scores, with drug fingerprints excluded since the target drug is fixed per extraction.
+
+\subsubsection{Feature discretisation}
+\label{sec:discretisation}
+
+Rule conditions required categories, so pathway activity scores were z-scored across all cell lines and categorised into Low ($z < -1$), Intermediate, and High ($z > 1$), while binary mutation flags were directly mapped to Low (unmutated) or High (mutated).
+
+\subsubsection{Target classes}
+\label{sec:target-classes}
+
+In line with Red XAI, which prioritises faithfulness to the model over justifying its decisions \citep{biecek2024}, the rules were fitted to the network's predicted outputs rather than to the measured drug responses; the one use of measured classes is PDERE-GA's accuracy term (Section~\ref{sec:accuracy-measure}). They therefore mainly describe what the network has learned, including any shortcuts, and not noise in the experimental data. For each drug, a single cutoff was used to turn $\ln(\mathrm{IC}_{50})$ values into classes: the median $\ln(\mathrm{IC}_{50})$ of that drug's rows in the network's training split. This same cutoff was applied to both the network's predicted $\ln(\mathrm{IC}_{50})$ values and the measured (ground truth) $\ln(\mathrm{IC}_{50})$ values. In both cases, values below the cutoff were labelled sensitive and values above it were labelled resistant, because a lower $\ln(\mathrm{IC}_{50})$ means the drug works at a lower dose. The predicted and measured labels can therefore be compared directly. For example, take Erlotinib, whose cutoff is a $\ln(\mathrm{IC}_{50})$ of about 3.02. For one cell line:
+
+\begin{itemize}
+  \item The network's predicted $\ln(\mathrm{IC}_{50})$ is 2.5. That is below 3.02, so the network's class is sensitive.
+  \item The laboratory-measured $\ln(\mathrm{IC}_{50})$ is 3.4. That is above 3.02, so the measured class is resistant.
+\end{itemize}
+
+The per-drug median cutoff and a minimum of 500 cell line--drug pairs per drug were set during data preparation and kept unchanged for the per-drug class predictions and all rule extraction.
+
+\subsubsection{Data partition}
+\label{sec:partition}
+
+For each drug, the cell lines were split into five folds by cell line (fold seed 42). Rules were extracted on four folds and scored on the fifth, the held-out fold. Within the four training folds, 20\% of the cell lines (seed 4242 plus the fold number) formed an inner validation set and the remaining 80\% were the fitting rows. For example, Erlotinib had 860 cell lines: 172 were held-out rows, 138 were validation rows and the remaining 550 were the fitting rows. Fidelity and the class of each rule were calculated on the fitting rows for both the GA variant and the NSGA variant. The validation set provided the accuracy measurement and the dominance filter in PDERE-GA only. The held-out fold was used for scoring after extraction and never during the search. The network had seen the held-out cell lines in its own training, because its split was random by row.
+
+%--------------------------------------------------------------------
+\subsection{Representation and rule semantics}
+\label{sec:representation}
+
+A chromosome (the encoded form of one candidate solution; Figure~\ref{fig:chromosome}) was a vector of $n$ genes, one gene per discretised feature. Each gene held one of four values:
+
+\begin{itemize}
+  \item $-1$ (feature excluded from the rule),
+  \item $0$ (Low),
+  \item $1$ (Intermediate),
+  \item $2$ (High).
+\end{itemize}
+
+In this study, the chromosome vector is of size 572, mapping directly to the 534 mutation flags and 38 pathway activity scores detailed in Sections~\ref{sec:dl-cancer} and~\ref{sec:inputs} (also see Appendix~\ref{app:chromosome}). Decoding a chromosome yields an IF--THEN rule whose length corresponds to its number of active conditions (genes with values other than $-1$).
+
+A cell line was covered by a rule when it satisfied every condition. The rule predicted one class for all covered cell lines: the majority class of the network's prediction became the overall prediction for all covered cell lines by the rule, with ties defaulting to the resistant label.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{chromosome-encoding.png}
+  \caption{Chromosome encoding and rule semantics shared by PDERE-GA and PDERE-NSGA. A chromosome contains one gene per discretised feature ($n = 572$): $-1$ excludes the feature and 0, 1, and 2 map to Low, Intermediate and High respectively. Decoding keeps the genes other than $-1$ and joins their conditions with AND, so one chromosome is one rule whose length is the number of active conditions. A cell line is covered when it satisfies every condition. The rule predicts the majority network class of the covered cell lines for all of them, with ties going to ``resistant''. Feature names and values are illustrative.}
+  \label{fig:chromosome}
+\end{figure}
+
+%--------------------------------------------------------------------
+\subsection{Evaluation measures inside the search}
+\label{sec:measures}
+
+\subsubsection{Fidelity}
+\label{sec:fidelity-measure}
+
+For a rule that covers some cell lines, fidelity measures how faithfully it reproduces the network on those cell lines. It is the macro-averaged F1 score (the mean of the per-class F1 scores, where F1 is the harmonic mean of precision and recall) between the rule's single predicted class and the network's predicted class on the cell lines the rule covers. During the search these are the covered training cell lines.
+\[
+  \text{Fidelity} = \frac{F1_{\text{sensitive}} + F1_{\text{resistant}}}{2}
+\]
+
+Let $p$ be the fraction of covered cell lines where the network's class equals the rule's class. If the covered cell lines contain both classes, the class the rule never predicts scores 0, so fidelity equals
+\[
+  \text{Fidelity} =
+  \begin{cases}
+    1, & p = 1,\\[4pt]
+    \dfrac{p}{1+p}, & p < 1,
+  \end{cases}
+\]
+which is always below 0.5.
+
+Agreement (the share of covered cell lines where the network's class matches the rule's class) is
+\[
+  p = \frac{\text{covered cell lines where network class} = \text{rule class}}{\text{all covered cell lines}}.
+\]
+
+This is because a rule predicts one class for every cell line it covers. Fidelity equals 1 only when every covered cell line has the same network class as the rule. Fidelity is therefore a harsh scale: a fidelity of 0.44 corresponds to about 79\% agreement ($0.79/1.79 \approx 0.44$). During the search the rule's class is the majority network class among the cell lines it covers, so $p$ is at least 0.5 and fidelity lies between $1/3$ and $0.5$, unless the covered cell lines are all one class, when it equals 1.
+
+\subsubsection{Accuracy (PDERE-GA only)}
+\label{sec:accuracy-measure}
+
+Accuracy measures how well a rule predicts the measured response rather than the network's output. It is a macro-F1 score, not the share of correct predictions, and the fitness function calls it accuracy. The rule's class is the network's majority class among the training cell lines it covers, as for fidelity. Accuracy is the macro-F1 between that class and the measured response class (sensitive or resistant) of the validation cell lines the rule covers. The validation cell lines are the 20\% of each fold's training portion kept back inside the search. They are not the held-out fold, which is only used for the final scoring.
+
+Let $p_{\text{val}}$ be the fraction of covered validation cell lines whose measured class equals the rule's class:
+\[
+  p_{\text{val}} = \frac{\text{covered validation cell lines where measured class} = \text{rule class}}{\text{all covered validation cell lines}}.
+\]
+
+Accuracy is the macro-F1 over the two classes:
+\[
+  \text{Accuracy} = \frac{F1_{\text{sensitive}} + F1_{\text{resistant}}}{2}.
+\]
+
+Because a rule predicts a single class, as for fidelity, this simplifies to
+\[
+  \text{Accuracy} =
+  \begin{cases}
+    1, & p_{\text{val}} = 1,\\[4pt]
+    \dfrac{p_{\text{val}}}{1+p_{\text{val}}}, & p_{\text{val}} < 1.
+  \end{cases}
+\]
+
+Accuracy is therefore below 0.5 whenever the covered validation cell lines contain both classes (the reason is explained under Fidelity). Because the rule's class is fixed from the training cell lines, $p_{\text{val}}$ can be below 0.5, and accuracy is 0 when the rule covers no validation cell lines or when every covered validation cell line is in the other class. PDERE-NSGA does not use accuracy and never uses the measured labels.
+
+\subsubsection{Length and comprehensibility score}
+\label{sec:length-measure}
+
+A rule's length is its number of active conditions, that is, the number of features (pathway activities or mutation flags) the rule restricts. Shorter rules are easier to read, so length is used as the measure of comprehensibility. PDERE-GA converts length into a higher-is-better score,
+\[
+  \text{Comprehensibility} = 1 - \frac{\text{length}}{n}, \qquad n = 572 \text{ (the total number of features)},
+\]
+so a rule with more active conditions scores lower. PDERE-NSGA does not convert length: it minimises length directly as one of its two objectives.
+
+\subsubsection{Coverage floor}
+\label{sec:coverage-floor}
+
+Coverage is the number of training cell lines to which a rule applies. A minimum was required because a rule that fits only a handful of cell lines is not a useful summary of the network. A rule covering one to three cell lines can also reach a fidelity of 1.0 by chance, because those few cell lines are likely to share one network class, so the score says little. In the per-drug runs the floor was 25 training cell lines.
+
+The two variants handle a rule below the floor differently. In PDERE-GA, a rule below the floor is assigned a fitness of $-1$, but pruning first tries to repair it by removing conditions one at a time (Section~\ref{sec:pruning}). In PDERE-NSGA, a rule below the floor has its fidelity set to 0 but keeps its length and predicted class, so selection normally removes it. It could remain in the first front if it were shorter than every rule above the floor, because nothing in the pooling step removes it. In practice this did not happen: in the final run, none of the pooled rules (16,731 for PDERE-NSGA and 39,825 for PDERE-GA) covered fewer than 25 fitting cell lines, and the lowest fidelity in a pool was 0.367 for PDERE-NSGA and 0.333 for PDERE-GA. In both variants, a chromosome with no active conditions is treated as covering nothing, because it would otherwise match every cell line and score as a maximally general rule of length zero.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{pdere-workflow-comparison.png}
+  \caption{Methodological workflow comparison between PDERE-GA and PDERE-NSGA, illustrating shared genetic representations alongside algorithm-specific selection, evaluation, and survival mechanisms.}
+  \label{fig:workflow-comparison}
+\end{figure}
+
+%--------------------------------------------------------------------
+\subsection{Components shared by both variants}
+\label{sec:shared}
+
+\subsubsection{Sparse initialisation}
+\label{sec:initialisation}
+
+Individuals are built by first drawing the number of active conditions uniformly from 1 to 5, then choosing that many features at random from all 572 and setting each to Low, Intermediate or High with equal probability. All other features were set to $-1$ (unused). Sampling every feature independently from $\{-1, 0, 1, 2\}$ would instead make about three quarters of the features active, producing long rules that are unlikely to meet the coverage floor. Because mutation features cannot be Intermediate, initialisation and mutation still draw that level for them, so about one third of such conditions can never be satisfied and a rule containing one covers no cell lines. These rules are penalised through the 2\% coverage floor, and the GA can repair them by pruning. Sparse initialisation was used for generation zero in both variants. In PDERE-GA it was also used for the fresh individuals that replace aged ones (Section~\ref{sec:aging}), so that the replacements are as short and readable as the starting population.
+
+\subsubsection{Crossover}
+\label{sec:crossover}
+
+Two-point crossover was applied to the gene vector by choosing two random cut points and exchanging the intervening segment between two parents. Mating pairs were evaluated consecutively and recombined with a probability of 0.8 in PDERE-GA and 0.9 in PDERE-NSGA.
+
+\subsubsection{Mutation}
+\label{sec:mutation}
+
+Each offspring was mutated with a probability of 0.2. For mutated individuals, each gene independently had a 0.05 probability of being replaced with a value drawn uniformly at random from $\{-1, 0, 1, 2\}$ (per-gene uniform resampling).
+
+\subsubsection{Scoring cache and seeding}
+\label{sec:cache}
+
+Fitness scores were cached per genotype to avoid recomputing identical chromosomes, which recur frequently under genetic operators and across runs. To ensure full reproducibility, each evolutionary run was initialised using a base seed of 42 incremented by the run number.
+
+%--------------------------------------------------------------------
+\subsection{PDERE-GA}
+\label{sec:pdere-ga}
+
+\subsubsection{Fitness}
+\label{sec:fitness}
+
+The fitness of a chromosome (one rule) is a weighted sum of its fidelity, accuracy and comprehensibility:
+\[
+  \text{Fitness} = 0.45 \times \text{fidelity} + 0.35 \times \text{accuracy} + 0.20 \times \left(1 - \frac{\text{length}}{n}\right),
+\]
+where length is the number of active conditions and $n = 572$ is the number of features. Rules that were empty or covered fewer training cell lines than the coverage floor were given a fitness of $-1$. For example, a rule with fidelity 0.44, validation accuracy 0.40 and 4 active conditions scores $0.45 \times 0.44 + 0.35 \times 0.40 + 0.20 \times (1 - 4/572) = 0.537$. The same rule with 40 conditions scores 0.524, so length acts as a mild tiebreaker, not a strong selection pressure.
+
+\subsubsection{Generation cycle}
+\label{sec:generation-ga}
+
+The population size $N$ was drawn uniformly from 35 to 45 using the run's seed and stayed fixed for the whole run. Each generation:
+
+\begin{enumerate}
+  \item \textbf{Selection:} $N$ parents were chosen by tournament selection (tournament size 3: three individuals drawn at random, with replacement, and the fittest wins) and copied.
+  \item \textbf{Variation:} crossover and mutation (Section~\ref{sec:shared}) were applied to consecutive pairs of offspring. If $N$ was odd, the last offspring was left unchanged.
+  \item \textbf{Pruning} (below).
+  \item \textbf{Evaluation} of the changed individuals.
+  \item \textbf{Aging} (below), then evaluation of the new individuals.
+  \item \textbf{Replacement:} the offspring replaced the whole population (generational replacement, no elitism). A leaderboard of the 10 best distinct individuals seen in the run was updated.
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{pdere-ga-workflow.png}
+  \caption{Execution workflow for a single PDERE-GA run on a drug, network, and fold combination.}
+  \label{fig:ga-workflow}
+\end{figure}
+
+\subsubsection{Pruning}
+\label{sec:pruning}
+
+Pruning was inspired by \citet{yedjour2024}, who removed whole candidate rules below minimum support, confidence and lift thresholds before their genetic search. PDERE-GA adapts this to a single rule as a repair step. After crossover and mutation, an offspring with more than one condition that covered fewer than 25 training cell lines had its conditions switched off one at a time, in random order, until it met the floor. If it never did, all its conditions were removed and it scored $-1$. Only coverage is used: confidence is what fidelity already measures, and lift does not apply because a rule's class is the network's majority class, not a target to be enriched. Conditions were removed without checking how useful each one was. PDERE-NSGA has no pruning.
+
+\subsubsection{Aging}
+\label{sec:aging}
+
+Aging evolution \citep{real2019} keeps the population as a queue. Each cycle a child is made by mutating the fittest of a random sample, and the oldest individual is removed whatever its fitness, so a lineage survives only while it keeps producing good children. PDERE-GA kept the idea of a limited lifespan inside a generational algorithm. Each individual carried an age that offspring inherited and that rose by one every generation, and an individual that reached age 8 was replaced by a new sparse random individual of age 0. Because every individual starts at age 0 and ages are inherited, all individuals always have the same age. The whole population is therefore replaced at once, at generations 9, 18, 27, 36 and 45, by new random individuals rather than children. In effect, a 50-generation run is six searches from fresh random populations: five with 8 generations of breeding and the last with 5. Only the leaderboard carries rules across a restart, and it is never fed back into the population. The saved traces confirm this: mean population fitness fell at each of these generations in all 56,850 GA runs (on average from about 0.46 to about $-0.62$, recovering to about 0.12 in the next generation), and the best fitness fell in about 93\% of runs. PDERE-NSGA has no aging.
+
+\subsubsection{Run output}
+\label{sec:run-output-ga}
+
+The candidate rules of a run were the leaderboard and the final population. Duplicates and rules below the coverage floor were removed, and the non-dominated rules were returned. A rule is non-dominated when no other rule is at least as good on fidelity, accuracy and comprehensibility and better on at least one.
+
+%--------------------------------------------------------------------
+\subsection{PDERE-NSGA}
+\label{sec:pdere-nsga}
+
+\subsubsection{Objectives}
+\label{sec:objectives}
+
+Two objectives were optimised together: maximise fidelity and minimise length (the number of active conditions). Unlike PDERE-GA, there is no accuracy term, because PDERE-NSGA sees only the network's predicted classes and never uses the measured labels. It has no coverage objective (coverage enters only through the floor), no pruning and no aging.
+
+\subsubsection{Generation cycle}
+\label{sec:generation-nsga}
+
+The population held 40 individuals (DEAP's binary tournament requires a multiple of 4). Each generation:
+
+\begin{enumerate}
+  \item \textbf{Parent selection} by crowded binary tournament (below).
+  \item \textbf{Variation:} crossover and mutation as in Section~\ref{sec:shared}.
+  \item \textbf{Survival:} the parents and offspring were pooled and the best 40 kept by non-dominated sorting and crowding distance (elitist selection), so good rules are never lost.
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{pdere-nsga-workflow.png}
+  \caption{Execution workflow for a single PDERE-NSGA run on a drug, network, and fold combination.}
+  \label{fig:nsga-workflow}
+\end{figure}
+
+\subsubsection{Dominance and crowding distance}
+\label{sec:crowding}
+
+A rule dominates another when it is at least as good on both fidelity and length and strictly better on at least one (as defined under PDERE-GA, here on two objectives). For example, a rule with fidelity 0.70 and 3 conditions dominates one with fidelity 0.60 and 5 conditions, but a rule with fidelity 0.80 and 6 conditions dominates neither, since it is more faithful but longer. The rules that no other rule dominates form the first front, running from short, less faithful rules to long, faithful ones. A rule's crowding distance measures how isolated it is on its front: the size of the gap between its neighbours, with the two ends given an infinite distance. In the tournament, of two rules, the one that dominates the other wins. If neither does, the rule with the larger crowding distance wins, which keeps a spread of trade-offs rather than many near-identical rules, and equal distances are decided at random.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{crowding-distance.png}
+  \caption{Crowding distance metric in NSGA-II, illustrating how population diversity is preserved along the non-dominated Pareto front by prioritising isolated rule sets.}
+  \label{fig:crowding}
+\end{figure}
+
+\subsubsection{Run output}
+\label{sec:run-output-nsga}
+
+A run returned the first non-dominated front of its final population. The fronts of the seeded runs were then pooled and filtered again to give the drug's rule pool.
+
+%--------------------------------------------------------------------
+\subsection{Replication and pooling}
+\label{sec:replication}
+
+Each cell (a drug, network, extractor and fold) was run 10 times independently for 50 generations, with run seeds 43 to 52 (42 plus the run number). The outputs of the 10 runs were merged into one pool per cell. Duplicate rules were removed and the non-dominated rules kept, judged on fidelity, accuracy and comprehensibility for PDERE-GA and on fidelity and length for PDERE-NSGA. Each pooled rule stored its conditions, the features they involve, its predicted class, length, fidelity, coverage and the runs that found it. Pools held 1 to 25 rules for PDERE-GA (median 6) and 1 to 8 for PDERE-NSGA (median 3). Table~\ref{tab:example-pool} (Section~\ref{sec:fidelity-results}) shows one pool in full (archived with run settings in Appendix~\ref{app:archives}).

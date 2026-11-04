@@ -1,0 +1,116 @@
+% !TeX root = ../../report.tex
+% Section 5: Research Methodology.
+% The \section{Research Methodology} heading lives in report.tex; this file holds the body.
+\label{sec:methodology}
+
+This study followed proof by demonstration. The claim under test was that improving the generalisation gap of a drug-response network with Sharpness-Aware Minimisation (SAM) produces better IF-THEN rules when the rules are extracted by evolutionary algorithms. The claim was examined by building the artefacts (three trained networks and the PDERE rule extraction), running them over 379 drugs and measuring their behaviour, and not by a formal proof that SAM must help. The result of each stage of the work was a small demonstration: that a generalisation gap existed to be reduced, that a configuration of SAM reduced it, and that rules could be extracted from each network and scored on cell lines the extractor had not seen.
+
+The hypotheses were tested for three comparisons of networks, for each extractor:
+
+\begin{enumerate}
+  \item SAM+WD minus Adam+WD (the clean test of SAM, with weight decay and the stopping rule held fixed).
+  \item Adam+WD minus Adam (the effect of weight decay and its stopping rule).
+  \item SAM+WD minus Adam (the combined effect of SAM and weight decay, which differs from the first comparison in both optimiser and weight decay and so cannot separate the two).
+\end{enumerate}
+
+%--------------------------------------------------------------------
+\subsection{Experimental Design}
+\label{sec:design}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Three versions of the same network were trained across different optimisation arms.}
+  \label{tab:arms}
+  \small
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.1cm} >{\raggedright\arraybackslash}p{3.3cm} c >{\raggedright\arraybackslash}X@{}}
+    \toprule
+    \textbf{Arm} & \textbf{Optimiser} & \textbf{Weight decay} & \textbf{Stopping rule} \\
+    \midrule
+    Adam baseline & Adam, learning rate 0.001 & none &
+      Paired reverse rule (below); stopped at 90 epochs \\
+    Adam+WD & Adam, learning rate 0.001 & 1e-3 &
+      Validation-loss plateau (patience 30 epochs, minimum improvement 1e-4), 250-epoch cap; stopped at 187 epochs \\
+    SAM+WD & SAM on Adam, $\rho = 0.5$, learning rate 0.001 & 1e-3 &
+      Same rule; reached the 250-epoch cap without converging \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+All arms used a batch size of 1024. Weight decay was coupled L2 regularisation applied through the Adam optimiser, not decoupled weight decay (AdamW). SAM was used as published \citep{foret2021}. Its objective includes an L2 term, so weight decay was kept in the SAM arm and Adam+WD serves as the matched control. As in \citet{foret2021}, the neighbourhood size $\rho$ was chosen by grid search (Section~\ref{sec:training}).
+
+The Adam baseline arm was the baseline of the original investigation. It was trained to overfit deliberately, so that there was a generalisation gap for SAM to act on: training stopped only when the validation loss had plateaued (patience 30 epochs, minimum improvement 1e-4) while the training loss was still falling over 10 consecutive epochs. The Adam+WD arm was added to separate the optimiser from weight decay. Its stopping rule was the one used for SAM+WD. Only the comparison of SAM+WD with Adam+WD changes one thing (the optimiser); the Adam arm differs from both in weight decay and in stopping rule.
+
+%--------------------------------------------------------------------
+\subsubsection{Data}
+\label{sec:data}
+
+The datasets were obtained from the Genomics of Drug Sensitivity in Cancer (GDSC) resource \citep{yang2013} as preprocessed for DeepCCDS \citep{wu2025}, with the network trained on the DeepCCDS authors' raw ssGSEA inputs; the discretisation, z-scoring and per-drug target classes of Section~\ref{sec:inputs} were applied only for rule extraction.
+
+The full dataset of 319,543 cell line--drug pairs across 413 drugs was split at random by row into training, validation and test sets, using the DeepCCDS authors' precomputed split (255,628 / 31,963 / 31,952 pairs), with rule extraction restricted to 379 drugs meeting the 500-pair threshold.
+
+%--------------------------------------------------------------------
+\subsubsection{Training the network}
+\label{sec:training}
+
+The loss was the prediction error plus the reconstruction errors of the two autoencoders.
+\[
+  \text{Generalisation gap} = \text{validation loss} - \text{training loss}
+\]
+
+\paragraph{Parameter tuning.}
+Hyperparameters for SAM and weight decay were tuned sequentially using the network training data. Initial sweeps over SAM perturbation $\rho \in \{0.01, 0.05, 0.1, 0.2\}$ without weight decay showed minimal impact on the generalisation gap. A subsequent grid search over $\rho \in \{0.2, 0.5, 1.0, 2.0\}$, learning rate $\in \{0.001, 0.0005\}$, and weight decay $\in \{0, 10^{-3}\}$ on a 10\% training subsample identified $\rho = 0.5$ with a weight decay of $10^{-3}$ as the selected configuration, effectively narrowing the generalisation gap while preserving model predictive accuracy (Appendix~\ref{app:global}).
+
+For each network the generalisation gap, validation $R^2$ and RMSE, and number of epochs were reported. The sharpness of the minimum was summarised by the top eigenvalue of the Hessian of the loss (the matrix of second derivatives), measured for the Adam and SAM+WD networks. Loss landscapes were drawn with the filter-normalised method of \citet{li2018}.
+
+As a qualitative check that SAM had not caused a shortcut (``Clever Hans'') behaviour \citep{lapuschkin2019}, vanilla input gradients over the 38 pathway inputs were computed for 256 samples per partition, and the top pathways, the coefficient of variation of attribution, and the share of attribution in the top 3 and top 10 pathways were compared. The Adam+WD network was not audited.
+
+%--------------------------------------------------------------------
+\subsubsection{Rule extraction}
+\label{sec:extraction}
+
+Both PDERE variants (PDERE-GA and PDERE-NSGA) were run on each network for each drug, using five folds of cell lines. For each fold, rules were extracted on the cell lines of the other four folds and scored on the held-out fold, so that every reported fidelity was measured on cell lines the extractor had not seen. Each cell of the design (drug, network, extractor, fold) was run with 10 independent seeds (run seed 42 plus the run number) and the results were pooled (Section~\ref{sec:replication}). The full design held $379 \text{ drugs} \times 3 \text{ networks} \times 2 \text{ extractors} \times 5 \text{ folds} = 11{,}370$ cells (archived with run settings in Appendix~\ref{app:archives}).
+
+Each drug was treated as one unit, because rules for the same drug are not independent of each other, and the three networks gave a natural pairing for each drug. The 379 drugs, and not the seeds, were therefore the replicates in the statistical tests. The extractors were not compared with each other, because their objectives differ (PDERE-GA uses an accuracy term and an inner validation set, and PDERE-NSGA does neither).
+
+\paragraph{Scoring and aggregation across folds.}
+
+\textbf{Fidelity.}
+Fidelity was evaluated on held-out test fold cell lines using the macro-F1 formulation defined in Section~\ref{sec:fidelity-measure}. Rules covering fewer than 10 held-out cell lines were flagged, not dropped, and a rule covering no held-out line had undefined fidelity and was excluded. For each drug, network and extractor, the fidelity of a fold was the median over the rules of its pool, and the drug's value was the mean of that median over the five folds. A fold with an empty pool was left out of the average and counted. The fidelity expected of a rule that agrees with the network on half of the rows it covers is about 0.33; no random-rule baseline was run.
+
+\textbf{Length.}
+Length was measured directly as the number of active conditions per rule (Section~\ref{sec:length-measure}). Per drug, the median length over all rules in the pools was reported.
+
+\textbf{Stability.}
+The feature set of a fold was the set of features appearing in the conditions of the rules extracted for it, counting a mutation flag by its gene and a pathway score by its pathway name, in conditions of any category. These sets therefore hold up to 572 items (534 genes and 38 pathways), and about 45\% of the conditions in the pools were on pathways. Stability was expressed as the mean Jaccard overlap over the valid pairs among the 10 pairwise combinations of the 5 folds (where $P$ represents the set of valid fold pairs where neither set is empty).
+
+The Jaccard overlap for any two feature sets $A$ and $B$ extracted from different folds is
+\[
+  J(A, B) = \frac{|A \cap B|}{|A \cup B|},
+\]
+and stability is its mean over the valid fold pairs:
+\[
+  \text{Stability} = \frac{1}{|P|} \sum_{(i,j) \in P} \frac{|A_i \cap A_j|}{|A_i \cup A_j|}.
+\]
+
+A chance level, the expected overlap of two independent random sets of the observed sizes drawn from the 572 features (hypergeometric), was recomputed for the final run: 0.0035 to 0.0036 for PDERE-NSGA and 0.0085 to 0.0087 for PDERE-GA. Observed values were compared with it to check that they were above chance.
+
+%--------------------------------------------------------------------
+\subsubsection{Evaluation measures for the extracted rules}
+\label{sec:rule-eval}
+
+\textbf{Multi-criteria score.}
+Rules from the three networks were ranked together with PROMETHEE~II \citep{brans1985}, a method that ranks alternatives on several criteria without forcing them onto one scale. For each rule, the net flow $\varphi$ is the mean preference for it over every other rule minus the mean preference of every other rule over it, summed over criteria with weights (the 1985 definition sums rather than averages over the other rules; dividing by their number does not change the ranking). The criteria were fidelity (maximise, weight 0.714) and length (minimise, weight 0.286). Both criteria used the V-shape preference function (called linear preference, Type~III, by Brans and Vincke), with the preference threshold set to the range of the criterion and the indifference threshold set to zero. PROMETHEE~II was run for each drug, extractor and fold over the union of the scored rules of the three networks, and a network's $\varphi$ was the mean over its rules and then over the five folds.
+
+\textbf{Positive controls.}
+For four drugs with a known gene target (Erlotinib and \textit{EGFR}, PLX-4720 and \textit{BRAF}, Olaparib and \textit{BRCA1/2}, Selumetinib and \textit{BRAF/KRAS}) it was recorded whether a rule in the fold's pool contained the target's mutation flag set to High.
+
+%--------------------------------------------------------------------
+\subsection{Statistical Analysis}
+\label{sec:stats}
+
+For each metric and extractor, the three network comparisons defined in Section~\ref{sec:methodology} were evaluated per drug using a two-sided paired Wilcoxon signed-rank test across the 379 drugs. This non-parametric rank test was selected over a paired $t$-test due to the right-skewed distribution of paired differences (where means exceeded medians) and the presence of substantial shifts in a minority of drugs. The median paired difference was reported as the primary effect size metric. Zero differences were omitted in accordance with standard procedure, which primarily affected the length comparisons where many drugs exhibited identical values.
+
+Across the 24 hypothesis tests (4 metrics $\times$ 2 extractors $\times$ 3 comparisons), $p$-values were adjusted using the Benjamini--Hochberg procedure to control the false discovery rate (FDR) within each metric (6 tests per metric). Both raw and FDR-adjusted $p$-values are reported. Differences were considered statistically significant at an adjusted $p < 0.05$. Non-significant results were interpreted as no detectable difference rather than equivalence, as formal equivalence testing was not conducted.
+
+Network-level quantities (gap, $R^2$, RMSE, Hessian eigenvalue) come from one trained network per arm, so there is no variation across runs from which to compute a test, and these were reported descriptively. The earlier runs of the Adam+WD and SAM+WD networks served as rough replicates (Section~\ref{sec:training-results} and Appendix~\ref{app:global}).
