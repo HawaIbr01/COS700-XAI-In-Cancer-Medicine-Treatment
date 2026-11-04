@@ -1,0 +1,47 @@
+% !TeX root = ../report.tex
+While Section~\ref{sec:literature-review} demonstrates that the individual components of this research are well established, this section identifies where current literature falls short, establishing the necessity for this study (Section~\ref{sec:gaps}). It then outlines what our study adopts from existing literature and what it uniquely adds (Section~\ref{sec:adopts-adds}).
+
+\subsection{Gaps in the Existing Literature}
+\label{sec:gaps}
+
+\paragraph{Gap 1: Red XAI is a position, not yet a worked pipeline.}
+\citet{biecek2024} argue that explanations should be used to question a model and not only to justify it, but they put forward a position and not an end-to-end procedure. To our knowledge, no pipeline in cancer pharmacogenomics links the health of a trained network to the quality of the rules extracted from it.
+
+\paragraph{Gap 2: The route from flat minima to better explanations is assumed, not tested.}
+Flat minima are associated with better generalisation \citep{keskar2017,li2018}, SAM is designed to find them \citep{foret2021}, and \citet{springer2024} report that SAM balances learned feature representations on image benchmarks. The hypothesis of this study needs a longer chain: a smaller gap, then a flatter minimum, then more stable explanations, then better rules. Several links in that chain are contested. \citet{andriushchenko2023} found, in their image and language experiments, that sharpness correlates poorly with generalisation, and \citet{dombrowski2019} tie explanation fragility to the curvature of the network's output with respect to the input, whereas SAM flattens the loss with respect to the weights. We found no study that tests whether SAM improves symbolic rules.
+
+\paragraph{Gap 3: Explanation-guided training puts the explanation in the loss.}
+Methods such as Right for the Right Reasons \citep{ross2017}, contextual decomposition penalisation \citep{rieger2020} and the Clever Hans pruning method EGEM \citep{linhardt2024} change the training objective using explanations, sometimes with human-annotated ground truth. They operate on image and text data. Whether an explanation-agnostic intervention that only reshapes the loss landscape improves global symbolic rules in pharmacogenomics has not been tested.
+
+\paragraph{Gap 4: Evolutionary rule extraction has not been tested at this scale or against biology.}
+\citet{yedjour2024} showed that PROMETHEE-assisted multi-objective evolutionary rule extraction works on five small UCI benchmark datasets (150--768 samples, 4--30 attributes), explaining three-neuron networks. They did not test high-dimensional genomic data, did not check biological validity, and did not examine whether the generalisation state of the networks affected rule quality.
+
+\paragraph{Gap 5: Explanations in cancer XAI are weakly evaluated.}
+A scoping review of breast cancer XAI found SHAP, LIME and CAM-type methods to be the most used, with explanations mostly used as sanity checks and rarely evaluated by oncologists \citep{ghasemi2024}. Fidelity metrics are reported to be unreliable for non-linear models \citep{miro2025}, and attribution methods can look convincing even when their output is largely independent of what the model has learned \citep{adebayo2018}. A claim of better explanations therefore needs explicit, checkable measures: fidelity to the network on cell lines held out from rule extraction, rule length, stability across data splits, and agreement with known drug--gene links.
+
+\paragraph{The gap this study addresses.}
+The literature shows that overfitting can make explanations unreliable, that SAM can flatten the loss, and that evolutionary algorithms can extract rules. It does not show whether training a drug-response network with SAM improves the rules extracted from it once other training changes are controlled. This study tests that.
+
+\subsection{What This Study Takes from the Literature and What It Adds}
+\label{sec:adopts-adds}
+
+\paragraph{The network.}
+The DeepCCDS architecture, its inputs and its data come from \citet{wu2025}. This study trained it under three controlled settings. The Adam baseline was deliberately run until it overfitted, using a reverse early stopping rule.
+
+\paragraph{The optimiser.}
+SAM \citep{foret2021}, Adam \citep{kingma2015} and weight decay \citep{goodfellow2016} are used as published, and SAM is applied unchanged. A weight-decay control was added to separate its effect from SAM, and the neighbourhood size $\rho$ was chosen by a sweep.
+
+\paragraph{Flatness checks.}
+Loss-landscape visualisation \citep{li2018} was combined with the generalisation gap and a Hessian eigenvalue as an audit of each trained network.
+
+\paragraph{The rule search.}
+The starting points are genetic algorithms and NSGA-II \citep{holland1975,deb2002}, implemented in DEAP \citep{fortin2012}, and the rule extraction approach of \citet{yedjour2024}, including its pruning of low-support rules. This study developed PDERE, which extracts rules separately for each of 379 drugs, fits them to the network's predictions, and scores them on held-out cell lines. Yedjour et al.\ evolve rule sets of about 15 rules, use PROMETHEE to guide the search, and measure comprehensibility as the number of rules. PDERE instead evolves single rules, ranks them with PROMETHEE~II after the search, and measures comprehensibility as the number of conditions per rule.
+
+\paragraph{Ranking and statistics.}
+PROMETHEE~II \citep{brans1985} ranks rules after the search on fidelity and length. Stability is reported separately as fold-to-fold Jaccard overlap. Differences between networks were tested with the Wilcoxon signed-rank test \citep{wilcoxon1945}, paired across 379 drugs, with Benjamini--Hochberg control of the false discovery rate \citep{benjamini1995} within each metric (six tests per metric, 24 in total) and effect sizes reported.
+
+\paragraph{The biological check.}
+KEGG pathways and known drug--target pairs are established resources. This study used them in a positive control check on four drug--gene links and in a KEGG overrepresentation test, which could not detect enrichment.
+
+\bigskip
+\noindent This study does not propose a new network architecture or optimiser. Its additions are: (1)~PDERE, a per-drug rule-extraction procedure applied at the scale of hundreds of drugs; (2)~a controlled three-network design showing that SAM with weight decay reduced the generalisation gap, but that the rule-quality gain of SAM with weight decay over Adam was mostly due to weight decay; (3)~a descriptive comparison of how the generalisation gap and rule quality moved across the three networks, in which the rule measures stayed flat as the gap fell; and (4)~an evaluation protocol that states the limits of its own measures, namely the fidelity ceiling, fold-to-fold stability and the biological positive controls. Each network was trained once and the SAM network stopped at the epoch cap, so the results are demonstrations and not proof (Section~\ref{sec:limitations}).
