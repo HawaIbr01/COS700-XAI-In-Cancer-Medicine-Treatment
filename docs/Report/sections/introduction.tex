@@ -1,0 +1,58 @@
+% !TeX root = ../report.tex
+\subsection{Background and Motivation}\label{sec:background}
+Deep Neural Networks (DNNs) have achieved state-of-the-art predictive accuracy in cancer genomics, particularly in predicting cellular drug sensitivity using high-dimensional datasets such as the Genomics of Drug Sensitivity in Cancer (GDSC) database \citep{yang2013,baptista2021}. Despite their predictive power, DNNs operate as opaque ``black-box'' models whose internal decision logic is hidden from clinicians who rely on them for high-stakes therapeutic decisions \citep{samek2017}. This opacity limits trust and may hinder regulatory approval in clinical settings \citep{arrieta2020,klauschen2024}. We define the resulting tension as the Interpretability--Regularisation Gap: the structural tension between complex, highly accurate black box models, which can settle into sharp loss landscapes that produce fragile, easily manipulated explanations, and intrinsically interpretable models, which lack the capacity to capture intricate, non-linear biological relationships.
+
+Explainable Artificial Intelligence (XAI) attempts to bridge this divide by extracting human-readable IF--THEN symbolic rules from trained neural networks \citep{yedjour2024}. However, the quality of a post-hoc explanation is fundamentally bound to the health of the underlying model. A DNN trained on high-dimensional genomic features can fit spurious correlations and dataset artefacts instead of genuine oncogenic signal, a failure known as the ``Clever Hans'' effect \citep{lapuschkin2019,anders2022,pahde2023}. We hypothesise that surrogate rules extracted from an overfitted network inherit this fragility. Rule extraction from complex networks can produce overly specific rules tailored to the training data that may not generalise, and multi-objective rule extraction can return so many rules that decision-makers struggle to interpret them \citep{yedjour2024}. Clinicians relying on such flawed explanations risk drawing medically unaligned conclusions that deviate from true biological mechanisms \citep{longo2024}.
+
+Much of the XAI narrative is dominated by the goals of ``Blue XAI'', which prioritises explanations for users, such as justification and trust \citep{biecek2024}. Such explanations can look plausible without verifying whether the network has learned authentic domain logic. This study is firmly grounded in the ``Red XAI'' framework, which repurposes explanation methods as active diagnostic tools to interrogate, validate and debug deep models \citep{biecek2024}. Rather than attempting post-hoc repairs on fragile rules after training, we propose a preventative optimisation-stage intervention. By applying Sharpness-Aware Minimisation (SAM) \citep{foret2021} during training, we steer the DeepCCDS framework toward flatter minima of the loss landscape \citep{foret2021,li2018}. We evaluate whether reducing the model's generalisation gap improves the fidelity, comprehensibility, stability and outranking performance of the symbolic rules extracted via single-objective (PDERE-GA) and multi-objective (PDERE-NSGA) evolutionary algorithms across 379 cancer therapeutics.
+
+\subsection{Problem Statement}\label{sec:problem}
+Currently, a standardised diagnostic framework that uses a neural network's generalisation gap as a quantitative predictor of post-hoc explanation quality is lacking in the literature. Regularisation techniques are widely acknowledged to improve model accuracy, but research on whether optimisation-level interventions, specifically SAM, can smooth the explanation landscape to produce faithful and human-comprehensible rules remains limited. Related work has linked the curvature of a network's output to the robustness of its explanations \citep{dombrowski2019} and reported that SAM changes the features a network learns \citep{springer2024}, but we found no study of whether this yields better symbolic rules. Without a Red XAI audit that links the health of the underlying model to the quality of the rules extracted from it, clinicians may rely on explanations that are mathematically convenient but biologically unsound \citep{longo2024}.
+
+\subsection{Aims and Objectives}\label{sec:aims}
+The aim of this study is to determine whether training a drug response neural network with SAM improves the quality of the IF--THEN rules that evolutionary algorithms extract from it.
+
+The objectives are to:
+\begin{enumerate}
+  \item Train the DeepCCDS network under three conditions (Adam baseline, Adam with weight decay, and SAM with weight decay), and measure the generalisation gap, validation error and loss-landscape flatness of each.
+  \item Develop PDERE, with a single-objective variant (PDERE-GA) and a multi-objective variant (PDERE-NSGA), and extract rules from each network for 379 drugs.
+  \item Score the rules on held-out cell lines for fidelity and length, rank them with PROMETHEE II, and measure fold-to-fold stability separately.
+  \item Compare the networks with paired non-parametric tests across drugs, with false-discovery-rate control, so that the effect of SAM can be separated from that of weight decay.
+  \item Check the biological alignment of the rules against known drug--gene links and, where testable, KEGG pathways.
+\end{enumerate}
+
+\subsection{Research Questions and Hypothesis}\label{sec:rqs}
+\textbf{Primary research question:} To what extent can the generalisation gap serve as a diagnostic indicator of explanation fragility, and can SAM be used to improve the fidelity, comprehensibility and biological validity of symbolic rules extracted via evolutionary algorithms?
+
+The primary question is addressed through four research questions:
+\begin{itemize}
+  \item \textbf{RQ1 (Gap and rule quality):} How does the generalisation gap of a network relate to the held-out fidelity and length of the rules extracted from it?
+  \item \textbf{RQ2 (Cross-fold stability):} Do rules from SAM-trained networks vary less from fold to fold than rules from the baseline networks, once weight decay is controlled?
+  \item \textbf{RQ3 (Outranking):} Do rules from SAM-trained networks reach higher PROMETHEE II net outranking flows ($\varphi$)?
+  \item \textbf{RQ4 (Biological alignment):} Do rules from SAM-trained networks align better with known drug--gene links and cancer signalling pathways?
+\end{itemize}
+
+\textbf{Core hypothesis:} Applying SAM to a neural network trained on GDSC data will reduce the generalisation gap by steering parameter convergence toward flatter minima. We hypothesise that this reduction will yield symbolic rules that are:
+\begin{itemize}
+  \item \textbf{Simpler} (higher comprehensibility), with lower rule lengths and fewer antecedent conditions.
+  \item \textbf{Higher in fidelity}, being more accurately aligned with the network's decision logic.
+  \item \textbf{More stable}, varying less across cross-validation folds.
+  \item \textbf{More biologically valid}, being more consistently aligned with known drug--gene links and pathways than rules from an unregularised baseline.
+\end{itemize}
+
+Because SAM was trained together with weight decay, the study also asks whether any effect can be attributed to SAM and not to weight decay (Section~\ref{sec:controlled-design}).
+
+\textbf{Theoretical rationale:} SAM seeks parameters whose whole neighbourhood has low loss, and \citet{foret2021} report that this improves generalisation; flat minima are likewise associated with better generalisation \citep{li2018}. We hypothesise that networks that converge to flat minima in this way also rely less on spurious correlations. SAM has been reported to give more balanced feature representations on image benchmarks \citep{springer2024}. Because rule length is the number of feature conditions needed to describe the network's decision logic, we expect a network that relies on fewer spurious features to yield rules with fewer antecedent conditions, improving comprehensibility without sacrificing fidelity. This expectation is untested for symbolic rules.
+
+\subsection{Summary of Main Contributions}\label{sec:contributions}
+This research makes the following contributions to Red XAI, computational oncology and evolutionary optimisation:
+\begin{itemize}
+  \item \textbf{A diagnostic Red XAI workflow for model fragility.} We audit each trained network (generalisation gap, loss-landscape flatness and attribution) before extracting rules, and then test whether those measures track the quality of the rules, across 379 cancer drugs.
+  \item \textbf{A controlled three-condition training design.} We separate the effect of SAM ($\rho = 0.5$) from that of weight decay (Adam, Adam with weight decay, and SAM with weight decay). SAM with weight decay reduced the generalisation gap by 86\%, from 0.337 to 0.048, although the SAM network reached the epoch limit without converging.
+  \item \textbf{Per Drug Evolutionary Rule Extraction (PDERE).} We extract IF--THEN rules separately for each of 379 drugs with a single-objective (PDERE-GA) and a multi-objective (PDERE-NSGA) genetic algorithm, and score them on held-out cell lines.
+  \item \textbf{Multi-criteria ranking and a biological audit.} We rank rules with PROMETHEE II on fidelity and length and report stability separately, and check their biological alignment against known drug--gene links used as positive controls.
+  \item \textbf{Empirical evidence on an XAI assumption.} In our experiments, narrowing the generalisation gap with SAM did not yield higher-quality or more stable rules. The small fidelity gains were largely attributable to weight decay rather than SAM (entirely so for PDERE-GA). In this design, a much smaller generalisation gap therefore did not translate into better rules. Each network was trained once, so this is a null result under a limited design and not evidence that SAM cannot help (Sections~\ref{sec:results} and~\ref{sec:limitations}).
+\end{itemize}
+
+\subsection{Report Outline}\label{sec:outline}
+The remainder of this report is organised as follows. Section~\ref{sec:lit-review} reviews the literature on explainable AI, cancer drug-response prediction, loss-landscape geometry, neural networks, evolutionary rule extraction and the evaluation of symbolic explanations. Section~\ref{sec:critical} is the critical analysis: it identifies the gaps in the literature that motivate this study and sets out what the study takes from the literature and what it adds. Section~\ref{sec:pdere} presents PDERE, the rule-extraction approach developed in this study, in its genetic-algorithm and NSGA-II variants. Section~\ref{sec:methodology} describes the research methodology: the proof-by-demonstration approach, the experimental design, the data and preprocessing, the training of the three networks and the statistical analysis. Section~\ref{sec:results} presents and discusses the results on network training, rule fidelity, length, stability, the multi-criteria score, attribution and biological alignment. Section~\ref{sec:limitations} states the limitations of the study. Section~\ref{sec:conclusion} gives the conclusions (the research questions are answered in Section~\ref{sec:discussion}), and Section~\ref{sec:future-work} outlines future work.
