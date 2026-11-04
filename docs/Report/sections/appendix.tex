@@ -1,0 +1,175 @@
+% !TeX root = ../report.tex
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}  % wrapping, ragged-right
+\newcolumntype{Q}{>{\centering\arraybackslash}X}    % wrapping, centred
+
+\begin{appendices}
+
+% Table numbering A1, A2, ... (restarts inside the appendix)
+\setcounter{table}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+\renewcommand{\theHtable}{A\arabic{table}}  % stops hyperref duplicate-anchor warnings
+
+\section{Global rule extraction experiments}
+\label{app:global}
+
+Global rules were extracted once for all 379 drugs together (the ``global'' runs). One search per network and per extractor produced rules over the pooled training data. These runs compared the Adam baseline network with the SAM+WD network. They used the same chromosome (572 features, Low/Intermediate/High) and the same fitness definition as the per-drug experiment, but a different data split and a different coverage floor (Section~\ref{app:global-diff}).
+
+\subsection{Setup}
+\label{app:global-setup}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Settings of the global runs.}
+\label{tab:A1}
+\begin{tabularx}{\textwidth}{@{}lY@{}}
+\toprule
+\textbf{Item} & \textbf{Setting} \\
+\midrule
+Networks & Baseline: Adam, train--validation gap 0.3369. SAM: $\rho = 0.5$, weight decay $10^{-3}$, gap 0.0485 \\
+Data & 245,845 training rows (the 379-drug set); each network's own train/validation/test split \\
+Runs & 30 per network and extractor; seeds 43 to 72 (base seed 42 plus run number); none excluded; 50 generations per run \\
+Coverage floor & A rule must cover at least 2\% of the training rows \\
+Rule pools & 7 (baseline) and 6 (SAM) rules from PDERE-GA; 3 and 3 from PDERE-NSGA; 19 in total \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Extractor settings}
+\label{app:global-extractors}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Extractor settings.}
+\label{tab:A2}
+\begin{tabularx}{\textwidth}{@{}lYY@{}}
+\toprule
+\textbf{Setting} & \textbf{PDERE-GA} & \textbf{PDERE-NSGA} \\
+\midrule
+Algorithm & Genetic algorithm with aging (maximum age 8) & NSGA-II \\
+Population & Drawn per seed from 35 to 45 & 40 \\
+Crossover & 0.8 & 0.9 \\
+Mutation & 0.2 (per gene 0.05) & 0.2 (per gene 0.05) \\
+Objective & Fitness $= 0.45 \times \text{fidelity} + 0.35 \times \text{accuracy}$ (validation split) $+\ 0.20 \times (1 - \text{length}/572)$ & Maximise fidelity, minimise length; fidelity set to zero below the coverage floor \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Results}
+\label{app:global-results}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Fidelity of the extracted rules.}
+\label{tab:A3}
+\begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}QQQQ@{}}
+\toprule
+\textbf{Measure} & \textbf{PDERE-GA baseline} & \textbf{PDERE-GA SAM} & \textbf{PDERE-NSGA baseline} & \textbf{PDERE-NSGA SAM} \\
+\midrule
+Best-rule training fidelity & 0.4800 & 0.4914 & 0.4617 & 0.4553 \\
+Median best fidelity per run (30 runs) & 0.4691 & 0.4704 & 0.4066 & 0.4067 \\
+Baseline against SAM (Mann--Whitney $p$) & \multicolumn{2}{c}{0.234} & \multicolumn{2}{c}{0.663} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+PDERE-GA against PDERE-NSGA on the per-run best fidelity: $p$ of about $5\times10^{-11}$ (baseline) and $9\times10^{-11}$ (SAM).
+
+\begin{table}[H]
+\centering
+\small
+\caption{Rule-level tests.}
+\label{tab:A4}
+\begin{tabularx}{\textwidth}{@{}YYccc@{}}
+\toprule
+\textbf{Comparison} & \textbf{Measure} & \textbf{Group 1} & \textbf{Group 2} & \textbf{$p$} \\
+\midrule
+Baseline against SAM & Test fidelity (median) & 0.4706 & 0.4794 & 0.488 \\
+PDERE-GA against PDERE-NSGA & Test fidelity (median) & 0.4788 & 0.4547 & 0.000147 \\
+Baseline against SAM ($n = 10, 9$) & PROMETHEE~II net flow (median) & 0.0418 & 0.0892 & 0.838 \\
+PDERE-GA against PDERE-NSGA ($n = 13, 6$) & PROMETHEE~II net flow (median) & 0.130 & $-0.259$ & 0.000295 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+PROMETHEE~II used the weights fidelity 0.5, length 0.2 and stability 0.3. The top-ranked rule was \texttt{ga\_sam\_0002} (net flow 0.2776) and the lowest was \texttt{nsga\_sam\_0003} ($-0.4758$). In the gene set enrichment analysis, no adjusted $p$-value was below 0.05.
+
+In short, the global runs found no detectable difference between the baseline and SAM networks, and PDERE-GA rules scored higher than PDERE-NSGA rules.
+
+\subsection{How these runs differ from the per-drug experiment}
+\label{app:global-diff}
+
+% No caption: the Google Doc version has none for this table
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}lYY@{}}
+\toprule
+\textbf{Aspect} & \textbf{Global runs} & \textbf{Per-drug experiment} \\
+\midrule
+Splits & Row-level train/validation/test split of each network & Five folds by cell line \\
+PDERE-GA accuracy term & The network's validation split & An inner 20\% of the training folds \\
+Coverage floor & 2\% of the training rows & 25 cell lines per drug \\
+Scope & One search over all 379 drugs & One search per drug \\
+Networks & Baseline and SAM & Adam, Adam+WD and SAM+WD \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Fidelity is therefore computed on different rows, and the two sets of numbers should not be compared directly.
+
+\subsection{Limitations}
+\label{app:global-limits}
+
+\begin{itemize}
+  \item The PROMETHEE and Mann--Whitney tests on rules treat rules pooled across runs as independent samples, but the same rule is often found by several runs. The per-run tests (30 against 30) do not have this problem.
+  \item PDERE-NSGA returned a front of 40 rules per run but only 2 to 6 distinct ones, so its rule pools are small.
+  \item The PDERE-GA fitness weights and the PROMETHEE weights were set by the team and were not tuned.
+\end{itemize}
+
+Where to find them: \href{GITHUB_URL_HERE}{GitHub}.
+
+\section{Data and results availability}
+\label{app:data}
+
+Each PDERE chromosome has 572 positions, one per input feature of the drug-response network: 38 KEGG pathway activity features (positions 1 to 38) followed by 534 gene mutation features (positions 39 to 572). A position holds $-1$ (feature not used) or a level. Pathway scores are z-scored across the 878 cell lines and divided into Low ($z < -1$), Intermediate and High ($z > 1$). A mutation feature is High if the gene is mutated and Low if it is not. A pathway feature describes a whole pathway, not one gene.
+
+\subsection{Full per-drug extraction results}
+\label{app:data-results}
+
+The complete per-drug experiment has 11,370 cells (379 drugs $\times$ 3 networks $\times$ 2 extractors $\times$ 5 folds): 5,685 PDERE-GA cells and 5,685 PDERE-NSGA cells. Each cell holds the extracted rules, their fidelity and accuracy on the held-out cell lines, and the settings used. The results are stored in three archives, each with a \texttt{run\_provenance.json} file that records the command and settings of the run.
+
+% No caption: the Google Doc version has none for this table
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}llcY@{}}
+\toprule
+\textbf{Archive} & \textbf{Extractor} & \textbf{Drugs} & \textbf{Link} \\
+\midrule
+\texttt{ga\_top\_rev} & PDERE-GA & 189 & \href{ARCHIVE_URL_1}{ga\_top\_rev} \\
+\texttt{ga\_bottom\_rev} & PDERE-GA & 190 & \href{ARCHIVE_URL_2}{ga\_bottom\_rev} \\
+\texttt{nsga\_final} & PDERE-NSGA & 379 & \href{ARCHIVE_URL_3}{nsga\_final} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+All three are in the Drive folder \href{DRIVE_FOLDER_URL_HERE}{APPENDIX}. To analyse them, unzip the archives into one folder that holds a \texttt{cells/} directory and follow the run instructions in the repository README (\texttt{verify\_cells.py}, then \texttt{analyse.py}).
+
+\subsection{Chromosome feature files}
+\label{app:data-features}
+
+\begin{itemize}
+  \item \texttt{chromosome\_features\_mutation\_genes.csv} (534 genes): \href{LINK_URL_1}{Link}
+  \item \texttt{chromosome\_features\_pathways.csv} (38 pathways): \href{LINK_URL_2}{Link}
+  \item \texttt{README\_chromosome\_features.txt}: \href{LINK_URL_3}{Link}
+\end{itemize}
+
+\subsection{Code}
+\label{app:data-code}
+
+All code, configuration files and the run instructions are in the project repository: \href{GITHUB_URL_HERE}{GitHub}.
+
+\end{appendices}
