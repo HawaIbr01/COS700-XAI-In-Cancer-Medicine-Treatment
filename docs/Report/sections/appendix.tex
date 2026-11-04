@@ -12,7 +12,7 @@
 \section{Global rule extraction experiments}
 \label{app:global}
 
-Global rules were extracted once for all 379 drugs together (the ``global'' runs). One search per network and per extractor produced rules over the pooled training data. These runs compared the Adam baseline network with the SAM+WD network. They used the same chromosome (572 features, Low/Intermediate/High) and the same fitness definition as the per-drug experiment, but a different data split and a different coverage floor (Section~\ref{app:global-diff}).
+Global rules were extracted once for all 379 drugs together (the ``global'' runs). One search per network and per extractor produced rules over the pooled training data. These runs compared the Adam baseline network with the SAM+WD network. They used the same chromosome (572 features, Low/Intermediate/High) and the same fitness definition as the per-drug experiment, but a different data split and a different coverage floor (Appendix~\ref{app:global-diff}). The extractor settings were otherwise those of Sections~\ref{sec:shared}, \ref{sec:pdere-ga} and~\ref{sec:pdere-nsga}.
 
 \subsection{Setup}
 \label{app:global-setup}
@@ -31,27 +31,6 @@ Data & 245,845 training rows (the 379-drug set); each network's own train/valida
 Runs & 30 per network and extractor; seeds 43 to 72 (base seed 42 plus run number); none excluded; 50 generations per run \\
 Coverage floor & A rule must cover at least 2\% of the training rows \\
 Rule pools & 7 (baseline) and 6 (SAM) rules from PDERE-GA; 3 and 3 from PDERE-NSGA; 19 in total \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\subsection{Extractor settings}
-\label{app:global-extractors}
-
-\begin{table}[H]
-\centering
-\small
-\caption{Extractor settings.}
-\label{tab:A2}
-\begin{tabularx}{\textwidth}{@{}lYY@{}}
-\toprule
-\textbf{Setting} & \textbf{PDERE-GA} & \textbf{PDERE-NSGA} \\
-\midrule
-Algorithm & Genetic algorithm with aging (maximum age 8) & NSGA-II \\
-Population & Drawn per seed from 35 to 45 & 40 \\
-Crossover & 0.8 & 0.9 \\
-Mutation & 0.2 (per gene 0.05) & 0.2 (per gene 0.05) \\
-Objective & Fitness $= 0.45 \times \text{fidelity} + 0.35 \times \text{accuracy}$ (validation split) $+\ 0.20 \times (1 - \text{length}/572)$ & Maximise fidelity, minimise length; fidelity set to zero below the coverage floor \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -75,8 +54,6 @@ Baseline against SAM (Mann--Whitney $p$) & \multicolumn{2}{c}{0.234} & \multicol
 \end{tabularx}
 \end{table}
 
-PDERE-GA against PDERE-NSGA on the per-run best fidelity: $p$ of about $5\times10^{-11}$ (baseline) and $9\times10^{-11}$ (SAM).
-
 \begin{table}[H]
 \centering
 \small
@@ -87,16 +64,14 @@ PDERE-GA against PDERE-NSGA on the per-run best fidelity: $p$ of about $5\times1
 \textbf{Comparison} & \textbf{Measure} & \textbf{Group 1} & \textbf{Group 2} & \textbf{$p$} \\
 \midrule
 Baseline against SAM & Test fidelity (median) & 0.4706 & 0.4794 & 0.488 \\
-PDERE-GA against PDERE-NSGA & Test fidelity (median) & 0.4788 & 0.4547 & 0.000147 \\
 Baseline against SAM ($n = 10, 9$) & PROMETHEE~II net flow (median) & 0.0418 & 0.0892 & 0.838 \\
-PDERE-GA against PDERE-NSGA ($n = 13, 6$) & PROMETHEE~II net flow (median) & 0.130 & $-0.259$ & 0.000295 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-PROMETHEE~II used the weights fidelity 0.5, length 0.2 and stability 0.3. The top-ranked rule was \texttt{ga\_sam\_0002} (net flow 0.2776) and the lowest was \texttt{nsga\_sam\_0003} ($-0.4758$). In the gene set enrichment analysis, no adjusted $p$-value was below 0.05.
+PROMETHEE~II used the weights fidelity 0.5, length 0.2 and stability 0.3. (In the per-drug experiment stability was analysed separately, so only fidelity and length were ranked, with the weights rescaled to 0.714 and 0.286; Section~\ref{sec:rule-eval}.) The top-ranked rule was \texttt{ga\_sam\_0002} (net flow 0.2776) and the lowest was \texttt{nsga\_sam\_0003} ($-0.4758$). In the gene set enrichment analysis, no adjusted $p$-value was below 0.05.
 
-In short, the global runs found no detectable difference between the baseline and SAM networks, and PDERE-GA rules scored higher than PDERE-NSGA rules.
+In short, the global runs found no detectable difference between the baseline and SAM networks.
 
 \subsection{How these runs differ from the per-drug experiment}
 \label{app:global-diff}
@@ -129,12 +104,12 @@ Fidelity is therefore computed on different rows, and the two sets of numbers sh
   \item The PDERE-GA fitness weights and the PROMETHEE weights were set by the team and were not tuned.
 \end{itemize}
 
-Where to find them: \href{GITHUB_URL_HERE}{GitHub}.
+The rule pools and settings of the global runs are in the project repository (Appendix~\ref{app:data-code}).
 
 \section{Data and results availability}
 \label{app:data}
 
-Each PDERE chromosome has 572 positions, one per input feature of the drug-response network: 38 KEGG pathway activity features (positions 1 to 38) followed by 534 gene mutation features (positions 39 to 572). A position holds $-1$ (feature not used) or a level. Pathway scores are z-scored across the 878 cell lines and divided into Low ($z < -1$), Intermediate and High ($z > 1$). A mutation feature is High if the gene is mutated and Low if it is not. A pathway feature describes a whole pathway, not one gene.
+Everything needed to inspect or rerun the study is listed here.
 
 \subsection{Full per-drug extraction results}
 \label{app:data-results}
@@ -149,27 +124,31 @@ The complete per-drug experiment has 11,370 cells (379 drugs $\times$ 3 networks
 \toprule
 \textbf{Archive} & \textbf{Extractor} & \textbf{Drugs} & \textbf{Link} \\
 \midrule
-\texttt{ga\_top\_rev} & PDERE-GA & 189 & \href{ARCHIVE_URL_1}{ga\_top\_rev} \\
-\texttt{ga\_bottom\_rev} & PDERE-GA & 190 & \href{ARCHIVE_URL_2}{ga\_bottom\_rev} \\
-\texttt{nsga\_final} & PDERE-NSGA & 379 & \href{ARCHIVE_URL_3}{nsga\_final} \\
+\texttt{ga\_top\_rev} & PDERE-GA & 189 & \href{https://drive.google.com/file/d/1vZ9ZFul-KmKWqnsSMWdWHV4CVNh_n3Ss/view?usp=drive_link}{ga\_top\_rev} \\
+\texttt{ga\_bottom\_rev} & PDERE-GA & 190 & \href{https://drive.google.com/file/d/1lAGty4Nq5CPfCwCa-RQTd6lFtC17cId4/view?usp=drive_link}{ga\_bottom\_rev} \\
+\texttt{nsga\_final} & PDERE-NSGA & 379 & \href{https://drive.google.com/file/d/1L1wWk8dy6c1hnCI6QewStOohlpbfy7gI/view?usp=drive_link}{nsga\_final} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-All three are in the Drive folder \href{DRIVE_FOLDER_URL_HERE}{APPENDIX}. To analyse them, unzip the archives into one folder that holds a \texttt{cells/} directory and follow the run instructions in the repository README (\texttt{verify\_cells.py}, then \texttt{analyse.py}).
+All three are in the Drive folder \href{https://drive.google.com/drive/folders/1YIIrkWfg-eUVOTwJKQsFeaIrR9JQLwUV?usp=sharing}{APPENDIX}. To analyse them, unzip the archives into one folder that holds a \texttt{cells/} directory and follow the run instructions in the repository README (\texttt{verify\_cells.py}, then \texttt{analyse.py}).
 
 \subsection{Chromosome feature files}
 \label{app:data-features}
 
+Each PDERE chromosome has 572 positions, one per input feature of the drug-response network: 38 KEGG pathway activity features (positions 1 to 38) followed by 534 gene mutation features (positions 39 to 572). A position holds $-1$ (feature not used) or a level. Pathway scores are z-scored across the 878 cell lines and divided into Low ($z < -1$), Intermediate and High ($z > 1$). A mutation feature is High if the gene is mutated and Low if it is not. A pathway feature describes a whole pathway, not one gene.
+
+The full list of features, in chromosome order, is in the files below:
+
 \begin{itemize}
-  \item \texttt{chromosome\_features\_mutation\_genes.csv} (534 genes): \href{LINK_URL_1}{Link}
-  \item \texttt{chromosome\_features\_pathways.csv} (38 pathways): \href{LINK_URL_2}{Link}
-  \item \texttt{README\_chromosome\_features.txt}: \href{LINK_URL_3}{Link}
+  \item \texttt{chromosome\_features\_mutation\_genes.csv} (534 genes): \href{https://drive.google.com/file/d/1ba-mnUhJxmIIog-WZMatWdbVAE-Zwoh8/view?usp=drive_link}{Link}
+  \item \texttt{chromosome\_features\_pathways.csv} (38 pathways): \href{https://drive.google.com/file/d/1ucFABj0zOMYXg7lMVOGzzt2E3JNwWa-T/view?usp=drive_link}{Link}
+  \item \texttt{README\_chromosome\_features.txt}: \href{https://drive.google.com/file/d/1DHbwAa4ZrXldvbWXHumVmMFg0RpIrbvL/view?usp=drive_link}{Link}
 \end{itemize}
 
 \subsection{Code}
 \label{app:data-code}
 
-All code, configuration files and the run instructions are in the project repository: \href{GITHUB_URL_HERE}{GitHub}.
+All code, configuration files and the run instructions are in the project repository: \href{https://github.com/HawaIbr01/COS700-XAI-In-Cancer-Medicine-Treatment}{GitHub}.
 
 \end{appendices}

@@ -104,12 +104,12 @@ Explainable AI (XAI), Red XAI, Cancer, Precision Oncology, Genomics of Drug Sens
 \newpage
 
 % ---------------- 1 Introduction ----------------
-\section{Introduction}
+\section{Introduction}\label{sec:introduction}
 \input{sections/introduction}
 
 % ---------------- 2 Literature Review ----------------
 % Quotes are needed because the folder name contains a space.
-\section{Literature Review}
+\section{Literature Review}\label{sec:lit-review}
 \input{"sections/Literature Review/xai"}               % 2.1 XAI (incl. 2.1.1 Red XAI alignment)
 \input{"sections/Literature Review/cancer-medicine"}   % 2.2 Cancer medicine (incl. 2.2.1)
 \input{"sections/Literature Review/sam"}               % 2.3 Model sharpness and generalisation
@@ -120,14 +120,12 @@ Explainable AI (XAI), Red XAI, Cancer, Precision Oncology, Genomics of Drug Sens
 \input{"sections/Literature Review/auditing"}          % 2.6 Auditing quality and robustness
 
 % ---------------- 3 Critical Analysis ----------------
-\section{Critical Analysis}
+\section{Critical Analysis}\label{sec:critical}
 \input{sections/critical-analysis}
 
 % ---------------- 4 PDERE ----------------
-% NOTE: pdere.tex, methodology.tex and results.tex are currently inside the
-% "Literature Review" folder. If you move them to sections/, change the
-% three paths below.
-\section{Per Drug Evolutionary Rule Extraction (PDERE)}
+% pdere.tex, methodology.tex and results.tex live directly in sections/.
+\section[Per Drug Evolutionary Rule Extraction (PDERE)]{Per Drug Evolutionary Rule\texorpdfstring{\\}{ } Extraction (PDERE)}\label{sec:pdere}
 \input{"sections/pdere"}
 
 % ---------------- 5 Research Methodology ----------------
@@ -135,7 +133,7 @@ Explainable AI (XAI), Red XAI, Cancer, Precision Oncology, Genomics of Drug Sens
 \input{"sections/methodology"}
 
 % ---------------- 6 Results and Discussion ----------------
-\section{Results and Discussion}
+\section{Results and Discussion}\label{sec:results}
 \input{"sections/results"}           % 6.1 Training, 6.2 Rule extraction
 \input{sections/discussion}                            % 6.3 Discussion (starts with \subsection{Discussion})
 

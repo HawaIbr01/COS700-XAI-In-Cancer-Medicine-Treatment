@@ -1,5 +1,5 @@
 % !TeX root = ../report.tex
-While Section~\ref{sec:literature-review} demonstrates that the individual components of this research are well established, this section identifies where current literature falls short, establishing the necessity for this study (Section~\ref{sec:gaps}). It then outlines what our study adopts from existing literature and what it uniquely adds (Section~\ref{sec:adopts-adds}).
+While Section~\ref{sec:lit-review} demonstrates that the individual components of this research are well established, this section identifies where current literature falls short, establishing the necessity for this study (Section~\ref{sec:gaps}). It then outlines what our study adopts from existing literature and what it uniquely adds (Section~\ref{sec:adopts-adds}).
 
 \subsection{Gaps in the Existing Literature}
 \label{sec:gaps}
@@ -26,7 +26,7 @@ The literature shows that overfitting can make explanations unreliable, that SAM
 \label{sec:adopts-adds}
 
 \paragraph{The network.}
-The DeepCCDS architecture, its inputs and its data come from \citet{wu2025}. This study trained it under three controlled settings. The Adam baseline was deliberately run until it overfitted, using a reverse early stopping rule.
+The DeepCCDS architecture, its inputs and its data come from \citet{wu2025}. This study trained it under three controlled settings (Section~\ref{sec:design}).
 
 \paragraph{The optimiser.}
 SAM \citep{foret2021}, Adam \citep{kingma2015} and weight decay \citep{goodfellow2016} are used as published, and SAM is applied unchanged. A weight-decay control was added to separate its effect from SAM, and the neighbourhood size $\rho$ was chosen by a sweep.
@@ -38,10 +38,10 @@ Loss-landscape visualisation \citep{li2018} was combined with the generalisation
 The starting points are genetic algorithms and NSGA-II \citep{holland1975,deb2002}, implemented in DEAP \citep{fortin2012}, and the rule extraction approach of \citet{yedjour2024}, including its pruning of low-support rules. This study developed PDERE, which extracts rules separately for each of 379 drugs, fits them to the network's predictions, and scores them on held-out cell lines. Yedjour et al.\ evolve rule sets of about 15 rules, use PROMETHEE to guide the search, and measure comprehensibility as the number of rules. PDERE instead evolves single rules, ranks them with PROMETHEE~II after the search, and measures comprehensibility as the number of conditions per rule.
 
 \paragraph{Ranking and statistics.}
-PROMETHEE~II \citep{brans1985} ranks rules after the search on fidelity and length. Stability is reported separately as fold-to-fold Jaccard overlap. Differences between networks were tested with the Wilcoxon signed-rank test \citep{wilcoxon1945}, paired across 379 drugs, with Benjamini--Hochberg control of the false discovery rate \citep{benjamini1995} within each metric (six tests per metric, 24 in total) and effect sizes reported.
+PROMETHEE~II \citep{brans1985}, the Wilcoxon signed-rank test \citep{wilcoxon1945} and Benjamini--Hochberg control of the false discovery rate \citep{benjamini1995} are used as published (Section~\ref{sec:stats}).
 
 \paragraph{The biological check.}
-KEGG pathways and known drug--target pairs are established resources. This study used them in a positive control check on four drug--gene links and in a KEGG overrepresentation test, which could not detect enrichment.
+KEGG pathways and known drug--target pairs are established resources. This study used them in a positive control check on four drug--gene links and in a KEGG overrepresentation test.
 
 \bigskip
-\noindent This study does not propose a new network architecture or optimiser. Its additions are: (1)~PDERE, a per-drug rule-extraction procedure applied at the scale of hundreds of drugs; (2)~a controlled three-network design showing that SAM with weight decay reduced the generalisation gap, but that the rule-quality gain of SAM with weight decay over Adam was mostly due to weight decay; (3)~a descriptive comparison of how the generalisation gap and rule quality moved across the three networks, in which the rule measures stayed flat as the gap fell; and (4)~an evaluation protocol that states the limits of its own measures, namely the fidelity ceiling, fold-to-fold stability and the biological positive controls. Each network was trained once and the SAM network stopped at the epoch cap, so the results are demonstrations and not proof (Section~\ref{sec:limitations}).
+\noindent This study does not propose a new network architecture or optimiser. Its additions are: (1)~PDERE, a per-drug rule-extraction procedure applied at the scale of hundreds of drugs; (2)~a controlled three-network design that separates the effect of SAM from that of weight decay; and (3)~an evaluation protocol that states the limits of its own measures, namely the fidelity ceiling, fold-to-fold stability and the biological positive controls. Each network was trained once and the SAM network stopped at the epoch cap, so the results are demonstrations and not proof (Section~\ref{sec:limitations}).

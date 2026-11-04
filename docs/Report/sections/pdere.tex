@@ -1,4 +1,4 @@
-% !TeX root = ../../report.tex
+% !TeX root = ../report.tex
 % Section 4: Per Drug Evolutionary Rule Extraction (PDERE).
 % The \section heading lives in report.tex; this file starts at 4.1.
 % Figures live in figures/ (see \graphicspath in report.tex).
@@ -22,7 +22,7 @@ For each drug, PDERE received one row per cell line at a time. Each row held the
 \subsubsection{Features}
 \label{sec:features}
 
-As described in Section~\ref{sec:dl-cancer} (also see Appendix~\ref{app:chromosome}), the 572 total features comprise 534 binary mutation flags and 38 pathway activity scores, with drug fingerprints excluded since the target drug is fixed per extraction.
+As described in Section~\ref{sec:deep-learning-cancer-sensitivity} (also see Appendix~\ref{app:data-features}), the 572 total features comprise 534 binary mutation flags and 38 pathway activity scores, with drug fingerprints excluded since the target drug is fixed per extraction.
 
 \subsubsection{Feature discretisation}
 \label{sec:discretisation}
@@ -59,7 +59,7 @@ A chromosome (the encoded form of one candidate solution; Figure~\ref{fig:chromo
   \item $2$ (High).
 \end{itemize}
 
-In this study, the chromosome vector is of size 572, mapping directly to the 534 mutation flags and 38 pathway activity scores detailed in Sections~\ref{sec:dl-cancer} and~\ref{sec:inputs} (also see Appendix~\ref{app:chromosome}). Decoding a chromosome yields an IF--THEN rule whose length corresponds to its number of active conditions (genes with values other than $-1$).
+In this study, the chromosome vector is of size 572, mapping directly to the 534 mutation flags and 38 pathway activity scores detailed in Sections~\ref{sec:deep-learning-cancer-sensitivity} and~\ref{sec:inputs} (also see Appendix~\ref{app:data-features}). Decoding a chromosome yields an IF--THEN rule whose length corresponds to its number of active conditions (genes with values other than $-1$).
 
 A cell line was covered by a rule when it satisfied every condition. The rule predicted one class for all covered cell lines: the majority class of the network's prediction became the overall prediction for all covered cell lines by the rule, with ties defaulting to the resistant label.
 
@@ -139,7 +139,7 @@ so a rule with more active conditions scores lower. PDERE-NSGA does not convert 
 
 Coverage is the number of training cell lines to which a rule applies. A minimum was required because a rule that fits only a handful of cell lines is not a useful summary of the network. A rule covering one to three cell lines can also reach a fidelity of 1.0 by chance, because those few cell lines are likely to share one network class, so the score says little. In the per-drug runs the floor was 25 training cell lines.
 
-The two variants handle a rule below the floor differently. In PDERE-GA, a rule below the floor is assigned a fitness of $-1$, but pruning first tries to repair it by removing conditions one at a time (Section~\ref{sec:pruning}). In PDERE-NSGA, a rule below the floor has its fidelity set to 0 but keeps its length and predicted class, so selection normally removes it. It could remain in the first front if it were shorter than every rule above the floor, because nothing in the pooling step removes it. In practice this did not happen: in the final run, none of the pooled rules (16,731 for PDERE-NSGA and 39,825 for PDERE-GA) covered fewer than 25 fitting cell lines, and the lowest fidelity in a pool was 0.367 for PDERE-NSGA and 0.333 for PDERE-GA. In both variants, a chromosome with no active conditions is treated as covering nothing, because it would otherwise match every cell line and score as a maximally general rule of length zero.
+The two variants handle a rule below the floor differently. In PDERE-GA, a rule below the floor is assigned a fitness of $-1$, but pruning first tries to repair it by removing conditions one at a time (Section~\ref{sec:pruning}). In PDERE-NSGA, a rule below the floor has its fidelity set to 0 but keeps its length and predicted class, so selection normally removes it. It could remain in the first front if it were shorter than every rule above the floor, because nothing in the pooling step removes it. In practice this did not happen (Section~\ref{sec:rule-results}). In both variants, a chromosome with no active conditions is treated as covering nothing, because it would otherwise match every cell line and score as a maximally general rule of length zero.
 
 \begin{figure}[htbp]
   \centering
@@ -167,10 +167,10 @@ Two-point crossover was applied to the gene vector by choosing two random cut po
 
 Each offspring was mutated with a probability of 0.2. For mutated individuals, each gene independently had a 0.05 probability of being replaced with a value drawn uniformly at random from $\{-1, 0, 1, 2\}$ (per-gene uniform resampling).
 
-\subsubsection{Scoring cache and seeding}
+\subsubsection{Scoring cache}
 \label{sec:cache}
 
-Fitness scores were cached per genotype to avoid recomputing identical chromosomes, which recur frequently under genetic operators and across runs. To ensure full reproducibility, each evolutionary run was initialised using a base seed of 42 incremented by the run number.
+Fitness scores were cached per genotype to avoid recomputing identical chromosomes, which recur frequently under genetic operators and across runs.
 
 %--------------------------------------------------------------------
 \subsection{PDERE-GA}
@@ -214,7 +214,7 @@ Pruning was inspired by \citet{yedjour2024}, who removed whole candidate rules b
 \subsubsection{Aging}
 \label{sec:aging}
 
-Aging evolution \citep{real2019} keeps the population as a queue. Each cycle a child is made by mutating the fittest of a random sample, and the oldest individual is removed whatever its fitness, so a lineage survives only while it keeps producing good children. PDERE-GA kept the idea of a limited lifespan inside a generational algorithm. Each individual carried an age that offspring inherited and that rose by one every generation, and an individual that reached age 8 was replaced by a new sparse random individual of age 0. Because every individual starts at age 0 and ages are inherited, all individuals always have the same age. The whole population is therefore replaced at once, at generations 9, 18, 27, 36 and 45, by new random individuals rather than children. In effect, a 50-generation run is six searches from fresh random populations: five with 8 generations of breeding and the last with 5. Only the leaderboard carries rules across a restart, and it is never fed back into the population. The saved traces confirm this: mean population fitness fell at each of these generations in all 56,850 GA runs (on average from about 0.46 to about $-0.62$, recovering to about 0.12 in the next generation), and the best fitness fell in about 93\% of runs. PDERE-NSGA has no aging.
+Aging evolution \citep{real2019} keeps the population as a queue. Each cycle a child is made by mutating the fittest of a random sample, and the oldest individual is removed whatever its fitness, so a lineage survives only while it keeps producing good children. PDERE-GA kept the idea of a limited lifespan inside a generational algorithm. Each individual carried an age that offspring inherited and that rose by one every generation, and an individual that reached age 8 was replaced by a new sparse random individual of age 0. Because every individual starts at age 0 and ages are inherited, all individuals always have the same age. The whole population is therefore replaced at once, at generations 9, 18, 27, 36 and 45, by new random individuals rather than children. In effect, a 50-generation run is six searches from fresh random populations: five with 8 generations of breeding and the last with 5. Only the leaderboard carries rules across a restart, and it is never fed back into the population. The saved traces confirm this (Section~\ref{sec:rule-results}). PDERE-NSGA has no aging.
 
 \subsubsection{Run output}
 \label{sec:run-output-ga}
@@ -269,4 +269,4 @@ A run returned the first non-dominated front of its final population. The fronts
 \subsection{Replication and pooling}
 \label{sec:replication}
 
-Each cell (a drug, network, extractor and fold) was run 10 times independently for 50 generations, with run seeds 43 to 52 (42 plus the run number). The outputs of the 10 runs were merged into one pool per cell. Duplicate rules were removed and the non-dominated rules kept, judged on fidelity, accuracy and comprehensibility for PDERE-GA and on fidelity and length for PDERE-NSGA. Each pooled rule stored its conditions, the features they involve, its predicted class, length, fidelity, coverage and the runs that found it. Pools held 1 to 25 rules for PDERE-GA (median 6) and 1 to 8 for PDERE-NSGA (median 3). Table~\ref{tab:example-pool} (Section~\ref{sec:fidelity-results}) shows one pool in full (archived with run settings in Appendix~\ref{app:archives}).
+Each cell (a drug, network, extractor and fold) was run 10 times independently for 50 generations, with run seeds 43 to 52 (42 plus the run number). The outputs of the 10 runs were merged into one pool per cell. Duplicate rules were removed and the non-dominated rules kept, judged on fidelity, accuracy and comprehensibility for PDERE-GA and on fidelity and length for PDERE-NSGA. Each pooled rule stored its conditions, the features they involve, its predicted class, length, fidelity, coverage and the runs that found it. Table~\ref{tab:example-pool} (Section~\ref{sec:fidelity-results}) shows one pool in full (archived with run settings in Appendix~\ref{app:data-results}).

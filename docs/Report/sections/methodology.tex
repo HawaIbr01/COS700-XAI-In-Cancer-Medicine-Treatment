@@ -1,4 +1,4 @@
-% !TeX root = ../../report.tex
+% !TeX root = ../report.tex
 % Section 5: Research Methodology.
 % The \section{Research Methodology} heading lives in report.tex; this file holds the body.
 \label{sec:methodology}
@@ -59,7 +59,7 @@ The loss was the prediction error plus the reconstruction errors of the two auto
 \]
 
 \paragraph{Parameter tuning.}
-Hyperparameters for SAM and weight decay were tuned sequentially using the network training data. Initial sweeps over SAM perturbation $\rho \in \{0.01, 0.05, 0.1, 0.2\}$ without weight decay showed minimal impact on the generalisation gap. A subsequent grid search over $\rho \in \{0.2, 0.5, 1.0, 2.0\}$, learning rate $\in \{0.001, 0.0005\}$, and weight decay $\in \{0, 10^{-3}\}$ on a 10\% training subsample identified $\rho = 0.5$ with a weight decay of $10^{-3}$ as the selected configuration, effectively narrowing the generalisation gap while preserving model predictive accuracy (Appendix~\ref{app:global}).
+Hyperparameters for SAM and weight decay were tuned sequentially using the network training data. Initial sweeps over SAM perturbation $\rho \in \{0.01, 0.05, 0.1, 0.2\}$ without weight decay showed minimal impact on the generalisation gap. A subsequent grid search over $\rho \in \{0.2, 0.5, 1.0, 2.0\}$, learning rate $\in \{0.001, 0.0005\}$, and weight decay $\in \{0, 10^{-3}\}$ on a 10\% training subsample identified $\rho = 0.5$ with a weight decay of $10^{-3}$ as the selected configuration, effectively narrowing the generalisation gap while preserving model predictive accuracy.
 
 For each network the generalisation gap, validation $R^2$ and RMSE, and number of epochs were reported. The sharpness of the minimum was summarised by the top eigenvalue of the Hessian of the loss (the matrix of second derivatives), measured for the Adam and SAM+WD networks. Loss landscapes were drawn with the filter-normalised method of \citet{li2018}.
 
@@ -69,9 +69,9 @@ As a qualitative check that SAM had not caused a shortcut (``Clever Hans'') beha
 \subsubsection{Rule extraction}
 \label{sec:extraction}
 
-Both PDERE variants (PDERE-GA and PDERE-NSGA) were run on each network for each drug, using five folds of cell lines. For each fold, rules were extracted on the cell lines of the other four folds and scored on the held-out fold, so that every reported fidelity was measured on cell lines the extractor had not seen. Each cell of the design (drug, network, extractor, fold) was run with 10 independent seeds (run seed 42 plus the run number) and the results were pooled (Section~\ref{sec:replication}). The full design held $379 \text{ drugs} \times 3 \text{ networks} \times 2 \text{ extractors} \times 5 \text{ folds} = 11{,}370$ cells (archived with run settings in Appendix~\ref{app:archives}).
+Both PDERE variants (PDERE-GA and PDERE-NSGA) were run on each network for each drug, using five folds of cell lines. For each fold, rules were extracted on the cell lines of the other four folds and scored on the held-out fold, so that every reported fidelity was measured on cell lines the extractor had not seen. Each cell of the design (drug, network, extractor, fold) was run with 10 independent seeds and the results were pooled (Section~\ref{sec:replication}). The full design held $379 \text{ drugs} \times 3 \text{ networks} \times 2 \text{ extractors} \times 5 \text{ folds} = 11{,}370$ cells (archived with run settings in Appendix~\ref{app:data-results}).
 
-Each drug was treated as one unit, because rules for the same drug are not independent of each other, and the three networks gave a natural pairing for each drug. The 379 drugs, and not the seeds, were therefore the replicates in the statistical tests. The extractors were not compared with each other, because their objectives differ (PDERE-GA uses an accuracy term and an inner validation set, and PDERE-NSGA does neither).
+Each drug was treated as one unit, because rules for the same drug are not independent of each other, and the three networks gave a natural pairing for each drug. The 379 drugs, and not the seeds, were therefore the replicates in the statistical tests. The extractors were not compared with each other, because their objectives differ (PDERE-GA uses an accuracy term and an inner validation set, and PDERE-NSGA does neither). An earlier experiment extracted rules once across all 379 drugs pooled; it is reported in Appendix~\ref{app:global} and is not used in the comparisons here.
 
 \paragraph{Scoring and aggregation across folds.}
 
@@ -113,4 +113,4 @@ For each metric and extractor, the three network comparisons defined in Section~
 
 Across the 24 hypothesis tests (4 metrics $\times$ 2 extractors $\times$ 3 comparisons), $p$-values were adjusted using the Benjamini--Hochberg procedure to control the false discovery rate (FDR) within each metric (6 tests per metric). Both raw and FDR-adjusted $p$-values are reported. Differences were considered statistically significant at an adjusted $p < 0.05$. Non-significant results were interpreted as no detectable difference rather than equivalence, as formal equivalence testing was not conducted.
 
-Network-level quantities (gap, $R^2$, RMSE, Hessian eigenvalue) come from one trained network per arm, so there is no variation across runs from which to compute a test, and these were reported descriptively. The earlier runs of the Adam+WD and SAM+WD networks served as rough replicates (Section~\ref{sec:training-results} and Appendix~\ref{app:global}).
+Network-level quantities (gap, $R^2$, RMSE, Hessian eigenvalue) come from one trained network per arm, so there is no variation across runs from which to compute a test, and these were reported descriptively.

@@ -1,4 +1,4 @@
-% !TeX root = ../../report.tex
+% !TeX root = ../report.tex
 % Sections 6.1 (Training Results) and 6.2 (Rule Extraction Results).
 % The \section{Results and Discussion} heading lives in report.tex; 6.3 is in discussion.tex.
 % Figures live in figures/ (see \graphicspath in report.tex).
@@ -15,7 +15,8 @@ As outlined in Section~\ref{sec:methodology}, evaluation across the three traine
   \label{tab:networks}
   \small
   \renewcommand{\arraystretch}{1.2}
-  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.4cm}*{6}{>{\centering\arraybackslash}X}@{}}
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.0cm}ccccc>{\centering\arraybackslash}p{2.1cm}@{}}
     \toprule
     \textbf{Network} & \textbf{Gap} & \textbf{Val $R^2$} & \textbf{Val RMSE} & \textbf{Train RMSE} & \textbf{Epochs} & \textbf{Top Hessian eigenvalue} \\
     \midrule
@@ -23,10 +24,10 @@ As outlined in Section~\ref{sec:methodology}, evaluation across the three traine
     Adam+WD       & 0.273 & 0.8616 & 1.0111 & 0.8656 & 187       & not measured \\
     SAM+WD ($\rho = 0.5$) & 0.048 & 0.8444 & 1.072 & 1.049 & 250 (cap) & 43 \\
     \bottomrule
-  \end{tabularx}
+  \end{tabular}
 \end{table}
 
-The generalisation gap represents the difference between validation loss and training loss across the combined objective function (Section~\ref{sec:dl-cancer}); the gap is defined in Section~\ref{sec:training}.
+The generalisation gap represents the difference between validation loss and training loss across the combined objective function (Section~\ref{sec:deep-learning-cancer-sensitivity}); the gap is defined in Section~\ref{sec:training}.
 
 \begin{figure}[htbp]
   \centering
@@ -58,7 +59,7 @@ The gap closed, but not because prediction improved. The gap fell from 0.337 to 
   \label{fig:r2-by-split}
 \end{figure}
 
-The combined loss includes reconstruction. The two networks with weight decay reconstructed their inputs much worse than the baseline, which inflated their combined loss. On the validation partition the summed reconstruction error rose from 0.0136 (Adam baseline) to 0.2532 (Adam+WD) and 0.2535 (SAM+WD), about 19 times; the mutation term rose about 12 times and the drug term about 89 times. A comparison of gaps is therefore partly a comparison of reconstruction quality.
+The combined loss includes reconstruction. The two networks with weight decay reconstructed their inputs much worse than the baseline, which inflated their combined loss. On the validation partition the summed reconstruction error rose from 0.0136 (Adam baseline) to 0.2532 (Adam+WD) and 0.2535 (SAM+WD), about 19 times. A comparison of gaps is therefore partly a comparison of reconstruction quality.
 
 \textbf{Flatness.} SAM+WD was much flatter than Adam by the top eigenvalue of the Hessian of the loss (43 against 112), and the filter-normalised loss landscape of SAM+WD was visibly flatter (Figure~\ref{fig:landscapes}). Flatness is not a clean story, however. The earlier SAM network with $\rho = 0.2$ and no weight decay was flatter still (about 15), although each value comes from one random start on one batch and the raw values were not saved.
 
@@ -71,9 +72,54 @@ The combined loss includes reconstruction. The two networks with weight decay re
 
 \textbf{SAM did not converge by its own rule.} The SAM+WD network ran to the 250-epoch cap with the validation loss still improving slowly, and its gap was noisy after epoch 50. Its gap is therefore the state at the cap and not at convergence.
 
-\textbf{Earlier sweep without weight decay.} Four SAM networks with $\rho = 0.01$, 0.05, 0.1 and 0.2 and no weight decay gave gaps of 0.366, 0.366, 0.360 and 0.312, against 0.337 for the baseline (full table in Appendix~\ref{app:global}). Differences of 0.03 between single runs cannot be told apart from training noise. Only the combination of a larger $\rho$ (0.5) with weight decay closed the gap. The joint sweep on a 10\% subsample showed the same direction, but at $\rho = 2.0$ no network fitted (validation $R^2$ 0.53 to 0.62), and $\rho = 1.0$ underfitted in three of four configurations; the fourth (learning rate 0.0005, no weight decay) reached $R^2$ 0.77 after 297 epochs.
+\textbf{Earlier sweep without weight decay.} Four SAM networks with $\rho = 0.01$, 0.05, 0.1 and 0.2 and no weight decay gave gaps of 0.366, 0.366, 0.360 and 0.312, against 0.337 for the baseline. Differences of 0.03 between single runs cannot be told apart from training noise. Only the combination of a larger $\rho$ (0.5) with weight decay closed the gap. The joint sweep on a 10\% subsample showed the same direction, but at $\rho = 2.0$ no network fitted (validation $R^2$ 0.53 to 0.62), and $\rho = 1.0$ underfitted in three of four configurations; the fourth (learning rate 0.0005, no weight decay) reached $R^2$ 0.77 after 297 epochs.
 
-The generalisation gap was a poor stand-in for anything the rules depend on. It shrank by 86\% while the network predicted no better on unseen data, and it is partly driven by reconstruction terms that differ between arms.
+\textbf{Attribution check.}\label{sec:attribution} As a qualitative sanity check, and not a formal Clever Hans analysis such as Spectral Relevance Analysis \citep{lapuschkin2019}, vanilla input gradients over the 38 pathway inputs were computed for 256 samples per partition, for the baseline, the four SAM networks of the sweep, and SAM+WD. Adam+WD was not audited, so SAM cannot be separated from weight decay here, and the mutation inputs were not covered.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Top 10 pathways by mean absolute gradient (validation partition).}
+  \label{tab:top-pathways}
+  \small
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{@{}cp{3.7cm}p{3.7cm}p{3.7cm}@{}}
+    \toprule
+    \textbf{Rank} & \textbf{Adam} & \textbf{SAM $\rho = 0.2$ (no WD)} & \textbf{SAM+WD ($\rho = 0.5$)} \\
+    \midrule
+    1  & Estrogen signaling & Phospholipase D signaling & Focal adhesion \\
+    2  & Focal adhesion & Estrogen signaling & B cell receptor signaling \\
+    3  & NK cell mediated cytotoxicity & Apelin signaling & Estrogen signaling \\
+    4  & Cholinergic synapse & Insulin secretion & Regulation of actin cytoskeleton \\
+    5  & cAMP signaling & PI3K-Akt signaling & Cholinergic synapse \\
+    6  & Apelin signaling & Cholinergic synapse & Th17 cell differentiation \\
+    7  & Phospholipase D signaling & ErbB signaling & Phospholipase D signaling \\
+    8  & Renin secretion & MAPK signaling & ErbB signaling \\
+    9  & ErbB signaling & Thyroid hormone signaling & NK cell mediated cytotoxicity \\
+    10 & Wnt signaling & Calcium signaling & Chemokine signaling \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Variability and concentration of attribution.}
+  \label{tab:attribution}
+  \small
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabularx}{\textwidth}{@{}l*{4}{>{\centering\arraybackslash}X}@{}}
+    \toprule
+    \textbf{Network} & \textbf{CV (train / val)} & \textbf{Top-3 share (val)} & \textbf{Top-10 share (val)} & \textbf{Total attribution (val)} \\
+    \midrule
+    Adam                  & 0.792 / 0.783 & 11.7\% & 35.1\% & 28.5 \\
+    SAM $\rho = 0.2$      & 0.872 / 0.884 & 12.0\% & 32.5\% & 22.6 \\
+    SAM+WD                & 0.840 / 0.850 & 19.0\% & 43.4\% & 7.2 \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+Four pathways were in the top 10 of all three networks (Estrogen signaling, Cholinergic synapse, Phospholipase D signaling, ErbB signaling). Six were shared by Adam and SAM+WD (those four plus Focal adhesion and NK cell mediated cytotoxicity). The coefficient of variation (CV) of attribution rose from 0.78 (baseline) to 0.88 ($\rho = 0.2$) and was 0.85 for SAM+WD. SAM+WD put more of its attribution in fewer pathways (top-10 share 43\% against 35\%). \citet{springer2024} report that SAM learns more balanced features on image benchmarks, but they measure feature quality inside the network with linear probes, not the spread of input gradients, so this result is not a test of their claim. Total attribution was about four times smaller for SAM+WD, which is what weight decay does to gradient scale, so only ranks and shares can be compared across networks.
+
+On these measures the final network does not show more evenly spread or more sample-to-sample consistent attribution than the Adam baseline. This neither confirms nor contradicts the idea that SAM gives more balanced features; the numbers lean the other way. Vanilla gradients are a weak attribution method \citep{ghorbani2019,dombrowski2019}, 256 samples is small, and each network is one run.
 
 %--------------------------------------------------------------------
 \subsection{Rule Extraction Results}
@@ -100,7 +146,9 @@ All 11,370 cells ($379 \text{ drugs} \times 3 \text{ networks} \times 2 \text{ e
   \end{tabularx}
 \end{table}
 
-About 31 to 32\% of PDERE-GA rules and 15 to 18\% of PDERE-NSGA rules covered fewer than 10 held-out cell lines. Such rules were flagged and kept, so many fidelity values rest on a few rows.
+About 31 to 32\% of PDERE-GA rules and 15 to 18\% of PDERE-NSGA rules covered fewer than 10 held-out cell lines. Such rules were flagged and kept, so many fidelity values rest on a few rows. None of the pooled rules (16,731 for PDERE-NSGA and 39,825 for PDERE-GA) covered fewer than the coverage floor of 25 fitting cell lines (Section~\ref{sec:coverage-floor}), and the lowest fidelity in a pool was 0.367 for PDERE-NSGA and 0.333 for PDERE-GA.
+
+As a check on the aging schedule of PDERE-GA (Section~\ref{sec:aging}), the saved traces show that mean population fitness fell at each restart generation in all 56,850 GA runs (on average from about 0.46 to about $-0.62$, recovering to about 0.12 in the next generation), and the best fitness fell in about 93\% of runs.
 
 %--------------------------------------------------------------------
 \subsubsection{Fidelity}
@@ -166,17 +214,20 @@ SAM+WD against Adam gave a significant improvement for both extractors ($+0.0101
 
 To show what the extracted rules look like, Table~\ref{tab:example-pool} lists every rule in the pool for one cell: Erlotinib, fold 0, the SAM+WD network, for both extractors (ten rules in all, seven from PDERE-GA and three from PDERE-NSGA). Within each extractor the rules are ordered by their fidelity on the fitting rows, which is what the extractor itself could see. Held-out fidelity is on the 172 held-out cell lines of the fold; ``rows'' is the number of those 172 that the rule covers.
 
-\begin{table}[htbp]
-  \centering
-  \caption{All rules for Erlotinib, fold 0, SAM+WD network.}
-  \label{tab:example-pool}
-  \footnotesize
-  \renewcommand{\arraystretch}{1.2}
-  \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}X c c c c@{}}
-    \toprule
-    \textbf{Extractor} & \textbf{Rule} & \textbf{Cond.} & \textbf{Fit. fid.} & \textbf{Held-out fid.} & \textbf{Rows} \\
-    \midrule
-    PDERE-GA & IF B-cell receptor signalling activity = High AND cAMP signalling activity = Low THEN sensitive & 2 & 0.473 & 0.444 & 5 \\
+{\footnotesize
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}p{1.7cm}p{4.5cm}>{\centering\arraybackslash}p{1.0cm}>{\centering\arraybackslash}p{1.1cm}>{\centering\arraybackslash}p{1.3cm}>{\centering\arraybackslash}p{1.0cm}@{}}
+\caption{All rules for Erlotinib, fold 0, SAM+WD network.}\label{tab:example-pool}\\
+\toprule\textbf{Extractor} & \textbf{Rule} & \textbf{Cond.} & \textbf{Fit. fid.} & \textbf{Held-out fid.} & \textbf{Rows} \\ \\
+\midrule
+\endfirsthead
+\toprule\textbf{Extractor} & \textbf{Rule} & \textbf{Cond.} & \textbf{Fit. fid.} & \textbf{Held-out fid.} & \textbf{Rows} \\ \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+PDERE-GA & IF B-cell receptor signalling activity = High AND cAMP signalling activity = Low THEN sensitive & 2 & 0.473 & 0.444 & 5 \\
     PDERE-GA & IF C-type lectin receptor signalling activity = High AND CCND1 mutation = Low AND MEN1 mutation = Low AND ROS1 mutation = High THEN sensitive & 4 & 0.471 & 0.471 & 9 \\
     PDERE-GA & IF B-cell receptor signalling activity = High AND cAMP signalling activity = Low AND BARD1 mutation = Low THEN sensitive & 3 & 0.469 & 0.429 & 4 \\
     PDERE-GA & IF Axon guidance activity = Low AND MSI2 mutation = Low AND PREX2 mutation = High THEN sensitive & 3 & 0.467 & 0.455 & 12 \\
@@ -187,9 +238,8 @@ To show what the extracted rules look like, Table~\ref{tab:example-pool} lists e
     PDERE-NSGA & IF CNOT3 mutation = High AND ETV1 mutation = High AND HMGA2 mutation = High THEN sensitive & 3 & 0.467 & 0.455 & 6 \\
     PDERE-NSGA & IF CNOT3 mutation = High AND ETV1 mutation = High THEN sensitive & 2 & 0.442 & 0.412 & 20 \\
     PDERE-NSGA & IF CCNB1IP1 mutation = High THEN sensitive & 1 & 0.407 & 0.444 & 5 \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
+\end{longtable}
+}
 
 All ten rules predict sensitivity, and they are short (one to four conditions). Held-out fidelity lies between 0.33 and 0.48, below the 0.5 ceiling for a one-class rule on mixed rows (Section~\ref{sec:fidelity-measure}), and each rule covers between 4 and 32 of the 172 held-out cell lines (2\% to 19\%). The seven PDERE-GA rules mix pathway activity scores and mutation flags, and B-cell receptor signalling activity = High appears in three of them. The three PDERE-NSGA rules use mutation flags only, and one rule is a shortened version of another (the two-gene rule drops \textit{HMGA2} from the three-gene rule and covers more rows). None of the ten rules mentions \textit{EGFR}, the target of Erlotinib.
 
@@ -208,25 +258,18 @@ Across the 108 rules of the four drugs, 21 reach a held-out fidelity of 1.0. A f
 \textbf{Multi-criteria score.} The mean $\varphi$ rose from Adam to Adam+WD to SAM+WD for both extractors. The weight-decay effect was significant for PDERE-GA ($+0.014$, adjusted $p = 0.0003$) and PDERE-NSGA ($+0.033$, adjusted $p = 0.003$). The clean SAM effect was not significant for PDERE-GA ($+0.006$, adjusted $p = 0.50$) and did not survive correction for PDERE-NSGA ($+0.024$, raw $p = 0.049$, adjusted $p = 0.059$). Because $\varphi$ is relative, computed within the rules of the three networks together, it mostly tracks fidelity and length.
 
 %--------------------------------------------------------------------
-\subsubsection{All tests}
+\subsubsection{Tests for the other metrics}
 \label{sec:all-tests}
 
 \begin{table}[htbp]
   \centering
-  \caption{All 24 tests (Wilcoxon signed-rank, two-sided, $n = 379$ drugs; BH correction within each metric, 6 tests per metric).}
+  \caption{The 18 tests of $\varphi$, length and stability (Wilcoxon signed-rank, two-sided, $n = 379$ drugs; BH correction within each metric, 6 tests per metric). The six fidelity tests are in Table~\ref{tab:fidelity-diff}.}
   \label{tab:all-tests}
   \footnotesize
   \renewcommand{\arraystretch}{1.1}
   \begin{tabular}{@{}llllrr@{}}
     \toprule
     \textbf{Metric} & \textbf{Extractor} & \textbf{Comparison} & \textbf{Median diff.} & $\boldsymbol{p}$ & \textbf{BH} $\boldsymbol{p}$ \\
-    \midrule
-    Fidelity  & GA   & Clean SAM effect    & $-0.0008$ & 0.8902    & 0.8902 \\
-    Fidelity  & GA   & Weight-decay effect & $+0.0066$ & 0.0001    & 0.0002 \\
-    Fidelity  & GA   & Combined effect     & $+0.0101$ & $<0.0001$ & $<0.0001$ \\
-    Fidelity  & NSGA & Clean SAM effect    & $+0.0057$ & 0.0986    & 0.1183 \\
-    Fidelity  & NSGA & Weight-decay effect & $+0.0076$ & 0.0086    & 0.0129 \\
-    Fidelity  & NSGA & Combined effect     & $+0.0141$ & $<0.0001$ & $<0.0001$ \\
     \midrule
     $\varphi$ & GA   & Clean SAM effect    & $+0.0061$ & 0.5013    & 0.5013 \\
     $\varphi$ & GA   & Weight-decay effect & $+0.0144$ & 0.0001    & 0.0003 \\
@@ -251,59 +294,6 @@ Across the 108 rules of the four drugs, 21 reach a held-out fidelity of 1.0. A f
     \bottomrule
   \end{tabular}
 \end{table}
-
-PDERE-GA and PDERE-NSGA were never tested against each other, because they optimise different objectives (only PDERE-GA uses the accuracy term and the inner validation set).
-
-%--------------------------------------------------------------------
-\subsubsection{Attribution check on the networks}
-\label{sec:attribution}
-
-As a qualitative sanity check, and not a formal Clever Hans analysis such as Spectral Relevance Analysis \citep{lapuschkin2019}, vanilla input gradients over the 38 pathway inputs were computed for 256 samples per partition, for the baseline, the four SAM networks of the sweep, and SAM+WD. Adam+WD was not audited, so SAM cannot be separated from weight decay here, and the mutation inputs were not covered.
-
-\begin{table}[htbp]
-  \centering
-  \caption{Top 10 pathways by mean absolute gradient (validation partition).}
-  \label{tab:top-pathways}
-  \small
-  \renewcommand{\arraystretch}{1.15}
-  \begin{tabular}{@{}cp{3.7cm}p{3.7cm}p{3.7cm}@{}}
-    \toprule
-    \textbf{Rank} & \textbf{Adam} & \textbf{SAM $\rho = 0.2$ (no WD)} & \textbf{SAM+WD ($\rho = 0.5$)} \\
-    \midrule
-    1  & Estrogen signaling & Phospholipase D signaling & Focal adhesion \\
-    2  & Focal adhesion & Estrogen signaling & B cell receptor signaling \\
-    3  & NK cell mediated cytotoxicity & Apelin signaling & Estrogen signaling \\
-    4  & Cholinergic synapse & Insulin secretion & Regulation of actin cytoskeleton \\
-    5  & cAMP signaling & PI3K-Akt signaling & Cholinergic synapse \\
-    6  & Apelin signaling & Cholinergic synapse & Th17 cell differentiation \\
-    7  & Phospholipase D signaling & ErbB signaling & Phospholipase D signaling \\
-    8  & Renin secretion & MAPK signaling & ErbB signaling \\
-    9  & ErbB signaling & Thyroid hormone signaling & NK cell mediated cytotoxicity \\
-    10 & Wnt signaling & Calcium signaling & Chemokine signaling \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{table}[htbp]
-  \centering
-  \caption{Variability and concentration of attribution.}
-  \label{tab:attribution}
-  \small
-  \renewcommand{\arraystretch}{1.2}
-  \begin{tabularx}{\textwidth}{@{}l*{4}{>{\centering\arraybackslash}X}@{}}
-    \toprule
-    \textbf{Network} & \textbf{CV (train / val)} & \textbf{Top-3 share (val)} & \textbf{Top-10 share (val)} & \textbf{Total attribution (val)} \\
-    \midrule
-    Adam                  & 0.792 / 0.783 & 11.7\% & 35.1\% & 28.5 \\
-    SAM $\rho = 0.2$      & 0.872 / 0.884 & 12.0\% & 32.5\% & 22.6 \\
-    SAM+WD                & 0.840 / 0.850 & 19.0\% & 43.4\% & 7.2 \\
-    \bottomrule
-  \end{tabularx}
-\end{table}
-
-Four pathways were in the top 10 of all three networks (Estrogen signaling, Cholinergic synapse, Phospholipase D signaling, ErbB signaling). Six were shared by Adam and SAM+WD (those four plus Focal adhesion and NK cell mediated cytotoxicity). The coefficient of variation (CV) of attribution rose from 0.78 (baseline) to 0.88 ($\rho = 0.2$) and was 0.85 for SAM+WD. SAM+WD put more of its attribution in fewer pathways (top-10 share 43\% against 35\%). \citet{springer2024} report that SAM learns more balanced features on image benchmarks, but they measure feature quality inside the network with linear probes, not the spread of input gradients, so this result is not a test of their claim. Total attribution was about four times smaller for SAM+WD, which is what weight decay does to gradient scale, so only ranks and shares can be compared across networks.
-
-On these measures the final network does not show more evenly spread or more sample-to-sample consistent attribution than the Adam baseline. This neither confirms nor contradicts the idea that SAM gives more balanced features; the numbers lean the other way. Vanilla gradients are a weak attribution method \citep{ghorbani2019,dombrowski2019}, 256 samples is small, and each network is one run.
 
 %--------------------------------------------------------------------
 \subsubsection{Biological alignment}

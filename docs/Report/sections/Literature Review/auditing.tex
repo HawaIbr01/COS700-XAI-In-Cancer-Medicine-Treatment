@@ -13,10 +13,4 @@ Explainable AI (XAI) models should be understandable and accurate while maintain
 
 Together, these measures indicate whether explanations are faithful to the model, understandable, and consistent.
 
-\subsubsection{Explanation Fragility and the Generalisation Gap}
-
-Explanation fragility occurs when small changes in data or model state produce substantially different explanations. This can occur when a neural network overfits and learns patterns that do not generalise.
-
-A generalisation gap, defined as the discrepancy between training and validation/test performance, is a standard indicator of overfitting \citep{keskar2017}. An excessive gap can imply that the model has learned patterns specific to the training data.
-
-However, a narrow generalisation gap does not guarantee high-quality explanations. Explanations should therefore be evaluated directly on fidelity, comprehensibility, and stability.
+A narrow generalisation gap, the standard indicator of overfitting \citep{keskar2017}, does not guarantee high-quality explanations, so explanations are evaluated directly on these three measures and not inferred from training metrics.
