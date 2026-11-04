@@ -1,0 +1,164 @@
+\documentclass[a4paper,12pt]{article}
+
+% ---------------------------------------------------------------------
+% Packages from the department template
+% ---------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{mdframed}
+\usepackage{url}
+
+% ---------------------------------------------------------------------
+% Packages added for the group report
+% ---------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}          % nicer tables
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}         % tables that run over a page
+\usepackage{float}             % [H] to hold a figure/table in place
+\usepackage{caption}
+\usepackage{enumitem}          % tidy lists
+\usepackage[authoryear,round]{natbib}   % (Author, Year) citations
+\usepackage[hidelinks]{hyperref}        % clickable \ref and \cite (keep last)
+\usepackage{bookmark}
+
+\graphicspath{{figures/}{./}}  % put figures in a folder called "figures"
+
+\newcommand{\BlackBox}{\rule{1.5ex}{1.5ex}}
+
+\definecolor{blue}{rgb}{0,0,0.8}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset
+{
+   basicstyle=\ttfamily\footnotesize,
+   language=C++,
+   numbers=right,
+   numberstyle=\color{gray},
+   showtabs=true,
+   breaklines=true,
+   breakatwhitespace=true,
+   captionpos=bottom,
+   keywordstyle=\color{blue},
+   commentstyle=\color{dkgreen},
+   stringstyle=\color{mauve},
+   frame=single
+}
+
+\mdfsetup
+{
+   skipabove=\topskip,
+   skipbelow=\topskip,
+   leftmargin=2em,
+   rightmargin=2em
+}
+
+
+\title
+{
+   \includegraphics[width=12cm]{up-logo.jpg} \\
+   \vspace{1cm}
+   \textbf{COS700 Research Report} \\ \vspace{0.5cm}
+   \textbf{Diagnosing and Repairing XAI Fragility: SAM-Optimised Rules for Cancer Drug Response} \\ \vspace{0.5cm}
+   % \textbf{Student number:} \\ 
+   Angelique Breedt u23542838 \\ 
+   Bahiya Hoosen u22598546 \\ 
+   Hawa Ibrahim u20418494 \\ 
+   Melisa Ledwaba u19296950 \\ 
+   Sakhile Manzi u26838002 \\ \vspace{0.5cm}
+   \textbf{Supervisor(s)}: \\ Prof Nelishia Pillay \\ Dr Thambo Nyathi 
+}
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\linespread{1.241}
+
+% =====================================================================
+% HOW THIS FILE WORKS
+% Each \input{...} below pulls in one file from the sections/ folder.
+% The numbered \section headings live HERE; the section files contain
+% the body text, starting at \subsection level (see the team guide).
+% =====================================================================
+
+% ---------------- Abstract and keywords ----------------
+\section*{Abstract}
+\input{sections/abstract}
+
+\section*{Keywords}
+Explainable AI (XAI), Red XAI, Cancer, Precision Oncology, Genomics of Drug Sensitivity in Cancer (GDSC), Machine Learning (ML), Sharpness-Aware Minimisation (SAM), Generalisation Gap, Evolutionary Algorithms (EA), Genetic Algorithms (GA), Non-Dominated Sorting Genetic Algorithms (NSGA)
+
+\newpage
+\tableofcontents
+\newpage
+
+% ---------------- 1 Introduction ----------------
+\section{Introduction}
+\input{sections/introduction}
+
+% ---------------- 2 Literature Review ----------------
+% Quotes are needed because the folder name contains a space.
+\section{Literature Review}
+\input{"sections/Literature Review/xai"}               % 2.1 XAI (incl. 2.1.1 Red XAI alignment)
+\input{"sections/Literature Review/cancer-medicine"}   % 2.2 Cancer medicine (incl. 2.2.1)
+\input{"sections/Literature Review/sam"}               % 2.3 Model sharpness and generalisation
+\input{"sections/Literature Review/ann"}               % 2.4 ANNs (incl. 2.4.1 and 2.4.2)
+\input{"sections/Literature Review/ea"}                % 2.5 Evolutionary algorithms
+\input{"sections/Literature Review/ga"}                % 2.5.1 GAs and 2.5.2 application in rule extraction
+\input{"sections/Literature Review/nsga"}              % 2.5.3 NSGA-II
+\input{"sections/Literature Review/auditing"}          % 2.6 Auditing quality and robustness
+
+% ---------------- 3 Critical Analysis ----------------
+\section{Critical Analysis}
+\input{sections/critical-analysis}
+
+% ---------------- 4 PDERE ----------------
+% NOTE: pdere.tex, methodology.tex and results.tex are currently inside the
+% "Literature Review" folder. If you move them to sections/, change the
+% three paths below.
+\section{Per Drug Evolutionary Rule Extraction (PDERE)}
+\input{"sections/pdere"}
+
+% ---------------- 5 Research Methodology ----------------
+\section{Research Methodology}
+\input{"sections/methodology"}
+
+% ---------------- 6 Results and Discussion ----------------
+\section{Results and Discussion}
+\input{"sections/results"}           % 6.1 Training, 6.2 Rule extraction
+\input{sections/discussion}                            % 6.3 Discussion (starts with \subsection{Discussion})
+
+% ---------------- 7 to 9 ----------------
+\section{Limitations}
+\input{sections/limitations}
+
+\section{Conclusion}
+\input{sections/conclusion}
+
+\section{Future Work}
+\input{sections/future-work}
+
+% ---------------- References ----------------
+\clearpage
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plainnat}
+\bibliography{myBibFile} % the .bib file in this folder
+
+% ---------------- Appendices ----------------
+% After \appendix, each \section is lettered (A, B, ...) and its
+% \subsections become A.1, A.2, ...
+\clearpage
+\appendix
+\input{sections/appendix}
+
+\end{document}
