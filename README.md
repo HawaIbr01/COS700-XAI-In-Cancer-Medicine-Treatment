@@ -4,7 +4,7 @@ COS700 Honours research project, Department of Computer Science, University of P
 
 Deep neural networks predict how cancer cells respond to drugs, but they are black boxes. Short IF-THEN rules extracted from a network can explain it, but only if the network itself is sound. We tested whether training the network with **Sharpness-Aware Minimisation (SAM)**, which steers training toward flatter minima and a smaller generalisation gap, produces better rules.
 
-![Pipeline overview](docs/images/pipeline.jpg)
+![Project poster: the pipeline, training effects, example rules and key highlights](docs/images/poster.jpg)
 
 ## What we did
 
@@ -16,21 +16,11 @@ Deep neural networks predict how cancer cells respond to drugs, but they are bla
 
 1. **SAM + weight decay cut the generalisation gap by 86%** (0.337 to 0.048). Weight decay accounts for about 22% of that reduction and SAM for about 78%.
 
-   ![Generalisation gap decomposition](docs/images/gap_decomposition.jpg)
-
 2. **The gap closed because the network fitted its training data less tightly, not because it predicted better.** Validation RMSE rose from 1.030 to 1.072 and validation R-squared fell from 0.857 to 0.844.
 3. **A smaller gap did not give better rules.** Median held-out fidelity was 0.43 to 0.47 for every network. The isolated SAM effect (SAM+WD against Adam+WD) was not detectable for fidelity, stability or PDERE-GA rule length. The apparent SAM benefit in the combined comparison comes from weight decay.
 
-   ![Effect of each training change on rule fidelity](docs/images/fidelity_effects.jpg)
-
 4. **Rules were short (about two conditions) and only moderately faithful.** The genes they used changed from fold to fold, and known drug-gene links (EGFR, BRAF, BRCA1/2) were almost never recovered.
 5. **Conclusion:** training metrics such as the generalisation gap are poor proxies for explanation quality, so explanations need to be audited directly. With one network per condition this is a null result under a limited design, not evidence that SAM cannot help.
-
-### Loss landscapes of the four trained networks
-
-The solid surface is training loss and the red wireframe is validation loss; the vertical distance between them is the generalisation gap. Adam has a deep bowl with a large gap, weight decay flattens it, and SAM with rho = 0.5 plus weight decay is the flattest, with the two surfaces nearly coinciding. The rho = 0.2 panel is an earlier SAM network without weight decay.
-
-![Loss landscapes](docs/images/loss_landscapes.jpg)
 
 ### What a rule looks like: Erlotinib
 
