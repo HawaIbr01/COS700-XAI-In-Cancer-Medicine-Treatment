@@ -1,0 +1,9 @@
+% !TeX root = ../report.tex
+% Section 8: Conclusion (the \section heading lives in report.tex).
+\label{sec:conclusion}
+
+This research investigated whether training drug-response neural networks with Sharpness-Aware Minimisation (SAM) improves the quality, fidelity, and stability of post-hoc XAI explanations extracted via evolutionary rule algorithms. By evaluating deep architectures across hundreds of cancer drugs, on cell lines held out from rule extraction, the study conducted a controlled audit of model fragility within the Red XAI paradigm, separating true optimisation benefits from general regularisation effects like weight decay.
+
+The findings show that, in this design, narrowing the generalisation gap through SAM did not yield higher-quality or more trustworthy symbolic rules. Controlled comparisons revealed that the minor gains in explanation fidelity were primarily driven by standard weight decay rather than SAM. Moreover, rules extracted from SAM-optimised networks exhibited similar levels of comprehensibility (apart from slightly longer PDERE-NSGA rules) and cross-fold stability, and known drug--target links were almost never recovered.
+
+Ultimately, this work highlights that global training metrics like loss sharpness or generalisation gap are poor proxies for explanation quality in high-stakes biomedical applications. For XAI systems to be clinically viable in precision oncology, explanation fidelity and biological coherence must be audited directly on the extracted explanations themselves rather than inferred from the underlying model's predictive convergence.

@@ -1,0 +1,9 @@
+% !TeX root = ../report.tex
+% Section 9: Future Work (the \section heading lives in report.tex).
+\label{sec:future-work}
+
+While this study establishes a controlled diagnostic framework for evaluating loss landscape regularisation and evolutionary rule extraction, several methodological and domain-specific extensions should be pursued in future research.
+
+Future research should focus on training multiple networks with different random seeds, unifying stopping rules across optimisation arms, selecting hyperparameters jointly, splitting data by cell line, and incorporating power analyses with equivalence testing.
+
+For rule extraction, methods should adopt sparsity-preserving mutations, maintain continuous generational searches without periodic population resets, restrict feature values appropriately, and incorporate a dedicated coverage objective. To improve evaluation, fidelity metrics must be refined to avoid the 0.5 ceiling, accompanied by random-rule and decision-tree baselines. Biological validation can be strengthened by utilising gene-level features with activating mutation annotations, refining gene overrepresentation tests, and involving expert review by oncologists. Robust attribution auditing, such as Spectral Relevance Analysis, alongside bootstrap confidence intervals should be applied for network audits, while overall generality can be assessed across alternative cell-line collections like CCLE and diverse model architectures.
