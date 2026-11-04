@@ -1,0 +1,232 @@
+2026-09-02 17:22:19,437 [INFO] Device: cpu
+2026-09-02 17:22:19,456 [INFO] Loaded baseline arch_config: {'mutation_dim': 534, 'drug_dim': 1024, 'n_pathways': 38, 'dropout': 0.0}
+2026-09-02 17:22:19,456 [INFO] Stage 3 sweep: 16 configs (rho=[0.2, 0.5, 1.0, 2.0], lr=[0.001, 0.0005], wd=[0, 0.001])
+2026-09-02 17:22:19,456 [INFO] Subsample: 10% of training set, seed=42
+2026-09-02 17:22:19,457 [INFO] Stopping: patience=15, min_consecutive=5, max_epochs=150
+2026-09-02 17:22:21,120 [INFO] Subsample train size: 25562 / 255628 (10.0%)
+2026-09-02 17:22:21,121 [INFO] Val size: 31963
+2026-09-02 17:22:21,121 [INFO] === Config 1 / 16: rho=0.20 lr=0.001 wd=0 ===
+2026-09-02 17:22:21,122 [INFO] --- Starting: rho=0.2 lr=0.001 wd=0
+2026-09-02 17:22:47,994 [INFO]   rho=0.2 lr=0.001 wd=0 | epoch   1 train=8.2343 val=7.1992 gap=-1.0351 no_imp=0
+2026-09-02 17:24:01,876 [INFO]   rho=0.2 lr=0.001 wd=0 | epoch  10 train=1.5372 val=1.8230 gap=0.2858 no_imp=0
+2026-09-02 17:25:17,942 [INFO]   rho=0.2 lr=0.001 wd=0 | epoch  20 train=1.2478 val=1.7665 gap=0.5186 no_imp=3
+2026-09-02 17:26:35,642 [INFO]   rho=0.2 lr=0.001 wd=0 | epoch  30 train=1.0710 val=1.7739 gap=0.7029 no_imp=7
+2026-09-02 17:27:29,830 [INFO]   rho=0.2 lr=0.001 wd=0 | stopped at epoch 38
+2026-09-02 17:27:34,569 [INFO]   rho=0.2 lr=0.001 wd=0 | DONE: gap=0.9126 val_r2=0.7688 epochs=38 time=302s
+2026-09-02 17:27:34,578 [INFO] === Config 2 / 16: rho=0.20 lr=0.001 wd=0.001 ===
+2026-09-02 17:27:34,579 [INFO] --- Starting: rho=0.2 lr=0.001 wd=0.001
+2026-09-02 17:27:40,758 [INFO]   rho=0.2 lr=0.001 wd=0.001 | epoch   1 train=8.2398 val=7.2821 gap=-0.9577 no_imp=0
+2026-09-02 17:28:55,353 [INFO]   rho=0.2 lr=0.001 wd=0.001 | epoch  10 train=1.6162 val=1.8924 gap=0.2762 no_imp=1
+2026-09-02 17:30:15,040 [INFO]   rho=0.2 lr=0.001 wd=0.001 | epoch  20 train=1.3861 val=1.8844 gap=0.4983 no_imp=3
+2026-09-02 17:31:37,348 [INFO]   rho=0.2 lr=0.001 wd=0.001 | epoch  30 train=1.2375 val=1.9310 gap=0.6935 no_imp=13
+2026-09-02 17:31:59,311 [INFO]   rho=0.2 lr=0.001 wd=0.001 | stopped at epoch 32
+2026-09-02 17:32:07,216 [INFO]   rho=0.2 lr=0.001 wd=0.001 | DONE: gap=0.7893 val_r2=0.7732 epochs=32 time=273s
+2026-09-02 17:32:07,230 [INFO] === Config 3 / 16: rho=0.20 lr=0.0005 wd=0 ===
+2026-09-02 17:32:07,231 [INFO] --- Starting: rho=0.2 lr=0.0005 wd=0
+2026-09-02 17:32:18,094 [INFO]   rho=0.2 lr=0.0005 wd=0 | epoch   1 train=10.0279 val=10.2816 gap=0.2537 no_imp=0
+2026-09-02 17:34:19,892 [INFO]   rho=0.2 lr=0.0005 wd=0 | epoch  10 train=1.6323 val=1.8540 gap=0.2217 no_imp=0
+2026-09-02 17:36:25,853 [INFO]   rho=0.2 lr=0.0005 wd=0 | epoch  20 train=1.3827 val=1.7966 gap=0.4139 no_imp=0
+2026-09-02 17:38:24,349 [INFO]   rho=0.2 lr=0.0005 wd=0 | epoch  30 train=1.2140 val=1.7802 gap=0.5663 no_imp=2
+2026-09-02 17:40:32,268 [INFO]   rho=0.2 lr=0.0005 wd=0 | epoch  40 train=1.0708 val=1.7795 gap=0.7087 no_imp=3
+2026-09-02 17:42:36,459 [INFO]   rho=0.2 lr=0.0005 wd=0 | epoch  50 train=0.9729 val=1.7878 gap=0.8149 no_imp=13
+2026-09-02 17:43:03,524 [INFO]   rho=0.2 lr=0.0005 wd=0 | stopped at epoch 52
+2026-09-02 17:43:10,223 [INFO]   rho=0.2 lr=0.0005 wd=0 | DONE: gap=0.9087 val_r2=0.7682 epochs=52 time=663s
+2026-09-02 17:43:10,251 [INFO] === Config 4 / 16: rho=0.20 lr=0.0005 wd=0.001 ===
+2026-09-02 17:43:10,251 [INFO] --- Starting: rho=0.2 lr=0.0005 wd=0.001
+2026-09-02 17:43:25,566 [INFO]   rho=0.2 lr=0.0005 wd=0.001 | epoch   1 train=10.0551 val=10.3801 gap=0.3249 no_imp=0
+2026-09-02 17:45:27,675 [INFO]   rho=0.2 lr=0.0005 wd=0.001 | epoch  10 train=1.6758 val=1.8944 gap=0.2186 no_imp=0
+2026-09-02 17:48:40,169 [INFO]   rho=0.2 lr=0.0005 wd=0.001 | epoch  20 train=1.4652 val=1.8666 gap=0.4013 no_imp=5
+2026-09-02 17:51:34,021 [INFO]   rho=0.2 lr=0.0005 wd=0.001 | epoch  30 train=1.3336 val=1.8755 gap=0.5419 no_imp=9
+2026-09-02 17:52:29,419 [INFO]   rho=0.2 lr=0.0005 wd=0.001 | stopped at epoch 36
+2026-09-02 17:52:37,075 [INFO]   rho=0.2 lr=0.0005 wd=0.001 | DONE: gap=0.6978 val_r2=0.7755 epochs=36 time=567s
+2026-09-02 17:52:37,101 [INFO] === Config 5 / 16: rho=0.50 lr=0.001 wd=0 ===
+2026-09-02 17:52:37,101 [INFO] --- Starting: rho=0.5 lr=0.001 wd=0
+2026-09-02 17:52:53,327 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch   1 train=10.7215 val=10.0416 gap=-0.6799 no_imp=0
+2026-09-02 17:54:56,124 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  10 train=1.8503 val=1.9539 gap=0.1036 no_imp=0
+2026-09-02 17:56:48,469 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  20 train=1.6496 val=1.8320 gap=0.1824 no_imp=1
+2026-09-02 17:58:28,845 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  30 train=1.5193 val=1.7595 gap=0.2402 no_imp=2
+2026-09-02 18:00:11,579 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  40 train=1.4148 val=1.7084 gap=0.2936 no_imp=0
+2026-09-02 18:01:59,982 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  50 train=1.3649 val=1.7010 gap=0.3361 no_imp=1
+2026-09-02 18:03:43,951 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  60 train=1.3062 val=1.6841 gap=0.3780 no_imp=3
+2026-09-02 18:05:12,293 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  70 train=1.2550 val=1.6776 gap=0.4227 no_imp=3
+2026-09-02 18:06:30,427 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  80 train=1.2327 val=1.6767 gap=0.4440 no_imp=3
+2026-09-02 18:07:47,179 [INFO]   rho=0.5 lr=0.001 wd=0 | epoch  90 train=1.1744 val=1.6845 gap=0.5101 no_imp=13
+2026-09-02 18:08:01,978 [INFO]   rho=0.5 lr=0.001 wd=0 | stopped at epoch 92
+2026-09-02 18:08:08,522 [INFO]   rho=0.5 lr=0.001 wd=0 | DONE: gap=0.5584 val_r2=0.7791 epochs=92 time=931s
+2026-09-02 18:08:08,550 [INFO] === Config 6 / 16: rho=0.50 lr=0.001 wd=0.001 ===
+2026-09-02 18:08:08,550 [INFO] --- Starting: rho=0.5 lr=0.001 wd=0.001
+2026-09-02 18:08:17,929 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch   1 train=10.7230 val=10.1488 gap=-0.5742 no_imp=0
+2026-09-02 18:09:25,154 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  10 train=1.8938 val=1.9995 gap=0.1057 no_imp=0
+2026-09-02 18:10:40,569 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  20 train=1.7519 val=1.9209 gap=0.1690 no_imp=1
+2026-09-02 18:12:03,364 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  30 train=1.6575 val=1.8921 gap=0.2345 no_imp=2
+2026-09-02 18:13:17,517 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  40 train=1.5874 val=1.8676 gap=0.2802 no_imp=0
+2026-09-02 18:14:35,133 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  50 train=1.5524 val=1.8696 gap=0.3171 no_imp=9
+2026-09-02 18:15:38,839 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  60 train=1.5145 val=1.8635 gap=0.3490 no_imp=3
+2026-09-02 18:16:45,609 [INFO]   rho=0.5 lr=0.001 wd=0.001 | epoch  70 train=1.4768 val=1.8622 gap=0.3853 no_imp=13
+2026-09-02 18:16:56,400 [INFO]   rho=0.5 lr=0.001 wd=0.001 | stopped at epoch 72
+2026-09-02 18:17:01,009 [INFO]   rho=0.5 lr=0.001 wd=0.001 | DONE: gap=0.4435 val_r2=0.7823 epochs=72 time=532s
+2026-09-02 18:17:01,020 [INFO] === Config 7 / 16: rho=0.50 lr=0.0005 wd=0 ===
+2026-09-02 18:17:01,021 [INFO] --- Starting: rho=0.5 lr=0.0005 wd=0
+2026-09-02 18:17:08,099 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch   1 train=11.8914 val=11.8332 gap=-0.0581 no_imp=0
+2026-09-02 18:18:02,853 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  10 train=1.9389 val=2.0126 gap=0.0737 no_imp=0
+2026-09-02 18:19:08,214 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  20 train=1.7276 val=1.8800 gap=0.1524 no_imp=0
+2026-09-02 18:20:14,921 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  30 train=1.6296 val=1.8187 gap=0.1891 no_imp=0
+2026-09-02 18:21:20,957 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  40 train=1.5401 val=1.7732 gap=0.2331 no_imp=0
+2026-09-02 18:22:21,966 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  50 train=1.4824 val=1.7448 gap=0.2624 no_imp=0
+2026-09-02 18:23:24,463 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  60 train=1.4325 val=1.7263 gap=0.2938 no_imp=0
+2026-09-02 18:24:26,568 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  70 train=1.3769 val=1.7113 gap=0.3344 no_imp=3
+2026-09-02 18:25:28,687 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  80 train=1.3506 val=1.7001 gap=0.3495 no_imp=3
+2026-09-02 18:26:30,853 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch  90 train=1.3026 val=1.6897 gap=0.3871 no_imp=0
+2026-09-02 18:27:39,924 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch 100 train=1.2727 val=1.6874 gap=0.4146 no_imp=0
+2026-09-02 18:28:42,818 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch 110 train=1.2492 val=1.6807 gap=0.4315 no_imp=0
+2026-09-02 18:29:46,312 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch 120 train=1.2237 val=1.6799 gap=0.4562 no_imp=0
+2026-09-02 18:30:47,680 [INFO]   rho=0.5 lr=0.0005 wd=0 | epoch 130 train=1.1928 val=1.6774 gap=0.4847 no_imp=7
+2026-09-02 18:31:30,250 [INFO]   rho=0.5 lr=0.0005 wd=0 | stopped at epoch 138
+2026-09-02 18:31:33,883 [INFO]   rho=0.5 lr=0.0005 wd=0 | DONE: gap=0.5495 val_r2=0.7786 epochs=138 time=873s
+2026-09-02 18:31:33,901 [INFO] === Config 8 / 16: rho=0.50 lr=0.0005 wd=0.001 ===
+2026-09-02 18:31:33,901 [INFO] --- Starting: rho=0.5 lr=0.0005 wd=0.001
+2026-09-02 18:31:39,574 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch   1 train=11.8931 val=11.9290 gap=0.0358 no_imp=0
+2026-09-02 18:32:24,958 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  10 train=1.9750 val=2.0546 gap=0.0796 no_imp=0
+2026-09-02 18:33:21,094 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  20 train=1.8052 val=1.9502 gap=0.1450 no_imp=1
+2026-09-02 18:34:15,156 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  30 train=1.7368 val=1.9161 gap=0.1793 no_imp=0
+2026-09-02 18:35:07,741 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  40 train=1.6732 val=1.8939 gap=0.2207 no_imp=1
+2026-09-02 18:36:05,694 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  50 train=1.6348 val=1.8804 gap=0.2456 no_imp=0
+2026-09-02 18:36:56,253 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  60 train=1.5958 val=1.8813 gap=0.2855 no_imp=4
+2026-09-02 18:37:48,354 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  70 train=1.5495 val=1.8785 gap=0.3290 no_imp=3
+2026-09-02 18:38:43,530 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  80 train=1.5271 val=1.8711 gap=0.3440 no_imp=3
+2026-09-02 18:39:35,554 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | epoch  90 train=1.4898 val=1.8707 gap=0.3809 no_imp=13
+2026-09-02 18:39:44,456 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | stopped at epoch 92
+2026-09-02 18:39:47,949 [INFO]   rho=0.5 lr=0.0005 wd=0.001 | DONE: gap=0.4187 val_r2=0.7809 epochs=92 time=494s
+2026-09-02 18:39:47,970 [INFO] === Config 9 / 16: rho=1.00 lr=0.001 wd=0 ===
+2026-09-02 18:39:47,970 [INFO] --- Starting: rho=1.0 lr=0.001 wd=0
+2026-09-02 18:39:54,745 [INFO]   rho=1.0 lr=0.001 wd=0 | epoch   1 train=12.6046 val=12.2099 gap=-0.3947 no_imp=0
+2026-09-02 18:40:40,817 [INFO]   rho=1.0 lr=0.001 wd=0 | epoch  10 train=3.0487 val=3.1169 gap=0.0682 no_imp=2
+2026-09-02 18:41:33,528 [INFO]   rho=1.0 lr=0.001 wd=0 | epoch  20 train=3.0056 val=3.1162 gap=0.1106 no_imp=12
+2026-09-02 18:41:48,585 [INFO]   rho=1.0 lr=0.001 wd=0 | stopped at epoch 23
+2026-09-02 18:41:52,187 [INFO]   rho=1.0 lr=0.001 wd=0 | DONE: gap=0.1620 val_r2=0.5959 epochs=23 time=124s
+2026-09-02 18:41:52,208 [INFO] === Config 10 / 16: rho=1.00 lr=0.001 wd=0.001 ===
+2026-09-02 18:41:52,208 [INFO] --- Starting: rho=1.0 lr=0.001 wd=0.001
+2026-09-02 18:41:57,814 [INFO]   rho=1.0 lr=0.001 wd=0.001 | epoch   1 train=12.6177 val=12.3592 gap=-0.2585 no_imp=0
+2026-09-02 18:42:43,906 [INFO]   rho=1.0 lr=0.001 wd=0.001 | epoch  10 train=3.0944 val=3.1571 gap=0.0628 no_imp=1
+2026-09-02 18:43:33,546 [INFO]   rho=1.0 lr=0.001 wd=0.001 | epoch  20 train=3.1226 val=3.2401 gap=0.1175 no_imp=11
+2026-09-02 18:44:24,823 [INFO]   rho=1.0 lr=0.001 wd=0.001 | epoch  30 train=3.2313 val=3.3095 gap=0.0782 no_imp=21
+2026-09-02 18:44:38,415 [INFO]   rho=1.0 lr=0.001 wd=0.001 | stopped at epoch 33
+2026-09-02 18:44:41,908 [INFO]   rho=1.0 lr=0.001 wd=0.001 | DONE: gap=0.1555 val_r2=0.5880 epochs=33 time=170s
+2026-09-02 18:44:41,923 [INFO] === Config 11 / 16: rho=1.00 lr=0.0005 wd=0 ===
+2026-09-02 18:44:41,924 [INFO] --- Starting: rho=1.0 lr=0.0005 wd=0
+2026-09-02 18:44:48,380 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch   1 train=12.9868 val=12.9072 gap=-0.0796 no_imp=0
+2026-09-02 18:45:34,137 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  10 train=5.5632 val=5.6260 gap=0.0628 no_imp=0
+2026-09-02 18:46:23,772 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  20 train=3.5737 val=3.6911 gap=0.1174 no_imp=1
+2026-09-02 18:47:13,338 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  30 train=3.5463 val=3.6065 gap=0.0602 no_imp=0
+2026-09-02 18:48:05,023 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  40 train=3.3854 val=3.5075 gap=0.1221 no_imp=0
+2026-09-02 18:48:55,170 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  50 train=3.2716 val=3.3791 gap=0.1075 no_imp=0
+2026-09-02 18:49:52,572 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  60 train=3.1879 val=3.3309 gap=0.1430 no_imp=1
+2026-09-02 18:50:43,433 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  70 train=3.1241 val=3.2690 gap=0.1449 no_imp=0
+2026-09-02 18:51:33,347 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  80 train=3.0642 val=3.2014 gap=0.1372 no_imp=0
+2026-09-02 18:52:22,184 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch  90 train=3.0080 val=3.1645 gap=0.1565 no_imp=0
+2026-09-02 18:53:13,960 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch 100 train=2.9536 val=3.1197 gap=0.1661 no_imp=0
+2026-09-02 18:54:04,413 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch 110 train=2.8378 val=3.0061 gap=0.1683 no_imp=0
+2026-09-02 18:54:53,711 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch 120 train=2.6775 val=2.8575 gap=0.1800 no_imp=0
+2026-09-02 18:55:44,258 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch 130 train=2.6271 val=2.8223 gap=0.1952 no_imp=2
+2026-09-02 18:56:34,536 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch 140 train=2.5914 val=2.7895 gap=0.1981 no_imp=2
+2026-09-02 18:57:24,709 [INFO]   rho=1.0 lr=0.0005 wd=0 | epoch 150 train=2.5327 val=2.7408 gap=0.2081 no_imp=0
+2026-09-02 18:57:24,709 [WARNING]   rho=1.0 lr=0.0005 wd=0 | reached MAX_EPOCHS=150 without stopping
+2026-09-02 18:57:28,340 [INFO]   rho=1.0 lr=0.0005 wd=0 | DONE: gap=0.2349 val_r2=0.6359 epochs=150 time=766s
+2026-09-02 18:57:28,359 [INFO] === Config 12 / 16: rho=1.00 lr=0.0005 wd=0.001 ===
+2026-09-02 18:57:28,359 [INFO] --- Starting: rho=1.0 lr=0.0005 wd=0.001
+2026-09-02 18:57:34,431 [INFO]   rho=1.0 lr=0.0005 wd=0.001 | epoch   1 train=13.0063 val=12.9635 gap=-0.0429 no_imp=0
+2026-09-02 18:58:20,956 [INFO]   rho=1.0 lr=0.0005 wd=0.001 | epoch  10 train=5.2908 val=5.2656 gap=-0.0252 no_imp=0
+2026-09-02 18:59:10,886 [INFO]   rho=1.0 lr=0.0005 wd=0.001 | epoch  20 train=2.9950 val=3.0656 gap=0.0706 no_imp=0
+2026-09-02 19:00:04,878 [INFO]   rho=1.0 lr=0.0005 wd=0.001 | epoch  30 train=3.0124 val=3.0886 gap=0.0762 no_imp=9
+2026-09-02 19:00:42,913 [INFO]   rho=1.0 lr=0.0005 wd=0.001 | stopped at epoch 37
+2026-09-02 19:00:46,713 [INFO]   rho=1.0 lr=0.0005 wd=0.001 | DONE: gap=0.1137 val_r2=0.6089 epochs=37 time=198s
+2026-09-02 19:00:46,719 [INFO] === Config 13 / 16: rho=2.00 lr=0.001 wd=0 ===
+2026-09-02 19:00:46,720 [INFO] --- Starting: rho=2.0 lr=0.001 wd=0
+2026-09-02 19:00:52,440 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch   1 train=13.5922 val=13.1854 gap=-0.4068 no_imp=0
+2026-09-02 19:01:36,210 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  10 train=8.8199 val=8.3404 gap=-0.4794 no_imp=0
+2026-09-02 19:02:27,244 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  20 train=3.9585 val=3.9897 gap=0.0311 no_imp=0
+2026-09-02 19:03:19,468 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  30 train=3.1127 val=3.2708 gap=0.1581 no_imp=1
+2026-09-02 19:04:10,416 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  40 train=2.9608 val=3.1214 gap=0.1606 no_imp=2
+2026-09-02 19:05:03,714 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  50 train=2.8671 val=2.9490 gap=0.0819 no_imp=0
+2026-09-02 19:06:05,495 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  60 train=2.7886 val=2.9236 gap=0.1350 no_imp=1
+2026-09-02 19:07:03,521 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  70 train=2.7820 val=2.9412 gap=0.1592 no_imp=3
+2026-09-02 19:08:02,518 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  80 train=2.7157 val=2.9139 gap=0.1983 no_imp=1
+2026-09-02 19:08:57,529 [INFO]   rho=2.0 lr=0.001 wd=0 | epoch  90 train=2.7436 val=2.8902 gap=0.1466 no_imp=11
+2026-09-02 19:09:37,007 [INFO]   rho=2.0 lr=0.001 wd=0 | stopped at epoch 97
+2026-09-02 19:09:41,145 [INFO]   rho=2.0 lr=0.001 wd=0 | DONE: gap=0.1776 val_r2=0.6177 epochs=97 time=534s
+2026-09-02 19:09:41,177 [INFO] === Config 14 / 16: rho=2.00 lr=0.001 wd=0.001 ===
+2026-09-02 19:09:41,178 [INFO] --- Starting: rho=2.0 lr=0.001 wd=0.001
+2026-09-02 19:09:47,601 [INFO]   rho=2.0 lr=0.001 wd=0.001 | epoch   1 train=13.6037 val=13.2517 gap=-0.3520 no_imp=0
+2026-09-02 19:10:38,131 [INFO]   rho=2.0 lr=0.001 wd=0.001 | epoch  10 train=8.0428 val=7.7184 gap=-0.3245 no_imp=0
+2026-09-02 19:11:41,409 [INFO]   rho=2.0 lr=0.001 wd=0.001 | epoch  20 train=4.0524 val=4.2042 gap=0.1518 no_imp=3
+2026-09-02 19:12:34,502 [INFO]   rho=2.0 lr=0.001 wd=0.001 | epoch  30 train=3.7039 val=3.8711 gap=0.1673 no_imp=3
+2026-09-02 19:13:23,676 [INFO]   rho=2.0 lr=0.001 wd=0.001 | epoch  40 train=3.7164 val=3.9086 gap=0.1922 no_imp=13
+2026-09-02 19:13:34,336 [INFO]   rho=2.0 lr=0.001 wd=0.001 | stopped at epoch 42
+2026-09-02 19:13:38,085 [INFO]   rho=2.0 lr=0.001 wd=0.001 | DONE: gap=0.0941 val_r2=0.5326 epochs=42 time=237s
+2026-09-02 19:13:38,093 [INFO] === Config 15 / 16: rho=2.00 lr=0.0005 wd=0 ===
+2026-09-02 19:13:38,094 [INFO] --- Starting: rho=2.0 lr=0.0005 wd=0
+2026-09-02 19:13:41,975 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch   1 train=13.5920 val=13.4608 gap=-0.1312 no_imp=0
+2026-09-02 19:14:28,102 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  10 train=11.2664 val=11.0807 gap=-0.1857 no_imp=0
+2026-09-02 19:15:17,064 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  20 train=7.9080 val=7.7614 gap=-0.1466 no_imp=0
+2026-09-02 19:16:10,034 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  30 train=4.5251 val=4.4792 gap=-0.0460 no_imp=0
+2026-09-02 19:17:01,106 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  40 train=3.5171 val=3.6077 gap=0.0906 no_imp=1
+2026-09-02 19:17:56,466 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  50 train=3.2773 val=3.3730 gap=0.0957 no_imp=0
+2026-09-02 19:18:47,651 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  60 train=3.0498 val=3.1583 gap=0.1085 no_imp=0
+2026-09-02 19:19:39,317 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  70 train=2.9149 val=3.0528 gap=0.1378 no_imp=1
+2026-09-02 19:20:29,102 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  80 train=2.8761 val=2.9800 gap=0.1039 no_imp=0
+2026-09-02 19:21:19,324 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch  90 train=2.8070 val=2.9421 gap=0.1351 no_imp=6
+2026-09-02 19:22:13,712 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch 100 train=2.7958 val=2.9244 gap=0.1286 no_imp=7
+2026-09-02 19:23:06,686 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch 110 train=2.7556 val=2.8835 gap=0.1280 no_imp=0
+2026-09-02 19:23:57,290 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch 120 train=2.7349 val=2.8775 gap=0.1426 no_imp=2
+2026-09-02 19:24:49,480 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch 130 train=2.6801 val=2.8341 gap=0.1540 no_imp=1
+2026-09-02 19:25:38,358 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch 140 train=2.6792 val=2.8237 gap=0.1444 no_imp=2
+2026-09-02 19:26:30,511 [INFO]   rho=2.0 lr=0.0005 wd=0 | epoch 150 train=2.6886 val=2.8481 gap=0.1595 no_imp=12
+2026-09-02 19:26:30,512 [WARNING]   rho=2.0 lr=0.0005 wd=0 | reached MAX_EPOCHS=150 without stopping
+2026-09-02 19:26:32,414 [INFO]   rho=2.0 lr=0.0005 wd=0 | DONE: gap=0.1755 val_r2=0.6231 epochs=150 time=774s
+2026-09-02 19:26:32,432 [INFO] === Config 16 / 16: rho=2.00 lr=0.0005 wd=0.001 ===
+2026-09-02 19:26:32,433 [INFO] --- Starting: rho=2.0 lr=0.0005 wd=0.001
+2026-09-02 19:26:38,318 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch   1 train=13.6246 val=13.5570 gap=-0.0677 no_imp=0
+2026-09-02 19:27:25,302 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  10 train=11.9526 val=11.6666 gap=-0.2860 no_imp=0
+2026-09-02 19:28:15,529 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  20 train=9.5819 val=9.3971 gap=-0.1849 no_imp=0
+2026-09-02 19:29:05,099 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  30 train=4.6845 val=5.6444 gap=0.9599 no_imp=1
+2026-09-02 19:29:57,082 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  40 train=3.6777 val=3.7525 gap=0.0748 no_imp=0
+2026-09-02 19:30:47,512 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  50 train=3.5064 val=3.5526 gap=0.0462 no_imp=4
+2026-09-02 19:31:37,805 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  60 train=3.4222 val=3.5019 gap=0.0797 no_imp=3
+2026-09-02 19:32:28,871 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  70 train=3.3411 val=3.4281 gap=0.0869 no_imp=4
+2026-09-02 19:33:21,938 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  80 train=3.3379 val=3.4419 gap=0.1040 no_imp=14
+2026-09-02 19:34:20,654 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch  90 train=3.2617 val=3.3522 gap=0.0904 no_imp=9
+2026-09-02 19:35:12,950 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch 100 train=3.1796 val=3.3000 gap=0.1204 no_imp=1
+2026-09-02 19:36:10,717 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch 110 train=3.1424 val=3.3655 gap=0.2231 no_imp=2
+2026-09-02 19:37:00,329 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch 120 train=3.1156 val=3.2241 gap=0.1085 no_imp=7
+2026-09-02 19:37:51,510 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch 130 train=3.1498 val=3.2782 gap=0.1284 no_imp=7
+2026-09-02 19:38:46,527 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch 140 train=3.0920 val=3.2357 gap=0.1437 no_imp=4
+2026-09-02 19:39:36,163 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | epoch 150 train=3.0495 val=3.1780 gap=0.1285 no_imp=0
+2026-09-02 19:39:36,163 [WARNING]   rho=2.0 lr=0.0005 wd=0.001 | reached MAX_EPOCHS=150 without stopping
+2026-09-02 19:39:39,728 [INFO]   rho=2.0 lr=0.0005 wd=0.001 | DONE: gap=0.1457 val_r2=0.6043 epochs=150 time=787s
+2026-09-02 19:39:39,767 [INFO] Saved sweep summary: /mnt/c/Users/hawai/2026/UP/HONOURS 2026/COS700/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/stage3_sweep/stage3_sweep_summary.json
+
+================================================================================
+STAGE 3 — Joint Sweep Results (10% subsample, eval-mode gaps)
+================================================================================
+   rho       lr       wd      gap   val_R²  epochs    t(s)  conv
+--------------------------------------------------------------------------------
+  2.00  0.00100   0.0010   0.0941   0.5326      42     237     Y
+  1.00  0.00050   0.0010   0.1137   0.6089      37     198     Y
+  2.00  0.00050   0.0010   0.1457   0.6043     150     787     N
+  1.00  0.00100   0.0010   0.1555   0.5880      33     170     Y
+  1.00  0.00100   0.0000   0.1620   0.5959      23     124     Y
+  2.00  0.00050   0.0000   0.1755   0.6231     150     774     N
+  2.00  0.00100   0.0000   0.1776   0.6177      97     534     Y
+  1.00  0.00050   0.0000   0.2349   0.6359     150     766     N
+  0.50  0.00050   0.0010   0.4187   0.7809      92     494     Y
+  0.50  0.00100   0.0010   0.4435   0.7823      72     532     Y
+  0.50  0.00050   0.0000   0.5495   0.7786     138     873     Y
+  0.50  0.00100   0.0000   0.5584   0.7791      92     931     Y
+  0.20  0.00050   0.0010   0.6978   0.7755      36     567     Y
+  0.20  0.00100   0.0010   0.7893   0.7732      32     273     Y
+  0.20  0.00050   0.0000   0.9087   0.7682      52     663     Y
+  0.20  0.00100   0.0000   0.9126   0.7688      38     302     Y
+================================================================================
+
+Total runtime: 137.3 min across 16 configs.
+Summary: /mnt/c/Users/hawai/2026/UP/HONOURS 2026/COS700/COS700-XAI-In-Cancer-Medicine-Treatment/artifacts/sam_investigation/stage3_sweep/stage3_sweep_summary.json

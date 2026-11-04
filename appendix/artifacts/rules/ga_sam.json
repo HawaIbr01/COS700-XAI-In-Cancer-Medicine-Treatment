@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "extractor": "ga",
+    "condition": "sam",
+    "runs": 30,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "Estrogen_signaling_pathway_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "CBLB_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "FLT4_mut",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "CBLB",
+        "Estrogen signaling pathway",
+        "FLT4",
+        "Natural killer cell mediated cytotoxicity"
+      ],
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4914,
+      "coverage": 0.0238,
+      "run_ids": [
+        21
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4663,
+      "id": "ga_sam_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "C-type_lectin_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Estrogen_signaling_pathway_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "NKX2-1_mut",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "C-type lectin receptor signaling pathway",
+        "Estrogen signaling pathway",
+        "NKX2-1"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4913,
+      "coverage": 0.0241,
+      "run_ids": [
+        16
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4629,
+      "id": "ga_sam_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "CHEK2_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "CNTRL_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "GNA11_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "IL6ST_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "NCOA1_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "PREX2_mut",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway",
+        "CHEK2",
+        "CNTRL",
+        "GNA11",
+        "IL6ST",
+        "NCOA1",
+        "PREX2"
+      ],
+      "predicted_class": "sensitive",
+      "length": 7,
+      "fidelity_f1": 0.4861,
+      "coverage": 0.0247,
+      "run_ids": [
+        13
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4665,
+      "id": "ga_sam_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Estrogen_signaling_pathway_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Estrogen signaling pathway",
+        "Natural killer cell mediated cytotoxicity"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4854,
+      "coverage": 0.0494,
+      "run_ids": [
+        21
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4547,
+      "id": "ga_sam_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "QKI_mut",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway",
+        "QKI"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.479,
+      "coverage": 0.0414,
+      "run_ids": [
+        13
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4547,
+      "id": "ga_sam_0005"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4682,
+      "coverage": 0.1427,
+      "run_ids": [
+        1,
+        14,
+        17,
+        27
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4414,
+      "id": "ga_sam_0006"
+    }
+  ]
+}

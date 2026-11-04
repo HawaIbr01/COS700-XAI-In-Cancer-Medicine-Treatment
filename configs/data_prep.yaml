@@ -1,0 +1,37 @@
+# Config for the real-data preparation stage feeding Sakhile's (NSGA-II) and
+# Melisa's (GA) rule extraction (see artifacts/data_prep/report.md for the
+# full analysis behind these two values).
+#
+# *** PROVISIONAL -- NOT YET CONFIRMED BY HAWA ***
+# DISCRETISATION_MODE and MIN_SAMPLES_PER_DRUG below are recommendations
+# from analysis, not locked team decisions. Sakhile/Melisa can start real
+# extraction runs against the output today, but do not treat these two
+# values -- or anything derived from them -- as final for the write-up
+# until Hawa has explicitly confirmed or overridden both.
+#
+# This file is deliberately separate from configs/pipeline.yaml: pipeline.yaml's
+# config_hash is baked into every already-trained checkpoint and rule pool
+# (docs/CONTRACTS.md sec 0.2/0.5), so adding keys to it would change that hash
+# for every existing artifact even though nothing about the model, split, or
+# GA/NSGA hyperparameters changed. Everything here is new, additive, and
+# scoped to this one data-prep stage.
+
+discretisation:
+  # DISCRETISATION_MODE -- how continuous LN_IC50 is thresholded into
+  # sensitive/resistant for the real per-drug extraction inputs. Options:
+  #   "global_median_train"    -- one fixed cutoff for every drug (reproduces
+  #                                artifacts/data/response_classes.json's
+  #                                existing behaviour).
+  #   "per_drug_median_train"  -- each drug's own train-split median LN_IC50.
+  #                                RECOMMENDED -- see report Part 2.
+  #   "fixed_cutoff"           -- a single user-supplied LN_IC50 value for
+  #                                every drug (set fixed_cutoff_ln_ic50 below).
+  mode: per_drug_median_train
+  fixed_cutoff_ln_ic50: null
+
+drug_shortlist:
+  # MIN_SAMPLES_PER_DRUG -- minimum tested cell lines (all splits combined) a
+  # drug needs to qualify for real extraction. RECOMMENDED -- see report Part 3.
+  min_samples_per_drug: 500
+  # Always-exclude floor regardless of the value above (Part 1's sanity flag).
+  low_sanity_floor: 50

@@ -1,0 +1,420 @@
+{
+  "meta": {
+    "extractor": "ga",
+    "condition": "sam",
+    "runs": 1,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_29",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_36",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "PATHWAY_29",
+        "PATHWAY_36"
+      ],
+      "predicted_class": "resistant",
+      "length": 2,
+      "fidelity_f1": 1.0,
+      "coverage": 0.02,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_18",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_29",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_37",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_18",
+        "PATHWAY_29",
+        "PATHWAY_37"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 1.0,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_13",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_03",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_13",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "GENE13",
+        "PATHWAY_03",
+        "PATHWAY_13"
+      ],
+      "predicted_class": "resistant",
+      "length": 3,
+      "fidelity_f1": 0.4706,
+      "coverage": 0.03,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_16",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_37",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_16",
+        "PATHWAY_37"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4667,
+      "coverage": 0.0267,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_16",
+          "partition": "High"
+        },
+        {
+          "feature": "GENE_17",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_11",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_30",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "GENE16",
+        "GENE17",
+        "PATHWAY_11",
+        "PATHWAY_30"
+      ],
+      "predicted_class": "resistant",
+      "length": 4,
+      "fidelity_f1": 0.4615,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0005"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_14",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_15",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_29",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "PATHWAY_14",
+        "PATHWAY_15",
+        "PATHWAY_29"
+      ],
+      "predicted_class": "resistant",
+      "length": 3,
+      "fidelity_f1": 0.4545,
+      "coverage": 0.02,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0006"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_30",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_30"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4536,
+      "coverage": 0.1767,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0007"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_20",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_07",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_26",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "GENE20",
+        "PATHWAY_07",
+        "PATHWAY_26"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4412,
+      "coverage": 0.0633,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0008"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_19",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "PATHWAY_19"
+      ],
+      "predicted_class": "resistant",
+      "length": 1,
+      "fidelity_f1": 0.4333,
+      "coverage": 0.17,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0009"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_06",
+          "partition": "High"
+        },
+        {
+          "feature": "GENE_07",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "GENE06",
+        "GENE07"
+      ],
+      "predicted_class": "resistant",
+      "length": 2,
+      "fidelity_f1": 0.4308,
+      "coverage": 0.2467,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0010"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_11",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_13",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_11",
+        "PATHWAY_13"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4286,
+      "coverage": 0.0267,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0011"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_20",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_02",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_22",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "GENE20",
+        "PATHWAY_02",
+        "PATHWAY_22"
+      ],
+      "predicted_class": "resistant",
+      "length": 3,
+      "fidelity_f1": 0.4231,
+      "coverage": 0.05,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0012"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_04",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_07",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "GENE04",
+        "PATHWAY_07"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4167,
+      "coverage": 0.0467,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0013"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "GENE_01",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_19",
+          "partition": "High"
+        },
+        {
+          "feature": "PATHWAY_28",
+          "partition": "Intermediate"
+        }
+      ],
+      "genes": [
+        "GENE01",
+        "PATHWAY_19",
+        "PATHWAY_28"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4167,
+      "coverage": 0.0467,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0014"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "PATHWAY_13",
+          "partition": "Low"
+        },
+        {
+          "feature": "PATHWAY_17",
+          "partition": "Intermediate"
+        },
+        {
+          "feature": "PATHWAY_22",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "PATHWAY_13",
+        "PATHWAY_17",
+        "PATHWAY_22"
+      ],
+      "predicted_class": "resistant",
+      "length": 3,
+      "fidelity_f1": 0.4167,
+      "coverage": 0.0233,
+      "run_ids": [
+        1
+      ],
+      "non_dominated": true,
+      "id": "ga_sam_0015"
+    }
+  ]
+}

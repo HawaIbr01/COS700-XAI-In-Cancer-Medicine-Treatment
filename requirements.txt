@@ -1,0 +1,35 @@
+# Project dependencies — install into the project venv:
+#
+#   python3 -m venv .venv
+#   source .venv/bin/activate          # or .venv\Scripts\activate on Windows
+#   pip install -r requirements.txt
+#
+# PyTorch: install CPU-only build (no GPU on project hardware) via:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# or let the line below pull the default wheel (GPU-enabled, larger).
+
+# --- core ---
+numpy>=1.26
+pandas>=2.1
+pyarrow>=14.0       # parquet I/O
+pyyaml>=6.0
+scipy>=1.11
+scikit-learn>=1.3
+
+# --- deep learning ---
+torch>=2.1
+
+# --- evolutionary algorithms ---
+deap>=1.4
+
+# --- multi-criteria decision analysis ---
+pymcdm>=1.1
+
+# --- biological pathway enrichment ---
+gseapy>=1.1
+
+# --- plotting ---
+matplotlib>=3.8
+
+# --- dev / testing ---
+pytest>=8.0

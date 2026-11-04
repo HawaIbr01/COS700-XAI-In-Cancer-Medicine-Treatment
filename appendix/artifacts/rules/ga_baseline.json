@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "extractor": "ga",
+    "condition": "baseline",
+    "runs": 30,
+    "config_hash": "a2070aedcc19"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "PAX3_mut",
+          "partition": "High"
+        },
+        {
+          "feature": "POLE_mut",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway",
+        "PAX3",
+        "POLE"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.48,
+      "coverage": 0.0221,
+      "run_ids": [
+        17
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4515,
+      "id": "ga_baseline_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "PAX3_mut",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway",
+        "PAX3"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4793,
+      "coverage": 0.0245,
+      "run_ids": [
+        17
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4484,
+      "id": "ga_baseline_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "SPOP_mut",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway",
+        "SPOP"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4788,
+      "coverage": 0.024,
+      "run_ids": [
+        20
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4525,
+      "id": "ga_baseline_0003"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Axon_guidance_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "HERPUD1_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "MYC_mut",
+          "partition": "High"
+        },
+        {
+          "feature": "YWHAE_mut",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Axon guidance",
+        "HERPUD1",
+        "MYC",
+        "YWHAE"
+      ],
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4774,
+      "coverage": 0.029,
+      "run_ids": [
+        11
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4541,
+      "id": "ga_baseline_0004"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "ATR_mut",
+          "partition": "High"
+        },
+        {
+          "feature": "FOXP1_mut",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "ATR",
+        "B cell receptor signaling pathway",
+        "FOXP1"
+      ],
+      "predicted_class": "sensitive",
+      "length": 3,
+      "fidelity_f1": 0.4761,
+      "coverage": 0.0289,
+      "run_ids": [
+        19
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4576,
+      "id": "ga_baseline_0005"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "B_cell_receptor_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "B cell receptor signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.464,
+      "coverage": 0.1427,
+      "run_ids": [
+        1,
+        17,
+        18,
+        19,
+        20,
+        23,
+        30
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4414,
+      "id": "ga_baseline_0006"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Natural_killer_cell_mediated_cytotoxicity_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Thyroid_hormone_signaling_pathway_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Natural killer cell mediated cytotoxicity",
+        "Thyroid hormone signaling pathway"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4605,
+      "coverage": 0.0254,
+      "run_ids": [
+        29
+      ],
+      "non_dominated": true,
+      "accuracy": 0.4533,
+      "id": "ga_baseline_0007"
+    }
+  ]
+}

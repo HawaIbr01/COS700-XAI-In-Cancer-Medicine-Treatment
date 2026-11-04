@@ -1,0 +1,13 @@
+query,list_type,n_genes,genes
+ga_baseline,mutated (High) genes,5,"ATR, MYC, PAX3, POLE, SPOP"
+ga_baseline,all mutation genes,8,"ATR, FOXP1, HERPUD1, MYC, PAX3, POLE, SPOP, YWHAE"
+ga_sam,mutated (High) genes,1,QKI
+ga_sam,all mutation genes,10,"CBLB, CHEK2, CNTRL, FLT4, GNA11, IL6ST, NCOA1, NKX2-1, PREX2, QKI"
+nsga_baseline,mutated (High) genes,2,"GOLGA5, PPP6C"
+nsga_baseline,all mutation genes,2,"GOLGA5, PPP6C"
+nsga_sam,mutated (High) genes,1,DDX3X
+nsga_sam,all mutation genes,3,"DDX3X, EPS15, MUTYH"
+baseline (GA+NSGA-II),mutated (High) genes,7,"ATR, GOLGA5, MYC, PAX3, POLE, PPP6C, SPOP"
+baseline (GA+NSGA-II),all mutation genes,10,"ATR, FOXP1, GOLGA5, HERPUD1, MYC, PAX3, POLE, PPP6C, SPOP, YWHAE"
+sam (GA+NSGA-II),mutated (High) genes,2,"DDX3X, QKI"
+sam (GA+NSGA-II),all mutation genes,13,"CBLB, CHEK2, CNTRL, DDX3X, EPS15, FLT4, GNA11, IL6ST, MUTYH, NCOA1, NKX2-1, PREX2, QKI"

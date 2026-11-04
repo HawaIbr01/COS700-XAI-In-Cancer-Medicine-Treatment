@@ -1,0 +1,14 @@
+{
+  "final_train_loss": 1.2655205545721335,
+  "final_val_loss": 1.3310449217666924,
+  "final_generalisation_gap": 0.0655243671945589,
+  "train_r2": 0.8399630784988403,
+  "val_r2": 0.8299384713172913,
+  "train_rmse": 1.091607928276062,
+  "val_rmse": 1.1210007667541504,
+  "n_epochs": 5,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "regularisation": "none",
+  "data_source": "DeepCCDS authors' precomputed features (real, not placeholder)"
+}

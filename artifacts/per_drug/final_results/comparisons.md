@@ -1,0 +1,26 @@
+| metric                  | extractor   | comparison                                  |   n_drugs_paired |   n_drugs_total |   median_diff |   mean_diff |   n_zero_diffs |   wilcoxon_p |   wilcoxon_p_bh |
+|:------------------------|:------------|:--------------------------------------------|-----------------:|----------------:|--------------:|------------:|---------------:|-------------:|----------------:|
+| heldout_fidelity        | ga          | SAM_minus_AdamWD                            |              379 |             379 |       -0.0008 |      0.0006 |              1 |       0.8902 |          0.8902 |
+| heldout_fidelity        | ga          | AdamWD_minus_Adam                           |              379 |             379 |        0.0066 |      0.0263 |              1 |       0.0001 |          0.0002 |
+| heldout_fidelity        | ga          | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0.0101 |      0.0269 |              1 |       0      |          0      |
+| heldout_fidelity        | nsga        | SAM_minus_AdamWD                            |              379 |             379 |        0.0057 |      0.0089 |              0 |       0.0986 |          0.1183 |
+| heldout_fidelity        | nsga        | AdamWD_minus_Adam                           |              379 |             379 |        0.0076 |      0.0113 |              0 |       0.0086 |          0.0129 |
+| heldout_fidelity        | nsga        | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0.0141 |      0.0201 |              0 |       0      |          0      |
+| phi                     | ga          | SAM_minus_AdamWD                            |              379 |             379 |        0.0061 |      0.0017 |              0 |       0.5013 |          0.5013 |
+| phi                     | ga          | AdamWD_minus_Adam                           |              379 |             379 |        0.0144 |      0.0266 |              0 |       0.0001 |          0.0003 |
+| phi                     | ga          | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0.028  |      0.0283 |              0 |       0      |          0      |
+| phi                     | nsga        | SAM_minus_AdamWD                            |              379 |             379 |        0.0237 |      0.0249 |              0 |       0.0493 |          0.0591 |
+| phi                     | nsga        | AdamWD_minus_Adam                           |              379 |             379 |        0.0333 |      0.0339 |              0 |       0.0023 |          0.0034 |
+| phi                     | nsga        | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0.0763 |      0.0588 |              0 |       0      |          0      |
+| length                  | ga          | SAM_minus_AdamWD                            |              379 |             379 |        0      |     -0.0119 |             61 |       0.6143 |          0.9214 |
+| length                  | ga          | AdamWD_minus_Adam                           |              379 |             379 |        0      |      0.0169 |             47 |       0.275  |          0.55   |
+| length                  | ga          | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0      |      0.005  |             52 |       0.768  |          0.9216 |
+| length                  | nsga        | SAM_minus_AdamWD                            |              379 |             379 |        0.1    |      0.0852 |             47 |       0      |          0      |
+| length                  | nsga        | AdamWD_minus_Adam                           |              379 |             379 |        0      |      0.0063 |             50 |       0.9359 |          0.9359 |
+| length                  | nsga        | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0.1    |      0.0916 |             55 |       0      |          0      |
+| stability_jaccard_folds | ga          | SAM_minus_AdamWD                            |              379 |             379 |        0.0007 |      0.0005 |              0 |       0.8521 |          0.925  |
+| stability_jaccard_folds | ga          | AdamWD_minus_Adam                           |              379 |             379 |       -0.0006 |     -0.0006 |              0 |       0.6274 |          0.925  |
+| stability_jaccard_folds | ga          | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |       -0.0006 |     -0.0001 |              0 |       0.925  |          0.925  |
+| stability_jaccard_folds | nsga        | SAM_minus_AdamWD                            |              379 |             379 |        0.02   |      0.0227 |              0 |       0.0973 |          0.2919 |
+| stability_jaccard_folds | nsga        | AdamWD_minus_Adam                           |              379 |             379 |        0.0045 |      0.012  |              1 |       0.4565 |          0.9129 |
+| stability_jaccard_folds | nsga        | sam_vs_adam (proposal contrast, confounded) |              379 |             379 |        0.025  |      0.0346 |              3 |       0.0071 |          0.0427 |

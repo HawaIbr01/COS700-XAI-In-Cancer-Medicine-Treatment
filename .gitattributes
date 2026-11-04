@@ -1,0 +1,17 @@
+* text=auto eol=lf
+
+# run inputs: keep bytes exactly as hashed
+artifacts/checkpoints/baseline/model.pt -text
+artifacts/per_drug/data/predictions/adam_wd_test.parquet -text
+artifacts/per_drug/data/predictions/adam_wd_train.parquet -text
+artifacts/per_drug/data/predictions/adam_wd_val.parquet -text
+artifacts/sam_investigation/adam_wd_control/model.pt -text
+artifacts/sam_investigation/confirmatory/model.pt -text
+data/processed/real_extraction/data/feature_map.json -text
+data/processed/real_extraction/data/gdsc_processed.parquet -text
+data/processed/real_extraction/predictions/baseline_test.parquet -text
+data/processed/real_extraction/predictions/baseline_train.parquet -text
+data/processed/real_extraction/predictions/baseline_val.parquet -text
+data/processed/real_extraction/predictions/sam_test.parquet -text
+data/processed/real_extraction/predictions/sam_train.parquet -text
+data/processed/real_extraction/predictions/sam_val.parquet -text

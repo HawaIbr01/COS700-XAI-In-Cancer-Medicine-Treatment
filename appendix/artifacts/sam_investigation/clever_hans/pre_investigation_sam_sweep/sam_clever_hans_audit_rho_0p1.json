@@ -1,0 +1,175 @@
+{
+  "n_samples_per_split": 256,
+  "method": "vanilla input gradients (lightweight LRP-adjacent attribution, \u00a74.2.4)",
+  "train": {
+    "top_10_pathways_by_mean_abs_gradient": [
+      [
+        "Estrogen signaling pathway",
+        1.1629329919815063
+      ],
+      [
+        "Apelin signaling pathway",
+        0.954679548740387
+      ],
+      [
+        "Thyroid hormone signaling pathway",
+        0.9248121380805969
+      ],
+      [
+        "Phospholipase D signaling pathway",
+        0.9197689890861511
+      ],
+      [
+        "Cholinergic synapse",
+        0.8940726518630981
+      ],
+      [
+        "Gap junction",
+        0.8611130714416504
+      ],
+      [
+        "Focal adhesion",
+        0.847284197807312
+      ],
+      [
+        "Natural killer cell mediated cytotoxicity",
+        0.8357570767402649
+      ],
+      [
+        "Insulin secretion",
+        0.8342252969741821
+      ],
+      [
+        "Relaxin signaling pathway",
+        0.8317705392837524
+      ]
+    ],
+    "mean_coefficient_of_variation": 0.8469982147216797,
+    "per_pathway_mean_abs_gradient": {
+      "Apelin signaling pathway": 0.954679548740387,
+      "Axon guidance": 0.6803510189056396,
+      "B cell receptor signaling pathway": 0.7663861513137817,
+      "C-type lectin receptor signaling pathway": 0.5720800757408142,
+      "Calcium signaling pathway": 0.61183762550354,
+      "cAMP signaling pathway": 0.735905647277832,
+      "Cardiac muscle contraction": 0.5844506025314331,
+      "Cellular senescence": 0.6273511052131653,
+      "Chemokine signaling pathway": 0.6908764839172363,
+      "Cholinergic synapse": 0.8940726518630981,
+      "ErbB signaling pathway": 0.7006299495697021,
+      "Estrogen signaling pathway": 1.1629329919815063,
+      "Focal adhesion": 0.847284197807312,
+      "Gap junction": 0.8611130714416504,
+      "GnRH secretion": 0.7031807899475098,
+      "Growth hormone synthesis, secretion and action": 0.6914529800415039,
+      "Insulin secretion": 0.8342252969741821,
+      "JAK-STAT signaling pathway": 0.5163652300834656,
+      "MAPK signaling pathway": 0.8098158836364746,
+      "Melanogenesis": 0.7963606715202332,
+      "Natural killer cell mediated cytotoxicity": 0.8357570767402649,
+      "Oxidative phosphorylation": 0.49951523542404175,
+      "Phospholipase D signaling pathway": 0.9197689890861511,
+      "PI3K-Akt signaling pathway": 0.7247527837753296,
+      "Protein digestion and absorption": 0.5745245218276978,
+      "Rap1 signaling pathway": 0.6260043382644653,
+      "Ras signaling pathway": 0.7621763348579407,
+      "Regulation of actin cytoskeleton": 0.7182720303535461,
+      "Regulation of lipolysis in adipocytes": 0.6669857501983643,
+      "Relaxin signaling pathway": 0.8317705392837524,
+      "Renin secretion": 0.8053997755050659,
+      "Serotonergic synapse": 0.6279217004776001,
+      "Signaling pathways regulating pluripotency of stem cells": 0.6613427996635437,
+      "Taste transduction": 0.44222700595855713,
+      "Th17 cell differentiation": 0.6014474630355835,
+      "Thermogenesis": 0.4956476092338562,
+      "Thyroid hormone signaling pathway": 0.9248121380805969,
+      "Wnt signaling pathway": 0.7104580402374268
+    }
+  },
+  "val": {
+    "top_10_pathways_by_mean_abs_gradient": [
+      [
+        "Estrogen signaling pathway",
+        1.1744576692581177
+      ],
+      [
+        "Apelin signaling pathway",
+        0.9508376121520996
+      ],
+      [
+        "Cholinergic synapse",
+        0.9042553305625916
+      ],
+      [
+        "Thyroid hormone signaling pathway",
+        0.8489298820495605
+      ],
+      [
+        "Phospholipase D signaling pathway",
+        0.8336786031723022
+      ],
+      [
+        "cAMP signaling pathway",
+        0.8261920809745789
+      ],
+      [
+        "Natural killer cell mediated cytotoxicity",
+        0.8209015130996704
+      ],
+      [
+        "MAPK signaling pathway",
+        0.8160328269004822
+      ],
+      [
+        "Gap junction",
+        0.7691147923469543
+      ],
+      [
+        "Melanogenesis",
+        0.7660343050956726
+      ]
+    ],
+    "mean_coefficient_of_variation": 0.8235204815864563,
+    "per_pathway_mean_abs_gradient": {
+      "Apelin signaling pathway": 0.9508376121520996,
+      "Axon guidance": 0.6833014488220215,
+      "B cell receptor signaling pathway": 0.7605807781219482,
+      "C-type lectin receptor signaling pathway": 0.5562343597412109,
+      "Calcium signaling pathway": 0.6215097904205322,
+      "cAMP signaling pathway": 0.8261920809745789,
+      "Cardiac muscle contraction": 0.5218361616134644,
+      "Cellular senescence": 0.6704663038253784,
+      "Chemokine signaling pathway": 0.6862741708755493,
+      "Cholinergic synapse": 0.9042553305625916,
+      "ErbB signaling pathway": 0.7173270583152771,
+      "Estrogen signaling pathway": 1.1744576692581177,
+      "Focal adhesion": 0.7625701427459717,
+      "Gap junction": 0.7691147923469543,
+      "GnRH secretion": 0.7470207810401917,
+      "Growth hormone synthesis, secretion and action": 0.6494439840316772,
+      "Insulin secretion": 0.7313765287399292,
+      "JAK-STAT signaling pathway": 0.4938983619213104,
+      "MAPK signaling pathway": 0.8160328269004822,
+      "Melanogenesis": 0.7660343050956726,
+      "Natural killer cell mediated cytotoxicity": 0.8209015130996704,
+      "Oxidative phosphorylation": 0.539673924446106,
+      "Phospholipase D signaling pathway": 0.8336786031723022,
+      "PI3K-Akt signaling pathway": 0.6698845028877258,
+      "Protein digestion and absorption": 0.5822837352752686,
+      "Rap1 signaling pathway": 0.5735897421836853,
+      "Ras signaling pathway": 0.753578782081604,
+      "Regulation of actin cytoskeleton": 0.7512440085411072,
+      "Regulation of lipolysis in adipocytes": 0.593575656414032,
+      "Relaxin signaling pathway": 0.7133253812789917,
+      "Renin secretion": 0.6939080357551575,
+      "Serotonergic synapse": 0.5956770777702332,
+      "Signaling pathways regulating pluripotency of stem cells": 0.6911078095436096,
+      "Taste transduction": 0.47442418336868286,
+      "Th17 cell differentiation": 0.6244357824325562,
+      "Thermogenesis": 0.500846266746521,
+      "Thyroid hormone signaling pathway": 0.8489298820495605,
+      "Wnt signaling pathway": 0.6646533012390137
+    }
+  },
+  "interpretation_note": "This is a QUALITATIVE sanity check, not a formal Clever Hans test. Read it alongside the generalisation-gap scorecard in baseline_gap_scorecard.json: a wide gap plus high mean_coefficient_of_variation (attribution swings a lot between individual val predictions) plus reliance on pathways with no obvious oncogenic relevance is the pattern \u00a73.4.2 describes as evidence of shortcut learning. This does not by itself prove or disprove Clever Hans behaviour -- report it descriptively."
+}

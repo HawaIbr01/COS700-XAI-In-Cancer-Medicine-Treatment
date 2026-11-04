@@ -1,0 +1,90 @@
+{
+  "baseline": {
+    "checkpoint": "artifacts/checkpoints/baseline",
+    "meta_gap": 0.3369378980474105,
+    "splits": {
+      "train": {
+        "n_old": 245845,
+        "n_new": 245845,
+        "n_matched": 245845,
+        "class_pred_mismatches": 0,
+        "max_abs_ln_ic50_diff": 0.0
+      },
+      "val": {
+        "n_old": 30720,
+        "n_new": 30720,
+        "n_matched": 30720,
+        "class_pred_mismatches": 0,
+        "max_abs_ln_ic50_diff": 0.0
+      },
+      "test": {
+        "n_old": 30728,
+        "n_new": 30728,
+        "n_matched": 30728,
+        "class_pred_mismatches": 0,
+        "max_abs_ln_ic50_diff": 0.0
+      }
+    }
+  },
+  "sam": {
+    "checkpoint": "artifacts/sam_investigation/confirmatory",
+    "meta_gap": 0.04849882070928646,
+    "splits": {
+      "train": {
+        "n_old": 245845,
+        "n_new": 245845,
+        "n_matched": 245845,
+        "class_pred_mismatches": 0,
+        "max_abs_ln_ic50_diff": 0.0
+      },
+      "val": {
+        "n_old": 30720,
+        "n_new": 30720,
+        "n_matched": 30720,
+        "class_pred_mismatches": 0,
+        "max_abs_ln_ic50_diff": 0.0
+      },
+      "test": {
+        "n_old": 30728,
+        "n_new": 30728,
+        "n_matched": 30728,
+        "class_pred_mismatches": 0,
+        "max_abs_ln_ic50_diff": 0.0
+      }
+    }
+  },
+  "adam_wd": {
+    "checkpoint": "artifacts/sam_investigation/adam_wd_control",
+    "meta_gap": 0.27291290211006136,
+    "splits": {}
+  },
+  "adam_wd_schema_check_vs_sam": {
+    "train": {
+      "columns_equal": true,
+      "dtypes_equal": true,
+      "row_ids_equal": true,
+      "class_counts": {
+        "sensitive": 123713,
+        "resistant": 122132
+      }
+    },
+    "val": {
+      "columns_equal": true,
+      "dtypes_equal": true,
+      "row_ids_equal": true,
+      "class_counts": {
+        "sensitive": 15572,
+        "resistant": 15148
+      }
+    },
+    "test": {
+      "columns_equal": true,
+      "dtypes_equal": true,
+      "row_ids_equal": true,
+      "class_counts": {
+        "sensitive": 15642,
+        "resistant": 15086
+      }
+    }
+  }
+}

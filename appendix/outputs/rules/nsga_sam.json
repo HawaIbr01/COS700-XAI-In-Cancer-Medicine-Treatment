@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "extractor": "nsga",
+    "condition": "sam",
+    "runs": 30,
+    "config_hash": "unknown"
+  },
+  "rules": [
+    {
+      "conditions": [
+        {
+          "feature": "Gap_junction_activity",
+          "partition": "Low"
+        },
+        {
+          "feature": "DDX3X_mut",
+          "partition": "High"
+        },
+        {
+          "feature": "EPS15_mut",
+          "partition": "Low"
+        },
+        {
+          "feature": "MUTYH_mut",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "DDX3X",
+        "EPS15",
+        "Gap junction",
+        "MUTYH"
+      ],
+      "predicted_class": "sensitive",
+      "length": 4,
+      "fidelity_f1": 0.4553,
+      "coverage": 0.0222,
+      "run_ids": [
+        17
+      ],
+      "non_dominated": true,
+      "id": "nsga_sam_0001"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Cellular_senescence_activity",
+          "partition": "High"
+        },
+        {
+          "feature": "Regulation_of_lipolysis_in_adipocytes_activity",
+          "partition": "Low"
+        }
+      ],
+      "genes": [
+        "Cellular senescence",
+        "Regulation of lipolysis in adipocytes"
+      ],
+      "predicted_class": "sensitive",
+      "length": 2,
+      "fidelity_f1": 0.4452,
+      "coverage": 0.0294,
+      "run_ids": [
+        20
+      ],
+      "non_dominated": true,
+      "id": "nsga_sam_0002"
+    },
+    {
+      "conditions": [
+        {
+          "feature": "Th17_cell_differentiation_activity",
+          "partition": "High"
+        }
+      ],
+      "genes": [
+        "Th17 cell differentiation"
+      ],
+      "predicted_class": "sensitive",
+      "length": 1,
+      "fidelity_f1": 0.4379,
+      "coverage": 0.1548,
+      "run_ids": [
+        16
+      ],
+      "non_dominated": true,
+      "id": "nsga_sam_0003"
+    }
+  ]
+}

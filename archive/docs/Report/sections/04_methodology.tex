@@ -1,0 +1,31 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\chapter{Methodology}
+\label{ch:methodology}
+
+% Owner: TBD (whole-team chapter -- this file is the overview only;
+% each pipeline stage has its own file, see 04a-04e below)
+
+\section{Pipeline Overview}
+\label{sec:method-overview}
+% TODO: one diagram + short walkthrough of the full Red XAI diagnostic
+% pipeline: frozen DeepCCDS ANN -> pedagogical querying -> GA/NSGA-II
+% rule extraction -> PROMETHEE II ranking -> rule set output.
+% Reuse the SVG pipeline diagram already produced for the proposal.
+
+\section{Dataset}
+\label{sec:method-dataset}
+% TODO: GDSC pharmacogenomics dataset summary (drug-cell line pairs,
+% 38 pathways), reference Yang et al. Detailed preprocessing lives in
+% 04e_experimental_setup.tex.
+
+\section{Fidelity Metric Discretisation}
+\label{sec:method-fidelity}
+% TODO: document the resolved inconsistency -- DeepCCDS regresses
+% LN IC50, but macro F1 fidelity requires discrete classes, so
+% LN IC50 is discretised into sensitive/resistant response classes
+% before the rule-extraction fidelity stage. Keep this precise, it
+% was a key methodological fix.
+
+\end{document}

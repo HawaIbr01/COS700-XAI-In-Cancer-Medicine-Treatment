@@ -1,0 +1,11 @@
+seed: 42
+split: {train: 0.8, val: 0.1, test: 0.1}      # fixed, hashed, never re-drawn
+discretisation:                                 # feature discretisation (Z-score)
+  high_z: 1.0                                   # Z > 1  -> High
+  low_z: -1.0                                   # Z < -1 -> Low  (else Intermediate)
+response_binning:                               # target -> rule classes
+  target: ln_ic50
+  threshold: median                             # provisional; fixed during pilot
+  classes: [sensitive, resistant]
+ga:   {generations: 50, pop_min: 35, pop_max: 45, runs: 30}
+nsga: {generations: 50, pop: 40, runs: 30}

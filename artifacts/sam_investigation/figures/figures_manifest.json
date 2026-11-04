@@ -1,0 +1,98 @@
+[
+  {
+    "file": "01_gap_full_story_bars.png",
+    "caption": "Eval-mode generalisation gap for all seven full-data runs. Pre-investigation Adam baseline overfits (0.337) and SAM \u03c1=0.01\u20130.2 fails to help; the investigation's \u03c1=0.5+WD run collapses the gap to 0.049.",
+    "thesis_section": "Results \u2014 overview / Discussion",
+    "caveats": "Pre-investigation runs used the reverse-early-stopping rule; the two investigation runs used val-loss-plateau. Cross-phase gap comparison is directional; the clean matched pair is Adam+WD vs SAM \u03c1=0.5+WD."
+  },
+  {
+    "file": "02_gap_vs_rho_fulldata.png",
+    "caption": "Full-data generalisation gap as a function of SAM's \u03c1. Below \u03c1\u22480.2 the perturbation is too small to matter (gap \u2248 baseline); \u03c1=0.5 (with WD) is where the gap collapses.",
+    "thesis_section": "Results \u2014 Stage 1 / Stage 4",
+    "caveats": "The \u03c1=0.5 point also switches WD from 0 to 1e-3 and uses a different stopping rule, so it is not a pure \u03c1-only comparison \u2014 see the decomposition figure."
+  },
+  {
+    "file": "03_gap_decomposition_waterfall.png",
+    "caption": "Decomposition of the total gap reduction (0.337 \u2192 0.048): weight decay accounts for ~22%, SAM \u03c1=0.5 for ~78%.",
+    "thesis_section": "Results \u2014 Stage 4b / Discussion (confound)",
+    "caveats": "The Adam-baseline \u2192 Adam+WD step also carries the stopping-rule change (reverse-early-stop \u2192 val-plateau); the Adam+WD \u2192 SAM+WD step is the clean matched pair (single variable: the SAM wrapper)."
+  },
+  {
+    "file": "04_gap_vs_valr2_tradeoff.png",
+    "caption": "Each run as a point in (gap, val R\u00b2) space. SAM \u03c1=0.5+WD moves far left (gap 0.049) for a ~0.012 R\u00b2 cost vs the baseline; Adam+WD sits between.",
+    "thesis_section": "Results \u2014 overview / Discussion",
+    "caveats": "Mixed stopping rules across points (see per-condition table)."
+  },
+  {
+    "file": "05_loss_curves_preinvestigation.png",
+    "caption": "Pre-investigation training curves. Adding SAM at \u03c1\u22640.2 leaves the train/val separation essentially unchanged \u2014 the observation that opened the investigation.",
+    "thesis_section": "Results \u2014 Stage 1",
+    "caveats": "Train-mode per-epoch losses (not eval-mode); early epochs show spuriously negative gaps as BN statistics settle."
+  },
+  {
+    "file": "06_loss_curves_investigation.png",
+    "caption": "Investigation training curves. Under SAM \u03c1=0.5+WD the train and val curves track each other closely for the whole run; Adam+WD narrows the separation partially; the baseline's curves stay far apart.",
+    "thesis_section": "Results \u2014 Stage 4 / 4b",
+    "caveats": "Different stopping rules and epoch counts (90 / 157 / 250). Train-mode losses."
+  },
+  {
+    "file": "07_gap_per_epoch.png",
+    "caption": "Per-epoch gap trajectories. SAM \u03c1=0.5+WD (right) holds the gap near zero from early on; the pre-investigation SAM sweep (left) widens toward the baseline's ~0.3\u20130.4.",
+    "thesis_section": "Results \u2014 Stage 1 / Stage 4",
+    "caveats": "Train-mode per-epoch gap; noisier than the eval-mode final numbers and can be negative early while BN statistics stabilise."
+  },
+  {
+    "file": "09_r2_comparison.png",
+    "caption": "Train/val/test R\u00b2 per condition (y-axis zoomed). Every pre-investigation run and Adam+WD keep train R\u00b2 \u2248 0.90 well above val \u2248 0.86; SAM \u03c1=0.5+WD is the only run whose train R\u00b2 (0.852) sits right on top of its val R\u00b2 (0.844) \u2014 the visual signature of the closed gap.",
+    "thesis_section": "Results \u2014 Stage 4 / Discussion",
+    "caveats": "Adam+WD (Stage 4b) recorded val R\u00b2 only \u2014 train/test bars are absent for it."
+  },
+  {
+    "file": "10_rmse_comparison.png",
+    "caption": "Train/val/test RMSE per condition (y-axis zoomed). Same story as R\u00b2: under SAM \u03c1=0.5+WD train RMSE rises toward the val level rather than val error dropping toward train.",
+    "thesis_section": "Results \u2014 Stage 4",
+    "caveats": "Adam+WD recorded val RMSE only."
+  },
+  {
+    "file": "11_final_loss_comparison.png",
+    "caption": "Final eval-mode loss on each split. The train/val separation IS the generalisation gap; it is visibly smallest for SAM \u03c1=0.5+WD.",
+    "thesis_section": "Results \u2014 Stage 4 / 4b",
+    "caveats": ""
+  },
+  {
+    "file": "12_stage3_sweep_heatmaps.png",
+    "caption": "Stage 3 sweep grid. Gap falls monotonically with \u03c1 and with WD=1e-3; val R\u00b2 also falls at high \u03c1 on the subsample (a subsample artefact \u2014 see Stage 3 notes).",
+    "thesis_section": "Results \u2014 Stage 3",
+    "caveats": "10% subsample: absolute gap values are inflated and not comparable to full-data numbers; only the ordering across cells is used."
+  },
+  {
+    "file": "13_stage3_gap_vs_rho_subsample.png",
+    "caption": "Stage 3 subsample gap vs \u03c1, split by weight decay. Both levers reduce the gap; they combine roughly additively, motivating the \u03c1=0.5 + WD=1e-3 pick.",
+    "thesis_section": "Results \u2014 Stage 3",
+    "caveats": "Subsample gaps are inflated vs full data; qualitative trend only."
+  },
+  {
+    "file": "14_loss_landscape_stage4.png",
+    "caption": "1-D filter-normalised loss landscape (Li et al. 2018 style), mean \u00b1 sd over 3 random directions, on 8000-row subsamples, span \u00b10.06. A shallower rise away from \u03b1=0 and a smaller train\u2013val separation indicate a flatter minimum that generalises better. Curves that leave the top of the axis have escaped the basin within this \u03b1 range.",
+    "thesis_section": "Results \u2014 Stage 4 / Discussion (flat minima)",
+    "caveats": "BN running statistics are held fixed while weights are perturbed (Li et al. recommend recomputing them); per-tensor (not per-filter) normalisation, so \u03b1 is only comparable within this figure; single 1-D slice family; subsampled data. Read alongside figure 15 (Hessian \u03bb_max)."
+  },
+  {
+    "file": "17_loss_landscape_2d.png",
+    "caption": "Full 2-D filter-normalised loss landscape (Li et al. 2018), one random direction pair per checkpoint, 15x15 grid, span \u00b10.06, 4000-row subsamples. Train surface (shaded, per-condition colour) with val surface overlaid as a red wireframe and a train-loss contour projected onto the base plane. The Adam baseline and SAM \u03c1=0.2 panels show a visibly curved bowl with train/val surfaces separating away from the origin; the Adam+WD and SAM \u03c1=0.5+WD panels are markedly flatter with the two surfaces closer together across the whole grid \u2014 the 2-D generalisation of figure 14's 1-D result.",
+    "thesis_section": "Results \u2014 Stage 4 / Discussion (flat minima)",
+    "caveats": "Single direction pair per checkpoint (no averaging over seeds, unlike figure 14's 3-seed 1-D average) \u2014 a coarser, higher-variance estimate traded for the extra dimension. Same BN-frozen / per-tensor-normalised / subsampled caveats as figure 14. z-axis clipped to the shared 90th-percentile ceiling across all four panels for a comparable view; sharp curves may be truncated. Read alongside figures 14-15."
+  },
+  {
+    "file": "15_hessian_top_eigenvalue.png",
+    "caption": "Largest Hessian eigenvalue of the training loss at each trained solution (power iteration, 25 steps, 8192-sample batch). Lower = flatter minimum. This is the quantitative companion to the landscape figure.",
+    "thesis_section": "Results \u2014 Discussion (flat minima)",
+    "caveats": "Single batch, single random init for power iteration; eigenvalue scale is relative, compare across bars not to an absolute reference. BN in eval mode."
+  },
+  {
+    "file": "16_pred_vs_actual.png",
+    "caption": "Predicted vs true ln IC50 on the val split, Adam baseline vs SAM \u03c1=0.5+WD. Comparable predictive accuracy; SAM's advantage is the generalisation gap, not raw val accuracy.",
+    "thesis_section": "Results \u2014 Stage 4",
+    "caveats": "SAM \u03c1=0.5 predictions regenerated from the rerun checkpoint; baseline predictions are the committed parquet."
+  }
+]

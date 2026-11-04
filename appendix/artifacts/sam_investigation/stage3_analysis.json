@@ -1,0 +1,180 @@
+{
+  "stage": 3,
+  "best_config": {
+    "rho": 2.0,
+    "lr": 0.001,
+    "wd": 0.001,
+    "generalisation_gap": 0.09411649692766533,
+    "val_r2": 0.5325504541397095,
+    "n_epochs": 42
+  },
+  "sorted_by_gap": [
+    {
+      "rho": 2.0,
+      "lr": 0.001,
+      "wd": 0.001,
+      "generalisation_gap": 0.09411649692766533,
+      "val_r2": 0.5325504541397095,
+      "n_epochs": 42,
+      "converged": true
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "generalisation_gap": 0.11366278471587732,
+      "val_r2": 0.608906626701355,
+      "n_epochs": 37,
+      "converged": true
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "generalisation_gap": 0.14570382913569935,
+      "val_r2": 0.6042827367782593,
+      "n_epochs": 150,
+      "converged": false
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.001,
+      "wd": 0.001,
+      "generalisation_gap": 0.15547186105202337,
+      "val_r2": 0.5880250334739685,
+      "n_epochs": 33,
+      "converged": true
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.001,
+      "wd": 0,
+      "generalisation_gap": 0.16203738019172498,
+      "val_r2": 0.5958935022354126,
+      "n_epochs": 23,
+      "converged": true
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.0005,
+      "wd": 0,
+      "generalisation_gap": 0.17545402979987212,
+      "val_r2": 0.623062252998352,
+      "n_epochs": 150,
+      "converged": false
+    },
+    {
+      "rho": 2.0,
+      "lr": 0.001,
+      "wd": 0,
+      "generalisation_gap": 0.17755271433680608,
+      "val_r2": 0.6177240610122681,
+      "n_epochs": 97,
+      "converged": true
+    },
+    {
+      "rho": 1.0,
+      "lr": 0.0005,
+      "wd": 0,
+      "generalisation_gap": 0.23494851315132648,
+      "val_r2": 0.6359474658966064,
+      "n_epochs": 150,
+      "converged": false
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "generalisation_gap": 0.41871069466478117,
+      "val_r2": 0.7808769345283508,
+      "n_epochs": 92,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.001,
+      "wd": 0.001,
+      "generalisation_gap": 0.4435132428621038,
+      "val_r2": 0.7823322415351868,
+      "n_epochs": 72,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.0005,
+      "wd": 0,
+      "generalisation_gap": 0.5494547488948587,
+      "val_r2": 0.7785528898239136,
+      "n_epochs": 138,
+      "converged": true
+    },
+    {
+      "rho": 0.5,
+      "lr": 0.001,
+      "wd": 0,
+      "generalisation_gap": 0.558410737077865,
+      "val_r2": 0.7791073322296143,
+      "n_epochs": 92,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.0005,
+      "wd": 0.001,
+      "generalisation_gap": 0.697771391163307,
+      "val_r2": 0.775471031665802,
+      "n_epochs": 36,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.001,
+      "wd": 0.001,
+      "generalisation_gap": 0.7892553920311456,
+      "val_r2": 0.7732197046279907,
+      "n_epochs": 32,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.0005,
+      "wd": 0,
+      "generalisation_gap": 0.9087224771950432,
+      "val_r2": 0.7681759595870972,
+      "n_epochs": 52,
+      "converged": true
+    },
+    {
+      "rho": 0.2,
+      "lr": 0.001,
+      "wd": 0,
+      "generalisation_gap": 0.9126043257639787,
+      "val_r2": 0.7687972784042358,
+      "n_epochs": 38,
+      "converged": true
+    }
+  ],
+  "rho_trend_lr001_wd0": [
+    {
+      "rho": 0.2,
+      "generalisation_gap": 0.9126043257639787,
+      "val_r2": 0.7687972784042358
+    },
+    {
+      "rho": 0.5,
+      "generalisation_gap": 0.558410737077865,
+      "val_r2": 0.7791073322296143
+    },
+    {
+      "rho": 1.0,
+      "generalisation_gap": 0.16203738019172498,
+      "val_r2": 0.5958935022354126
+    },
+    {
+      "rho": 2.0,
+      "generalisation_gap": 0.17755271433680608,
+      "val_r2": 0.6177240610122681
+    }
+  ],
+  "caveat": "10% training subsample; absolute gap values are larger than full-data results and should NOT be compared directly with Stage 1 full-data numbers. Only relative ordering across configs is interpretable."
+}

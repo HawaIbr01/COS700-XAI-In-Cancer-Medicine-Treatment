@@ -1,0 +1,20 @@
+{
+  "optimiser": "adam",
+  "config_hash": "a2070aedcc19",
+  "split_hash": "dc2241cf73c6",
+  "epoch": 90,
+  "generalisation_gap": 0.3369378980474105,
+  "r2": 0.8564605712890625,
+  "rmse": 1.0298844575881958,
+  "arch_config": {
+    "mutation_dim": 534,
+    "drug_dim": 1024,
+    "n_pathways": 38,
+    "dropout": 0.0
+  },
+  "train_r2": 0.9027787446975708,
+  "test_r2": 0.8568206429481506,
+  "train_rmse": 0.8508189916610718,
+  "test_rmse": 1.0298184156417847,
+  "response_threshold": 2.901433
+}

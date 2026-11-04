@@ -1,0 +1,1466 @@
+{
+ "1": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 32
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ETV1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "FANCC_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "KIT_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PAX7_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 4,
+   "fidelity_f1": 0.4160788381742739,
+   "coverage": 0.02289654050316256,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "PAX7_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36110701650943394,
+   "coverage": 0.21156012934979357,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ETV1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PAX7_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.38281618688060404,
+   "coverage": 0.08511460473062295,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ETV1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "FANCC_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PAX7_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4069596711041504,
+   "coverage": 0.04928715247411987,
+   "n_copies_in_front": 2
+  }
+ ],
+ "2": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "DDX3X_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "LZTR1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PCM1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.3901774909237596,
+   "coverage": 0.04919359759197869,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "LZTR1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36288564006295393,
+   "coverage": 0.2733388923915475,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "DDX3X_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PCM1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.38693003507476464,
+   "coverage": 0.09455958022331144,
+   "n_copies_in_front": 2
+  }
+ ],
+ "3": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "KAT6B_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "MAP2K1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "SDHC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.40496923255543943,
+   "coverage": 0.02084646830319917,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "EPAS1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3615280522764097,
+   "coverage": 0.29171632532693365,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "MAP2K1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "SDHC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.39847215377033024,
+   "coverage": 0.03971608127071936,
+   "n_copies_in_front": 2
+  }
+ ],
+ "4": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CNOT3_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "ZNF384_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.39697085401552756,
+   "coverage": 0.05781691716325327,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ZNF384_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.37681655291638905,
+   "coverage": 0.1407634891903435,
+   "n_copies_in_front": 2
+  }
+ ],
+ "5": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "GPC3_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NFKBIE_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.38311641619328396,
+   "coverage": 0.03489597103866257,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "GOPC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3740996307729556,
+   "coverage": 0.0841221094592121,
+   "n_copies_in_front": 2
+  }
+ ],
+ "6": [
+  {
+   "conditions": [
+    {
+     "feature": "TP53_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "ZNF384_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.41281112190746694,
+   "coverage": 0.03195509365657223,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ZNF384_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.37681655291638905,
+   "coverage": 0.1407634891903435,
+   "n_copies_in_front": 2
+  }
+ ],
+ "7": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "PRDM1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "SDC4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4074898785425101,
+   "coverage": 0.023811751306717647,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "SDC4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.37593167701863356,
+   "coverage": 0.08173849376639752,
+   "n_copies_in_front": 2
+  }
+ ],
+ "8": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "HMGA2_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "IKZF1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "IRF4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.40896233437546525,
+   "coverage": 0.03229677235656613,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "IRF4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36427324566507624,
+   "coverage": 0.11110252394801602,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "HMGA2_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "IRF4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.39279231179925256,
+   "coverage": 0.04626085541703106,
+   "n_copies_in_front": 2
+  }
+ ],
+ "9": [
+  {
+   "conditions": [
+    {
+     "feature": "SOCS1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.39635896661127057,
+   "coverage": 0.032504220138705284,
+   "n_copies_in_front": 38
+  },
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 2
+  }
+ ],
+ "10": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "MLLT1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "TFG_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.450030908716258,
+   "coverage": 0.032569301795846974,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.42548768080682975,
+   "coverage": 0.15849010555431267,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "MLLT1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.44758127641809736,
+   "coverage": 0.04305965140637393,
+   "n_copies_in_front": 2
+  }
+ ],
+ "11": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "FOXA1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "MITF_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "MUC1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.3858666666666667,
+   "coverage": 0.03747076409933088,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "GNA11_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36531283818105525,
+   "coverage": 0.11689479143362688,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "AXIN2_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "FOXA1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.3839225399684756,
+   "coverage": 0.02225792674245968,
+   "n_copies_in_front": 2
+  }
+ ],
+ "12": [
+  {
+   "conditions": [
+    {
+     "feature": "Wnt_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "RAD51B_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.41472403153925264,
+   "coverage": 0.05555532957757937,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Wnt_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.40502768872048966,
+   "coverage": 0.1660680510077488,
+   "n_copies_in_front": 2
+  }
+ ],
+ "13": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CXCR4_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "HSP90AB1_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "NCOR2_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4060891938250429,
+   "coverage": 0.028168154731639854,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CXCR4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3915810727767536,
+   "coverage": 0.056381053102564624,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CXCR4_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "HSP90AB1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.39625231246643194,
+   "coverage": 0.041151945331408,
+   "n_copies_in_front": 2
+  }
+ ],
+ "14": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "EXT2_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "GOPC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.41069803262619897,
+   "coverage": 0.03423701926010291,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "GOPC_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3740996307729556,
+   "coverage": 0.0841221094592121,
+   "n_copies_in_front": 2
+  }
+ ],
+ "15": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "MAPK_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "KIF5B_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "SF3B1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.43247019374068557,
+   "coverage": 0.024783908560271715,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "MAPK_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4005303485356813,
+   "coverage": 0.16643820293274217,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "MAPK_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "KIF5B_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.41800206420772446,
+   "coverage": 0.04358030466350749,
+   "n_copies_in_front": 2
+  }
+ ],
+ "16": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    },
+    {
+     "feature": "MSH2_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4419799347274266,
+   "coverage": 0.11266855132298806,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Th17_cell_differentiation_activity",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.43879958708155137,
+   "coverage": 0.15479265390795013,
+   "n_copies_in_front": 2
+  }
+ ],
+ "17": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Gap_junction_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "ESR1_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "IDH2_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.4426821160604046,
+   "coverage": 0.02386869775671663,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Gap_junction_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4235813927638526,
+   "coverage": 0.16874860176127235,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Gap_junction_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "ESR1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.43011481504302995,
+   "coverage": 0.11285972869084179,
+   "n_copies_in_front": 2
+  }
+ ],
+ "18": [
+  {
+   "conditions": [
+    {
+     "feature": "CDKN2C_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "TOP1_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.40367852858856457,
+   "coverage": 0.030332119831601213,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CDKN2C_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.38282138794084186,
+   "coverage": 0.03972014887429071,
+   "n_copies_in_front": 2
+  }
+ ],
+ "19": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "GNA11_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "MAX_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4071881606765328,
+   "coverage": 0.022811120828164087,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "CXCR4_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3915810727767536,
+   "coverage": 0.056381053102564624,
+   "n_copies_in_front": 2
+  }
+ ],
+ "20": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "GOLGA5_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PPP6C_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.46173733195449845,
+   "coverage": 0.021171876588907644,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.45169374351883856,
+   "coverage": 0.18066261262177388,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Axon_guidance_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "PPP6C_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.45240301333440763,
+   "coverage": 0.05529093534544123,
+   "n_copies_in_front": 2
+  }
+ ],
+ "21": [
+  {
+   "conditions": [
+    {
+     "feature": "Signaling_pathways_regulating_pluripotency_of_stem_cells_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.42084151353794436,
+   "coverage": 0.16679208444345014,
+   "n_copies_in_front": 38
+  },
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 2
+  }
+ ],
+ "22": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Renin_secretion_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "BCOR_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.39591118927236757,
+   "coverage": 0.033533323842258336,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Renin_secretion_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3760023812025073,
+   "coverage": 0.1449653236795542,
+   "n_copies_in_front": 2
+  }
+ ],
+ "23": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ACVR1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "DDX6_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.3783741775037563,
+   "coverage": 0.04880310764912851,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "ACVR1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36323206014963694,
+   "coverage": 0.2108279607069495,
+   "n_copies_in_front": 2
+  }
+ ],
+ "24": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Gap_junction_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "POU5F1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4354678717072633,
+   "coverage": 0.020834265492485102,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Gap_junction_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.4235813927638526,
+   "coverage": 0.16874860176127235,
+   "n_copies_in_front": 2
+  }
+ ],
+ "25": [
+  {
+   "conditions": [
+    {
+     "feature": "Ras_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "CNTRL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "GNAS_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.39573423354304127,
+   "coverage": 0.03203644572799935,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Ras_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3906780336228189,
+   "coverage": 0.15553702536150826,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Ras_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "CNTRL_mut",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.3931005223662928,
+   "coverage": 0.09309931054119465,
+   "n_copies_in_front": 2
+  }
+ ],
+ "26": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Cardiac_muscle_contraction_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "MYCL_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PRDM16_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.3746766804824083,
+   "coverage": 0.0816205332628282,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Cardiac_muscle_contraction_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36341558950254604,
+   "coverage": 0.16526673310419165,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Cardiac_muscle_contraction_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "PRDM16_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.371007801770739,
+   "coverage": 0.08755923447700788,
+   "n_copies_in_front": 2
+  }
+ ],
+ "27": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 34
+  },
+  {
+   "conditions": [
+    {
+     "feature": "BAX_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "IL21R_mut",
+     "partition": "Low"
+    },
+    {
+     "feature": "PCM1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 3,
+   "fidelity_f1": 0.3981954375212802,
+   "coverage": 0.0431369358742297,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "BAX_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.3703115842938074,
+   "coverage": 0.10489129329455552,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "BAX_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "PCM1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.3851768872185885,
+   "coverage": 0.06920620716304988,
+   "n_copies_in_front": 2
+  }
+ ],
+ "28": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "HSP90AA1_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "LASP1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.38559415799955743,
+   "coverage": 0.04517480526347902,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "HSP90AA1_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.35976621891171834,
+   "coverage": 0.1866989363216661,
+   "n_copies_in_front": 2
+  }
+ ],
+ "29": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    },
+    {
+     "feature": "RPL22_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.4289167547967971,
+   "coverage": 0.030751082999450872,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "Rap1_signaling_pathway_activity",
+     "partition": "Low"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.42548768080682975,
+   "coverage": 0.15849010555431267,
+   "n_copies_in_front": 2
+  }
+ ],
+ "30": [
+  {
+   "conditions": [],
+   "predicted_class": null,
+   "length": 0,
+   "fidelity_f1": 0.0,
+   "coverage": 1.0,
+   "n_copies_in_front": 36
+  },
+  {
+   "conditions": [
+    {
+     "feature": "KAT6A_mut",
+     "partition": "High"
+    },
+    {
+     "feature": "MDM2_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 2,
+   "fidelity_f1": 0.388788706270287,
+   "coverage": 0.04825398116699547,
+   "n_copies_in_front": 2
+  },
+  {
+   "conditions": [
+    {
+     "feature": "NFKB2_mut",
+     "partition": "High"
+    }
+   ],
+   "predicted_class": "sensitive",
+   "length": 1,
+   "fidelity_f1": 0.36016409112633424,
+   "coverage": 0.0653460513738331,
+   "n_copies_in_front": 2
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+  "criteria": [
+    "fidelity_test",
+    "length",
+    "stability"
+  ],
+  "weights": [
+    0.5,
+    0.2,
+    0.3
+  ],
+  "types": [
+    1,
+    -1,
+    -1
+  ],
+  "preference_function": "vshape",
+  "p": [
+    0.05376368937085835,
+    6.0,
+    0.08630859084849421
+  ],
+  "q": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "config_hash": "a2070aedcc19",
+  "stability": "variance across cell lines (>=10 covered test rows) of per-cell-line agreement rate",
+  "fidelity": "macro-F1 vs model class_pred on the TEST split, rule class fixed from train",
+  "status": "weights and preference function provisional (not signed off by supervisors)"
+}

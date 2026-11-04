@@ -1,0 +1,421 @@
+drug,arm,extractor,fold,pool_genes
+CHIR-99021,adam,ga,0,C-type lectin receptor signaling pathway;EBF1;FOXO4;GRIN2A;JAK-STAT signaling pathway;NTRK1;Serotonergic synapse;WAS
+CHIR-99021,adam_wd,ga,0,Axon guidance;B cell receptor signaling pathway;HOXA9;JAK-STAT signaling pathway;PMS2;RUNX1T1;Th17 cell differentiation;cAMP signaling pathway
+CHIR-99021,sam,ga,0,AXIN2;CCDC6;Chemokine signaling pathway;EBF1;Gap junction;JAK-STAT signaling pathway;KRAS;MSH2;PIK3CB;Regulation of actin cytoskeleton;SBDS;STIL;Th17 cell differentiation
+CHIR-99021,adam,ga,1,ACVR1;Axon guidance;B cell receptor signaling pathway;ELF4;FGFR3;Focal adhesion;MTOR;NOTCH1;Natural killer cell mediated cytotoxicity;PBRM1;PIM1;RNF213;SOCS1;TLX3;Th17 cell differentiation;WIF1
+CHIR-99021,adam_wd,ga,1,B cell receptor signaling pathway;CREB3L1;Insulin secretion;MAP3K13;MAPK signaling pathway;MLLT10;PSIP1;Protein digestion and absorption;UBR5
+CHIR-99021,sam,ga,1,B cell receptor signaling pathway;CRTC3;FLI1;JAK-STAT signaling pathway;Natural killer cell mediated cytotoxicity;PTPRK;Th17 cell differentiation
+CHIR-99021,adam,ga,2,ACVR1;C-type lectin receptor signaling pathway;CDC73;CIC;CIITA;CNOT3;EBF1;Gap junction;HERPUD1;IKZF1;LCK;MYH9;Melanogenesis;Natural killer cell mediated cytotoxicity;PCM1;PRRX1;SOX2;TERT;Th17 cell differentiation
+CHIR-99021,adam_wd,ga,2,Axon guidance;CDX2;CREBBP;CTCF;EPS15;Estrogen signaling pathway;Gap junction;HOXC13;Insulin secretion;PPFIBP1;TRIM24;Th17 cell differentiation
+CHIR-99021,sam,ga,2,"Axon guidance;B cell receptor signaling pathway;BLM;CDKN1B;Chemokine signaling pathway;GPC3;Growth hormone synthesis, secretion and action;HLA-A;IKZF1;KDR;MYC;PI3K-Akt signaling pathway;PPARG;Serotonergic synapse;TLX1;Th17 cell differentiation"
+CHIR-99021,adam,ga,3,C-type lectin receptor signaling pathway;Cellular senescence;EBF1;FANCD2;FLT3;MUC1;NCOA2;PI3K-Akt signaling pathway;Signaling pathways regulating pluripotency of stem cells;TCF7L2;Th17 cell differentiation;ZBTB16
+CHIR-99021,adam_wd,ga,3,ABL2;AXIN1;Axon guidance;B cell receptor signaling pathway;BCL7A;BTK;CIITA;Cellular senescence;DDX10;EGFR;FSTL3;Focal adhesion;GAS7;GRIN2A;IL6ST;Insulin secretion;KAT6A;MLLT1;Melanogenesis;NRAS;NUTM1;POLE;PPP6C;Protein digestion and absorption;RAC1;SETBP1;SOX2;SS18L1;Taste transduction
+CHIR-99021,sam,ga,3,CASP8;FANCC;Focal adhesion;GNAS;Insulin secretion;JAK-STAT signaling pathway;MUC1;NCOR1;Natural killer cell mediated cytotoxicity;PHF6;PI3K-Akt signaling pathway;PPARG;PPP6C;SDHAF2;Serotonergic synapse;TSC1;Taste transduction;Th17 cell differentiation;WWTR1
+CHIR-99021,adam,ga,4,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;CDK6;Estrogen signaling pathway;JAK-STAT signaling pathway;KLF6;PTPRK;Signaling pathways regulating pluripotency of stem cells;VHL
+CHIR-99021,adam_wd,ga,4,B cell receptor signaling pathway;Melanogenesis;PRKACA;Protein digestion and absorption;Th17 cell differentiation
+CHIR-99021,sam,ga,4,B cell receptor signaling pathway;ELK4;JAK-STAT signaling pathway;KLF6;Melanogenesis;NFATC2;Natural killer cell mediated cytotoxicity;PDGFRB;PER1;PI3K-Akt signaling pathway;PRKAR1A;PTPRK;SDHB;SIX1;TCF12;Th17 cell differentiation;XPO1
+CHIR-99021,adam,nsga,0,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam_wd,nsga,0,NF2;Rap1 signaling pathway;SDC4
+CHIR-99021,sam,nsga,0,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam,nsga,1,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam_wd,nsga,1,CREB1;GAS7;Rap1 signaling pathway;SDC4
+CHIR-99021,sam,nsga,1,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam,nsga,2,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam_wd,nsga,2,BRAF;DDB2;SDC4
+CHIR-99021,sam,nsga,2,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam,nsga,3,Insulin secretion;SDC4;Th17 cell differentiation
+CHIR-99021,adam_wd,nsga,3,FOXO4;JAK3;LATS2;PAX7;SDC4
+CHIR-99021,sam,nsga,3,Insulin secretion;Th17 cell differentiation
+CHIR-99021,adam,nsga,4,Insulin secretion;SDC4;Th17 cell differentiation
+CHIR-99021,adam_wd,nsga,4,PAFAH1B2;SDC4
+CHIR-99021,sam,nsga,4,BLM;Th17 cell differentiation
+Capivasertib,adam,ga,0,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;CASP8;CDKN1B;ETV5;EXT2;FGFR2;GPC3;HOXA13;IL2;LMO2;MAFB;MAP3K13;MYCL;PIK3CB;POU5F1;PRF1;Rap1 signaling pathway;SS18L1;TRIM27
+Capivasertib,adam_wd,ga,0,ACVR1B;BAX;Chemokine signaling pathway;HOXA13;NTRK1;PTPN11;Rap1 signaling pathway;SS18L1;Signaling pathways regulating pluripotency of stem cells;TRIM24
+Capivasertib,sam,ga,0,B cell receptor signaling pathway;B2M;EXT2;Estrogen signaling pathway;GPC3;HOXA13;MLLT6;NCOA1;PTPRC;Rap1 signaling pathway;SOX2
+Capivasertib,adam,ga,1,CD79B;CDK12;CDKN1B;CLIP1;Estrogen signaling pathway;PTEN;RPL22;SBDS
+Capivasertib,adam_wd,ga,1,ARID1B;Axon guidance;B cell receptor signaling pathway;BIRC3;CD79B;CDK4;CIITA;Cellular senescence;Chemokine signaling pathway;EGFR;EIF4A2;EZR;FLCN;FUBP1;GOLGA5;ITK;MAML2;MLLT6;MSH6;Melanogenesis;NCOR1;NUP214;PPM1D;RAP1GDS1;RET;RHOA;RSPO3;RUNX1;SBDS;SH3GL1;SND1;SPEN;Signaling pathways regulating pluripotency of stem cells;TGFBR2
+Capivasertib,sam,ga,1,Axon guidance;B cell receptor signaling pathway;B2M;CCND3;CDKN1B;Chemokine signaling pathway;Estrogen signaling pathway;FOXO3;NSD1;PRCC;PRRX1;SBDS;TBL1XR1
+Capivasertib,adam,ga,2,ACVR1B;B cell receptor signaling pathway;CDKN1B;Chemokine signaling pathway;DDX5;HOXA13;LIFR;MET;MLLT11;MYH9;NSD1;PRRX1
+Capivasertib,adam_wd,ga,2,B cell receptor signaling pathway;CDC73;CDX2;Chemokine signaling pathway;EBF1;Estrogen signaling pathway;GOPC;HERPUD1;KAT6A;MAML2;MAX;MLLT3;MYH11;Melanogenesis;PMS2;PTCH1;SF3B1;TCF12;TCF3;TP53;Th17 cell differentiation
+Capivasertib,sam,ga,2,B cell receptor signaling pathway;HOXA13;XPO1
+Capivasertib,adam,ga,3,ACVR1B;Axon guidance;C-type lectin receptor signaling pathway;FOXP1;HOXD13;Natural killer cell mediated cytotoxicity;QKI;RPL5;SMARCB1;TLX1;WRN
+Capivasertib,adam_wd,ga,3,ACVR1B;Axon guidance;CBFA2T3;CDX2;CREB1;FLT4;FOXO4;FOXP1;HOXA9;KAT6A;MYO5A;Melanogenesis;NPM1;Natural killer cell mediated cytotoxicity;PTEN
+Capivasertib,sam,ga,3,B cell receptor signaling pathway;ERC1;HOXA9;MSH2;Melanogenesis;Th17 cell differentiation
+Capivasertib,adam,ga,4,B cell receptor signaling pathway;BRCA2;CD74;CDK12;CDX2;EP300;Estrogen signaling pathway;Focal adhesion;GRIN2A;Gap junction;MYB;NUP214;PALB2;PATZ1;Signaling pathways regulating pluripotency of stem cells
+Capivasertib,adam_wd,ga,4,ASXL1;B cell receptor signaling pathway;CAMTA1;CD74;CDX2;FLT3;KAT6A;KMT2A;Rap1 signaling pathway;Th17 cell differentiation
+Capivasertib,sam,ga,4,ARHGEF12;B cell receptor signaling pathway;CD74;Estrogen signaling pathway;Focal adhesion;HOXC11;HOXC13;SMARCB1
+Capivasertib,adam,nsga,0,DNM2;MTCP1;PDE4DIP;Rap1 signaling pathway;TSC2
+Capivasertib,adam_wd,nsga,0,FANCE;Insulin secretion;Rap1 signaling pathway;Th17 cell differentiation
+Capivasertib,sam,nsga,0,BARD1;CHEK2;Rap1 signaling pathway
+Capivasertib,adam,nsga,1,HMGA2;IKZF1;Rap1 signaling pathway;TRAF7
+Capivasertib,adam_wd,nsga,1,BRAF;DDB2;NAB2;Rap1 signaling pathway
+Capivasertib,sam,nsga,1,GNAQ;HOXC11;RUNX1T1
+Capivasertib,adam,nsga,2,CNOT3;EIF3E;ETV1;HMGA2;JAK3;PALB2;PAX7
+Capivasertib,adam_wd,nsga,2,ATR;DDR2;HMGA1;MLLT1;SDHC;STAT5B;ZNF384
+Capivasertib,sam,nsga,2,ETV1;FANCC;MTCP1;NFKBIE;PAX7;Rap1 signaling pathway
+Capivasertib,adam,nsga,3,MLLT1;Rap1 signaling pathway
+Capivasertib,adam_wd,nsga,3,ARID1B;BARD1;BLM;HMGA2;IKZF3;JAK3;MLLT1;SMARCE1;TSHR
+Capivasertib,sam,nsga,3,MLLT1;Rap1 signaling pathway
+Capivasertib,adam,nsga,4,BARD1;MDM2;Rap1 signaling pathway
+Capivasertib,adam_wd,nsga,4,BARD1;MDM2;Rap1 signaling pathway
+Capivasertib,sam,nsga,4,ETV1;NAB2;Rap1 signaling pathway
+Daporinad,adam,ga,0,B cell receptor signaling pathway;GATA1;HLA-A;LZTR1
+Daporinad,adam_wd,ga,0,B cell receptor signaling pathway;GATA1;JAK2;MET
+Daporinad,sam,ga,0,Axon guidance;Estrogen signaling pathway;GPHN;NT5C2;PI3K-Akt signaling pathway;Protein digestion and absorption;Regulation of actin cytoskeleton;Thermogenesis;WIF1
+Daporinad,adam,ga,1,Axon guidance;Estrogen signaling pathway;Protein digestion and absorption
+Daporinad,adam_wd,ga,1,Axon guidance;B cell receptor signaling pathway;Chemokine signaling pathway;Estrogen signaling pathway;FANCD2;HIF1A;IDH2;MAFB;MAP3K13;MET;NF1;Natural killer cell mediated cytotoxicity;RAD51B;Signaling pathways regulating pluripotency of stem cells;USP6
+Daporinad,sam,ga,1,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Calcium signaling pathway;MYD88;Oxidative phosphorylation;PDE4DIP;PRDM16;Protein digestion and absorption;Rap1 signaling pathway;TP63;Thermogenesis
+Daporinad,adam,ga,2,B cell receptor signaling pathway;CDKN2C;Estrogen signaling pathway;Focal adhesion;MET;Natural killer cell mediated cytotoxicity;PPARG;Protein digestion and absorption;RUNX1;TCL1A
+Daporinad,adam_wd,ga,2,Axon guidance;B cell receptor signaling pathway;ETV1;Estrogen signaling pathway;IL7R;MTOR;PCM1;RBM10;Signaling pathways regulating pluripotency of stem cells
+Daporinad,sam,ga,2,Calcium signaling pathway;Focal adhesion;Melanogenesis;Oxidative phosphorylation;Th17 cell differentiation
+Daporinad,adam,ga,3,Axon guidance;B cell receptor signaling pathway;Cellular senescence;Estrogen signaling pathway;FGFR2;Focal adhesion;HLA-A;Regulation of lipolysis in adipocytes;Signaling pathways regulating pluripotency of stem cells;TCF12;cAMP signaling pathway
+Daporinad,adam_wd,ga,3,B cell receptor signaling pathway;B2M;CLTCL1;ERBB4;Estrogen signaling pathway;GATA3;HRAS;MLLT11;Natural killer cell mediated cytotoxicity;SS18L1;TP53
+Daporinad,sam,ga,3,ErbB signaling pathway;Estrogen signaling pathway;MAPK signaling pathway;MLLT3;MYH9;PI3K-Akt signaling pathway
+Daporinad,adam,ga,4,Axon guidance;B cell receptor signaling pathway;CDK6;DNM2;IL2;MYH11
+Daporinad,adam_wd,ga,4,Axon guidance;B cell receptor signaling pathway;ERBB3;FCGR2B;GATA3;MSI2;PTPRB;RAD51B
+Daporinad,sam,ga,4,CSF3R;Cellular senescence;Estrogen signaling pathway;Melanogenesis;Rap1 signaling pathway
+Daporinad,adam,nsga,0,Axon guidance;EBF1;KAT6A;PI3K-Akt signaling pathway;PMS2;Thermogenesis;WIF1
+Daporinad,adam_wd,nsga,0,Axon guidance;EWSR1;PMS2;Regulation of actin cytoskeleton;Thermogenesis
+Daporinad,sam,nsga,0,Axon guidance;CDC73;Cholinergic synapse;GAS7;PI3K-Akt signaling pathway;Thermogenesis;WIF1
+Daporinad,adam,nsga,1,Axon guidance;Thermogenesis;WIF1
+Daporinad,adam_wd,nsga,1,AXIN2;ETV1;FGFR1;LMO2;MAPK1;Thermogenesis
+Daporinad,sam,nsga,1,Axon guidance;Thermogenesis;WIF1
+Daporinad,adam,nsga,2,Axon guidance;Thermogenesis;WIF1
+Daporinad,adam_wd,nsga,2,ETV1;IKZF3;Thermogenesis;WIF1
+Daporinad,sam,nsga,2,Cholinergic synapse;EBF1;PI3K-Akt signaling pathway
+Daporinad,adam,nsga,3,Axon guidance;BCL7A;Thermogenesis
+Daporinad,adam_wd,nsga,3,FANCE;Regulation of actin cytoskeleton
+Daporinad,sam,nsga,3,PAFAH1B2;Regulation of actin cytoskeleton
+Daporinad,adam,nsga,4,FANCE;PAFAH1B2;Regulation of actin cytoskeleton
+Daporinad,adam_wd,nsga,4,Axon guidance;CHD4;PMS2;Thermogenesis;WIF1
+Daporinad,sam,nsga,4,MTOR;Regulation of actin cytoskeleton
+Erlotinib,adam,ga,0,Axon guidance;B cell receptor signaling pathway;Chemokine signaling pathway;DCTN1;ETV1;Focal adhesion;ITK;Insulin secretion;Melanogenesis;Signaling pathways regulating pluripotency of stem cells;TLX1
+Erlotinib,adam_wd,ga,0,ACVR1B;Apelin signaling pathway;B cell receptor signaling pathway;CD74;Cholinergic synapse;ErbB signaling pathway;Gap junction;ITK;Insulin secretion;LIFR;LMNA;MALT1;MYCL;NCOR2;NRG1;PCM1;PDE4DIP;PI3K-Akt signaling pathway;RAC1;Renin secretion;SYK;TCL1A;Th17 cell differentiation
+Erlotinib,sam,ga,0,Axon guidance;B cell receptor signaling pathway;BARD1;BRCA1;C-type lectin receptor signaling pathway;CCND1;MAF;MEN1;MSI2;Natural killer cell mediated cytotoxicity;PREX2;ROS1;cAMP signaling pathway
+Erlotinib,adam,ga,1,Axon guidance;B cell receptor signaling pathway;ERC1;ETV6;EZH2;ErbB signaling pathway;FGFR3;HOXC11;KLF4;LZTR1;Natural killer cell mediated cytotoxicity;PLCG1;PTPRK;Rap1 signaling pathway;Regulation of actin cytoskeleton;TPM3;Th17 cell differentiation;USP8
+Erlotinib,adam_wd,ga,1,"B cell receptor signaling pathway;BRCA2;BRIP1;C-type lectin receptor signaling pathway;CDX2;Cholinergic synapse;DDX10;EP300;FLI1;FLT4;Growth hormone synthesis, secretion and action;HOXC13;KDM5C;NCOA2;NSD1;Natural killer cell mediated cytotoxicity;PRF1;Protein digestion and absorption;Renin secretion;SPEN;SUFU;Th17 cell differentiation;Thermogenesis;WT1"
+Erlotinib,sam,ga,1,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;CCNB1IP1;CCND3;CHD4;HOXC13;IL6ST;NFKBIE;Natural killer cell mediated cytotoxicity;PTPRC;RARA;SH2B3;Signaling pathways regulating pluripotency of stem cells;VHL
+Erlotinib,adam,ga,2,Axon guidance;B cell receptor signaling pathway;MAFB;MAP3K13;NCOA4;NUP98;Natural killer cell mediated cytotoxicity;PBRM1;PRF1;RABEP1;TBX3;TCF12;TP53
+Erlotinib,adam_wd,ga,2,Axon guidance;C-type lectin receptor signaling pathway;MYCL;Melanogenesis;NUP98;Natural killer cell mediated cytotoxicity
+Erlotinib,sam,ga,2,B cell receptor signaling pathway;COL2A1;Chemokine signaling pathway;DROSHA;FGFR3;JAK-STAT signaling pathway;LZTR1;MET;MLH1;MLLT10;MSI2;Melanogenesis;NRG1;PBRM1;PPARG;PTK6;Regulation of lipolysis in adipocytes;SMARCB1;TCL1A;TP63
+Erlotinib,adam,ga,3,Axon guidance;B cell receptor signaling pathway;Cholinergic synapse;Estrogen signaling pathway;Natural killer cell mediated cytotoxicity;PER1;Relaxin signaling pathway
+Erlotinib,adam_wd,ga,3,ARHGAP35;Axon guidance;B cell receptor signaling pathway;CAMTA1;Cholinergic synapse;EP300;Gap junction;HOXC13;IDH1;KAT6A;KDM5A;KDM6A;KLF4;NF1;Relaxin signaling pathway;SMAD2
+Erlotinib,sam,ga,3,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;HOXA11;MLLT10;PDGFRB;Renin secretion;TAL1
+Erlotinib,adam,ga,4,ACVR2A;ARHGAP35;B cell receptor signaling pathway;BCORL1;ETV6;ErbB signaling pathway;FCGR2B;JAK3;LATS1;MSH6;NR4A3;NRAS;NT5C2;NUP214;Natural killer cell mediated cytotoxicity;PTK6;PTPRT;SDHC;Signaling pathways regulating pluripotency of stem cells;Th17 cell differentiation
+Erlotinib,adam_wd,ga,4,"ARHGAP26;B cell receptor signaling pathway;CDH11;CREB3L1;ErbB signaling pathway;Gap junction;GnRH secretion;Growth hormone synthesis, secretion and action;IRS4;JAK1;Natural killer cell mediated cytotoxicity;PLCG1;RNF213;Relaxin signaling pathway;SPEN;SUFU;Th17 cell differentiation"
+Erlotinib,sam,ga,4,AFF3;Axon guidance;B cell receptor signaling pathway;CBFA2T3;CNTRL;ErbB signaling pathway;FLT4;KIT;KMT2D;LCK;LZTR1;NRG1;Natural killer cell mediated cytotoxicity;PALB2;Signaling pathways regulating pluripotency of stem cells;Wnt signaling pathway
+Erlotinib,adam,nsga,0,HMGA2;IKZF1;Rap1 signaling pathway;TRAF7
+Erlotinib,adam_wd,nsga,0,Cholinergic synapse;FOXO3;Insulin secretion;NTRK1;RUNX1;Th17 cell differentiation
+Erlotinib,sam,nsga,0,CCNB1IP1;CNOT3;ETV1;HMGA2
+Erlotinib,adam,nsga,1,ARID1B;ETV1;FCGR2B;ITK;PCM1;Rap1 signaling pathway
+Erlotinib,adam_wd,nsga,1,Calcium signaling pathway;Relaxin signaling pathway
+Erlotinib,sam,nsga,1,Insulin secretion;MDM2;NTRK1;Rap1 signaling pathway;SDHA;Th17 cell differentiation
+Erlotinib,adam,nsga,2,ASXL1;ATP1A1;CCNE1;ITK;Insulin secretion;PCM1;Rap1 signaling pathway
+Erlotinib,adam_wd,nsga,2,Insulin secretion;PRRX1;Th17 cell differentiation
+Erlotinib,sam,nsga,2,EPAS1;ErbB signaling pathway;KAT6B;PPFIBP1;SET
+Erlotinib,adam,nsga,3,ASXL1;Cholinergic synapse;ITK;PCM1;PTPN13;SDC4
+Erlotinib,adam_wd,nsga,3,Insulin secretion;Th17 cell differentiation
+Erlotinib,sam,nsga,3,Insulin secretion;JAK3;LATS2;NTRK3;ROS1;SDC4;Th17 cell differentiation
+Erlotinib,adam,nsga,4,FANCD2;STAT5B;ZNF384
+Erlotinib,adam_wd,nsga,4,C-type lectin receptor signaling pathway;DDX10;Insulin secretion
+Erlotinib,sam,nsga,4,ETV1;ErbB signaling pathway;FANCC;HMGA2;KEAP1;PAX7
+Irinotecan,adam,ga,0,"Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Gap junction;Growth hormone synthesis, secretion and action;HNRNPA2B1;MLLT10;NCOR1;NFE2L2;PTPRB;PTPRC;Rap1 signaling pathway;SDHB;Th17 cell differentiation"
+Irinotecan,adam_wd,ga,0,ATM;AXIN1;Axon guidance;CUX1;Estrogen signaling pathway;LEF1;NPM1;SDHB;Th17 cell differentiation
+Irinotecan,sam,ga,0,Axon guidance;ErbB signaling pathway;FUS;Focal adhesion;Gap junction;Rap1 signaling pathway;SDHB;SMARCA4
+Irinotecan,adam,ga,1,B cell receptor signaling pathway;IL6ST;MAPK signaling pathway;ZFHX3
+Irinotecan,adam_wd,ga,1,Axon guidance;B cell receptor signaling pathway;CREBBP;GNAS;Melanogenesis;Natural killer cell mediated cytotoxicity
+Irinotecan,sam,ga,1,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Signaling pathways regulating pluripotency of stem cells
+Irinotecan,adam,ga,2,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;VHL;Wnt signaling pathway
+Irinotecan,adam_wd,ga,2,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Chemokine signaling pathway;Gap junction;MYO5A;RHOA;Signaling pathways regulating pluripotency of stem cells;Th17 cell differentiation;VHL
+Irinotecan,sam,ga,2,Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;ETV6;VHL
+Irinotecan,adam,ga,3,B cell receptor signaling pathway;ERC1
+Irinotecan,adam_wd,ga,3,B cell receptor signaling pathway;CREBBP;MECOM;PATZ1
+Irinotecan,sam,ga,3,Axon guidance;B cell receptor signaling pathway;ERC1;PALB2;PSIP1;SLC34A2;SMARCA4
+Irinotecan,adam,ga,4,B cell receptor signaling pathway;CDKN1B;LIFR
+Irinotecan,adam_wd,ga,4,Axon guidance;B cell receptor signaling pathway;BCR;Chemokine signaling pathway;Focal adhesion;HEY1;JAK-STAT signaling pathway;MAPK signaling pathway;Melanogenesis
+Irinotecan,sam,ga,4,B cell receptor signaling pathway;BRCA2;CCNB1IP1;CRLF2;Chemokine signaling pathway;FBXW7;Focal adhesion;GNAS;KCNJ5;Melanogenesis;NCOR1;NFKB2;PML;PTPRB;QKI;Signaling pathways regulating pluripotency of stem cells
+Irinotecan,adam,nsga,0,ETV1;Rap1 signaling pathway
+Irinotecan,adam_wd,nsga,0,ETV1;PAX7;Rap1 signaling pathway;WIF1
+Irinotecan,sam,nsga,0,ETV1;NAB2;Rap1 signaling pathway
+Irinotecan,adam,nsga,1,MLLT1;Rap1 signaling pathway
+Irinotecan,adam_wd,nsga,1,ETV1;GAS7;NAB2;Rap1 signaling pathway
+Irinotecan,sam,nsga,1,GAS7;Rap1 signaling pathway
+Irinotecan,adam,nsga,2,ETV1;PAX7;Rap1 signaling pathway
+Irinotecan,adam_wd,nsga,2,ETV1;IKZF3;Rap1 signaling pathway;TFG
+Irinotecan,sam,nsga,2,ETV1;IKZF3;Rap1 signaling pathway
+Irinotecan,adam,nsga,3,Axon guidance;ETV1;PAX7;POT1;PTCH1;Rap1 signaling pathway;Thermogenesis;WIF1
+Irinotecan,adam_wd,nsga,3,Axon guidance;ETV1;Rap1 signaling pathway;Thermogenesis
+Irinotecan,sam,nsga,3,Axon guidance;ETV1;Rap1 signaling pathway;Thermogenesis;WIF1
+Irinotecan,adam,nsga,4,ERBB3;ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Irinotecan,adam_wd,nsga,4,CDC73;Cholinergic synapse;ETV1;GAS7;IKZF3;MTCP1;Rap1 signaling pathway
+Irinotecan,sam,nsga,4,ETV1;MTCP1;Rap1 signaling pathway
+Lestaurtinib,adam,ga,0,Axon guidance;B cell receptor signaling pathway;FLT3;Focal adhesion;Gap junction;HOXD13;KAT6A;TAL2;TNFRSF17
+Lestaurtinib,adam_wd,ga,0,Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;HOXD13;Signaling pathways regulating pluripotency of stem cells
+Lestaurtinib,sam,ga,0,B cell receptor signaling pathway;Focal adhesion;GRIN2A;HOXD13;Insulin secretion;Melanogenesis;NUP214;Natural killer cell mediated cytotoxicity
+Lestaurtinib,adam,ga,1,Axon guidance;B cell receptor signaling pathway;CDKN1B;Wnt signaling pathway
+Lestaurtinib,adam_wd,ga,1,Axon guidance;B cell receptor signaling pathway;CDKN1B;Focal adhesion
+Lestaurtinib,sam,ga,1,AFF4;B cell receptor signaling pathway;CDKN1B;CXCR4;DCTN1;Gap junction;Natural killer cell mediated cytotoxicity;POLE;PTEN;SUFU
+Lestaurtinib,adam,ga,2,Axon guidance;B cell receptor signaling pathway;CAMTA1;CCNE1;HOXD13;MET;MSI2;Melanogenesis;NFATC2;NRAS;PI3K-Akt signaling pathway
+Lestaurtinib,adam_wd,ga,2,Axon guidance;B cell receptor signaling pathway;BCOR;CIITA;FAT1;Focal adhesion;HOXD13;Renin secretion
+Lestaurtinib,sam,ga,2,B cell receptor signaling pathway;Estrogen signaling pathway;Focal adhesion;HOXD13;MYC
+Lestaurtinib,adam,ga,3,Axon guidance;B cell receptor signaling pathway;DNM2;FGFR1;PTPRB;SDHA
+Lestaurtinib,adam_wd,ga,3,Axon guidance;B cell receptor signaling pathway;CREB1;FANCF;HERPUD1;HOOK3;JAK1;JAK2;MAFB;MAP3K13;MED12;NOTCH1;PCM1;PER1;PPM1D;SS18L1;TRAF7
+Lestaurtinib,sam,ga,3,B cell receptor signaling pathway;PDGFRB
+Lestaurtinib,adam,ga,4,Axon guidance;B cell receptor signaling pathway;Gap junction;IL6ST;IRF4;Rap1 signaling pathway;SDHB;SH2B3;Signaling pathways regulating pluripotency of stem cells;TCF12
+Lestaurtinib,adam_wd,ga,4,Axon guidance;B cell receptor signaling pathway;RECQL4
+Lestaurtinib,sam,ga,4,Axon guidance;B cell receptor signaling pathway;CREBBP;Focal adhesion;GRIN2A;MDM4;Rap1 signaling pathway;SIX1;Serotonergic synapse
+Lestaurtinib,adam,nsga,0,ETV1;IKZF3;NAB2;Rap1 signaling pathway;SND1
+Lestaurtinib,adam_wd,nsga,0,MLLT1;Rap1 signaling pathway
+Lestaurtinib,sam,nsga,0,ETV1;Rap1 signaling pathway
+Lestaurtinib,adam,nsga,1,ETV1;IKZF3;Rap1 signaling pathway
+Lestaurtinib,adam_wd,nsga,1,ErbB signaling pathway;Rap1 signaling pathway
+Lestaurtinib,sam,nsga,1,ETV1;IKZF3;Rap1 signaling pathway;SRC
+Lestaurtinib,adam,nsga,2,IKZF3;MTCP1;Rap1 signaling pathway
+Lestaurtinib,adam_wd,nsga,2,ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Lestaurtinib,sam,nsga,2,ETV1;IKZF3;NAB2;Rap1 signaling pathway
+Lestaurtinib,adam,nsga,3,ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Lestaurtinib,adam_wd,nsga,3,ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Lestaurtinib,sam,nsga,3,ETV1;MTCP1;Rap1 signaling pathway
+Lestaurtinib,adam,nsga,4,IKZF3;MTCP1;Rap1 signaling pathway;SND1
+Lestaurtinib,adam_wd,nsga,4,ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Lestaurtinib,sam,nsga,4,ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Nelarabine,adam,ga,0,B cell receptor signaling pathway;CIC;Focal adhesion;NSD1;NUTM1;Rap1 signaling pathway;Signaling pathways regulating pluripotency of stem cells;Th17 cell differentiation
+Nelarabine,adam_wd,ga,0,Axon guidance;B cell receptor signaling pathway;Focal adhesion;Gap junction;IL7R;RAP1GDS1
+Nelarabine,sam,ga,0,B cell receptor signaling pathway;BCL9L;Focal adhesion;SYK
+Nelarabine,adam,ga,1,Axon guidance;B cell receptor signaling pathway;Chemokine signaling pathway;EP300;ETV1;IKZF3;MTCP1;NAB2;Rap1 signaling pathway;Signaling pathways regulating pluripotency of stem cells
+Nelarabine,adam_wd,ga,1,Axon guidance;B cell receptor signaling pathway;BIRC3;Focal adhesion;HOXD13;LCK;MAFB;MAP3K13;PTPRB;TNFRSF17;Th17 cell differentiation;ZMYM2
+Nelarabine,sam,ga,1,B cell receptor signaling pathway
+Nelarabine,adam,ga,2,Axon guidance;B cell receptor signaling pathway;CXCR4;KMT2A
+Nelarabine,adam_wd,ga,2,B cell receptor signaling pathway;CXCR4;RUNX1T1
+Nelarabine,sam,ga,2,Axon guidance;B cell receptor signaling pathway;CXCR4;Chemokine signaling pathway;Gap junction;MTOR;Wnt signaling pathway
+Nelarabine,adam,ga,3,Axon guidance;B cell receptor signaling pathway;BCL9;CD79A;KAT6A;RAP1GDS1;RPN1;Signaling pathways regulating pluripotency of stem cells;Th17 cell differentiation;USP6
+Nelarabine,adam_wd,ga,3,B cell receptor signaling pathway;FBXO11;Insulin secretion;MAP2K2;MAP3K1;RB1
+Nelarabine,sam,ga,3,Axon guidance;B cell receptor signaling pathway;KMT2D
+Nelarabine,adam,ga,4,Axon guidance;FANCA;GNAS
+Nelarabine,adam_wd,ga,4,B cell receptor signaling pathway
+Nelarabine,sam,ga,4,ARHGEF12;B cell receptor signaling pathway;FAT4;MED12;RBM15
+Nelarabine,adam,nsga,0,ETV1;IKZF3;NAB2;Rap1 signaling pathway
+Nelarabine,adam_wd,nsga,0,ETV1;IKZF3;Rap1 signaling pathway
+Nelarabine,sam,nsga,0,ETV1;IKZF3;NAB2;PMS2;Rap1 signaling pathway;WIF1
+Nelarabine,adam,nsga,1,ETV1;IKZF3;Rap1 signaling pathway
+Nelarabine,adam_wd,nsga,1,DNM2;ETV1;IKZF3;Rap1 signaling pathway;SDHC
+Nelarabine,sam,nsga,1,MTOR;Regulation of actin cytoskeleton
+Nelarabine,adam,nsga,2,ETV1;IKZF3;MTCP1;Rap1 signaling pathway
+Nelarabine,adam_wd,nsga,2,ETV1;IKZF3;Rap1 signaling pathway
+Nelarabine,sam,nsga,2,ETV1;IKZF3;NAB2;Rap1 signaling pathway
+Nelarabine,adam,nsga,3,ETV1;IKZF3;Rap1 signaling pathway
+Nelarabine,adam_wd,nsga,3,ETV1;IKZF3;Rap1 signaling pathway
+Nelarabine,sam,nsga,3,GAS7;IKZF3;Rap1 signaling pathway
+Nelarabine,adam,nsga,4,CYLD;ETV1;FANCC;GNAQ;IKZF3;NAB2;PAX7;Rap1 signaling pathway
+Nelarabine,adam_wd,nsga,4,ETV1;IKZF3;Rap1 signaling pathway
+Nelarabine,sam,nsga,4,ETV1;IKZF3;NAB2;Rap1 signaling pathway
+Olaparib,adam,ga,0,Axon guidance;B cell receptor signaling pathway;MLLT10;NOTCH2;TSHR;VHL
+Olaparib,adam_wd,ga,0,Axon guidance;B cell receptor signaling pathway;BCORL1;C-type lectin receptor signaling pathway;CLIP1;Focal adhesion;MLLT6
+Olaparib,sam,ga,0,ARHGAP26;Axon guidance;B cell receptor signaling pathway;Natural killer cell mediated cytotoxicity;TSC2
+Olaparib,adam,ga,1,Axon guidance;B cell receptor signaling pathway;CD74;EML4;MLH1;RPN1;WRN
+Olaparib,adam_wd,ga,1,B cell receptor signaling pathway;RB1
+Olaparib,sam,ga,1,B cell receptor signaling pathway;BRCA2;FANCA;MALT1;RMI2;Ras signaling pathway
+Olaparib,adam,ga,2,Axon guidance;B cell receptor signaling pathway;EPS15;HOXD13
+Olaparib,adam_wd,ga,2,Axon guidance;HOXD13;NFIB;Natural killer cell mediated cytotoxicity;Rap1 signaling pathway;Regulation of actin cytoskeleton;Th17 cell differentiation
+Olaparib,sam,ga,2,Axon guidance;B cell receptor signaling pathway;HOXD13;MLLT10;Th17 cell differentiation
+Olaparib,adam,ga,3,ARHGEF12;ATRX;Axon guidance;B cell receptor signaling pathway;BTG1;HSP90AA1;Melanogenesis;NCOA2;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Olaparib,adam_wd,ga,3,B cell receptor signaling pathway;KMT2A;MAP3K13;PI3K-Akt signaling pathway
+Olaparib,sam,ga,3,Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Melanogenesis;PDE4DIP;Signaling pathways regulating pluripotency of stem cells
+Olaparib,adam,ga,4,Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;CAMTA1;FANCG;PICALM;SETBP1;TCL1A;TP53
+Olaparib,adam_wd,ga,4,ALK;Axon guidance;B cell receptor signaling pathway;BMPR1A;C-type lectin receptor signaling pathway;CRTC1;EGFR;ERBB3;Estrogen signaling pathway;FANCD2;NTRK3;PRDM16;Rap1 signaling pathway;SETBP1;TPM4
+Olaparib,sam,ga,4,AKT2;ATF1;B cell receptor signaling pathway;Estrogen signaling pathway;POLE;Regulation of actin cytoskeleton;ZFHX3
+Olaparib,adam,nsga,0,ETV1;MTCP1;Rap1 signaling pathway
+Olaparib,adam_wd,nsga,0,Insulin secretion;Rap1 signaling pathway;Th17 cell differentiation
+Olaparib,sam,nsga,0,MLLT1;Rap1 signaling pathway
+Olaparib,adam,nsga,1,ETV1;IKZF3;Rap1 signaling pathway
+Olaparib,adam_wd,nsga,1,ErbB signaling pathway;Rap1 signaling pathway
+Olaparib,sam,nsga,1,MLLT1;Rap1 signaling pathway
+Olaparib,adam,nsga,2,ETV1;NAB2;Rap1 signaling pathway
+Olaparib,adam_wd,nsga,2,ETV1;IKZF3;MTCP1;Rap1 signaling pathway;SND1
+Olaparib,sam,nsga,2,ETV1;NAB2;Rap1 signaling pathway
+Olaparib,adam,nsga,3,Axon guidance;ETV1;IKZF3;PAX7;Rap1 signaling pathway;Thermogenesis;WIF1
+Olaparib,adam_wd,nsga,3,ETV1;IKZF3;Rap1 signaling pathway
+Olaparib,sam,nsga,3,IKZF3;Rap1 signaling pathway;SND1
+Olaparib,adam,nsga,4,Axon guidance;MTCP1;PAX7;Rap1 signaling pathway;Thermogenesis;WIF1
+Olaparib,adam_wd,nsga,4,ETV1;Rap1 signaling pathway;SND1
+Olaparib,sam,nsga,4,ETV1;NAB2;Rap1 signaling pathway
+PD0325901,adam,ga,0,ABL2;Focal adhesion;HOXA9;IKBKB;Natural killer cell mediated cytotoxicity;RECQL4;REL;Ras signaling pathway
+PD0325901,adam_wd,ga,0,ACVR2A;C-type lectin receptor signaling pathway;CAMTA1;GATA3;HLF;HOXA9;Natural killer cell mediated cytotoxicity;PCM1;PI3K-Akt signaling pathway;RPL10;RUNX1T1;Th17 cell differentiation;XPO1;ZBTB16
+PD0325901,sam,ga,0,C-type lectin receptor signaling pathway;CNOT3;EGFR;HOXA9;IKZF3;PI3K-Akt signaling pathway;RPL22;Regulation of actin cytoskeleton;Th17 cell differentiation;ZNF331
+PD0325901,adam,ga,1,AXIN1;ERBB4;FHIT;GATA3;IL21R;KEAP1;MYH11;NUMA1;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;RECQL4;Rap1 signaling pathway;SBDS;TERT;TRAF7;Th17 cell differentiation
+PD0325901,adam_wd,ga,1,APC;CARD11;DAXX;ERC1;EZR;GnRH secretion;HOXA11;JAK-STAT signaling pathway;MET;NFATC2;PI3K-Akt signaling pathway;PRDM16;Rap1 signaling pathway;SBDS
+PD0325901,sam,ga,1,"BCL2;EGFR;FOXA1;Growth hormone synthesis, secretion and action;JAK-STAT signaling pathway;NTRK2;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;PTCH1;Rap1 signaling pathway;TCEA1;Th17 cell differentiation;WRN"
+PD0325901,adam,ga,2,ATR;C-type lectin receptor signaling pathway;Estrogen signaling pathway;JAK-STAT signaling pathway;MAP2K2;MDM4;MYOD1;SYK;Th17 cell differentiation
+PD0325901,adam_wd,ga,2,BARD1;CCND1;Chemokine signaling pathway;EBF1;JAK-STAT signaling pathway;MDM4;MYOD1;PI3K-Akt signaling pathway;PLAG1;RAC1;RNF213;RSPO3;SDHA;TNFRSF14;Th17 cell differentiation;Thermogenesis
+PD0325901,sam,ga,2,C-type lectin receptor signaling pathway;DAXX;GnRH secretion;JAK-STAT signaling pathway;MYOD1;RAF1;SPEN;TP53
+PD0325901,adam,ga,3,CD274;Cellular senescence;Gap junction;HOXA9;IKZF1;JAK3;NCOA1;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;PRDM16;ROS1;Rap1 signaling pathway
+PD0325901,adam_wd,ga,3,CD274;CDK12;ESR1;GnRH secretion;HSP90AA1;Melanogenesis;PBX1;PI3K-Akt signaling pathway;POU2AF1;PTPRT;TCF7L2;Th17 cell differentiation;USP8
+PD0325901,sam,ga,3,Axon guidance;BCR;BRAF;CD274;CLTC;CSF3R;Cellular senescence;EBF1;FBXO11;GnRH secretion;HMGA2;HOXA9;IL7R;LATS2;LRP1B;MTOR;PER1;PI3K-Akt signaling pathway;POU5F1;PRDM1;TAL1;Th17 cell differentiation;Thermogenesis;ZNF331
+PD0325901,adam,ga,4,ATM;CNBP;DNAJB1;Natural killer cell mediated cytotoxicity;PDGFB
+PD0325901,adam_wd,ga,4,CCND2;CD274;DROSHA;EBF1;HMGA2;HOXA9;PI3K-Akt signaling pathway;RHOH;RNF213;ROS1
+PD0325901,sam,ga,4,ATRX;C-type lectin receptor signaling pathway;CNBP;EBF1;FUS;Gap junction;GnRH secretion;HMGA2;JAK-STAT signaling pathway;MET;MYH9;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;PPP6C;UBR5
+PD0325901,adam,nsga,0,C-type lectin receptor signaling pathway;Insulin secretion;KMT2A;NTRK1;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,adam_wd,nsga,0,Insulin secretion;NTRK1;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,sam,nsga,0,C-type lectin receptor signaling pathway;DNMT3A;FOXO1;Natural killer cell mediated cytotoxicity
+PD0325901,adam,nsga,1,BRAF;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,adam_wd,nsga,1,FANCE;Insulin secretion;Th17 cell differentiation
+PD0325901,sam,nsga,1,Insulin secretion;NTRK1;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,adam,nsga,2,FUBP1;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,adam_wd,nsga,2,FANCE;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,sam,nsga,2,FUBP1;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PD0325901,adam,nsga,3,BRAF;Insulin secretion;Th17 cell differentiation
+PD0325901,adam_wd,nsga,3,BRAF;Insulin secretion;Th17 cell differentiation
+PD0325901,sam,nsga,3,FUBP1;Insulin secretion;Th17 cell differentiation
+PD0325901,adam,nsga,4,BRAF;Insulin secretion;Th17 cell differentiation
+PD0325901,adam_wd,nsga,4,Axon guidance;BRIP1;IKZF3;Natural killer cell mediated cytotoxicity;Th17 cell differentiation;Thermogenesis
+PD0325901,sam,nsga,4,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PLX-4720,adam,ga,0,ARHGEF12;ARID1A;Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Natural killer cell mediated cytotoxicity;TOP1
+PLX-4720,adam_wd,ga,0,Axon guidance;B cell receptor signaling pathway;Thermogenesis
+PLX-4720,sam,ga,0,AKT1;ASPSCR1;Axon guidance;B cell receptor signaling pathway;BCR;C-type lectin receptor signaling pathway;MAFB;MAP3K13;Melanogenesis;NOTCH1;PCM1;PTPRC;Signaling pathways regulating pluripotency of stem cells
+PLX-4720,adam,ga,1,ATRX;B cell receptor signaling pathway;CUX1;Chemokine signaling pathway;EP300;JAK-STAT signaling pathway;NUP214;PAX5;PRDM16;RPN1;RUNX1;SBDS;Th17 cell differentiation
+PLX-4720,adam_wd,ga,1,"ALK;Axon guidance;B cell receptor signaling pathway;BCL9L;Chemokine signaling pathway;DNM2;EPS15;GNAS;Growth hormone synthesis, secretion and action;JAK-STAT signaling pathway;MAFB;NFIB;NFKB2;NTRK1;Natural killer cell mediated cytotoxicity;RHOA;RPL10;SND1;STK11;XPO1"
+PLX-4720,sam,ga,1,ABL2;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;CDK6;CHD4;CRTC1;Chemokine signaling pathway;FAT4;FIP1L1;FOXA1;HEY1;IRS4;KIT;MAFB;Natural killer cell mediated cytotoxicity;PBRM1;RAC1;RUNX1;TAL2;Th17 cell differentiation
+PLX-4720,adam,ga,2,ARHGAP26;Axon guidance;B cell receptor signaling pathway;CBLC;CHEK2;CUX1;Cellular senescence;HERPUD1;HOXD13;MAFB;MAP3K13;MUC1;Natural killer cell mediated cytotoxicity;PER1;PIK3CA;Thermogenesis
+PLX-4720,adam_wd,ga,2,AXIN1;Axon guidance;B cell receptor signaling pathway;BCL10;BCL9L;C-type lectin receptor signaling pathway;CDKN1B;Calcium signaling pathway;Cellular senescence;EXT2;EZR;FAT1;FES;FGFR4;GAS7;HOXD13;JAK-STAT signaling pathway;KMT2D;LMO1;Melanogenesis;NDRG1;NTRK1;Natural killer cell mediated cytotoxicity;PIK3CA;PPFIBP1;PRRX1;RNF213;SMAD2;Signaling pathways regulating pluripotency of stem cells;TCL1A;UBR5;USP8
+PLX-4720,sam,ga,2,Axon guidance;B cell receptor signaling pathway;CDKN1B;Focal adhesion;HOXD13;LRP1B;MYC;Melanogenesis;PBRM1;RET;TCL1A
+PLX-4720,adam,ga,3,AFF1;B cell receptor signaling pathway;CLTC;EIF3E;HRAS;MLLT3;Natural killer cell mediated cytotoxicity;RB1;TP53
+PLX-4720,adam_wd,ga,3,B cell receptor signaling pathway;EWSR1;HRAS;TCF7L2;UBR5
+PLX-4720,sam,ga,3,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;Estrogen signaling pathway;HOXD13;HRAS;KDM5A;MYCL;Melanogenesis;Natural killer cell mediated cytotoxicity;PMS2;Th17 cell differentiation;USP8
+PLX-4720,adam,ga,4,B cell receptor signaling pathway;C-type lectin receptor signaling pathway;EGFR;ERCC3;FCRL4;GRIN2A;IKZF3;MAFB;MAP3K13;RHOH;Regulation of actin cytoskeleton;Serotonergic synapse;Taste transduction
+PLX-4720,adam_wd,ga,4,B cell receptor signaling pathway;BRCA1;C-type lectin receptor signaling pathway;CRTC1;HRAS;PDE4DIP;RHOH;SLC34A2;Wnt signaling pathway
+PLX-4720,sam,ga,4,Axon guidance;B cell receptor signaling pathway;BIRC3;BRAF;C-type lectin receptor signaling pathway;CLTCL1;FGFR3;FOXO1;IL7R;NTRK2;PIK3R1;RHOH
+PLX-4720,adam,nsga,0,BLM;FUBP1;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PLX-4720,adam_wd,nsga,0,CHEK2;Natural killer cell mediated cytotoxicity
+PLX-4720,sam,nsga,0,ETV1;IKZF3;Rap1 signaling pathway
+PLX-4720,adam,nsga,1,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+PLX-4720,adam_wd,nsga,1,Axon guidance;Insulin secretion;Natural killer cell mediated cytotoxicity;PAX7;TFG;Th17 cell differentiation;Thermogenesis
+PLX-4720,sam,nsga,1,MLLT1;Rap1 signaling pathway
+PLX-4720,adam,nsga,2,C-type lectin receptor signaling pathway;DDX10;Natural killer cell mediated cytotoxicity
+PLX-4720,adam_wd,nsga,2,BRAF;Insulin secretion;MTOR;Natural killer cell mediated cytotoxicity;ZNF331
+PLX-4720,sam,nsga,2,ETV1;IKZF3;ITK;Phospholipase D signaling pathway;Rap1 signaling pathway
+PLX-4720,adam,nsga,3,Insulin secretion;Th17 cell differentiation
+PLX-4720,adam_wd,nsga,3,ATP1A1;ETV1;IKZF3;Natural killer cell mediated cytotoxicity;PAX7;Rap1 signaling pathway
+PLX-4720,sam,nsga,3,ETV1;IKZF3;Rap1 signaling pathway
+PLX-4720,adam,nsga,4,Insulin secretion;Th17 cell differentiation
+PLX-4720,adam_wd,nsga,4,Axon guidance;BRAF;Insulin secretion;Natural killer cell mediated cytotoxicity;PAX7;PMS2;Thermogenesis
+PLX-4720,sam,nsga,4,ARID1B;CNOT3;EPAS1;HMGA2;MAP2K1;Rap1 signaling pathway
+QL-X-138,adam,ga,0,B cell receptor signaling pathway;COL1A1;FGFR2;HOXD13;JAK2;MYCL;Melanogenesis;NFE2L2;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;POU2AF1;Protein digestion and absorption;Rap1 signaling pathway;SS18L1
+QL-X-138,adam_wd,ga,0,AFF3;B cell receptor signaling pathway;DCTN1;ESR1;Estrogen signaling pathway;HOXD13;MAFB;MAP3K13;MYCL;NFE2L2;Protein digestion and absorption;SS18L1;Signaling pathways regulating pluripotency of stem cells
+QL-X-138,sam,ga,0,ASXL1;Axon guidance;B cell receptor signaling pathway;BCL11B;FLT4;Focal adhesion;IRF4;MSH2;Melanogenesis;Natural killer cell mediated cytotoxicity;SIX1;Th17 cell differentiation
+QL-X-138,adam,ga,1,ARID1B;Axon guidance;B cell receptor signaling pathway;CBFA2T3;DNM2;EZR;Focal adhesion;GNAS;Gap junction;KEAP1;MLLT6;MYB;MYD88;Melanogenesis;NFIB;Protein digestion and absorption;TLX3;TSC2;cAMP signaling pathway
+QL-X-138,adam_wd,ga,1,B cell receptor signaling pathway;EWSR1;Estrogen signaling pathway;HOXD13;MED12;Melanogenesis;RAP1GDS1;STAG2;Signaling pathways regulating pluripotency of stem cells;TBL1XR1;TLX3;TSC1;UBR5;ZNF384
+QL-X-138,sam,ga,1,Axon guidance;B cell receptor signaling pathway;Cardiac muscle contraction;HOXD13;MYC;Melanogenesis;TP53;VHL;cAMP signaling pathway
+QL-X-138,adam,ga,2,B cell receptor signaling pathway;FANCA;Focal adhesion;MAP2K2;Melanogenesis;Protein digestion and absorption
+QL-X-138,adam_wd,ga,2,Axon guidance;B cell receptor signaling pathway;CLTCL1;COL2A1;ERCC2;Estrogen signaling pathway;FH;FHIT;FUS;ITK;MECOM;NUTM1;PER1;PHF6;POT1;PRDM16;Protein digestion and absorption;QKI;SF3B1;SMAD2;SMARCA4;WIF1;YWHAE
+QL-X-138,sam,ga,2,B cell receptor signaling pathway;CD74;Estrogen signaling pathway;MAFB;NOTCH1;Protein digestion and absorption;RUNX1
+QL-X-138,adam,ga,3,Axon guidance;B cell receptor signaling pathway;BMPR1A;CARD11;Focal adhesion;GNAS;KMT2C;PI3K-Akt signaling pathway;Protein digestion and absorption;Rap1 signaling pathway;TPM3
+QL-X-138,adam_wd,ga,3,Axon guidance;B cell receptor signaling pathway;BARD1;CLIP1;CLTCL1;DDX3X;Focal adhesion;LCK;MAPK1;Melanogenesis;NRG1;PRKAR1A;RET;Rap1 signaling pathway;Ras signaling pathway;ZRSR2;cAMP signaling pathway
+QL-X-138,sam,ga,3,ARNT;Axon guidance;B cell receptor signaling pathway;BCL9L;CDH11;DNM2;FLT3;Focal adhesion;KAT6B;MPL;MYH11;Protein digestion and absorption;RANBP2;RUNX1T1;Rap1 signaling pathway;Th17 cell differentiation
+QL-X-138,adam,ga,4,Axon guidance;B cell receptor signaling pathway;CBLB;ERBB2;ERCC2;FGFR2;FOXO1;FOXO4;Focal adhesion;GPHN;HLF;MLLT6;NFKBIE;PTK6;REL;Signaling pathways regulating pluripotency of stem cells
+QL-X-138,adam_wd,ga,4,Axon guidance;B cell receptor signaling pathway;BCL11A;BRCA1;CIITA;ERC1;EWSR1;FHIT;FLCN;Focal adhesion;GATA1;GPHN;Gap junction;IL7R;MSI2;MUTYH;MYB;NCOR1;NUMA1;NUP214;NUP98;PAFAH1B2;PREX2;RNF213;SDHB;SMARCB1;STRN;Signaling pathways regulating pluripotency of stem cells;TAL1;Taste transduction;UBR5
+QL-X-138,sam,ga,4,"Axon guidance;B cell receptor signaling pathway;C-type lectin receptor signaling pathway;CD74;ELL;Growth hormone synthesis, secretion and action;Signaling pathways regulating pluripotency of stem cells;Th17 cell differentiation"
+QL-X-138,adam,nsga,0,NFKBIE
+QL-X-138,adam_wd,nsga,0,ETV1;NFKBIE;Rap1 signaling pathway;SRC
+QL-X-138,sam,nsga,0,NFKBIE
+QL-X-138,adam,nsga,1,CEBPA;IRF4;PTPRB
+QL-X-138,adam_wd,nsga,1,ETV1;IKZF3;Rap1 signaling pathway
+QL-X-138,sam,nsga,1,KEAP1;PTCH1
+QL-X-138,adam,nsga,2,EWSR1;Rap1 signaling pathway;SND1
+QL-X-138,adam_wd,nsga,2,ETV1;IKZF3;Rap1 signaling pathway
+QL-X-138,sam,nsga,2,RARA;Rap1 signaling pathway
+QL-X-138,adam,nsga,3,ETV1;IKZF3;PMS2;Rap1 signaling pathway
+QL-X-138,adam_wd,nsga,3,ELF4;ETV1;IKZF3;Rap1 signaling pathway
+QL-X-138,sam,nsga,3,ETV1;IKZF3;PMS2;Rap1 signaling pathway
+QL-X-138,adam,nsga,4,IKZF3;Rap1 signaling pathway
+QL-X-138,adam_wd,nsga,4,ETV1;IKZF3;Rap1 signaling pathway
+QL-X-138,sam,nsga,4,CSF3R;Cardiac muscle contraction;IKZF3;POU2AF1;ROS1;Rap1 signaling pathway
+SCH772984,adam,ga,0,CCNB1IP1;CIITA;Chemokine signaling pathway;DDIT3;FANCD2;FGFR2;FIP1L1;JAK-STAT signaling pathway;MUTYH;NONO;NOTCH2;PI3K-Akt signaling pathway;PTEN;Protein digestion and absorption;RPN1;Regulation of actin cytoskeleton;Signaling pathways regulating pluripotency of stem cells;TCL1A
+SCH772984,adam_wd,ga,0,FANCD2;HOXD13;IKBKB;JAK-STAT signaling pathway;Natural killer cell mediated cytotoxicity;PDGFRA;PI3K-Akt signaling pathway;Rap1 signaling pathway;SOCS1
+SCH772984,sam,ga,0,CCNB1IP1;MTOR;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway
+SCH772984,adam,ga,1,EBF1;ERC1;ERCC2;FOXO4;GATA1;GnRH secretion;IDH1;JAK-STAT signaling pathway;KTN1;MSH6;NTRK1;PDGFB;PI3K-Akt signaling pathway;RABEP1;RAC1;Regulation of actin cytoskeleton;TRIM24;Th17 cell differentiation
+SCH772984,adam_wd,ga,1,BCL7A;CD274;CHEK2;FOXP1;GATA1;HMGA2;MYH9;NUP98;POT1;POU5F1;TCL1A;Th17 cell differentiation
+SCH772984,sam,ga,1,DNM2;ELF4;FANCA;Focal adhesion;GATA1;JAK-STAT signaling pathway;KAT6B;KDM6A;MECOM;NT5C2;NUP98;RARA;STRN;SUFU;Serotonergic synapse;TFEB;Th17 cell differentiation;UBR5
+SCH772984,adam,ga,2,ARHGEF12;B cell receptor signaling pathway;BAP1;BRD4;BUB1B;C-type lectin receptor signaling pathway;FOXO4;GnRH secretion;NFE2L2;Natural killer cell mediated cytotoxicity;PDE4DIP;PI3K-Akt signaling pathway;PTCH1;Regulation of actin cytoskeleton;SMARCA4
+SCH772984,adam_wd,ga,2,ALK;APC;BAP1;Focal adhesion;HLA-A;HOOK3;HSP90AA1;Insulin secretion;JAK-STAT signaling pathway;MYH11;NFE2L2;NFKBIE;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;PPP2R1A;PTPRT;RB1;Rap1 signaling pathway;Renin secretion;SPEN;SUFU;Signaling pathways regulating pluripotency of stem cells;TSC2;Th17 cell differentiation
+SCH772984,sam,ga,2,JAK-STAT signaling pathway;NFKBIE;Natural killer cell mediated cytotoxicity;RSPO2
+SCH772984,adam,ga,3,Axon guidance;C-type lectin receptor signaling pathway;CBFA2T3;EIF3E;ERC1;FGFR1;Focal adhesion;GAS7;GnRH secretion;MLH1;NF1;NF2;PDE4DIP;PDGFRB;PI3K-Akt signaling pathway;Regulation of actin cytoskeleton;SDHAF2;SPEN;SUFU;Th17 cell differentiation;WIF1
+SCH772984,adam_wd,ga,3,BIRC3;BRIP1;ERBB4;Gap junction;GnRH secretion;KDM5A;KIT;MSH2;MSH6;NFIB;NOTCH1;NUTM1;Regulation of actin cytoskeleton;TGFBR2;WRN
+SCH772984,sam,ga,3,ATR;C-type lectin receptor signaling pathway;Calcium signaling pathway;GnRH secretion;JAK-STAT signaling pathway;KDR;NOTCH2;PI3K-Akt signaling pathway;PIM1;PMS2;POLD1;SDHAF2;Thermogenesis;Thyroid hormone signaling pathway
+SCH772984,adam,ga,4,B2M;C-type lectin receptor signaling pathway;ERC1;FLT3;GNAS;GnRH secretion;JAK-STAT signaling pathway;MAP2K2;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;Th17 cell differentiation
+SCH772984,adam_wd,ga,4,ATP2B3;C-type lectin receptor signaling pathway;GRIN2A;JAK-STAT signaling pathway;PDGFRB;PIK3R1;SDHC;Th17 cell differentiation
+SCH772984,sam,ga,4,APC;Axon guidance;BCL11B;C-type lectin receptor signaling pathway;Chemokine signaling pathway;ITK;Insulin secretion;JAK-STAT signaling pathway;MSN;NCOA4;Natural killer cell mediated cytotoxicity;RB1;Rap1 signaling pathway;SND1;Th17 cell differentiation
+SCH772984,adam,nsga,0,BRAF;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam_wd,nsga,0,EXT1;Natural killer cell mediated cytotoxicity
+SCH772984,sam,nsga,0,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam,nsga,1,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam_wd,nsga,1,Insulin secretion;Th17 cell differentiation
+SCH772984,sam,nsga,1,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam,nsga,2,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam_wd,nsga,2,Insulin secretion;MAP2K2;PRRX1;TPM3;Th17 cell differentiation
+SCH772984,sam,nsga,2,Cardiac muscle contraction;FUBP1;Insulin secretion;NTRK1;Natural killer cell mediated cytotoxicity;PAFAH1B2;Th17 cell differentiation
+SCH772984,adam,nsga,3,BRAF;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam_wd,nsga,3,Insulin secretion;NTRK1;Th17 cell differentiation
+SCH772984,sam,nsga,3,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,adam,nsga,4,FES;MLLT1;Natural killer cell mediated cytotoxicity
+SCH772984,adam_wd,nsga,4,BRAF;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+SCH772984,sam,nsga,4,FES;MLLT1;Natural killer cell mediated cytotoxicity
+Selumetinib,adam,ga,0,C-type lectin receptor signaling pathway;NFKBIE;Natural killer cell mediated cytotoxicity;RABEP1
+Selumetinib,adam_wd,ga,0,ABL2;B cell receptor signaling pathway;CNBP;Chemokine signaling pathway;EP300;JAK1;KDM6A;KTN1;MLLT1;NF1;NFKBIE;Natural killer cell mediated cytotoxicity;Oxidative phosphorylation;PHF6;PI3K-Akt signaling pathway;SMAD3;TLX3;TRRAP;Th17 cell differentiation;ZNF331
+Selumetinib,sam,ga,0,C-type lectin receptor signaling pathway;CDK6;Cholinergic synapse;EPS15;NFKBIE;NOTCH2;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;SH3GL1
+Selumetinib,adam,ga,1,BCL11B;C-type lectin receptor signaling pathway;CDKN2A;DICER1;EGFR;GnRH secretion;HOXA9;HOXC13;JAK-STAT signaling pathway;KIF5B;MLLT10;MLLT3;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;SBDS;STAT5B;XPC
+Selumetinib,adam_wd,ga,1,GnRH secretion;HOXC13;PI3K-Akt signaling pathway;Regulation of actin cytoskeleton
+Selumetinib,sam,ga,1,ACSL3;C-type lectin receptor signaling pathway;FHIT;GOLGA5;HMGA2;HOXC13;KRAS;NIN;NUMA1;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;PTPN11;PTPN13;RNF43;SUZ12;TCF3;TCF7L2;Wnt signaling pathway
+Selumetinib,adam,ga,2,C-type lectin receptor signaling pathway;Estrogen signaling pathway;HSP90AA1;JAK-STAT signaling pathway;Melanogenesis;NIN;NOTCH2;Natural killer cell mediated cytotoxicity;POU5F1;PRF1
+Selumetinib,adam_wd,ga,2,BIRC3;CLTCL1;Estrogen signaling pathway;LRP1B;MDM4;Natural killer cell mediated cytotoxicity;PI3K-Akt signaling pathway;PRF1;PRKAR1A;TFG;TP53
+Selumetinib,sam,ga,2,ERC1;JAK-STAT signaling pathway;Natural killer cell mediated cytotoxicity;PRF1
+Selumetinib,adam,ga,3,ABL2;BAP1;BTK;C-type lectin receptor signaling pathway;CD274;CEBPA;COL2A1;CTCF;DROSHA;ELK4;GATA1;Gap junction;GnRH secretion;HOXD13;IDH1;KAT6B;KDM6A;MALT1;MAP2K2;MAPK signaling pathway;MSN;MTOR;NF2;Natural killer cell mediated cytotoxicity;PAX7;PI3K-Akt signaling pathway;PTPN13;Protein digestion and absorption;RAF1;RAP1GDS1;RNF213;RUNX1T1;Regulation of actin cytoskeleton;Renin secretion;STAT3;TRIM24;TSC2;Th17 cell differentiation;WIF1;XPC;ZNF331;cAMP signaling pathway
+Selumetinib,adam_wd,ga,3,BCL2;CD274;Cholinergic synapse;Focal adhesion;HOXC11;IL6ST;JAK-STAT signaling pathway;Natural killer cell mediated cytotoxicity;PBX1;PI3K-Akt signaling pathway;POLE;STAT3;TCF7L2;Th17 cell differentiation;ZNF331
+Selumetinib,sam,ga,3,Gap junction;HOXC11;JAK-STAT signaling pathway;MUTYH;PI3K-Akt signaling pathway;RNF213;Th17 cell differentiation;ZNF331
+Selumetinib,adam,ga,4,AR;CD274;CNBP;CNOT3;CNTRL;DDX3X;ERCC2;FAT4;GNAS;GnRH secretion;LPP;MECOM;MSI2;NFKBIE;NUP98;Natural killer cell mediated cytotoxicity;PDGFB;PIK3CB;TBL1XR1;Thyroid hormone signaling pathway;WIF1
+Selumetinib,adam_wd,ga,4,CD274;CDH1;CTNNB1;Cholinergic synapse;DEK;EBF1;EPS15;FANCC;FLI1;FUS;GOPC;HIP1;HMGA2;JAK1;JAK2;LPP;MAPK signaling pathway;Natural killer cell mediated cytotoxicity;PDGFB;PI3K-Akt signaling pathway;PML;Phospholipase D signaling pathway;RAD21;TCF7L2;TNFRSF14;Th17 cell differentiation;WWTR1
+Selumetinib,sam,ga,4,CNBP;CNTRL;DNAJB1;EBF1;Natural killer cell mediated cytotoxicity;PDGFB;PI3K-Akt signaling pathway;RAC1
+Selumetinib,adam,nsga,0,ETNK1;Natural killer cell mediated cytotoxicity;PAX3;Th17 cell differentiation
+Selumetinib,adam_wd,nsga,0,C-type lectin receptor signaling pathway;FUBP1;Insulin secretion;KMT2A;Th17 cell differentiation
+Selumetinib,sam,nsga,0,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Selumetinib,adam,nsga,1,C-type lectin receptor signaling pathway;Insulin secretion;KDR;Natural killer cell mediated cytotoxicity;PRRX1;Th17 cell differentiation
+Selumetinib,adam_wd,nsga,1,Insulin secretion;Th17 cell differentiation
+Selumetinib,sam,nsga,1,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Selumetinib,adam,nsga,2,ATP1A1;Axon guidance;Natural killer cell mediated cytotoxicity;PAX7;Thermogenesis;WIF1
+Selumetinib,adam_wd,nsga,2,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Selumetinib,sam,nsga,2,FUBP1;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Selumetinib,adam,nsga,3,FUBP1;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Selumetinib,adam_wd,nsga,3,Insulin secretion;NTRK1;Th17 cell differentiation
+Selumetinib,sam,nsga,3,Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+Selumetinib,adam,nsga,4,Natural killer cell mediated cytotoxicity
+Selumetinib,adam_wd,nsga,4,BCL7A;IKZF1;SS18L1;Th17 cell differentiation
+Selumetinib,sam,nsga,4,FUBP1;Insulin secretion;Natural killer cell mediated cytotoxicity;Th17 cell differentiation
+XMD13-2,adam,ga,0,Axon guidance;DDX10;EGFR;Estrogen signaling pathway;FAS;Focal adhesion;GNA11;Gap junction;IKZF1;KMT2D;NONO;NTRK3;PICALM;RUNX1T1;Rap1 signaling pathway;Th17 cell differentiation
+XMD13-2,adam_wd,ga,0,Axon guidance;B cell receptor signaling pathway;CDC73;MYD88;PTPRT;Protein digestion and absorption;QKI;Rap1 signaling pathway;cAMP signaling pathway
+XMD13-2,sam,ga,0,Axon guidance;B cell receptor signaling pathway;Estrogen signaling pathway;QKI;Rap1 signaling pathway
+XMD13-2,adam,ga,1,B cell receptor signaling pathway;KMT2D
+XMD13-2,adam_wd,ga,1,B cell receptor signaling pathway;JAK3
+XMD13-2,sam,ga,1,Axon guidance;B cell receptor signaling pathway;CCND3;CNTRL;FH;PTCH1;RSPO2;Regulation of actin cytoskeleton;SRC
+XMD13-2,adam,ga,2,B cell receptor signaling pathway;ERC1;HOXD13;PIK3CB;Regulation of actin cytoskeleton;STIL;Th17 cell differentiation
+XMD13-2,adam_wd,ga,2,Axon guidance;B cell receptor signaling pathway;EZR;FANCA;FH;HOXD13;LRP1B;MAP2K2;MDM2;MEN1;MUTYH;MYH11;NCOA2;Natural killer cell mediated cytotoxicity;PRKACA;Protein digestion and absorption;Rap1 signaling pathway;SDHA;WRN;ZMYM2
+XMD13-2,sam,ga,2,Axon guidance;B cell receptor signaling pathway;CXCR4;FOXP1;Gap junction;HLA-A;HOXD13;PI3K-Akt signaling pathway;PTCH1;Regulation of actin cytoskeleton;USP8;cAMP signaling pathway
+XMD13-2,adam,ga,3,B cell receptor signaling pathway;CUX1;MAFB;MYCL;NFE2L2;PER1;PPM1D;PPP6C
+XMD13-2,adam_wd,ga,3,Axon guidance;B cell receptor signaling pathway;QKI
+XMD13-2,sam,ga,3,B cell receptor signaling pathway;EP300;KAT6A;Oxidative phosphorylation;Regulation of actin cytoskeleton
+XMD13-2,adam,ga,4,B cell receptor signaling pathway;KMT2A;MLLT6;RPL10
+XMD13-2,adam_wd,ga,4,B cell receptor signaling pathway;CHD4;DDX6;Natural killer cell mediated cytotoxicity;RMI2;TSC2;Th17 cell differentiation
+XMD13-2,sam,ga,4,B cell receptor signaling pathway;EBF1;FBXW7;Gap junction;NCOA2;Natural killer cell mediated cytotoxicity;PCM1;PICALM;Regulation of actin cytoskeleton;Th17 cell differentiation
+XMD13-2,adam,nsga,0,RARA;Rap1 signaling pathway
+XMD13-2,adam_wd,nsga,0,IKZF1;PI3K-Akt signaling pathway
+XMD13-2,sam,nsga,0,BTK;Insulin secretion;Rap1 signaling pathway;Th17 cell differentiation
+XMD13-2,adam,nsga,1,EWSR1;IKZF3;MLLT1;MYCN;Rap1 signaling pathway
+XMD13-2,adam_wd,nsga,1,ATM;Cardiac muscle contraction;ETNK1;IKZF3;PI3K-Akt signaling pathway;RSPO2;Rap1 signaling pathway;SND1
+XMD13-2,sam,nsga,1,IKZF3;Rap1 signaling pathway
+XMD13-2,adam,nsga,2,IKZF3;Rap1 signaling pathway
+XMD13-2,adam_wd,nsga,2,Axon guidance;ETV1;IKZF3;Rap1 signaling pathway;Thermogenesis;WIF1
+XMD13-2,sam,nsga,2,BLM;Rap1 signaling pathway;Th17 cell differentiation
+XMD13-2,adam,nsga,3,EWSR1;Rap1 signaling pathway
+XMD13-2,adam_wd,nsga,3,Axon guidance;ETV1;IKZF3;PAFAH1B2;PAX7;Regulation of actin cytoskeleton;Thermogenesis;WIF1
+XMD13-2,sam,nsga,3,MYCN;PRRX1;Rap1 signaling pathway
+XMD13-2,adam,nsga,4,IKZF3;Rap1 signaling pathway
+XMD13-2,adam_wd,nsga,4,AXIN1;ETV1;PTCH1;Rap1 signaling pathway
+XMD13-2,sam,nsga,4,ETV1;IKZF3;MTCP1;NAB2;Rap1 signaling pathway;SND1
