@@ -1,0 +1,22 @@
+% !TeX root = ../../report.tex
+\subsection{Auditing Quality and Robustness in XAI}\label{sec:auditing-quality-robustness}
+
+Explainable AI (XAI) models should be understandable and accurate while maintaining consistent representations of how the original model works. In this research, the quality of extracted IF--THEN rules is assessed on three key dimensions: fidelity, comprehensibility, and stability.
+
+\subsubsection{Defining Quality in Symbolic Explanations}
+
+\begin{itemize}
+\item \textbf{Fidelity}: measures how closely extracted rules reproduce predictions of the original neural network. Higher fidelity indicates that the rules more accurately capture the model's decision process \citep{guidotti2021,miro2025}.
+\item \textbf{Comprehensibility}: measures how easy rules are for humans to understand. It is commonly assessed using the number of rules in a rule set \citep{yedjour2024} and the number of conditions per rule \citep{arrieta2020}. Because PDERE evolves single rules, this study uses the number of conditions per rule. Shorter rules are generally easier to interpret, whereas overly complex rules hinder interpretability \citep{yedjour2024}.
+\item \textbf{Stability}: measures whether similar explanations are produced when the model is evaluated on different data samples or under different training conditions. Stable explanations are generally more trustworthy, while large shifts can indicate sensitivity to small perturbations \citep{ye2025}.
+\end{itemize}
+
+Together, these measures indicate whether explanations are faithful to the model, understandable, and consistent.
+
+\subsubsection{Explanation Fragility and the Generalisation Gap}
+
+Explanation fragility occurs when small changes in data or model state produce substantially different explanations. This can occur when a neural network overfits and learns patterns that do not generalise.
+
+A generalisation gap, defined as the discrepancy between training and validation/test performance, is a standard indicator of overfitting \citep{keskar2017}. An excessive gap can imply that the model has learned patterns specific to the training data.
+
+However, a narrow generalisation gap does not guarantee high-quality explanations. Explanations should therefore be evaluated directly on fidelity, comprehensibility, and stability.

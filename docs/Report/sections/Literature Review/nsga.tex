@@ -1,0 +1,13 @@
+% !TeX root = ../../report.tex
+\subsubsection{Non-Dominated Sorting Genetic Algorithm II (NSGA-II)}
+
+Where standard GAs often combine multiple goals into a single scalar fitness value, NSGA-II is explicitly designed for multi-objective optimisation when objectives are in conflict \citep{deb2002}. In rule extraction, increasing fidelity to the underlying ANN can reduce comprehensibility, and improving comprehensibility can reduce fidelity.
+
+NSGA-II addresses this trade-off by evolving a population toward a Pareto front: a set of solutions for which no objective can be improved without degrading at least one other objective \citep{deb2002}. It relies on two key mechanisms:
+
+\begin{itemize}
+\item \textbf{Fast non-dominated sorting}: the population is ranked into hierarchical fronts based on Pareto dominance. A rule set is non-dominated if no other rule set is superior across all objectives.
+\item \textbf{Crowding distance}: diversity is preserved by estimating solution density around each individual in objective space and preferring individuals in less crowded regions during selection.
+\end{itemize}
+
+With elitism, NSGA-II carries the strongest solutions from combined parent and offspring populations into the next generation, reducing the risk of losing high-quality rule sets during evolution \citep{deb2002}. Within this Red XAI framework, NSGA-II is advantageous because it produces a diverse spectrum of candidate rule sets, which can later be ranked to select an operating point that balances rule-set complexity and statistical fidelity.

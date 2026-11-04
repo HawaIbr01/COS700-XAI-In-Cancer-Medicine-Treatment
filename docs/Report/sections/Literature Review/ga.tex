@@ -1,0 +1,10 @@
+% !TeX root = ../../report.tex
+\subsubsection{Genetic Algorithms}
+
+Genetic algorithms were introduced by Holland in the 1970s \citep{holland1975} and remain a well-established metaheuristic optimisation approach inspired by natural evolution \citep{holland1975,yedjour2024}. They are used for complex problems where traditional optimisation methods struggle because of high dimensionality or non-linearity \citep{yedjour2024}.
+
+A GA evolves a population of candidate solutions through an iterative process. In this project context, each individual encodes a candidate rule set as a chromosome and is evaluated by a fitness function that measures solution quality \citep{yedjour2024}. Higher-performing individuals are selected as parents for the next generation, commonly via tournament or roulette-wheel selection \citep{yedjour2024}. Offspring are generated through crossover, which recombines parent chromosomes, and mutation, which introduces random variation to preserve diversity and reduce premature convergence to poor local optima \citep{yedjour2024}.
+
+\subsubsection{Application in Rule Extraction and XAI}
+
+Genetic algorithms are widely used for rule extraction from black-box models such as ANNs. The objective is to approximate a complex network's decision process with interpretable \texttt{IF--THEN} rules \citep{yedjour2024}. In this setting, GA-optimised rule sets are typically evaluated against three criteria: fidelity (how closely the rules mimic the original ANN), accuracy (how well rules classify unseen data), and comprehensibility (whether the rule set is compact and understandable to domain experts) \citep{yedjour2024}.
